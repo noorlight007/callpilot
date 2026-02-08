@@ -1,0 +1,199 @@
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+@layer base {
+  :root {
+    /* Background colors */
+    --background: 0 0% 100%;
+    --background-alt: 220 27% 98%;
+    --foreground: 222 47% 11%;
+
+    /* Card */
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    /* Popover */
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    /* Primary - Charcoal for CTAs */
+    --primary: 222 47% 11%;
+    --primary-foreground: 210 40% 98%;
+    --primary-hover: 222 47% 7%;
+
+    /* Secondary */
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+
+    /* Muted */
+    --muted: 215 28% 17%;
+    --muted-foreground: 215 16% 47%;
+
+    /* Accent - AI Blue */
+    --accent: 205 100% 58%;
+    --accent-deep: 214 100% 54%;
+    --accent-tint: 205 100% 96%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Border */
+    --border: 220 13% 91%;
+    --border-card: 222 18% 93%;
+    --input: 215 20% 65%;
+    --ring: 205 100% 58%;
+
+    /* Radius */
+    --radius: 0.5rem;
+
+    /* Glow effects */
+    --glow-focus: 205 100% 58% / 0.18;
+    --glow-soft: 205 100% 58% / 0.22;
+    --glow-spread: 205 100% 58% / 0.14;
+
+    /* Text colors */
+    --text-headline: 222 47% 11%;
+    --text-body: 215 28% 28%;
+    --text-muted: 215 16% 47%;
+
+    /* Sidebar - keeping defaults */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222 47% 5%;
+    --background-alt: 222 47% 8%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 8%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 8%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222 47% 11%;
+
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 205 100% 58%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 213 27% 84%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-headline font-semibold tracking-tight;
+  }
+
+  p {
+    @apply text-body;
+  }
+}
+
+@layer utilities {
+  .text-headline {
+    color: hsl(var(--text-headline));
+  }
+
+  .text-body {
+    color: hsl(var(--text-body));
+  }
+
+  .text-muted-custom {
+    color: hsl(var(--text-muted));
+  }
+
+  .bg-alt {
+    background-color: hsl(var(--background-alt));
+  }
+
+  .accent-text {
+    color: hsl(var(--accent));
+  }
+
+  .accent-bg {
+    background-color: hsl(var(--accent));
+  }
+
+  .accent-tint-bg {
+    background-color: hsl(var(--accent-tint));
+  }
+
+  .glow-focus {
+    box-shadow: 0 0 0 4px hsl(var(--glow-focus));
+  }
+
+  .glow-soft {
+    box-shadow: 0 0 28px hsl(var(--glow-soft));
+  }
+
+  .card-hover {
+    transition: all 0.2s ease;
+  }
+
+  .card-hover:hover {
+    box-shadow: 0 0 0 4px hsl(var(--glow-focus)), 0 4px 20px hsl(var(--glow-spread));
+    transform: translateY(-2px);
+  }
+
+  /* NEW: bigger jump */
+  .card-hover-lg {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .card-hover-lg:hover {
+    box-shadow: 0 0 0 4px hsl(var(--glow-focus)), 0 4px 20px hsl(var(--glow-spread));
+    transform: translateY(-14px); /* increase/decrease this */
+  }
+
+  .gradient-accent {
+    background: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--accent-deep)) 100%);
+  }
+}
