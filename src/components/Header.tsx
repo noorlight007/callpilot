@@ -39,7 +39,7 @@ const Header = () => {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-3">
-            <Link href="/login">
+            <Link href="https://panel.callpilot.pro/login">
               <Button variant="ctaSecondary" size="default">
                 Sign In
               </Button>

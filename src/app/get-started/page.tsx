@@ -199,7 +199,7 @@ export default function GetStarted() {
                     </Link>
 
                     <Link
-                      href="/login"
+                      href="https://panel.callpilot.pro/login"
                       className="text-sm text-muted-foreground hover:text-headline transition-colors"
                     >
                       Sign in
