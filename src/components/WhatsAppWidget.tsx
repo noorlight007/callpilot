@@ -4,7 +4,7 @@ import React from "react";
 import { MessageCircle } from "lucide-react";
 
 const WhatsAppWidget = () => {
-    const phoneNumber = "+8801700000000"; // Placeholder: update with actual number if needed
+    const phoneNumber = "+971585921525"; // Placeholder: update with actual number if needed
     const message = "Hello! I have a question about CallPilot.";
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
