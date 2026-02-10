@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Providers } from "./providers";
+import WhatsAppWidget from "@/components/WhatsAppWidget";
 
 export const metadata: Metadata = {
     title: "CallPilot.pro",
@@ -15,7 +16,10 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body>
-                <Providers>{children}</Providers>
+                <Providers>
+                    {children}
+                    <WhatsAppWidget />
+                </Providers>
             </body>
         </html>
     );
