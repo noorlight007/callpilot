@@ -4,22 +4,25 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-
-
 const sections = [
-  { id: "entity", title: "1. Legal Entity & Ownership" },
-  { id: "scope", title: "2. Scope of These Terms" },
-  { id: "use", title: "3. Use of Services" },
-  { id: "ai", title: "4. AI Services & CallPilot" },
-  { id: "privacy", title: "5. Data Protection & Privacy (GDPR Alignment)" },
-  { id: "retention", title: "6. Data Retention & Call Data" },
-  { id: "ip", title: "7. Intellectual Property" },
-  { id: "third-party", title: "8. Third-Party Integrations" },
-  { id: "availability", title: "9. Availability & Changes" },
-  { id: "liability", title: "10. Limitation of Liability" },
-  { id: "termination", title: "11. Termination" },
-  { id: "law", title: "12. Governing Law" },
-  { id: "contact", title: "13. Contact" },
+  { id: "service", title: "1. The Service" },
+  { id: "eligibility", title: "2. Eligibility" },
+  { id: "account", title: "3. Account Registration" },
+  { id: "subscription", title: "4. Subscription, Fees & Payment Terms" },
+  { id: "acceptable-use", title: "5. Acceptable Use" },
+  { id: "compliance", title: "6. Telecommunications & Legal Compliance" },
+  { id: "retention", title: "7. Data Retention & Automatic Deletion" },
+  { id: "ai-output", title: "8. AI Output & Accuracy" },
+  { id: "confidentiality", title: "9. Confidentiality" },
+  { id: "ip", title: "10. Intellectual Property" },
+  { id: "termination", title: "11. Suspension & Termination" },
+  { id: "availability", title: "12. Service Availability" },
+  { id: "disclaimers", title: "13. Disclaimers" },
+  { id: "liability", title: "14. Limitation of Liability" },
+  { id: "indemnity", title: "15. Indemnity" },
+  { id: "changes", title: "16. Changes to These Terms" },
+  { id: "law", title: "17. Governing Law & Jurisdiction" },
+  { id: "contact", title: "18. Contact Information" },
 ];
 
 function SectionTitle({
@@ -48,27 +51,32 @@ export default function TermsOfServicePage() {
         {/* Header */}
         <div className="border-b border-border pt-24">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
-            <div className="">
+            <div>
               <p className="text-sm text-muted-text mb-2">Legal</p>
               <h1 className="text-3xl sm:text-4xl font-bold text-headline tracking-tight">
-                Terms &amp; Conditions
+                CallPilot – Terms of Service
               </h1>
+
               <p className="mt-3 text-sm sm:text-base text-body">
-                Last updated:{" "}
-                <span className="font-medium">6 February 2026</span>
+                By <span className="font-medium">Swiftwave.ai</span>
+              </p>
+
+              <p className="mt-2 text-sm sm:text-base text-body">
+                Effective Date:{" "}
+                <span className="font-medium">10 February 2026</span>
               </p>
 
               <div className="mt-6 rounded-2xl border border-border bg-card/40 p-5 sm:p-6">
                 <p className="text-sm sm:text-base text-body leading-relaxed">
-                  These Terms &amp; Conditions (&quot;Terms&quot;) govern access to
-                  and use of the websites, platforms, software, and services
-                  operated by <span className="font-medium">Swiftwave FZ-LLC</span>,
-                  including the CallPilot AI Phone Call service (&quot;CallPilot.pro&quot;).
+                  These Terms of Service (&quot;Terms&quot;) govern your access to and use of{" "}
+                  <span className="font-medium">CallPilot</span>, an AI-powered automated phone
+                  call platform operated by{" "}
+                  <span className="font-medium">Swiftwave.ai</span> (&quot;Swiftwave.ai&quot;,
+                  &quot;we&quot;, &quot;us&quot;, &quot;our&quot;).
                 </p>
                 <p className="mt-3 text-sm sm:text-base text-body leading-relaxed">
-                  By accessing or using the Swiftwave website, Swiftwave platform,
-                  CallPilot website, or CallPilot.pro platform, you agree to be bound
-                  by these Terms.
+                  By accessing or using CallPilot, you (&quot;Customer&quot;, &quot;you&quot;)
+                  agree to be bound by these Terms.
                 </p>
               </div>
             </div>
@@ -82,9 +90,7 @@ export default function TermsOfServicePage() {
             <aside className="lg:col-span-4 xl:col-span-3">
               <div className="lg:sticky lg:top-24">
                 <div className="rounded-2xl border border-border bg-card/40 p-5">
-                  <p className="text-sm font-semibold text-headline">
-                    On this page
-                  </p>
+                  <p className="text-sm font-semibold text-headline">On this page</p>
                   <nav className="mt-4">
                     <ul className="space-y-2">
                       {sections.map((s) => (
@@ -108,213 +114,335 @@ export default function TermsOfServicePage() {
               <div className="max-w-3xl space-y-10">
                 {/* 1 */}
                 <section className="space-y-4">
-                  <SectionTitle id="entity">1. Legal Entity &amp; Ownership</SectionTitle>
-                  <div className="rounded-2xl border border-border bg-card/40 p-5 sm:p-6">
-                    <p className="text-body leading-relaxed">
-                      Swiftwave FZ-LLC is a company incorporated in the United Arab Emirates.
-                      <span className="font-medium"> Registration Number: 47028798</span>
-                    </p>
-                  </div>
-
+                  <SectionTitle id="service">1. The Service</SectionTitle>
                   <p className="text-body leading-relaxed">
-                    Swiftwave FZ-LLC owns and operates:
+                    CallPilot is an AI-driven phone call service that automatically places,
+                    receives, manages, and processes telephone calls on your behalf, including
+                    but not limited to:
                   </p>
                   <ul className="list-disc pl-5 text-body space-y-1">
-                    <li>The Swiftwave website and platform</li>
-                    <li>All associated products and services, including CallPilot.pro</li>
+                    <li>promotional calls</li>
+                    <li>applicant or customer calls</li>
+                    <li>booking and reservation calls</li>
+                    <li>information capture and qualification calls</li>
                   </ul>
-                  <p className="text-body leading-relaxed">
-                    CallPilot.pro is a brand and AI phone call product of Swiftwave FZ-LLC
-                    and does not operate as a separate legal entity.
-                  </p>
                 </section>
 
                 {/* 2 */}
                 <section className="space-y-4">
-                  <SectionTitle id="scope">2. Scope of These Terms</SectionTitle>
-                  <p className="text-body leading-relaxed">These Terms apply to:</p>
+                  <SectionTitle id="eligibility">2. Eligibility</SectionTitle>
+                  <p className="text-body leading-relaxed">You must:</p>
                   <ul className="list-disc pl-5 text-body space-y-1">
-                    <li>The Swiftwave WEBSITE &amp; PLATFORM</li>
-                    <li>The CallPilot WEBSITE &amp; PLATFORM</li>
-                    <li>All dashboards, APIs, integrations, trials, and production services</li>
-                    <li>All AI-driven functionality, including AI phone calls</li>
+                    <li>be at least 18 years old;</li>
+                    <li>
+                      have legal authority to bind a business if using CallPilot commercially;
+                    </li>
+                    <li>comply with all applicable laws and regulations.</li>
                   </ul>
-                  <p className="text-body leading-relaxed">
-                    References to &quot;Swiftwave&quot;, &quot;we&quot;, &quot;us&quot;,
-                    or &quot;our&quot; include Swiftwave FZ-LLC and all products operated
-                    by it, including CallPilot.pro.
-                  </p>
                 </section>
 
                 {/* 3 */}
                 <section className="space-y-4">
-                  <SectionTitle id="use">3. Use of Services</SectionTitle>
-                  <p className="text-body leading-relaxed">You agree to:</p>
+                  <SectionTitle id="account">3. Account Registration</SectionTitle>
+                  <p className="text-body leading-relaxed">You are responsible for:</p>
                   <ul className="list-disc pl-5 text-body space-y-1">
-                    <li>Use the services only for lawful business purposes</li>
-                    <li>Provide accurate and up-to-date information</li>
-                    <li>Comply with all applicable laws and regulations</li>
-                  </ul>
-
-                  <p className="text-body leading-relaxed">You must not:</p>
-                  <ul className="list-disc pl-5 text-body space-y-1">
-                    <li>Misuse or interfere with the services</li>
-                    <li>Attempt unauthorised access to systems or data</li>
-                    <li>Use the services for unlawful, abusive, or fraudulent activity</li>
+                    <li>providing accurate and complete account information;</li>
+                    <li>maintaining the confidentiality of your login credentials;</li>
+                    <li>all activity carried out under your account.</li>
                   </ul>
                 </section>
 
                 {/* 4 */}
                 <section className="space-y-4">
-                  <SectionTitle id="ai">4. AI Services &amp; CallPilot.pro</SectionTitle>
-                  <p className="text-body leading-relaxed">
-                    CallPilot.pro provides AI-driven phone call functionality, including automated
-                    and AI-assisted voice interactions.
-                  </p>
-                  <p className="text-body leading-relaxed">You acknowledge that:</p>
-                  <ul className="list-disc pl-5 text-body space-y-1">
-                    <li>AI outputs are generated algorithmically and may require human review</li>
-                    <li>Swiftwave does not provide legal, employment, or professional advice</li>
-                    <li>You are responsible for how AI outputs are used within your business</li>
-                  </ul>
-                  <p className="text-body leading-relaxed">
-                    Swiftwave may update, improve, or modify AI functionality at any time.
-                  </p>
+                  <SectionTitle id="subscription">
+                    4. Subscription, Fees &amp; Payment Terms
+                  </SectionTitle>
+
+                  <div className="rounded-2xl border border-border bg-card/40 p-5 sm:p-6 space-y-6">
+                    <div className="space-y-2">
+                      <p className="font-semibold text-headline">4.1 Development Fee</p>
+                      <p className="text-body leading-relaxed">
+                        A one-off development fee of <span className="font-medium">$400 USD</span>{" "}
+                        is charged upfront prior to activation of the CallPilot service.
+                      </p>
+                      <ul className="list-disc pl-5 text-body space-y-1">
+                        <li>Covers initial setup, configuration, and onboarding</li>
+                        <li>Refundable in free minutes after one year</li>
+                      </ul>
+                    </div>
+
+                    <div className="space-y-2">
+                      <p className="font-semibold text-headline">4.2 Subscription-Only Service</p>
+                      <p className="text-body leading-relaxed">
+                        CallPilot is provided strictly on a subscription-only basis. Each
+                        subscription includes inclusive free call minutes, as advertised at the
+                        time of purchase. There are no per-minute charges within the included
+                        allowance.
+                      </p>
+                    </div>
+
+                    <div className="space-y-2">
+                      <p className="font-semibold text-headline">4.3 Subscription Payments</p>
+                      <ul className="list-disc pl-5 text-body space-y-1">
+                        <li>Monthly subscription fees are payable in advance</li>
+                        <li>Subscriptions renew automatically unless cancelled</li>
+                        <li>Non-payment will result in suspension or termination</li>
+                      </ul>
+                    </div>
+
+                    <div className="space-y-2">
+                      <p className="font-semibold text-headline">
+                        4.4 Inclusive Minutes &amp; Overage Charges
+                      </p>
+                      <ul className="list-disc pl-5 text-body space-y-1">
+                        <li>Inclusive minutes reset each billing cycle</li>
+                        <li>Unused minutes do not roll over</li>
+                        <li>
+                          If you exceed your included minute allowance, calls will continue and an
+                          overage charge of <span className="font-medium">$1.15 (USD)</span> per
+                          minute will apply until your next monthly renewal or plan upgrade.
+                        </li>
+                        <li>Overage charges are billed automatically.</li>
+                      </ul>
+                    </div>
+
+                    <div className="space-y-2">
+                      <p className="font-semibold text-headline">4.5 Payment Method Requirement</p>
+                      <p className="text-body leading-relaxed">
+                        A valid credit or debit card is required to activate the Service. By
+                        activating CallPilot, you authorise Swiftwave.ai to automatically charge
+                        the payment method on file for:
+                      </p>
+                      <ul className="list-disc pl-5 text-body space-y-1">
+                        <li>the upfront development fee</li>
+                        <li>monthly subscription fees payable in advance</li>
+                        <li>any applicable overage charges</li>
+                      </ul>
+                      <p className="text-body leading-relaxed">
+                        Failure to maintain a valid payment method may result in call restriction
+                        or service suspension.
+                      </p>
+                    </div>
+
+                    <div className="space-y-2">
+                      <p className="font-semibold text-headline">4.6 Additional Costs</p>
+                      <p className="text-body leading-relaxed">
+                        The only additional cost payable is the purchase of one or more telephone
+                        numbers (&quot;Telephony Numbers&quot;).
+                      </p>
+                      <ul className="list-disc pl-5 text-body space-y-1">
+                        <li>Pricing shown at point of purchase</li>
+                        <li>Numbers remain active only whilst paid</li>
+                        <li>
+                          No other hidden fees or call charges apply unless agreed in writing.
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div className="space-y-2">
+                      <p className="font-semibold text-headline">4.7 Taxes</p>
+                      <p className="text-body leading-relaxed">
+                        All fees are exclusive of applicable taxes unless stated otherwise.
+                      </p>
+                    </div>
+                  </div>
                 </section>
 
                 {/* 5 */}
                 <section className="space-y-4">
-                  <SectionTitle id="privacy">
-                    5. Data Protection &amp; Privacy (GDPR Alignment)
-                  </SectionTitle>
+                  <SectionTitle id="acceptable-use">5. Acceptable Use</SectionTitle>
                   <p className="text-body leading-relaxed">
-                    Swiftwave FZ-LLC processes personal data in accordance with:
+                    You agree not to use CallPilot to:
                   </p>
                   <ul className="list-disc pl-5 text-body space-y-1">
-                    <li>UAE Personal Data Protection Law (PDPL)</li>
-                    <li>The principles of the EU GDPR and UK GDPR</li>
-                    <li>Comparable data protection and privacy laws worldwide</li>
+                    <li>make unlawful, misleading, or deceptive calls;</li>
+                    <li>breach telecommunications or privacy laws;</li>
+                    <li>spam, harass, or misrepresent identity;</li>
+                    <li>contact numbers on &quot;Do Not Call&quot; lists without consent;</li>
+                    <li>reverse-engineer, resell, or misuse the platform.</li>
                   </ul>
-                  <p className="text-body leading-relaxed">
-                    Swiftwave aligns its practices with data minimisation, security, transparency,
-                    and deletion-by-design.
-                  </p>
                   <div className="rounded-2xl border border-border bg-card/40 p-5 sm:p-6">
                     <p className="text-body leading-relaxed">
-                      Full details are set out in the Privacy Policy, Data Protection Policy,
-                      and Data Retention &amp; Deletion Policy, which form part of these Terms.
+                      You are solely responsible for obtaining lawful consent for all calls.
                     </p>
                   </div>
                 </section>
 
                 {/* 6 */}
                 <section className="space-y-4">
-                  <SectionTitle id="retention">6. Data Retention &amp; Call Data</SectionTitle>
+                  <SectionTitle id="compliance">6. Telecommunications &amp; Legal Compliance</SectionTitle>
+                  <p className="text-body leading-relaxed">
+                    Telephone laws vary by jurisdiction. You are responsible for compliance with
+                    all applicable regulations, including:
+                  </p>
                   <ul className="list-disc pl-5 text-body space-y-1">
-                    <li>Call recordings are not retained by default and are deleted automatically</li>
-                    <li>Call text / transcripts are not stored unless enabled by the customer</li>
-                    <li>
-                      Where enabled, call text may be retained for a recommended maximum of 5 days
-                      for quality review
-                    </li>
-                    <li>Swiftwave does not store CRM personal data</li>
-                    <li>Customers control all configuration and retention settings</li>
+                    <li>call recording consent laws</li>
+                    <li>automated calling restrictions</li>
+                    <li>consumer protection laws</li>
+                    <li>data protection legislation</li>
                   </ul>
+                  <p className="text-body leading-relaxed">
+                    Swiftwave.ai does not provide legal advice or compliance guarantees.
+                  </p>
                 </section>
 
                 {/* 7 */}
                 <section className="space-y-4">
-                  <SectionTitle id="ip">7. Intellectual Property</SectionTitle>
-                  <p className="text-body leading-relaxed">
-                    All intellectual property rights in:
-                  </p>
-                  <ul className="list-disc pl-5 text-body space-y-1">
-                    <li>The Swiftwave platform</li>
-                    <li>CallPilot.pro platform</li>
-                    <li>AI models, code, interfaces, and documentation</li>
-                  </ul>
-                  <p className="text-body leading-relaxed">
-                    remain the exclusive property of Swiftwave FZ-LLC.
-                  </p>
-                  <p className="text-body leading-relaxed">
-                    You are granted a limited, non-exclusive, non-transferable right to use the
-                    services during your authorised access period.
-                  </p>
+                  <SectionTitle id="retention">7. Data Retention &amp; Automatic Deletion</SectionTitle>
+
+                  <div className="rounded-2xl border border-border bg-card/40 p-5 sm:p-6 space-y-4">
+                    <p className="font-semibold text-headline">No Call Recordings Stored</p>
+                    <p className="text-body leading-relaxed">
+                      No call recordings are stored. All call recordings and related call data are
+                      automatically deleted after processing. This includes:
+                    </p>
+                    <ul className="list-disc pl-5 text-body space-y-1">
+                      <li>call audio recordings</li>
+                      <li>call transcripts</li>
+                      <li>call summaries</li>
+                      <li>call metadata linked to identifiable individuals</li>
+                    </ul>
+
+                    <p className="font-semibold text-headline pt-2">Customer Responsibility</p>
+                    <ul className="list-disc pl-5 text-body space-y-1">
+                      <li>Deleted data cannot be recovered</li>
+                      <li>
+                        If you require data retention text, clients can set this functionality in
+                        CallPilot Platform
+                      </li>
+                      <li>
+                        You remain responsible for your own data retention obligations outside
+                        CallPilot
+                      </li>
+                    </ul>
+
+                    <p className="font-semibold text-headline pt-2">Data Protection Roles</p>
+                    <p className="text-body leading-relaxed">
+                      Swiftwave.ai acts as a data processor. You act as the data controller for all
+                      call data processed through CallPilot. Swiftwave.ai does not sell, reuse, or
+                      repurpose call data.
+                    </p>
+                  </div>
                 </section>
 
                 {/* 8 */}
                 <section className="space-y-4">
-                  <SectionTitle id="third-party">8. Third-Party Integrations</SectionTitle>
+                  <SectionTitle id="ai-output">8. AI Output &amp; Accuracy</SectionTitle>
                   <p className="text-body leading-relaxed">
-                    Swiftwave services may integrate with third-party systems (including CRMs and
-                    telephony providers).
+                    AI-generated outputs (including transcripts or summaries):
                   </p>
-                  <p className="text-body leading-relaxed">Swiftwave is not responsible for:</p>
                   <ul className="list-disc pl-5 text-body space-y-1">
-                    <li>Third-party services or platforms</li>
-                    <li>Their availability, security, or performance</li>
+                    <li>may not be error-free</li>
+                    <li>must not be relied on as the sole basis for decisions</li>
+                    <li>are provided &quot;as is&quot;</li>
                   </ul>
                   <p className="text-body leading-relaxed">
-                    Use of third-party services is governed by their own terms.
+                    You are responsible for reviewing AI output before reliance.
                   </p>
                 </section>
 
                 {/* 9 */}
                 <section className="space-y-4">
-                  <SectionTitle id="availability">9. Availability &amp; Changes</SectionTitle>
-                  <p className="text-body leading-relaxed">Swiftwave may:</p>
-                  <ul className="list-disc pl-5 text-body space-y-1">
-                    <li>Modify or update services</li>
-                    <li>Suspend access for maintenance or security reasons</li>
-                    <li>Introduce or retire features</li>
-                  </ul>
+                  <SectionTitle id="confidentiality">9. Confidentiality</SectionTitle>
                   <p className="text-body leading-relaxed">
-                    No guarantee is given that services will always be uninterrupted or error-free.
+                    Both parties agree to keep confidential information private unless disclosure is
+                    required by law.
                   </p>
                 </section>
 
                 {/* 10 */}
                 <section className="space-y-4">
-                  <SectionTitle id="liability">10. Limitation of Liability</SectionTitle>
+                  <SectionTitle id="ip">10. Intellectual Property</SectionTitle>
                   <p className="text-body leading-relaxed">
-                    To the maximum extent permitted by law:
+                    All rights, title, and interest in CallPilot (software, AI models, branding,
+                    documentation) remain the exclusive property of Swiftwave.ai.
                   </p>
-                  <ul className="list-disc pl-5 text-body space-y-1">
-                    <li>Swiftwave is not liable for indirect or consequential losses</li>
-                    <li>Swiftwave&apos;s total liability is limited to fees paid for the relevant services</li>
-                    <li>Nothing in these Terms limits liability that cannot be excluded under applicable law</li>
-                  </ul>
                 </section>
 
                 {/* 11 */}
                 <section className="space-y-4">
-                  <SectionTitle id="termination">11. Termination</SectionTitle>
+                  <SectionTitle id="termination">11. Suspension &amp; Termination</SectionTitle>
                   <p className="text-body leading-relaxed">
-                    Swiftwave may suspend or terminate access where:
+                    Access may be suspended or terminated if:
                   </p>
                   <ul className="list-disc pl-5 text-body space-y-1">
-                    <li>These Terms are breached</li>
-                    <li>Use presents legal, security, or compliance risk</li>
+                    <li>these Terms are breached;</li>
+                    <li>unlawful activity is suspected;</li>
+                    <li>continued use presents legal or operational risk.</li>
                   </ul>
-                  <p className="text-body leading-relaxed">
-                    On termination, data handling follows the applicable data retention and deletion policies.
-                  </p>
+                  <p className="text-body leading-relaxed">Upon termination:</p>
+                  <ul className="list-disc pl-5 text-body space-y-1">
+                    <li>access ends immediately;</li>
+                    <li>outstanding fees remain payable;</li>
+                    <li>all data is permanently deleted.</li>
+                  </ul>
                 </section>
 
                 {/* 12 */}
                 <section className="space-y-4">
-                  <SectionTitle id="law">12. Governing Law</SectionTitle>
+                  <SectionTitle id="availability">12. Service Availability</SectionTitle>
                   <p className="text-body leading-relaxed">
-                    These Terms are governed by the laws of the United Arab Emirates, unless otherwise agreed in writing.
+                    CallPilot is provided on an &quot;as available&quot; basis. Uninterrupted
+                    service is not guaranteed.
                   </p>
                 </section>
 
                 {/* 13 */}
                 <section className="space-y-4">
-                  <SectionTitle id="contact">13. Contact</SectionTitle>
+                  <SectionTitle id="disclaimers">13. Disclaimers</SectionTitle>
+                  <p className="text-body leading-relaxed">
+                    The Service is provided &quot;as is&quot;. No guarantees are made regarding
+                    accuracy, outcomes, or AI behaviour.
+                  </p>
+                </section>
+
+                {/* 14 */}
+                <section className="space-y-4">
+                  <SectionTitle id="liability">14. Limitation of Liability</SectionTitle>
+                  <p className="text-body leading-relaxed">
+                    Swiftwave.ai is not liable for indirect, consequential, or business losses.
+                    Total liability is limited to fees paid in the six (6) months prior to the
+                    claim.
+                  </p>
+                </section>
+
+                {/* 15 */}
+                <section className="space-y-4">
+                  <SectionTitle id="indemnity">15. Indemnity</SectionTitle>
+                  <p className="text-body leading-relaxed">
+                    You agree to indemnify Swiftwave.ai against claims arising from:
+                  </p>
+                  <ul className="list-disc pl-5 text-body space-y-1">
+                    <li>your use of the Service;</li>
+                    <li>breach of these Terms;</li>
+                    <li>violation of applicable laws.</li>
+                  </ul>
+                </section>
+
+                {/* 16 */}
+                <section className="space-y-4">
+                  <SectionTitle id="changes">16. Changes to These Terms</SectionTitle>
+                  <p className="text-body leading-relaxed">
+                    We may update these Terms at any time. Continued use constitutes acceptance.
+                  </p>
+                </section>
+
+                {/* 17 */}
+                <section className="space-y-4">
+                  <SectionTitle id="law">17. Governing Law &amp; Jurisdiction</SectionTitle>
+                  <p className="text-body leading-relaxed">
+                    These Terms are governed by the laws of the United Arab Emirates. Disputes
+                    shall fall under the exclusive jurisdiction of the UAE courts, including the
+                    DIFC Courts where applicable.
+                  </p>
+                </section>
+
+                {/* 18 */}
+                <section className="space-y-4">
+                  <SectionTitle id="contact">18. Contact Information</SectionTitle>
                   <div className="rounded-2xl border border-border bg-card/40 p-5 sm:p-6">
                     <p className="text-body leading-relaxed">
-                      For questions regarding these Terms or Swiftwave services:
+                      Swiftwave.ai
                     </p>
                     <p className="mt-3 text-body">
                       <span className="text-muted-text">Email:</span>{" "}
@@ -323,6 +451,17 @@ export default function TermsOfServicePage() {
                         className="text-body hover:text-headline underline underline-offset-4"
                       >
                         contact@swiftwave.ai
+                      </a>
+                    </p>
+                    <p className="mt-2 text-body">
+                      <span className="text-muted-text">Website:</span>{" "}
+                      <a
+                        href="https://swiftwave.ai"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-body hover:text-headline underline underline-offset-4"
+                      >
+                        https://swiftwave.ai
                       </a>
                     </p>
                   </div>

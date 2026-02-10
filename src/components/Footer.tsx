@@ -10,7 +10,7 @@ const Footer = () => {
       { label: "Pricing", href: "#pricing" },
     ],
     company: [
-      { label: "About Us", href: "#" },
+      { label: "About Us", href: "/about-us" },
       { label: "Contact", href: "/get-started" },
     ],
     resources: [
