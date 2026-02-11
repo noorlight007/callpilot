@@ -15,6 +15,7 @@ import {
     Phone
 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const coreFeatures = [
     {
@@ -181,7 +182,7 @@ const FeaturesPage = () => {
                 </section>
 
                 {/* CRM Integration Options */}
-                <section className="py-16 lg:py-24 bg-alt">
+                <section className="py-10 lg:py-15 bg-alt">
                     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="max-w-3xl mx-auto text-center mb-12 lg:mb-16">
                             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-headline mb-4">
@@ -223,12 +224,10 @@ const FeaturesPage = () => {
                 </section>
 
                 {/* Custom Solutions */}
-                <section className="py-16 lg:py-24">
+                <section className="py-10 lg:py-15">
                     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="max-w-4xl mx-auto text-center">
-                            <div className="w-16 h-16 rounded-2xl accent-tint-bg flex items-center justify-center mb-6 mx-auto">
-                                <Puzzle className="w-8 h-8 accent-text" />
-                            </div>
+                            
                             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-headline mb-4">
                                 Custom Solutions for Your Business
                             </h2>
@@ -237,13 +236,17 @@ const FeaturesPage = () => {
                                 needs—from specialized workflows to bespoke integrations.
                             </p>
                             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                                <Button variant="cta" size="xl" className="w-full sm:w-auto group">
-                                    Contact Sales
-                                    <ArrowRight size={18} className="ml-1 transition-transform group-hover:translate-x-1" />
-                                </Button>
-                                <Button variant="ctaSecondary" size="xl" className="w-full sm:w-auto">
-                                    View Pricing
-                                </Button>
+                                <Link href="/get-started">
+                                    <Button variant="cta" size="xl" className="w-full sm:w-auto group">
+                                        Contact Sales
+                                        <ArrowRight size={18} className="ml-1 transition-transform group-hover:translate-x-1" />
+                                    </Button>
+                                </Link>
+                                <Link href="/pricing">
+                                    <Button variant="ctaSecondary" size="xl" className="w-full sm:w-auto">
+                                        View Pricing
+                                    </Button>
+                                </Link>
                             </div>
                         </div>
                     </div>
