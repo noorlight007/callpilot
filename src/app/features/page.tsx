@@ -111,13 +111,13 @@ const FeaturesPage = () => {
                                 memory, and compliance—so your team can focus on what matters most.
                             </p>
                             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                                <Link href="/try-it">
                                 <Button variant="cta" size="xl" className="w-full sm:w-auto group" onClick={() => router.push("/try-it")}>
                                     Try a Free Call
                                     <ArrowRight size={18} className="ml-1 transition-transform group-hover:translate-x-1" />
                                 </Button>
-                                <Button variant="ctaSecondary" size="xl" className="w-full sm:w-auto">
-                                    Get Started
-                                </Button>
+                                </Link>
+                                
                             </div>
                         </div>
                     </div>
