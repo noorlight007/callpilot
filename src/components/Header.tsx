@@ -13,6 +13,7 @@ const Header = () => {
     { label: "Features", href: "/features" },
     { label: "Use Cases", href: "/use-cases" },
     { label: "Try It", href: "/try-it" },
+    { label: "Pricing", href: "/pricing" },
   ];
 
   return (
@@ -78,7 +79,7 @@ const Header = () => {
                 </Link>
               ))}
               <div className="flex flex-col gap-2 mt-4 pt-4 border-t border-border">
-                <Link href="/login">
+                <Link href="https://panel.callpilot.pro/login">
                   <Button variant="ctaSecondary" size="lg" className="w-full">
                     Sign In
                   </Button>
