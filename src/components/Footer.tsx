@@ -99,10 +99,7 @@ const Footer = () => {
           <p className="text-sm text-muted-text">
             © 2026 CallPilot. Operated by Swiftwave FZ-LLC. All rights reserved.
           </p>
-          <div className="flex items-center gap-6">
-            <p className="text-sm text-muted-text">Incorporated 2006. All rights reserved.</p>
-            
-          </div>
+          
         </div>
       </div>
     </footer>
