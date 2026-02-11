@@ -98,15 +98,10 @@ const FeaturesPage = () => {
             <Header />
             <main>
                 {/* Hero Section */}
-                <section className="pt-24 lg:pt-32 pb-16 lg:pb-24 bg-alt">
+                <section className="pt-32 lg:pt-40 pb-16 lg:pb-24 bg-alt">
                     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="max-w-4xl mx-auto text-center">
-                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-tint border border-accent/20 mb-6">
-                                <Brain className="w-4 h-4 accent-text" />
-                                <span className="text-sm font-medium accent-text">
-                                    AI Voice Operators
-                                </span>
-                            </div>
+
                             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-headline leading-tight mb-6">
                                 Powerful Features for{" "}
                                 <span className="accent-text">Modern Business</span>

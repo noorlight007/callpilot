@@ -24,7 +24,7 @@ const PricingPage = () => {
             <main> 
                 <Pricing />
                 {/* Custom Solutions */}
-                <section className="py-10 lg:py-15">
+                <section className="py-15 lg:py-18">
                     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="max-w-4xl mx-auto text-center">
                             

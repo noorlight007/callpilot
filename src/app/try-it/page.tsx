@@ -8,8 +8,11 @@ const TryItPage = () => {
     return (
         <div className="min-h-screen bg-background">
             <Header />
-            <main> 
-                <CTASection />
+            <main>
+                <div className="pt-20 lg:pt-18">
+                    <CTASection />
+                </div>
+                
             </main>
             <Footer />
         </div>
