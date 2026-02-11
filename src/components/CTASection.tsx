@@ -24,6 +24,7 @@ const CTASection = () => {
   const [email, setEmail] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [companySize, setCompanySize] = useState("");
+  const [callFlow, setCallFlow] = useState("Business Booking Asking");
   const [agreed, setAgreed] = useState(false);
 
   const [isScheduleMode, setIsScheduleMode] = useState(false);
@@ -223,7 +224,10 @@ const CTASection = () => {
     const dialCode = getCountryDialCode(countryIso);
     const fullPhone = `${dialCode}${phone}`;
     try {
-      const response = await axios.post(`${BASE_URL}/interview/client/call/`, {
+      const endpoint = callFlow === "Steve’s American Diner"
+        ? `${BASE_URL}/interview/client/call/diner`
+        : `${BASE_URL}/interview/client/call/`;
+      const response = await axios.post(endpoint, {
         name: `${firstName} ${lastName}`,
         phone: fullPhone,
         email: email,
@@ -353,7 +357,10 @@ const CTASection = () => {
 
 
     try {
-      const response = await axios.post(`${BASE_URL}/interview/client/call/`, {
+      const endpoint = callFlow === "Steve’s American Diner"
+        ? `${BASE_URL}/interview/client/call/diner`
+        : `${BASE_URL}/interview/client/call/`;
+      const response = await axios.post(endpoint, {
         name: `${firstName} ${lastName}`,
         phone: fullPhone,
         email: email,
@@ -693,6 +700,22 @@ const CTASection = () => {
                       <p className="text-sm text-red-500 mt-1">{fieldErrors.company_size[0]}</p>
                     )}
                   </div>
+                </div>
+
+                {/* Call Flow Selection */}
+                <div className="space-y-2">
+                  <label htmlFor="callFlow" className="text-sm font-medium text-headline">
+                    Select the Call flow
+                  </label>
+                  <Select value={callFlow} onValueChange={setCallFlow}>
+                    <SelectTrigger className="h-12 border-input focus:ring-accent/20 focus:border-accent font-medium">
+                      <SelectValue placeholder="Select call flow" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="Business Booking Asking">Business Booking Asking</SelectItem>
+                      <SelectItem value="Steve’s American Diner">Steve’s American Diner</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
 
                 {/* Consent Checkbox */}
