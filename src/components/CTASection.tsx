@@ -712,7 +712,7 @@ const CTASection = () => {
                       <SelectValue placeholder="Select call flow" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="Business Booking Asking">Application Screening Call</SelectItem>
+                      <SelectItem value="Business Booking Asking">CallPilot Enquiry Call</SelectItem>
                       <SelectItem value="Steve’s American Diner">Steve's American Diner</SelectItem>
                     </SelectContent>
                   </Select>
