@@ -705,7 +705,7 @@ const CTASection = () => {
                 {/* Call Flow Selection */}
                 <div className="space-y-2">
                   <label htmlFor="callFlow" className="text-sm font-medium text-headline">
-                    Select the Call flow
+                    Choose Demo call sample
                   </label>
                   <Select value={callFlow} onValueChange={setCallFlow}>
                     <SelectTrigger className="h-12 border-input focus:ring-accent/20 focus:border-accent font-medium">
