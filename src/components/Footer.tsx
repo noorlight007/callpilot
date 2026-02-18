@@ -1,5 +1,4 @@
 import logo from "@/assets/call_pilot_logo.png";
-import { FaFacebookF, FaInstagram } from "react-icons/fa";
 
 
 const Footer = () => {
