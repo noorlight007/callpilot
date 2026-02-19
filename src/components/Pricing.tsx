@@ -71,7 +71,7 @@ const Pricing = () => {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full accent-tint-bg border border-accent/20 mb-4">
             <span className="text-sm font-medium accent-text">Pricing</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-headline mb-4">
+          <h2 className="text-2xl font-semibold text-headline mb-4">
             Simple, Transparent Pricing
           </h2>
           <p className="text-lg text-body">
@@ -130,7 +130,7 @@ const Pricing = () => {
 
                 {/* Price */}
                 <div className="mb-2">
-                  <span className="text-4xl font-bold text-headline">{tier.price}</span>
+                  <span className="text-2xl font-semibold text-headline">{tier.price}</span>
                   <span className="text-muted-text">{tier.unit}</span>
                 </div>
 

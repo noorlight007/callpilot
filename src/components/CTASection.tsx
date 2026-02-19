@@ -435,7 +435,7 @@ const CTASection = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-headline mb-4">
+          <h2 className="text-2xl font-semibold text-headline mb-4">
             Experience CallPilot.pro Today
           </h2>
           <p className="text-lg text-body">
@@ -853,7 +853,7 @@ const CTASection = () => {
                         onFocus={(e) => e.target.select()}
                         className="w-full text-center bg-transparent border-none focus:outline-none text-headline font-semibold p-0 text-lg placeholder:text-muted-foreground/50 h-full"
                       />
-                      <span className="text-muted-foreground font-bold pb-1">:</span>
+                      <span className="text-muted-foreground font-semibold pb-1">:</span>
                       {/* Minute */}
                       <input
                         ref={minuteRef}
@@ -870,7 +870,7 @@ const CTASection = () => {
                       <button
                         type="button"
                         onClick={(e) => { e.stopPropagation(); setPeriod(prev => prev === "AM" ? "PM" : "AM"); }}
-                        className="h-full px-4 text-xl font-bold text-accent border-l border-border transition-colors w-16"
+                        className="h-full px-4 text-xl font-semibold text-accent border-l border-border transition-colors w-16"
                       >
                         {period}
                       </button>
