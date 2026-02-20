@@ -733,7 +733,7 @@ const CTASection = () => {
                       htmlFor="terms"
                       className="text-sm text-muted-text leading-tight peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer select-none"
                     >
-                      I have agreed to receive calls & sms from CallPilot.pro
+                      I have agreed to receive calls & sms from CallPilot
                     </label>
                   </div>
                   {fieldErrors.agreed && (

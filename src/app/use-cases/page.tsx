@@ -260,13 +260,17 @@ const UseCasesPage = () => {
                                 our solution for your specific business needs.
                             </p>
                             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                                <Button variant="cta" size="xl" className="w-full sm:w-auto group">
-                                    Contact Sales
-                                    <ArrowRight size={18} className="ml-1 transition-transform group-hover:translate-x-1" />
-                                </Button>
-                                <Button variant="ctaSecondary" size="xl" className="w-full sm:w-auto">
-                                    View Pricing
-                                </Button>
+                                <Link href="/get-started">
+                                    <Button variant="cta" size="xl" className="w-full sm:w-auto group">
+                                        Contact Sales
+                                        <ArrowRight size={18} className="ml-1 transition-transform group-hover:translate-x-1" />
+                                    </Button>
+                                </Link>
+                                <Link href="/pricing">
+                                    <Button variant="ctaSecondary" size="xl" className="w-full sm:w-auto">
+                                        View Pricing
+                                    </Button>
+                                </Link>
                             </div>
                         </div>
                     </div>

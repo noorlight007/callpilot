@@ -384,6 +384,7 @@ export default function GetStarted() {
                       By submitting, you agree to our{" "}
                       <Link
                         href="/terms-conditions"
+                        target="_blank"
                         className="underline underline-offset-4 hover:text-headline transition-colors"
                       >
                         Terms
@@ -391,6 +392,7 @@ export default function GetStarted() {
                       and{" "}
                       <Link
                         href="/privacy-policy"
+                        target="_blank"
                         className="underline underline-offset-4 hover:text-headline transition-colors"
                       >
                         Privacy Policy
