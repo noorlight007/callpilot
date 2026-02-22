@@ -703,7 +703,7 @@ const CTASection = () => {
                 </div>
 
                 {/* Call Flow Selection */}
-                <div className="space-y-2">
+                <div className="space-y-2 hidden">
                   <label htmlFor="callFlow" className="text-sm font-medium text-headline">
                     Choose Demo call sample
                   </label>
