@@ -166,8 +166,8 @@ const Header = () => {
 
   // Replace these with your real profile URLs
   const socialLinks = [
-    { label: "Facebook", href: "https://www.facebook.com/share/1DGMXpPjRP/", Icon: FacebookIcon },
-    { label: "Instagram", href: "https://www.instagram.com/swiftwave.ai/", Icon: InstagramIcon },
+    { label: "Facebook", href: "https://www.facebook.com/profile.php?id=61588398835586", Icon: FacebookIcon },
+    { label: "Instagram", href: "https://www.instagram.com/callpilot.pro/", Icon: InstagramIcon },
     { label: "TikTok", href: "https://tiktok.com/", Icon: TikTokIcon },
   ];
 
