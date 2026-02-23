@@ -47,7 +47,7 @@ const UseCases = () => {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full accent-tint-bg border border-accent/20 mb-4">
             <span className="text-sm font-medium accent-text">Use Cases</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-headline mb-4">
+          <h2 className="text-2xl font-semibold text-headline mb-4">
             Works Across Every Industry
           </h2>
           <p className="text-lg text-body">
@@ -68,7 +68,7 @@ const UseCases = () => {
               <div className="w-12 h-12 rounded-lg bg-secondary flex items-center justify-center mb-4 group-hover:accent-tint-bg transition-colors">
                 <useCase.icon className="w-6 h-6 text-muted-text group-hover:accent-text transition-colors" />
               </div>
-              <h3 className="text-xl font-semibold text-headline mb-2">
+              <h3 className="text-lg font-semibold text-headline mb-2">
                 {useCase.title}
               </h3>
               <p className="text-body">

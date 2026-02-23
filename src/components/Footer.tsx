@@ -1,5 +1,6 @@
 import logo from "@/assets/call_pilot_logo.png";
 
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
@@ -30,11 +31,18 @@ const Footer = () => {
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 lg:gap-12">
           {/* Logo & Description */}
           <div className="col-span-2 md:col-span-1">
-            <img src={logo.src} alt="CallPilot.pro" className="h-12 w-auto mb-4" />
+            <a href="/">
+                <img src={logo.src} alt="CallPilot.pro" className="h-12 md:h-20 w-auto mb-4" />
+            </a>
+            
             <p className="text-sm text-muted-text mb-4">
               AI-powered voice technology for modern businesses.
             </p>
+
+            {/* Socials */}
+            
           </div>
+
 
           {/* Product */}
           <div>

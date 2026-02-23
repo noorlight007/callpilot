@@ -18,7 +18,7 @@ export default function AboutUsPage() {
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
             <div className="max-w-3xl">
               <p className="text-sm text-muted-text mb-2">Platform Introduction</p>
-              <h1 className="text-3xl sm:text-4xl font-bold text-headline tracking-tight">
+              <h1 className="text-2xl font-semibold text-headline tracking-tight">
                 About Us
               </h1>
               <p className="mt-4 text-base sm:text-lg text-body leading-relaxed">

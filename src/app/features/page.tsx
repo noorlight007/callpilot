@@ -102,7 +102,7 @@ const FeaturesPage = () => {
                     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="max-w-4xl mx-auto text-center">
 
-                            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-headline leading-tight mb-6">
+                            <h1 className="text-3xl font-semibold text-headline leading-tight mb-6">
                                 Powerful Features for{" "}
                                 <span className="accent-text">Modern Business</span>
                             </h1>
@@ -127,7 +127,7 @@ const FeaturesPage = () => {
                 <section className="py-16 lg:py-24">
                     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="max-w-3xl mx-auto text-center mb-12 lg:mb-16">
-                            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-headline mb-4">
+                            <h2 className="text-2xl font-semibold text-headline mb-4">
                                 Core Capabilities
                             </h2>
                             <p className="text-lg text-body">
@@ -146,7 +146,7 @@ const FeaturesPage = () => {
                                         <div className="w-14 h-14 rounded-xl accent-tint-bg flex items-center justify-center mb-6">
                                             <feature.icon className="w-7 h-7 accent-text" />
                                         </div>
-                                        <h3 className="text-2xl sm:text-3xl font-bold text-headline mb-4">
+                                        <h3 className="text-xl font-semibold text-headline mb-4">
                                             {feature.title}
                                         </h3>
                                         <p className="text-lg text-body mb-6">
@@ -180,7 +180,7 @@ const FeaturesPage = () => {
                 <section className="py-10 lg:py-15 bg-alt">
                     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="max-w-3xl mx-auto text-center mb-12 lg:mb-16">
-                            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-headline mb-4">
+                            <h2 className="text-2xl font-semibold text-headline mb-4">
                                 Flexible Integration Options
                             </h2>
                             <p className="text-lg text-body">
@@ -197,7 +197,7 @@ const FeaturesPage = () => {
                                     <div className="w-14 h-14 rounded-xl accent-tint-bg flex items-center justify-center mb-6">
                                         <option.icon className="w-7 h-7 accent-text" />
                                     </div>
-                                    <h3 className="text-2xl font-bold text-headline mb-3">
+                                    <h3 className="text-xl font-semibold text-headline mb-3">
                                         {option.title}
                                     </h3>
                                     <p className="text-body mb-6">
@@ -223,7 +223,7 @@ const FeaturesPage = () => {
                     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="max-w-4xl mx-auto text-center">
                             
-                            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-headline mb-4">
+                            <h2 className="text-3xl font-bold text-headline mb-4">
                                 Custom Solutions for Your Business
                             </h2>
                             <p className="text-lg text-body max-w-2xl mx-auto mb-8">

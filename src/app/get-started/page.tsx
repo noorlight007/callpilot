@@ -213,7 +213,7 @@ export default function GetStarted() {
                     </Link>
                   </div>
 
-                  <h1 className="mt-5 text-2xl sm:text-3xl font-bold tracking-tight">
+                  <h1 className="mt-5 text-xl font-bold tracking-tight">
                     {isSubmitted ? "Thank You!" : "Get Started"}
                   </h1>
                   <p className="mt-2 text-sm sm:text-base text-muted-foreground">
@@ -238,7 +238,7 @@ export default function GetStarted() {
                       </Button>
                     </div>
                   ) : (
-                    <form onSubmit={handleSubmit} className="space-y-3">
+                    <form onSubmit={handleSubmit} className="space-y-2">
                       {/* Name */}
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div className="space-y-2">
@@ -434,7 +434,7 @@ export default function GetStarted() {
                       <Button
                         type="submit"
                         disabled={isLoading}
-                        className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-6 text-lg font-semibold"
+                        className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-6 text-md font-semibold"
                       >
                         {isLoading ? "Submitting..." : "Contact Sales"}
                       </Button>
@@ -446,6 +446,7 @@ export default function GetStarted() {
                       By submitting, you agree to our{" "}
                       <Link
                         href="/terms-conditions"
+                        target="_blank"
                         className="underline underline-offset-4 hover:text-headline transition-colors"
                       >
                         Terms
@@ -453,6 +454,7 @@ export default function GetStarted() {
                       and{" "}
                       <Link
                         href="/privacy-policy"
+                        target="_blank"
                         className="underline underline-offset-4 hover:text-headline transition-colors"
                       >
                         Privacy Policy

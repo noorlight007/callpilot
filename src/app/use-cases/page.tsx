@@ -165,7 +165,7 @@ const UseCasesPage = () => {
                 <section className="pt-32 lg:pt-40 pb-16 lg:pb-24 bg-alt">
                     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="max-w-4xl mx-auto text-center">
-                            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-headline leading-tight mb-6">
+                            <h1 className="text-3xl font-semibold text-headline leading-tight mb-6">
                                 AI Voice for{" "}
                                 <span className="accent-text">Every Industry</span>
                             </h1>
@@ -189,7 +189,7 @@ const UseCasesPage = () => {
                 <section className="py-16 lg:py-24">
                     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="max-w-3xl mx-auto text-center mb-12 lg:mb-16">
-                            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-headline mb-4">
+                            <h2 className="text-2xl font-semibold text-headline mb-4">
                                 Explore by Industry
                             </h2>
                             <p className="text-lg text-body">
@@ -252,7 +252,7 @@ const UseCasesPage = () => {
                 <section className="py-16 lg:py-24 bg-alt">
                     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="max-w-4xl mx-auto text-center">
-                            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-headline mb-4">
+                            <h2 className="text-3xl font-semibold text-headline mb-4">
                                 Don't See Your Industry?
                             </h2>
                             <p className="text-lg text-body max-w-2xl mx-auto mb-8">
@@ -260,13 +260,17 @@ const UseCasesPage = () => {
                                 our solution for your specific business needs.
                             </p>
                             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                                <Button variant="cta" size="xl" className="w-full sm:w-auto group">
-                                    Contact Sales
-                                    <ArrowRight size={18} className="ml-1 transition-transform group-hover:translate-x-1" />
-                                </Button>
-                                <Button variant="ctaSecondary" size="xl" className="w-full sm:w-auto">
-                                    View Pricing
-                                </Button>
+                                <Link href="/get-started">
+                                    <Button variant="cta" size="xl" className="w-full sm:w-auto group">
+                                        Contact Sales
+                                        <ArrowRight size={18} className="ml-1 transition-transform group-hover:translate-x-1" />
+                                    </Button>
+                                </Link>
+                                <Link href="/pricing">
+                                    <Button variant="ctaSecondary" size="xl" className="w-full sm:w-auto">
+                                        View Pricing
+                                    </Button>
+                                </Link>
                             </div>
                         </div>
                     </div>
