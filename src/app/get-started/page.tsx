@@ -59,29 +59,29 @@ const countryCodes = [
   { code: "+36", country: "Hungary" },
 ];
 
-const purposeOptions = [
-  { value: "RESEARCH", label: "Research" },
-  { value: "PERSONAL_USE", label: "Personal use" },
-  { value: "INDUSTRIAL_USE", label: "Industrial use" },
+const staffOptions = [
+  { value: "1_5", label: "1-5" },
+  { value: "6_20", label: "6-20" },
+  { value: "21_100", label: "21-100" },
+  { value: "100+", label: "100+" },
+  { value: "Multi_location", label: "Multi-location" },
 ];
 
-const sectorOptions = [
-  { value: "TECHNOLOGY", label: "Technology" },
-  { value: "HEALTHCARE", label: "Healthcare" },
-  { value: "FINANCE", label: "Finance" },
-  { value: "EDUCATION", label: "Education" },
-  { value: "MANUFACTURING", label: "Manufacturing" },
-  { value: "RETAIL", label: "Retail" },
-  { value: "OTHER", label: "Other" },
+const callVolumeOptions = [
+  { value: "0_250", label: "0-250" },
+  { value: "251_500", label: "251-500" },
+  { value: "501_1000", label: "501-1000" },
+  { value: "1001+", label: "1001+" },
 ];
 
-const employeeSizeOptions = [
-  { value: "1-10", label: "1-10" },
-  { value: "11-50", label: "11-50" },
-  { value: "51-200", label: "51-200" },
-  { value: "201-500", label: "201-500" },
-  { value: "501-1000", label: "501-1000" },
-  { value: "1000+", label: "1000+" },
+const businessCategoryOptions = [
+  { value: "Appointment_and_Booking_Automation", label: "Appointment and Booking Automation" },
+  { value: "Lead_and_Applicant_5_Qualification", label: "Lead and Applicant Qualification" },
+  { value: "Customer_Service_Automation", label: "Customer Service Automation" },
+  { value: "Compliance_and_Document_Collection", label: "Compliance and Document Collection" },
+  { value: "Contact_Centre_Automation", label: "Contact Centre Automation" },
+  { value: "Local_Authority_Public_Sector", label: "Local Authority/Public Sector" },
+  { value: "Others", label: "Others" },
 ];
 
 export default function GetStarted() {
@@ -91,9 +91,13 @@ export default function GetStarted() {
     email: "",
     countryCode: "",
     phoneNumber: "",
-    purpose: "",
-    companyCategory: "",
-    employeeSize: "",
+    mobileCountryCode: "",
+    mobileNumber: "",
+    companyName: "",
+    companyWebsite: "",
+    numberOfStaff: "",
+    dailyCallVolume: "",
+    businessCategory: "",
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -117,9 +121,12 @@ export default function GetStarted() {
       last_name: formData.lastName,
       email: formData.email,
       phone: `${formData.countryCode}${formData.phoneNumber}`,
-      purpose: formData.purpose || null,
-      company_category: formData.companyCategory || "",
-      employee_size: formData.employeeSize || null,
+      mobile: formData.mobileCountryCode && formData.mobileNumber ? `${formData.mobileCountryCode}${formData.mobileNumber}` : null,
+      company_name: formData.companyName || null,
+      company_website: formData.companyWebsite || null,
+      number_of_staff: formData.numberOfStaff || null,
+      daily_call_volume: formData.dailyCallVolume || null,
+      business_category: formData.businessCategory || null,
       //status: "pending", // Default status as per typical requirements if not provided
     };
 
@@ -241,7 +248,7 @@ export default function GetStarted() {
                             placeholder="John"
                             value={formData.firstName}
                             onChange={(e) => handleInputChange("firstName", e.target.value)}
-                            required
+                            //required
                           />
                         </div>
 
@@ -252,7 +259,32 @@ export default function GetStarted() {
                             placeholder="Doe"
                             value={formData.lastName}
                             onChange={(e) => handleInputChange("lastName", e.target.value)}
-                            required
+                            //required
+                          />
+                        </div>
+                      </div>
+
+                      {/* Company Name & Website */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div className="space-y-2">
+                          <Label htmlFor="companyName">Company name</Label>
+                          <Input
+                            id="companyName"
+                            placeholder="Acme Inc."
+                            value={formData.companyName}
+                            onChange={(e) => handleInputChange("companyName", e.target.value)}
+                            //required
+                          />
+                        </div>
+
+                        <div className="space-y-2">
+                          <Label htmlFor="companyWebsite">Company website</Label>
+                          <Input
+                            id="companyWebsite"
+                            placeholder="https://acme.com"
+                            value={formData.companyWebsite}
+                            onChange={(e) => handleInputChange("companyWebsite", e.target.value)}
+                            //required
                           />
                         </div>
                       </div>
@@ -266,7 +298,7 @@ export default function GetStarted() {
                           placeholder="john@company.com"
                           value={formData.email}
                           onChange={(e) => handleInputChange("email", e.target.value)}
-                          required
+                          //required
                         />
                       </div>
 
@@ -277,7 +309,7 @@ export default function GetStarted() {
                           <Select
                             value={formData.countryCode}
                             onValueChange={(value) => handleInputChange("countryCode", value)}
-                            required
+                            //required
                           >
                             <SelectTrigger className="sm:w-[190px]">
                               <SelectValue placeholder="+XX" />
@@ -298,76 +330,106 @@ export default function GetStarted() {
                             value={formData.phoneNumber}
                             onChange={(e) => handleInputChange("phoneNumber", e.target.value)}
                             className="flex-1"
-                            required
+                            //required
                           />
                         </div>
                       </div>
 
-                      {/* Purpose */}
+                      {/* Mobile Number */}
                       <div className="space-y-2">
-                        <Label htmlFor="purpose">Purpose of using AI phone call</Label>
-                        <Select
-                          value={formData.purpose}
-                          onValueChange={(value) => handleInputChange("purpose", value)}
-                          required
-                        >
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select your purpose" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            {purposeOptions.map((o) => (
-                              <SelectItem key={o.value} value={o.value}>
-                                {o.label}
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
+                        <Label htmlFor="mobile">Mobile number</Label>
+                        <div className="flex flex-col sm:flex-row gap-2">
+                          <Select
+                            value={formData.mobileCountryCode}
+                            onValueChange={(value) => handleInputChange("mobileCountryCode", value)}
+                            //required
+                          >
+                            <SelectTrigger className="sm:w-[190px]">
+                              <SelectValue placeholder="+XX" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              {countryCodes.map((c) => (
+                                <SelectItem key={c.code} value={c.code}>
+                                  {c.code} {c.country}
+                                </SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
+
+                          <Input
+                            id="mobile"
+                            type="tel"
+                            placeholder="123 456 7890"
+                            value={formData.mobileNumber}
+                            onChange={(e) => handleInputChange("mobileNumber", e.target.value)}
+                            className="flex-1"
+                            //required
+                          />
+                        </div>
                       </div>
 
-                      {/* Industrial specific fields */}
-                      {formData.purpose === "INDUSTRIAL_USE" && (
-                        <div className="space-y-4 animate-in slide-in-from-top-2 duration-300">
-                          <div className="space-y-2">
-                            <Label htmlFor="companyCategory">Choose Your Sector</Label>
-                            <Select
-                              value={formData.companyCategory}
-                              onValueChange={(value) => handleInputChange("companyCategory", value)}
-                              required
-                            >
-                              <SelectTrigger>
-                                <SelectValue placeholder="Select your sector" />
-                              </SelectTrigger>
-                              <SelectContent>
-                                {sectorOptions.map((o) => (
-                                  <SelectItem key={o.value} value={o.value}>
-                                    {o.label}
-                                  </SelectItem>
-                                ))}
-                              </SelectContent>
-                            </Select>
-                          </div>
-
-                          <div className="space-y-2">
-                            <Label htmlFor="employeeSize">Company Employee Size</Label>
-                            <Select
-                              value={formData.employeeSize}
-                              onValueChange={(value) => handleInputChange("employeeSize", value)}
-                              required
-                            >
-                              <SelectTrigger>
-                                <SelectValue placeholder="Select employee size" />
-                              </SelectTrigger>
-                              <SelectContent>
-                                {employeeSizeOptions.map((o) => (
-                                  <SelectItem key={o.value} value={o.value}>
-                                    {o.label}
-                                  </SelectItem>
-                                ))}
-                              </SelectContent>
-                            </Select>
-                          </div>
+                      {/* Business specific fields */}
+                      <div className="space-y-4">
+                        <div className="space-y-2">
+                          <Label htmlFor="numberOfStaff">Number of Staff</Label>
+                          <Select
+                            value={formData.numberOfStaff}
+                            onValueChange={(value) => handleInputChange("numberOfStaff", value)}
+                            //required
+                          >
+                            <SelectTrigger>
+                              <SelectValue placeholder="Select number of staff" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              {staffOptions.map((o) => (
+                                <SelectItem key={o.value} value={o.value}>
+                                  {o.label}
+                                </SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
                         </div>
-                      )}
+
+                        <div className="space-y-2">
+                          <Label htmlFor="dailyCallVolume">Estimated Daily Call Volume</Label>
+                          <Select
+                            value={formData.dailyCallVolume}
+                            onValueChange={(value) => handleInputChange("dailyCallVolume", value)}
+                            //required
+                          >
+                            <SelectTrigger>
+                              <SelectValue placeholder="Select daily call volume" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              {callVolumeOptions.map((o) => (
+                                <SelectItem key={o.value} value={o.value}>
+                                  {o.label}
+                                </SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
+                        </div>
+
+                        <div className="space-y-2">
+                          <Label htmlFor="businessCategory">Which area of your business will AI CallPilot support?</Label>
+                          <Select
+                            value={formData.businessCategory}
+                            onValueChange={(value) => handleInputChange("businessCategory", value)}
+                            //required
+                          >
+                            <SelectTrigger>
+                              <SelectValue placeholder="Select business area" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              {businessCategoryOptions.map((o) => (
+                                <SelectItem key={o.value} value={o.value}>
+                                  {o.label}
+                                </SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
+                        </div>
+                      </div>
 
                       <Button
                         type="submit"
