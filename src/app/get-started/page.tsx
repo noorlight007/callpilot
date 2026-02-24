@@ -23,41 +23,15 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, ChevronDown, Check } from "lucide-react";
+import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { countries } from "@/lib/countries";
+import { getCountryCode } from "@/actions/geo";
+import { cn } from "@/lib/utils";
+import { useEffect } from "react";
 
-const countryCodes = [
-  { code: "+1", country: "United States" },
-  { code: "+44", country: "United Kingdom" },
-  { code: "+91", country: "India" },
-  { code: "+880", country: "Bangladesh" },
-  { code: "+61", country: "Australia" },
-  { code: "+49", country: "Germany" },
-  { code: "+33", country: "France" },
-  { code: "+81", country: "Japan" },
-  { code: "+86", country: "China" },
-  { code: "+55", country: "Brazil" },
-  { code: "+52", country: "Mexico" },
-  { code: "+39", country: "Italy" },
-  { code: "+34", country: "Spain" },
-  { code: "+31", country: "Netherlands" },
-  { code: "+46", country: "Sweden" },
-  { code: "+47", country: "Norway" },
-  { code: "+45", country: "Denmark" },
-  { code: "+41", country: "Switzerland" },
-  { code: "+48", country: "Poland" },
-  { code: "+82", country: "South Korea" },
-  { code: "+65", country: "Singapore" },
-  { code: "+971", country: "UAE" },
-  { code: "+966", country: "Saudi Arabia" },
-  { code: "+27", country: "South Africa" },
-  { code: "+64", country: "New Zealand" },
-  { code: "+353", country: "Ireland" },
-  { code: "+32", country: "Belgium" },
-  { code: "+43", country: "Austria" },
-  { code: "+351", country: "Portugal" },
-  { code: "+420", country: "Czech Republic" },
-  { code: "+36", country: "Hungary" },
-];
+
 
 const staffOptions = [
   { value: "1_5", label: "1-5" },
@@ -100,10 +74,37 @@ export default function GetStarted() {
     businessCategory: "",
   });
 
+  const [countryIso, setCountryIso] = useState("US");
+  const [mobileCountryIso, setMobileCountryIso] = useState("US");
+  const [openPhoneCombobox, setOpenPhoneCombobox] = useState(false);
+  const [openMobileCombobox, setOpenMobileCombobox] = useState(false);
+
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [showErrorDialog, setShowErrorDialog] = useState(false);
+
+  const fetchCountry = async () => {
+    const code = await getCountryCode();
+    if (code) {
+      const detectedCountry = countries.find(
+        (c) => c.code === code.toUpperCase()
+      );
+      if (detectedCountry) {
+        setCountryIso(detectedCountry.code);
+        setMobileCountryIso(detectedCountry.code);
+        setFormData(prev => ({
+          ...prev,
+          countryCode: detectedCountry.dial_code,
+          mobileCountryCode: detectedCountry.dial_code
+        }));
+      }
+    }
+  };
+
+  useEffect(() => {
+    fetchCountry();
+  }, []);
 
   const handleInputChange = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -248,7 +249,7 @@ export default function GetStarted() {
                             placeholder="John"
                             value={formData.firstName}
                             onChange={(e) => handleInputChange("firstName", e.target.value)}
-                            //required
+                          //required
                           />
                         </div>
 
@@ -259,7 +260,7 @@ export default function GetStarted() {
                             placeholder="Doe"
                             value={formData.lastName}
                             onChange={(e) => handleInputChange("lastName", e.target.value)}
-                            //required
+                          //required
                           />
                         </div>
                       </div>
@@ -273,7 +274,7 @@ export default function GetStarted() {
                             placeholder="Acme Inc."
                             value={formData.companyName}
                             onChange={(e) => handleInputChange("companyName", e.target.value)}
-                            //required
+                          //required
                           />
                         </div>
 
@@ -284,7 +285,7 @@ export default function GetStarted() {
                             placeholder="https://acme.com"
                             value={formData.companyWebsite}
                             onChange={(e) => handleInputChange("companyWebsite", e.target.value)}
-                            //required
+                          //required
                           />
                         </div>
                       </div>
@@ -298,7 +299,7 @@ export default function GetStarted() {
                           placeholder="john@company.com"
                           value={formData.email}
                           onChange={(e) => handleInputChange("email", e.target.value)}
-                          //required
+                        //required
                         />
                       </div>
 
@@ -306,22 +307,55 @@ export default function GetStarted() {
                       <div className="space-y-2">
                         <Label htmlFor="phone">Phone number (optional)</Label>
                         <div className="flex flex-col sm:flex-row gap-2">
-                          <Select
-                            value={formData.countryCode}
-                            onValueChange={(value) => handleInputChange("countryCode", value)}
-                            //required
-                          >
-                            <SelectTrigger className="sm:w-[190px]">
-                              <SelectValue placeholder="+XX" />
-                            </SelectTrigger>
-                            <SelectContent>
-                              {countryCodes.map((c) => (
-                                <SelectItem key={c.code} value={c.code}>
-                                  {c.code} {c.country}
-                                </SelectItem>
-                              ))}
-                            </SelectContent>
-                          </Select>
+                          <Popover open={openPhoneCombobox} onOpenChange={setOpenPhoneCombobox}>
+                            <PopoverTrigger asChild>
+                              <Button
+                                variant="outline"
+                                role="combobox"
+                                aria-expanded={openPhoneCombobox}
+                                className="w-full sm:w-[300px] h-10 justify-between border-input focus:ring-accent/20 focus:border-accent font-medium px-3"
+                              >
+                                <span className="flex items-center gap-2">
+                                  <span className="">{countries.find(c => c.code === countryIso)?.name}</span>
+                                  <span className="text-muted-foreground">{formData.countryCode || "+1"}</span>
+                                </span>
+                                <ChevronDown className="ml-2 h-4 w-4 opacity-50 shrink-0" />
+                              </Button>
+                            </PopoverTrigger>
+                            <PopoverContent className="w-[300px] p-0">
+                              <Command>
+                                <CommandInput placeholder="Search country & country code..." />
+                                <CommandList>
+                                  <CommandEmpty>No country found.</CommandEmpty>
+                                  <CommandGroup>
+                                    {countries.map((country) => (
+                                      <CommandItem
+                                        key={country.code}
+                                        value={`${country.name} ${country.dial_code} ${country.flag} ${country.code}`}
+                                        onSelect={() => {
+                                          setCountryIso(country.code);
+                                          handleInputChange("countryCode", country.dial_code);
+                                          setOpenPhoneCombobox(false);
+                                        }}
+                                        className="group"
+                                      >
+                                        <div className="flex items-center gap-2 w-full">
+                                          <span className="text-nowrap">{country.name}</span>
+                                          <span className="text-muted-foreground whitespace-nowrap text-center group-data-[selected=true]:text-white transition-colors ml-auto">{country.dial_code}</span>
+                                        </div>
+                                        <Check
+                                          className={cn(
+                                            "ml-auto h-4 w-4 hidden",
+                                            countryIso === country.code ? "opacity-100" : "opacity-0"
+                                          )}
+                                        />
+                                      </CommandItem>
+                                    ))}
+                                  </CommandGroup>
+                                </CommandList>
+                              </Command>
+                            </PopoverContent>
+                          </Popover>
 
                           <Input
                             id="phone"
@@ -330,7 +364,7 @@ export default function GetStarted() {
                             value={formData.phoneNumber}
                             onChange={(e) => handleInputChange("phoneNumber", e.target.value)}
                             className="flex-1"
-                            //required
+                          //required
                           />
                         </div>
                       </div>
@@ -339,22 +373,55 @@ export default function GetStarted() {
                       <div className="space-y-2">
                         <Label htmlFor="mobile">Mobile number (optional)</Label>
                         <div className="flex flex-col sm:flex-row gap-2">
-                          <Select
-                            value={formData.mobileCountryCode}
-                            onValueChange={(value) => handleInputChange("mobileCountryCode", value)}
-                            //required
-                          >
-                            <SelectTrigger className="sm:w-[190px]">
-                              <SelectValue placeholder="+XX" />
-                            </SelectTrigger>
-                            <SelectContent>
-                              {countryCodes.map((c) => (
-                                <SelectItem key={c.code} value={c.code}>
-                                  {c.code} {c.country}
-                                </SelectItem>
-                              ))}
-                            </SelectContent>
-                          </Select>
+                          <Popover open={openMobileCombobox} onOpenChange={setOpenMobileCombobox}>
+                            <PopoverTrigger asChild>
+                              <Button
+                                variant="outline"
+                                role="combobox"
+                                aria-expanded={openMobileCombobox}
+                                className="w-full sm:w-[300px] h-10 justify-between border-input focus:ring-accent/20 focus:border-accent font-medium px-3"
+                              >
+                                <span className="flex items-center gap-2">
+                                  <span className="">{countries.find(c => c.code === mobileCountryIso)?.name}</span>
+                                  <span className="text-muted-foreground">{formData.mobileCountryCode || "+1"}</span>
+                                </span>
+                                <ChevronDown className="ml-2 h-4 w-4 opacity-50 shrink-0" />
+                              </Button>
+                            </PopoverTrigger>
+                            <PopoverContent className="w-[300px] p-0">
+                              <Command>
+                                <CommandInput placeholder="Search country & country code..." />
+                                <CommandList>
+                                  <CommandEmpty>No country found.</CommandEmpty>
+                                  <CommandGroup>
+                                    {countries.map((country) => (
+                                      <CommandItem
+                                        key={country.code}
+                                        value={`${country.name} ${country.dial_code} ${country.flag} ${country.code}`}
+                                        onSelect={() => {
+                                          setMobileCountryIso(country.code);
+                                          handleInputChange("mobileCountryCode", country.dial_code);
+                                          setOpenMobileCombobox(false);
+                                        }}
+                                        className="group"
+                                      >
+                                        <div className="flex items-center gap-2 w-full">
+                                          <span className="text-nowrap">{country.name}</span>
+                                          <span className="text-muted-foreground whitespace-nowrap text-center group-data-[selected=true]:text-white transition-colors ml-auto">{country.dial_code}</span>
+                                        </div>
+                                        <Check
+                                          className={cn(
+                                            "ml-auto h-4 w-4 hidden",
+                                            mobileCountryIso === country.code ? "opacity-100" : "opacity-0"
+                                          )}
+                                        />
+                                      </CommandItem>
+                                    ))}
+                                  </CommandGroup>
+                                </CommandList>
+                              </Command>
+                            </PopoverContent>
+                          </Popover>
 
                           <Input
                             id="mobile"
@@ -363,7 +430,7 @@ export default function GetStarted() {
                             value={formData.mobileNumber}
                             onChange={(e) => handleInputChange("mobileNumber", e.target.value)}
                             className="flex-1"
-                            //required
+                          //required
                           />
                         </div>
                       </div>
@@ -375,7 +442,7 @@ export default function GetStarted() {
                           <Select
                             value={formData.numberOfStaff}
                             onValueChange={(value) => handleInputChange("numberOfStaff", value)}
-                            //required
+                          //required
                           >
                             <SelectTrigger>
                               <SelectValue placeholder="Select number of staff" />
@@ -395,7 +462,7 @@ export default function GetStarted() {
                           <Select
                             value={formData.dailyCallVolume}
                             onValueChange={(value) => handleInputChange("dailyCallVolume", value)}
-                            //required
+                          //required
                           >
                             <SelectTrigger>
                               <SelectValue placeholder="Select daily call volume" />
@@ -415,7 +482,7 @@ export default function GetStarted() {
                           <Select
                             value={formData.businessCategory}
                             onValueChange={(value) => handleInputChange("businessCategory", value)}
-                            //required
+                          //required
                           >
                             <SelectTrigger>
                               <SelectValue placeholder="Select business category" />
