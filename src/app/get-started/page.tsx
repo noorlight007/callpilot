@@ -304,7 +304,7 @@ export default function GetStarted() {
 
                       {/* Phone */}
                       <div className="space-y-2">
-                        <Label htmlFor="phone">Phone number</Label>
+                        <Label htmlFor="phone">Phone number (optional)</Label>
                         <div className="flex flex-col sm:flex-row gap-2">
                           <Select
                             value={formData.countryCode}
@@ -337,7 +337,7 @@ export default function GetStarted() {
 
                       {/* Mobile Number */}
                       <div className="space-y-2">
-                        <Label htmlFor="mobile">Mobile number</Label>
+                        <Label htmlFor="mobile">Mobile number (optional)</Label>
                         <div className="flex flex-col sm:flex-row gap-2">
                           <Select
                             value={formData.mobileCountryCode}
@@ -418,7 +418,7 @@ export default function GetStarted() {
                             //required
                           >
                             <SelectTrigger>
-                              <SelectValue placeholder="Select business area" />
+                              <SelectValue placeholder="Select business category" />
                             </SelectTrigger>
                             <SelectContent>
                               {businessCategoryOptions.map((o) => (
