@@ -306,14 +306,14 @@ export default function GetStarted() {
                       {/* Phone */}
                       <div className="space-y-2">
                         <Label htmlFor="phone">Phone number (optional)</Label>
-                        <div className="flex flex-col sm:flex-row gap-2">
+                        <div className="flex flex-col sm:flex-row gap-4">
                           <Popover open={openPhoneCombobox} onOpenChange={setOpenPhoneCombobox}>
                             <PopoverTrigger asChild>
                               <Button
                                 variant="outline"
                                 role="combobox"
                                 aria-expanded={openPhoneCombobox}
-                                className="w-full sm:w-[300px] h-10 justify-between border-input focus:ring-accent/20 focus:border-accent font-medium px-3"
+                                className="w-full sm:w-[252px] h-10 justify-between border-input focus:ring-accent/20 focus:border-accent font-medium px-3"
                               >
                                 <span className="flex items-center gap-2">
                                   <span className="">{countries.find(c => c.code === countryIso)?.name}</span>
@@ -322,7 +322,7 @@ export default function GetStarted() {
                                 <ChevronDown className="ml-2 h-4 w-4 opacity-50 shrink-0" />
                               </Button>
                             </PopoverTrigger>
-                            <PopoverContent className="w-[300px] p-0">
+                            <PopoverContent className="w-[338px] sm:w-[252px] p-0">
                               <Command>
                                 <CommandInput placeholder="Search country & country code..." />
                                 <CommandList>
@@ -372,14 +372,14 @@ export default function GetStarted() {
                       {/* Mobile Number */}
                       <div className="space-y-2">
                         <Label htmlFor="mobile">Mobile number (optional)</Label>
-                        <div className="flex flex-col sm:flex-row gap-2">
+                        <div className="flex flex-col sm:flex-row gap-4">
                           <Popover open={openMobileCombobox} onOpenChange={setOpenMobileCombobox}>
                             <PopoverTrigger asChild>
                               <Button
                                 variant="outline"
                                 role="combobox"
                                 aria-expanded={openMobileCombobox}
-                                className="w-full sm:w-[300px] h-10 justify-between border-input focus:ring-accent/20 focus:border-accent font-medium px-3"
+                                className="w-full sm:w-[252px] h-10 justify-between border-input focus:ring-accent/20 focus:border-accent font-medium px-3"
                               >
                                 <span className="flex items-center gap-2">
                                   <span className="">{countries.find(c => c.code === mobileCountryIso)?.name}</span>
@@ -388,7 +388,7 @@ export default function GetStarted() {
                                 <ChevronDown className="ml-2 h-4 w-4 opacity-50 shrink-0" />
                               </Button>
                             </PopoverTrigger>
-                            <PopoverContent className="w-[300px] p-0">
+                            <PopoverContent className="w-[338px] sm:w-[252px] p-0">
                               <Command>
                                 <CommandInput placeholder="Search country & country code..." />
                                 <CommandList>
