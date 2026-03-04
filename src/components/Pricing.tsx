@@ -1,67 +1,72 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Check, Building, Building2, Rocket } from "lucide-react";
-// import { Button } from "@/components/ui/button";
+import axios from "axios";
 
-const pricingTiers = [
-  {
-    name: "Starter",
-    icon: Building,
-    price: "$400",
-    unit: " per month + VAT",
-    description: "Perfect for getting started with AI voice calls.",
-    minimumMinutes: "350 minutes included",
-    features: [
-      "Paid in advance",
-      "Dedicated onboarding & support",
-      "$400 one-off set-up / development fee",
-      "After 12 months: $400 returned as FREE minutes",
-      "No contract – cancel anytime",
-      "Top-up minutes: $1.15 per minute",
-    ],
-    cta: "Get Started",
-    popular: false,
-  },
-  {
-    name: "Medium",
-    icon: Building2,
-    price: "$1000",
-    unit: " per month + VAT",
-    description: "For teams scaling voice automation with more included minutes.",
-    minimumMinutes: "900 minutes included",
-    features: [
-      "Paid in advance",
-      "Dedicated onboarding & support",
-      "$400 one-off set-up / development fee",
-      "After 12 months: $400 returned as FREE minutes",
-      "No contract – cancel anytime",
-      "Top-up minutes: $1.15 per minute",
-    ],
-    cta: "Get Started",
-    popular: true,
-  },
-  {
-    name: "Enterprise",
-    icon: Rocket,
-    price: "Pricing by negotiation",
-    unit: "",
-    description: "Tailored packages for larger operations and custom requirements.",
-    minimumMinutes: "Minutes tailored to usage",
-    subtext: "Volume discounts available",
-    features: [
-      "Custom monthly package",
-      "Dedicated onboarding & support",
-      "Volume discounts",
-      "Custom call flows & integrations",
-    ],
-    cta: "Contact Sales",
-    popular: false,
-  },
-];
+// Static Enterprise plan
+const enterprisePlan = {
+  name: "Enterprise",
+  icon: Rocket,
+  price: "Pricing by negotiation",
+  unit: "",
+  description: "Tailored packages for larger operations and custom requirements.",
+  minimumMinutes: "Minutes tailored to usage",
+  subtext: "Volume discounts available",
+  features: [
+    "Custom monthly package",
+    "Dedicated onboarding & support",
+    "Volume discounts",
+    "Custom call flows & integrations",
+  ],
+  cta: "Contact Sales",
+  popular: false,
+};
 
 const Pricing = () => {
+  const [pricingTiers, setPricingTiers] = useState<any[]>([]);
   const [hoveredTier, setHoveredTier] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "https://api.callpilot.pro/api/v1";
+
+  useEffect(() => {
+    const fetchPlans = async () => {
+      try {
+        const response = await axios.get(`${API_BASE_URL}/payment/subscriptions/plans`);
+        const apiPlans = response.data.results.map((plan: any) => ({
+          name: plan.name,
+          icon: plan.name === "Starter" ? Building : Building2,
+          price: `$${Math.round(parseFloat(plan.price))}`,
+          unit: " per month + VAT",
+          description: plan.description || (plan.name === "Growing" ? "For teams scaling voice automation with more included minutes." : ""),
+          minimumMinutes: `${plan.limit} minutes included`,
+          features: plan.des_list,
+          cta: "Get Started",
+          popular: plan.name === "Pro", // "Growing" corresponds to the previous "Medium" (popular) plan
+        }));
+        setPricingTiers([...apiPlans, enterprisePlan]);
+      } catch (error) {
+        console.error("Error fetching pricing plans:", error);
+        // Fallback to only enterprise if API fails
+        setPricingTiers([enterprisePlan]);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchPlans();
+  }, [API_BASE_URL]);
+
+  if (isLoading) {
+    return (
+      <section id="pricing" className="py-16 lg:py-24 bg-alt">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-lg text-body">Loading pricing plans...</p>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="pricing" className="py-16 lg:py-24 bg-alt">
@@ -80,7 +85,7 @@ const Pricing = () => {
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 max-w-7xl mx-auto">
           {pricingTiers.map((tier) => {
             // If a non-popular card is hovered, disable the popular highlight temporarily.
             const hidePopularHighlight =
@@ -143,37 +148,36 @@ const Pricing = () => {
                 <p className="text-sm text-muted-text mb-4">{tier.minimumMinutes}</p>
 
                 {/* Description */}
-                <p className="text-body mb-6">{tier.description}</p>
+                <p className="text-body mb-6 text-sm">{tier.description}</p>
 
                 {/* Features */}
                 <ul className="space-y-3 mb-8 flex-grow">
-                  {tier.features.map((feature) => (
+                  {tier.features.map((feature: string) => (
                     <li key={feature} className="flex items-start gap-2">
                       <Check className="w-5 h-5 accent-text flex-shrink-0 mt-0.5" />
                       <span className="text-body text-sm">{feature}</span>
                     </li>
                   ))}
                 </ul>
-                
 
                 {/* CTA Button */}
-                {/*
-                <Button
-                  variant={isHighlighted ? "cta" : "ctaSecondary"}
-                  size="lg"
-                  className="w-full"
-                >
-                  {tier.cta}
-                </Button>
-                */}
+                <div className="mt-auto">
+                  <button
+                    className={[
+                      "w-full py-3 px-4 rounded-xl font-semibold transition-all duration-200",
+                      isHighlighted
+                        ? "bg-accent text-white shadow-md hover:shadow-lg scale-[1.02]"
+                        : "bg-secondary text-headline hover:bg-secondary/80"
+                    ].join(" ")}
+                  >
+                    {tier.cta}
+                  </button>
+                </div>
               </div>
-              
             );
           })}
-          
         </div>
         <p className="text-[13px] mt-10 text-body mx-auto text-center">* Purchasing Phone numbers price is not included in here</p>
-        
       </div>
     </section>
   );
