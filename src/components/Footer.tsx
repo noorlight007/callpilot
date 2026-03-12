@@ -58,20 +58,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Company */}
-          <div>
-            <h4 className="font-semibold text-headline mb-4">Company</h4>
-            <ul className="space-y-3">
-              {footerLinks.company.map((link) => (
-                <li key={link.label}>
-                  <a href={link.href} className="text-sm text-body hover:text-headline transition-colors">
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
           {/* Legal */}
           <div>
             <h4 className="font-semibold text-headline mb-4">Legal</h4>

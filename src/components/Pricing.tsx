@@ -10,7 +10,7 @@ const pricingTiers = [
     icon: Building,
     price: "$400",
     unit: " / month + VAT",
-    description: "Ideal for organisations beginning to automate phone conversations using AI. Designed for small businesses starting AI voice calls.",
+    description: "Designed for small businesses starting AI voice calls.",
     minimumMinutes: "350 AI Voice Minutes",
     features: [
       "Paid monthly in advance",
@@ -61,7 +61,7 @@ const pricingTiers = [
     icon: Rocket,
     price: "Custom Pricing",
     unit: "",
-    description: "Tailored AI voice solutions for large organisations & advanced automation to Tailored AI calling & automation.",
+    description: "Custom AI automation plans designed for large-scale deployment.",
     minimumMinutes: "",
     features: [
       "Paid monthly in advance",
