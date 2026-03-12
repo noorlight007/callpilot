@@ -1,74 +1,83 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { Check, Building, Building2, Rocket } from "lucide-react";
-import axios from "axios";
+import { useState } from "react";
+import { Check, Building, Building2, Rocket, Star } from "lucide-react";
 
-// Static Enterprise plan
-const enterprisePlan = {
-  name: "Enterprise",
-  icon: Rocket,
-  price: "Custom Pricing",
-  unit: "",
-  description: "Tailored AI voice solutions for large organisations and advanced automation needs.",
-  minimumMinutes: "",
-  subtext: "",
-  features: [
-    "Custom minute packages",
-    "Full CRM & system integrations",
-    "Dedicated account management",
-    "Priority technical support",
-    "Volume discounts available",
-    "International calling packages",
-  ],
-  cta: "Contact Sales",
-  popular: false,
-};
+// Static pricing tiers based on user request
+const pricingTiers = [
+  {
+    name: "Starter",
+    icon: Building,
+    price: "$400",
+    unit: " / month + VAT",
+    description: "Ideal for organisations beginning to automate phone conversations using AI. Designed for small businesses starting AI voice calls.",
+    minimumMinutes: "350 AI Voice Minutes",
+    features: [
+      "Paid monthly in advance",
+      "Dedicated onboarding & customer support",
+      "$400 one-off setup fee",
+      "Setup fee returned as free minutes after 12 months",
+      "Additional minutes: $1.15 per minute",
+    ],
+    cta: "Get Started",
+    popular: false,
+  },
+  {
+    name: "Growing",
+    icon: Building2,
+    price: "$1,000",
+    unit: " / month + VAT",
+    description: "Designed for businesses scaling AI voice calls across teams.",
+    minimumMinutes: "900 AI Voice Minutes",
+    features: [
+      "Paid monthly in advance",
+      "Dedicated onboarding & customer support",
+      "$400 one-off setup fee",
+      "Setup fee returned as free minutes after 12 months",
+      "Additional minutes: $1.15 per minute",
+    ],
+    cta: "Get Started",
+    popular: false,
+  },
+  {
+    name: "Pro",
+    icon: Star,
+    price: "$1,500",
+    unit: " / month + VAT",
+    description: "Built for organisations running high-volume automated AI calls.",
+    minimumMinutes: "1,400 AI Voice Minutes",
+    features: [
+      "Paid monthly in advance",
+      "Priority onboarding & support",
+      "$400 one-off setup fee",
+      "Setup fee returned as free minutes after 12 months",
+      "Additional minutes: $1.15 per minute",
+    ],
+    cta: "Get Started",
+    popular: true,
+  },
+  {
+    name: "Enterprise",
+    icon: Rocket,
+    price: "Custom Pricing",
+    unit: "",
+    description: "Tailored AI voice solutions for large organisations & advanced automation to Tailored AI calling & automation.",
+    minimumMinutes: "",
+    features: [
+      "Paid monthly in advance",
+      "Custom AI minute packages",
+      "Priority technical support",
+      "Volume discounts available",
+      "International calling packages",
+      "Custom API integrations",
+    ],
+    cta: "Contact Sales",
+    popular: false,
+  },
+];
 
 const Pricing = () => {
-  const [pricingTiers, setPricingTiers] = useState<any[]>([]);
   const [hoveredTier, setHoveredTier] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "https://api.callpilot.pro/api/v1";
-
-  useEffect(() => {
-    const fetchPlans = async () => {
-      try {
-        const response = await axios.get(`${API_BASE_URL}/payment/subscriptions/plans`);
-        const apiPlans = response.data.results.map((plan: any) => ({
-          name: plan.name,
-          icon: plan.name === "Starter" ? Building : Building2,
-          price: `$${Math.round(parseFloat(plan.price))}`,
-          unit: " per month + VAT",
-          description: plan.description || (plan.name === "Growing" ? "For teams scaling voice automation with more included minutes." : ""),
-          minimumMinutes: `${plan.limit} minutes included`,
-          features: plan.des_list,
-          cta: "Get Started",
-          popular: plan.name === "Pro", // "Growing" corresponds to the previous "Medium" (popular) plan
-        }));
-        setPricingTiers([...apiPlans, enterprisePlan]);
-      } catch (error) {
-        console.error("Error fetching pricing plans:", error);
-        // Fallback to only enterprise if API fails
-        setPricingTiers([enterprisePlan]);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchPlans();
-  }, [API_BASE_URL]);
-
-  if (isLoading) {
-    return (
-      <section id="pricing" className="py-16 lg:py-24 bg-alt">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-lg text-body">Loading pricing plans...</p>
-        </div>
-      </section>
-    );
-  }
 
   return (
     <section id="pricing" className="py-16 lg:py-24 bg-alt">
@@ -141,13 +150,8 @@ const Pricing = () => {
                   <span className="text-muted-text">{tier.unit}</span>
                 </div>
 
-                {/* Subtext for Enterprise */}
-                {"subtext" in tier && tier.subtext && (
-                  <p className="text-sm text-accent mb-2">{tier.subtext}</p>
-                )}
-
                 {/* Included minutes / minimum */}
-                <p className="text-sm text-muted-text mb-4">{tier.minimumMinutes}</p>
+                <p className="text-sm font-medium accent-text mb-4">{tier.minimumMinutes}</p>
 
                 {/* Description */}
                 <p className="text-body mb-6 text-sm">{tier.description}</p>
@@ -157,7 +161,7 @@ const Pricing = () => {
                   {tier.features.map((feature: string) => (
                     <li key={feature} className="flex items-start gap-2">
                       <Check className="w-5 h-5 accent-text flex-shrink-0 mt-0.5" />
-                      <span className="text-body text-sm">{feature}</span>
+                      <span className="text-body text-sm font-light">{feature}</span>
                     </li>
                   ))}
                 </ul>

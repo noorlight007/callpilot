@@ -21,7 +21,7 @@ const PricingPage = () => {
     return (
         <div className="min-h-screen bg-background">
             <Header />
-            <main> 
+            <main className="py-16 md:py-24 lg:py-24"> 
                 <Pricing />
                 {/* Custom Solutions */}
                 <section className="py-15 lg:py-18 my-10">
