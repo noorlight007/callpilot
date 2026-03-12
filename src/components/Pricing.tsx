@@ -88,7 +88,7 @@ const Pricing = () => {
             <span className="text-sm font-medium accent-text">Pricing</span>
           </div>
           <h2 className="text-2xl font-semibold text-headline mb-4">
-            Simple, Transparent Pricing
+            AI Call Plans
           </h2>
           <p className="text-lg text-body">
             Monthly packages with included minutes. No contract — cancel anytime.
