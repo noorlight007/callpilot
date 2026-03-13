@@ -62,7 +62,7 @@ const pricingTiers = [
     price: "Custom Pricing",
     unit: "",
     description: "Custom AI automation plans designed for large-scale deployment.",
-    minimumMinutes: "",
+    minimumMinutes: "Custom AI Call Minutes",
     features: [
       "Paid monthly in advance",
       "Custom AI minute packages",
