@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Check, Building, Building2, Rocket, Star } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 // Static pricing tiers based on user request
 const pricingTiers = [
@@ -10,7 +11,7 @@ const pricingTiers = [
     icon: Building,
     price: "$400",
     unit: " / month + VAT",
-    description: "Designed for small businesses starting AI voice calls.",
+    description: "Ideal for organisations beginning to automate phone conversations using AI. Designed for small businesses starting AI voice calls.",
     minimumMinutes: "350 AI Voice Minutes",
     features: [
       "Paid monthly in advance",
@@ -19,7 +20,7 @@ const pricingTiers = [
       "Setup fee returned as free minutes after 12 months",
       "Additional minutes: $1.15 per minute",
     ],
-    cta: "Get Started",
+    cta: "Get now",
     popular: false,
   },
   {
@@ -36,7 +37,7 @@ const pricingTiers = [
       "Setup fee returned as free minutes after 12 months",
       "Additional minutes: $1.15 per minute",
     ],
-    cta: "Get Started",
+    cta: "Get now",
     popular: false,
   },
   {
@@ -53,7 +54,7 @@ const pricingTiers = [
       "Setup fee returned as free minutes after 12 months",
       "Additional minutes: $1.15 per minute",
     ],
-    cta: "Get Started",
+    cta: "Get now",
     popular: true,
   },
   {
@@ -61,8 +62,8 @@ const pricingTiers = [
     icon: Rocket,
     price: "Custom Pricing",
     unit: "",
-    description: "Custom AI automation plans designed for large-scale deployment.",
-    minimumMinutes: "Custom AI Call Minutes",
+    description: "Tailored AI voice solutions for large organisations & advanced automation to Tailored AI calling & automation.",
+    minimumMinutes: "",
     features: [
       "Paid monthly in advance",
       "Custom AI minute packages",
@@ -78,6 +79,7 @@ const pricingTiers = [
 
 const Pricing = () => {
   const [hoveredTier, setHoveredTier] = useState<string | null>(null);
+  const router = useRouter();
 
   return (
     <section id="pricing" className="py-16 lg:py-24 bg-alt">
@@ -169,6 +171,7 @@ const Pricing = () => {
                 {/* CTA Button */}
                 <div className="mt-auto">
                   <button
+                    onClick={() => router.push('/get-started')}
                     className={[
                       "w-full py-3 px-4 rounded-xl font-semibold transition-all duration-200",
                       isHighlighted
