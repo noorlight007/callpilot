@@ -20,7 +20,7 @@ const pricingTiers = [
       "Setup fee returned as free minutes after 12 months",
       "Additional minutes: $1.15 per minute",
     ],
-    cta: "Get now",
+    cta: "Get Started",
     popular: false,
   },
   {
@@ -37,7 +37,7 @@ const pricingTiers = [
       "Setup fee returned as free minutes after 12 months",
       "Additional minutes: $1.15 per minute",
     ],
-    cta: "Get now",
+    cta: "Get Started",
     popular: false,
   },
   {
@@ -54,7 +54,7 @@ const pricingTiers = [
       "Setup fee returned as free minutes after 12 months",
       "Additional minutes: $1.15 per minute",
     ],
-    cta: "Get now",
+    cta: "Get Started",
     popular: true,
   },
   {
