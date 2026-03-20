@@ -45,8 +45,8 @@ const Hero = () => {
 
           {/* Headline */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 animate-fade-in" style={{ animationDelay: "0.1s" }}>
-            Transform Your Business Calls with{" "}
-            <span className="accent-text">AI Intelligence</span>
+            Next-Generation 24/7 {" "}
+            <span className="accent-text">AI Voice Call & Automation</span>
           </h1>
 
           {/* Subheadline */}
