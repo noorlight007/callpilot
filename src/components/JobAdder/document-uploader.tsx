@@ -388,7 +388,7 @@ const DocumentUploader = () => {
                         <section>
                             <h2 className="text-xl font-bold mb-4 text-black border-none">Skills</h2>
                             <div className="space-y-2">
-                                <FormLabel className="text-black font-medium text-lg block">Skills / Notes</FormLabel>
+                                <FormLabel className="text-black font-semibold block">Skills / Notes</FormLabel>
                                 <FormField
                                     control={form.control}
                                     name="skills"
@@ -411,10 +411,10 @@ const DocumentUploader = () => {
                         </section>
 
                         {/* Submit Button */}
-                        <div className="pt-6">
+                        <div className="pt-2">
                             <Button
                                 type="submit"
-                                className="w-full h-14 bg-black text-white hover:bg-gray-800 transition-all text-lg font-bold rounded-lg group"
+                                className="w-[50%] md:w-[40%] lg:w-[30%] h-12 bg-black text-white hover:bg-gray-800 transition-all text-sm md:text-sm lg:text-lg font-bold rounded-lg group"
                             >
                                 Submit My Application
                                 <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
