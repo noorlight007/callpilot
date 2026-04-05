@@ -168,7 +168,7 @@ const DocumentUploader = () => {
                 }
             });
 
-            const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://api.swiftwave.ai/api/v1";
+            const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://api.callpilot.pro/api/v1";
             const response = await fetch(`${API_BASE_URL}/core/pre-application/${uid}/`, {
                 method: "POST",
                 body: formData,
