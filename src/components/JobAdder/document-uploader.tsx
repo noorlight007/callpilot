@@ -108,7 +108,20 @@ const DocumentUploader = () => {
     
     const [skillInput, setSkillInput] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [openSuccess, setOpenSuccess] = useState(false);
+    
+    // Updated Alert State
+    const [alertConfig, setAlertConfig] = useState<{
+        open: boolean;
+        title: string;
+        description: React.ReactNode;
+        type: "success" | "error" | "warning";
+        warnings?: string[];
+    }>({
+        open: false,
+        title: "",
+        description: "",
+        type: "success",
+    });
 
     const form = useForm<FormValues>({
         resolver: zodResolver(formSchema),
@@ -143,7 +156,6 @@ const DocumentUploader = () => {
                 values.skills.forEach(skill => formData.append("skills", skill));
             }
 
-            // Document Labels to process
             const labels = [
                 "qualification_card_front", "qualification_card_back", "certificate_1", "certificate_2",
                 "passport", "visa", "birth_certificate", "p45_if_not_working",
@@ -152,7 +164,6 @@ const DocumentUploader = () => {
             ];
 
             labels.forEach(label => {
-                // Append multiple files for each label
                 const files = values[label as keyof FormValues] as File[];
                 if (files && files.length > 0) {
                     files.forEach(file => {
@@ -160,7 +171,6 @@ const DocumentUploader = () => {
                     });
                 }
                 
-                // Append associated date (required for disclosure, optional for others if they have one)
                 const dateKey = `${label}_date` as keyof FormValues;
                 const docDate = values[dateKey] as Date;
                 if (docDate) {
@@ -174,23 +184,47 @@ const DocumentUploader = () => {
                 body: formData,
             });
 
-            if (response.ok) {
-                setOpenSuccess(true);
+            const result = await response.json();
+
+            if (response.ok && result.success) {
+                setAlertConfig({
+                    open: true,
+                    title: "Application Submitted!",
+                    description: "Your application has been successfully submitted. We will review your documents and contact you shortly.",
+                    type: "success",
+                    warnings: result.upload_warnings || [],
+                });
+                
+                // Clear all field data
                 form.reset({
-                    ...form.getValues(),
+                    firstName: "",
+                    lastName: "",
+                    email: "",
                     skills: [],
                     availableFromDate: undefined,
+                    uid: uid || "",
                 });
-                // Reset file fields manually if needed (zod doesn't always handle File list reset perfectly)
-                labels.forEach(label => form.setValue(label as any, []));
+                // Manually clear all file and date fields
+                labels.forEach(label => {
+                    form.setValue(label as any, []);
+                    form.setValue(`${label}_date` as any, undefined);
+                });
             } else {
-                const errorData = await response.json();
-                console.error("API Error:", errorData);
-                alert(`Submission failed: ${JSON.stringify(errorData)}`);
+                setAlertConfig({
+                    open: true,
+                    title: "Submission Failed",
+                    description: result.message || JSON.stringify(result) || "An error occurred while submitting your application.",
+                    type: "error",
+                });
             }
         } catch (error) {
             console.error("Submission error:", error);
-            alert("An error occurred while submitting your application.");
+            setAlertConfig({
+                open: true,
+                title: "Error",
+                description: "A network error occurred. Please check your connection and try again.",
+                type: "error",
+            });
         } finally {
             setIsSubmitting(false);
         }
@@ -261,6 +295,10 @@ const DocumentUploader = () => {
             onChange(updatedFiles);
         };
 
+        const clearAllFiles = () => {
+            onChange([]);
+        };
+
         return (
             <div className="space-y-3">
                 <div
@@ -292,17 +330,29 @@ const DocumentUploader = () => {
                 </div>
                 
                 {files.length > 0 && (
-                    <div className="flex flex-wrap gap-2">
-                        {files.map((file, idx) => (
-                            <Badge key={idx} variant="outline" className="flex items-center gap-2 py-1 px-2 border-gray-200 bg-white text-gray-700">
-                                <FileUp className="w-3 h-3 text-gray-400" />
-                                <span className="max-w-[150px] truncate">{file.name}</span>
-                                <X 
-                                    className="w-3 h-3 cursor-pointer hover:text-red-500 transition-colors" 
-                                    onClick={() => removeFile(idx)}
-                                />
-                            </Badge>
-                        ))}
+                    <div className="flex flex-col gap-3">
+                        <div className="flex flex-wrap gap-2">
+                            {files.map((file, idx) => (
+                                <Badge key={idx} variant="outline" className="flex items-center gap-2 py-1 px-2 border-gray-200 bg-white text-gray-700">
+                                    <FileUp className="w-3 h-3 text-gray-400" />
+                                    <span className="max-w-[150px] truncate">{file.name}</span>
+                                    <X 
+                                        className="w-3 h-3 cursor-pointer hover:text-red-500 transition-colors" 
+                                        onClick={() => removeFile(idx)}
+                                    />
+                                </Badge>
+                            ))}
+                        </div>
+                        <Button 
+                            type="button" 
+                            variant="ghost" 
+                            size="sm" 
+                            onClick={clearAllFiles}
+                            className="text-red-500 hover:text-red-700 hover:bg-red-50 w-fit h-7 px-2 text-xs font-semibold"
+                        >
+                            <X className="w-3 h-3 mr-1" />
+                            Clear All Files
+                        </Button>
                     </div>
                 )}
             </div>
@@ -401,37 +451,51 @@ const DocumentUploader = () => {
                                         render={({ field }) => (
                                             <FormItem className="flex flex-col">
                                                 <FormLabel className="text-black font-semibold mb-1">Available from Date</FormLabel>
-                                                <Popover>
-                                                    <PopoverTrigger asChild>
-                                                        <FormControl>
-                                                            <Button
-                                                                variant={"outline"}
-                                                                className={cn(
-                                                                    "w-full h-12 pl-3 text-left font-normal bg-white border-gray-200 text-black hover:bg-gray-50 focus:ring-black",
-                                                                    !field.value && "text-gray-400"
-                                                                )}
-                                                            >
-                                                                {field.value ? (
-                                                                    format(field.value, "PPP")
-                                                                ) : (
-                                                                    <span>mm/dd/yyyy</span>
-                                                                )}
-                                                                <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                                                            </Button>
-                                                        </FormControl>
-                                                    </PopoverTrigger>
-                                                    <PopoverContent className="w-auto p-0" align="start">
-                                                        <Calendar
-                                                            mode="single"
-                                                            selected={field.value}
-                                                            onSelect={field.onChange}
-                                                            disabled={(date) =>
-                                                                date < new Date("1900-01-01")
-                                                            }
-                                                            initialFocus
-                                                        />
-                                                    </PopoverContent>
-                                                </Popover>
+                                                <div className="relative">
+                                                    <Popover>
+                                                        <PopoverTrigger asChild>
+                                                            <FormControl>
+                                                                <Button
+                                                                    variant={"outline"}
+                                                                    className={cn(
+                                                                        "w-full h-12 pl-3 text-left font-normal bg-white border-gray-200 text-black hover:bg-gray-50 focus:ring-black pr-10",
+                                                                        !field.value && "text-gray-400"
+                                                                    )}
+                                                                >
+                                                                    {field.value ? (
+                                                                        format(field.value, "PPP")
+                                                                    ) : (
+                                                                        <span>mm/dd/yyyy</span>
+                                                                    )}
+                                                                    <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                                                                </Button>
+                                                            </FormControl>
+                                                        </PopoverTrigger>
+                                                        <PopoverContent className="w-auto p-0" align="start">
+                                                            <Calendar
+                                                                mode="single"
+                                                                selected={field.value}
+                                                                onSelect={field.onChange}
+                                                                disabled={(date) =>
+                                                                    date < new Date("1900-01-01")
+                                                                }
+                                                                initialFocus
+                                                            />
+                                                        </PopoverContent>
+                                                    </Popover>
+                                                    {field.value && (
+                                                        <button
+                                                            type="button"
+                                                            onClick={(e) => {
+                                                                e.stopPropagation();
+                                                                field.onChange(undefined);
+                                                            }}
+                                                            className="absolute right-20 top-1/2 -translate-y-1/2 text-gray-400 hover:text-red-500 transition-colors p-2"
+                                                        >
+                                                            <X className="w-4 h-4" />
+                                                        </button>
+                                                    )}
+                                                </div>
                                                 <FormMessage className="text-red-600" />
                                             </FormItem>
                                         )}
@@ -477,34 +541,48 @@ const DocumentUploader = () => {
                                                             <FormLabel className="text-gray-600 text-xs font-semibold uppercase tracking-wider">
                                                                 {doc.labelEx || "Expiration Date"}
                                                             </FormLabel>
-                                                            <Popover>
-                                                                <PopoverTrigger asChild>
-                                                                    <FormControl>
-                                                                        <Button
-                                                                            variant={"outline"}
-                                                                            className={cn(
-                                                                                "w-full h-12 pl-3 text-left font-normal bg-white border-gray-200 text-black hover:bg-gray-50 shadow-none uppercase",
-                                                                                !field.value && "text-gray-400"
-                                                                            )}
-                                                                        >
-                                                                            {field.value ? (
-                                                                                format(field.value, "PPP")
-                                                                            ) : (
-                                                                                <span>mm/dd/yyyy</span>
-                                                                            )}
-                                                                            <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                                                                        </Button>
-                                                                    </FormControl>
-                                                                </PopoverTrigger>
-                                                                <PopoverContent className="w-auto p-0" align="start">
-                                                                    <Calendar
-                                                                        mode="single"
-                                                                        selected={field.value as any}
-                                                                        onSelect={field.onChange}
-                                                                        initialFocus
-                                                                    />
-                                                                </PopoverContent>
-                                                            </Popover>
+                                                            <div className="relative">
+                                                                <Popover>
+                                                                    <PopoverTrigger asChild>
+                                                                        <FormControl>
+                                                                            <Button
+                                                                                variant={"outline"}
+                                                                                className={cn(
+                                                                                    "w-full h-12 pl-3 text-left font-normal bg-white border-gray-200 text-black hover:bg-gray-50 shadow-none uppercase pr-10",
+                                                                                    !field.value && "text-gray-400"
+                                                                                )}
+                                                                            >
+                                                                                {field.value ? (
+                                                                                    format(field.value as Date, "PPP")
+                                                                                ) : (
+                                                                                    <span>mm/dd/yyyy</span>
+                                                                                )}
+                                                                                <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                                                                            </Button>
+                                                                        </FormControl>
+                                                                    </PopoverTrigger>
+                                                                    <PopoverContent className="w-auto p-0" align="start">
+                                                                        <Calendar
+                                                                            mode="single"
+                                                                            selected={field.value as any}
+                                                                            onSelect={field.onChange}
+                                                                            initialFocus
+                                                                        />
+                                                                    </PopoverContent>
+                                                                </Popover>
+                                                                {field.value && (
+                                                                    <button
+                                                                        type="button"
+                                                                        onClick={(e) => {
+                                                                            e.stopPropagation();
+                                                                            field.onChange(undefined);
+                                                                        }}
+                                                                        className="absolute right-20 top-1/2 -translate-y-1/2 text-gray-400 hover:text-red-500 transition-colors p-2"
+                                                                    >
+                                                                        <X className="w-4 h-4" />
+                                                                    </button>
+                                                                )}
+                                                            </div>
                                                             <FormMessage />
                                                         </FormItem>
                                                     )}
@@ -518,7 +596,21 @@ const DocumentUploader = () => {
 
                         {/* Skills */}
                         <section>
-                            <h2 className="text-xl font-bold mb-4 text-black border-none">Skills</h2>
+                            <div className="flex items-center justify-between mb-4">
+                                <h2 className="text-xl font-bold text-black border-none">Skills</h2>
+                                {form.getValues("skills") && form.getValues("skills")!.length > 0 && (
+                                    <Button
+                                        type="button"
+                                        variant="ghost"
+                                        size="sm"
+                                        onClick={() => form.setValue("skills", [])}
+                                        className="text-red-500 hover:text-red-700 hover:bg-red-50 h-8 px-2 text-xs font-semibold"
+                                    >
+                                        <X className="w-4 h-4 mr-1" />
+                                        Clear All Skills
+                                    </Button>
+                                )}
+                            </div>
                             <div className="space-y-2">
                                 <FormLabel className="text-black font-semibold block">Skills / Notes</FormLabel>
                                 <FormField
@@ -536,7 +628,7 @@ const DocumentUploader = () => {
                                                         >
                                                             {skill}
                                                             <X
-                                                                className="w-3 h-3 cursor-pointer"
+                                                                className="w-3 h-3 cursor-pointer hover:text-red-500"
                                                                 onClick={() => removeSkill(skill, field.value || [], field.onChange)}
                                                             />
                                                         </Badge>
@@ -572,23 +664,46 @@ const DocumentUploader = () => {
                     </form>
                 </Form>
 
-                <AlertDialog open={openSuccess} onOpenChange={setOpenSuccess}>
-                    <AlertDialogContent className="bg-white">
+                <AlertDialog open={alertConfig.open} onOpenChange={(open) => setAlertConfig(prev => ({ ...prev, open }))}>
+                    <AlertDialogContent className="bg-white max-w-md">
                         <AlertDialogHeader>
-                            <AlertDialogTitle className="text-xl font-bold flex items-center gap-2">
-                                <CheckCircle2 className="text-green-600 w-6 h-6" />
-                                Application Submitted!
+                            <AlertDialogTitle className={cn(
+                                "text-xl font-bold flex items-center gap-2",
+                                alertConfig.type === "success" ? "text-black" : "text-red-600"
+                            )}>
+                                {alertConfig.type === "success" ? (
+                                    <CheckCircle2 className="text-green-600 w-6 h-6" />
+                                ) : (
+                                    <AlertCircle className="text-red-600 w-6 h-6" />
+                                )}
+                                {alertConfig.title}
                             </AlertDialogTitle>
                             <AlertDialogDescription className="text-gray-600 text-base">
-                                Your application has been successfully submitted. We will review your documents and contact you shortly.
+                                {alertConfig.description}
+                                
+                                {alertConfig.warnings && alertConfig.warnings.length > 0 && (
+                                    <div className="mt-4 p-3 bg-amber-50 border border-amber-200 rounded-lg">
+                                        <p className="text-amber-800 font-bold text-sm mb-2 flex items-center gap-1">
+                                            <AlertCircle className="w-4 h-4" />
+                                            Upload Warnings:
+                                        </p>
+                                        <ul className="list-disc list-inside space-y-1">
+                                            {alertConfig.warnings.map((warning, idx) => (
+                                                <li key={idx} className="text-amber-700 text-sm">
+                                                    {warning}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                )}
                             </AlertDialogDescription>
                         </AlertDialogHeader>
                         <AlertDialogFooter>
                             <AlertDialogAction 
                                 className="bg-black text-white hover:bg-gray-800"
-                                onClick={() => setOpenSuccess(false)}
+                                onClick={() => setAlertConfig(prev => ({ ...prev, open: false }))}
                             >
-                                Continue
+                                {alertConfig.type === "success" ? "Continue" : "Close"}
                             </AlertDialogAction>
                         </AlertDialogFooter>
                     </AlertDialogContent>
