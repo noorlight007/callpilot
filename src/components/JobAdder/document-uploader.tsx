@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -12,9 +12,12 @@ import {
     FileText,
     User,
     Mail,
-    ArrowRight
+    ArrowRight,
+    X,
+    FileUp
 } from "lucide-react";
 import { format } from "date-fns";
+import { useSearchParams } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -28,6 +31,16 @@ import {
 import { Input } from "@/components/ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
+import { Badge } from "@/components/ui/badge";
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { cn } from "@/lib/utils";
 import logo from "@/assets/call_pilot_logo.png";
 
@@ -35,42 +48,68 @@ const formSchema = z.object({
     firstName: z.string().min(2, "First name is required"),
     lastName: z.string().min(2, "Last name is required"),
     email: z.string().email("Invalid email address"),
-    availableFromDate: z.date({
-        required_error: "Available from date is required",
-    }),
-    // Document uploads
-    qualificationCardFront: z.any().optional(),
-    qualificationCardFrontExpiry: z.date().optional(),
-    qualificationCardBack: z.any().optional(),
-    qualificationCardBackExpiry: z.date().optional(),
-    certificate1: z.any().optional(),
-    certificate1Expiry: z.date().optional(),
-    certificate2: z.any().optional(),
-    certificate2Expiry: z.date().optional(),
-    passport: z.any().optional(),
-    passportExpiry: z.date().optional(),
-    drivingLicenceFront: z.any().optional(),
-    drivingLicenceFrontExpiry: z.date().optional(),
-    drivingLicenceBack: z.any().optional(),
-    drivingLicenceBackExpiry: z.date().optional(),
-    driverDigiCardFront: z.any().optional(),
-    driverDigiCardFrontExpiry: z.date().optional(),
-    driverDigiCardBack: z.any().optional(),
-    driverDigiCardBackExpiry: z.date().optional(),
-    driverCPCCardFront: z.any().optional(),
-    driverCPCCardFrontExpiry: z.date().optional(),
-    driverCPCCardBack: z.any().optional(),
-    driverCPCCardBackExpiry: z.date().optional(),
-    birthCertificate: z.any().optional(),
-    birthCertificateExpiry: z.date().optional(),
-    disclosure: z.any().optional(),
-    disclosureIssueDate: z.date().optional(),
+    availableFromDate: z.date().optional(),
+    
+    // Document Uploads (File Arrays)
+    qualification_card_front: z.array(z.any()).optional(),
+    qualification_card_front_date: z.date().optional(),
+    
+    qualification_card_back: z.array(z.any()).optional(),
+    qualification_card_back_date: z.date().optional(),
+    
+    certificate_1: z.array(z.any()).optional(),
+    certificate_1_date: z.date().optional(),
+    
+    certificate_2: z.array(z.any()).optional(),
+    certificate_2_date: z.date().optional(),
+    
+    passport: z.array(z.any()).optional(),
+    passport_date: z.date().optional(),
+    
+    visa: z.array(z.any()).optional(),
+    visa_date: z.date().optional(),
+    
+    birth_certificate: z.array(z.any()).optional(),
+    birth_certificate_date: z.date().optional(),
+    
+    p45_if_not_working: z.array(z.any()).optional(),
+    p45_if_not_working_date: z.date().optional(),
+    
+    drivers_license_front: z.array(z.any()).optional(),
+    drivers_license_front_date: z.date().optional(),
+    
+    drivers_license_back: z.array(z.any()).optional(),
+    drivers_license_back_date: z.date().optional(),
+    
+    driver_digi_card_front: z.array(z.any()).optional(),
+    driver_digi_card_front_date: z.date().optional(),
+    
+    driver_digi_card_back: z.array(z.any()).optional(),
+    driver_digi_card_back_date: z.date().optional(),
+    
+    driver_cpc_card_front: z.array(z.any()).optional(),
+    driver_cpc_card_front_date: z.date().optional(),
+    
+    driver_cpc_card_back: z.array(z.any()).optional(),
+    driver_cpc_card_back_date: z.date().optional(),
+    
+    disclosure: z.array(z.any()).optional(),
+    disclosure_date: z.date().optional(),
+    
     skills: z.array(z.string()).optional(),
+    uid: z.string().optional(),
 });
 
 type FormValues = z.infer<typeof formSchema>;
 
 const DocumentUploader = () => {
+    const searchParams = useSearchParams();
+    const uid = searchParams.get("uid");
+    
+    const [skillInput, setSkillInput] = useState("");
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [openSuccess, setOpenSuccess] = useState(false);
+
     const form = useForm<FormValues>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -78,34 +117,123 @@ const DocumentUploader = () => {
             lastName: "",
             email: "",
             skills: [],
+            uid: uid || "",
         },
     });
 
-    const onSubmit = (values: FormValues) => {
-        console.log("Form submitted:", values);
-        alert("Application submitted successfully!");
+    useEffect(() => {
+        if (uid) {
+            form.setValue("uid", uid);
+        }
+    }, [uid, form]);
+
+    const onSubmit = async (values: FormValues) => {
+        setIsSubmitting(true);
+        try {
+            const formData = new FormData();
+            formData.append("firstName", values.firstName);
+            formData.append("lastName", values.lastName);
+            formData.append("email", values.email);
+            
+            if (values.availableFromDate) {
+                formData.append("availableFrom", format(values.availableFromDate, "yyyy-MM-dd"));
+            }
+            
+            if (values.skills && values.skills.length > 0) {
+                values.skills.forEach(skill => formData.append("skills", skill));
+            }
+
+            // Document Labels to process
+            const labels = [
+                "qualification_card_front", "qualification_card_back", "certificate_1", "certificate_2",
+                "passport", "visa", "birth_certificate", "p45_if_not_working",
+                "drivers_license_front", "drivers_license_back", "driver_digi_card_front",
+                "driver_digi_card_back", "driver_cpc_card_front", "driver_cpc_card_back", "disclosure"
+            ];
+
+            labels.forEach(label => {
+                // Append multiple files for each label
+                const files = values[label as keyof FormValues] as File[];
+                if (files && files.length > 0) {
+                    files.forEach(file => {
+                        formData.append(`file-${label}`, file);
+                    });
+                }
+                
+                // Append associated date (required for disclosure, optional for others if they have one)
+                const dateKey = `${label}_date` as keyof FormValues;
+                const docDate = values[dateKey] as Date;
+                if (docDate) {
+                    formData.append(`date-${label}`, format(docDate, "yyyy-MM-dd"));
+                }
+            });
+
+            const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://api.swiftwave.ai/api/v1";
+            const response = await fetch(`${API_BASE_URL}/core/pre-application/${uid}/`, {
+                method: "POST",
+                body: formData,
+            });
+
+            if (response.ok) {
+                setOpenSuccess(true);
+                form.reset({
+                    ...form.getValues(),
+                    skills: [],
+                    availableFromDate: undefined,
+                });
+                // Reset file fields manually if needed (zod doesn't always handle File list reset perfectly)
+                labels.forEach(label => form.setValue(label as any, []));
+            } else {
+                const errorData = await response.json();
+                console.error("API Error:", errorData);
+                alert(`Submission failed: ${JSON.stringify(errorData)}`);
+            }
+        } catch (error) {
+            console.error("Submission error:", error);
+            alert("An error occurred while submitting your application.");
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, currentSkills: string[], onChange: (value: string[]) => void) => {
+        if (e.key === "," || e.key === "Enter") {
+            e.preventDefault();
+            const trimmedValue = skillInput.trim();
+            if (trimmedValue && !currentSkills.includes(trimmedValue)) {
+                onChange([...currentSkills, trimmedValue]);
+                setSkillInput("");
+            }
+        } else if (e.key === "Backspace" && skillInput === "" && currentSkills.length > 0) {
+            onChange(currentSkills.slice(0, -1));
+        }
+    };
+
+    const removeSkill = (skillToRemove: string, currentSkills: string[], onChange: (value: string[]) => void) => {
+        onChange(currentSkills.filter((skill) => skill !== skillToRemove));
     };
 
     const documentTypes = [
-        { id: "qualificationCardFront", label: "Qualification Card (Front)", hasExpiry: true },
-        { id: "qualificationCardBack", label: "Qualification Card (Back)", hasExpiry: true },
-        { id: "certificate1", label: "Certificate 1", hasExpiry: true },
-        { id: "certificate2", label: "Certificate 2", hasExpiry: true },
+        { id: "qualification_card_front", label: "Qualification Card (Front)", hasExpiry: true },
+        { id: "qualification_card_back", label: "Qualification Card (Back)", hasExpiry: true },
+        { id: "certificate_1", label: "Certificate 1", hasExpiry: true },
+        { id: "certificate_2", label: "Certificate 2", hasExpiry: true },
         { id: "passport", label: "Passport", hasExpiry: true },
-        { id: "drivingLicenceFront", label: "Driving Licence (Front)", hasExpiry: true },
-        { id: "drivingLicenceBack", label: "Driving Licence (Back)", hasExpiry: true },
-        { id: "driverDigiCardFront", label: "Driver Digi-Card (Front)", hasExpiry: true },
-        { id: "driverDigiCardBack", label: "Driver Digi-Card (Back)", hasExpiry: true },
-        { id: "driverCPCCardFront", label: "Driver CPC Card (Front)", hasExpiry: true },
-        { id: "driverCPCCardBack", label: "Driver CPC Card (Back)", hasExpiry: true },
-        { id: "birthCertificate", label: "Birth Certificate", hasExpiry: true },
-        { id: "disclosure", label: "Disclosure", hasExpiry: false },
-        { id: "disclosureIssueDate", label: "Disclosure Issue Date", isOnlyDate: true },
+        { id: "visa", label: "Visa", hasExpiry: true },
+        { id: "birth_certificate", label: "Birth Certificate", hasExpiry: true },
+        { id: "p45_if_not_working", label: "P45 (if not working)", hasExpiry: true },
+        { id: "drivers_license_front", label: "Drivers Licence (Front)", hasExpiry: true },
+        { id: "drivers_license_back", label: "Drivers Licence (Back)", hasExpiry: true },
+        { id: "driver_digi_card_front", label: "Driver Digi-Card (Front)", hasExpiry: true },
+        { id: "driver_digi_card_back", label: "Driver Digi-Card (Back)", hasExpiry: true },
+        { id: "driver_cpc_card_front", label: "Driver CPC Card (Front)", hasExpiry: true },
+        { id: "driver_cpc_card_back", label: "Driver CPC Card (Back)", hasExpiry: true },
+        { id: "disclosure", label: "Disclosure", hasExpiry: true, labelEx: "Disclosure Issue Date" },
     ];
 
-    const Dropzone = ({ label, id, onFileSelect }: { label: string; id: string; onFileSelect?: (file: File) => void }) => {
+    const Dropzone = ({ label, id, value, onChange }: { label: string; id: string; value: any; onChange: (files: File[]) => void }) => {
         const [dragActive, setDragActive] = useState(false);
-        const [fileName, setFileName] = useState<string | null>(null);
+        const files = (value as File[]) || [];
 
         const handleDrag = (e: React.DragEvent) => {
             e.preventDefault();
@@ -121,36 +249,62 @@ const DocumentUploader = () => {
             e.preventDefault();
             e.stopPropagation();
             setDragActive(false);
-            if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-                setFileName(e.dataTransfer.files[0].name);
+            if (e.dataTransfer.files) {
+                const newFiles = Array.from(e.dataTransfer.files);
+                onChange([...files, ...newFiles]);
             }
         };
 
+        const removeFile = (index: number) => {
+            const updatedFiles = [...files];
+            updatedFiles.splice(index, 1);
+            onChange(updatedFiles);
+        };
+
         return (
-            <div
-                className={cn(
-                    "relative border-2 border-dashed rounded-lg p-6 transition-all duration-200 flex flex-col items-center justify-center gap-2",
-                    dragActive ? "border-black bg-gray-50 scale-[1.01]" : "border-gray-200 hover:border-gray-400 bg-white",
-                    fileName ? "border-green-500 bg-green-50/10" : ""
+            <div className="space-y-3">
+                <div
+                    className={cn(
+                        "relative border-2 border-dashed rounded-lg p-6 transition-all duration-200 flex flex-col items-center justify-center gap-2",
+                        dragActive ? "border-black bg-gray-50 scale-[1.01]" : "border-gray-200 hover:border-gray-400 bg-white",
+                        files.length > 0 ? "border-green-500 bg-green-50/10" : ""
+                    )}
+                    onDragEnter={handleDrag}
+                    onDragLeave={handleDrag}
+                    onDragOver={handleDrag}
+                    onDrop={handleDrop}
+                >
+                    <Upload className={cn("w-8 h-8", files.length > 0 ? "text-green-600" : "text-gray-400")} />
+                    <p className="text-sm font-medium text-black">
+                        {files.length > 0 ? `${files.length} file(s) selected` : "Drag & drop files here or click to upload"}
+                    </p>
+                    <input
+                        type="file"
+                        multiple
+                        className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                        onChange={(e) => {
+                            if (e.target.files) {
+                                const newFiles = Array.from(e.target.files);
+                                onChange([...files, ...newFiles]);
+                            }
+                        }}
+                    />
+                </div>
+                
+                {files.length > 0 && (
+                    <div className="flex flex-wrap gap-2">
+                        {files.map((file, idx) => (
+                            <Badge key={idx} variant="outline" className="flex items-center gap-2 py-1 px-2 border-gray-200 bg-white text-gray-700">
+                                <FileUp className="w-3 h-3 text-gray-400" />
+                                <span className="max-w-[150px] truncate">{file.name}</span>
+                                <X 
+                                    className="w-3 h-3 cursor-pointer hover:text-red-500 transition-colors" 
+                                    onClick={() => removeFile(idx)}
+                                />
+                            </Badge>
+                        ))}
+                    </div>
                 )}
-                onDragEnter={handleDrag}
-                onDragLeave={handleDrag}
-                onDragOver={handleDrag}
-                onDrop={handleDrop}
-            >
-                <Upload className={cn("w-8 h-8", fileName ? "text-green-600" : "text-gray-400")} />
-                <p className="text-sm font-medium text-black">
-                    {fileName ? fileName : "Drag & drop file here or click to upload"}
-                </p>
-                <input
-                    type="file"
-                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                    onChange={(e) => {
-                        if (e.target.files?.[0]) {
-                            setFileName(e.target.files[0].name);
-                        }
-                    }}
-                />
             </div>
         );
     };
@@ -272,7 +426,7 @@ const DocumentUploader = () => {
                                                             selected={field.value}
                                                             onSelect={field.onChange}
                                                             disabled={(date) =>
-                                                                date < new Date() || date < new Date("1900-01-01")
+                                                                date < new Date("1900-01-01")
                                                             }
                                                             initialFocus
                                                         />
@@ -293,92 +447,70 @@ const DocumentUploader = () => {
                             <div className="space-y-10">
                                 {documentTypes.map((doc) => (
                                     <div key={doc.id} className="space-y-4">
-                                        {doc.isOnlyDate ? (
+                                        <div className="space-y-4">
+                                            <FormLabel className="text-black font-semibold block mb-2">{doc.label}</FormLabel>
+                                            
                                             <FormField
                                                 control={form.control}
                                                 name={doc.id as any}
                                                 render={({ field }) => (
-                                                    <FormItem className="flex flex-col">
-                                                        <FormLabel className="text-black font-semibold mb-2">{doc.label}</FormLabel>
-                                                        <Popover>
-                                                            <PopoverTrigger asChild>
-                                                                <FormControl>
-                                                                    <Button
-                                                                        variant={"outline"}
-                                                                        className={cn(
-                                                                            "w-full h-12 pl-3 text-left font-normal bg-white border-gray-200 text-black hover:bg-gray-50 uppercase shadow-none",
-                                                                            !field.value && "text-gray-400"
-                                                                        )}
-                                                                    >
-                                                                        {field.value ? (
-                                                                            format(field.value, "PPP")
-                                                                        ) : (
-                                                                            <span>mm/dd/yyyy</span>
-                                                                        )}
-                                                                        <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                                                                    </Button>
-                                                                </FormControl>
-                                                            </PopoverTrigger>
-                                                            <PopoverContent className="w-auto p-0" align="start">
-                                                                <Calendar
-                                                                    mode="single"
-                                                                    selected={field.value as any}
-                                                                    onSelect={field.onChange}
-                                                                    initialFocus
-                                                                />
-                                                            </PopoverContent>
-                                                        </Popover>
+                                                    <FormItem>
+                                                        <FormControl>
+                                                            <Dropzone 
+                                                                label={doc.label} 
+                                                                id={doc.id} 
+                                                                value={field.value} 
+                                                                onChange={field.onChange} 
+                                                            />
+                                                        </FormControl>
                                                         <FormMessage />
                                                     </FormItem>
                                                 )}
                                             />
-                                        ) : (
-                                            <div className="space-y-4">
-                                                <FormLabel className="text-black font-semibold block mb-2">{doc.label}</FormLabel>
-                                                <Dropzone label={doc.label} id={doc.id} />
 
-                                                {doc.hasExpiry && (
-                                                    <FormField
-                                                        control={form.control}
-                                                        name={`${doc.id}Expiry` as any}
-                                                        render={({ field }) => (
-                                                            <FormItem className="flex flex-col">
-                                                                <FormLabel className="text-gray-600 text-xs font-semibold uppercase tracking-wider">Expiration Date</FormLabel>
-                                                                <Popover>
-                                                                    <PopoverTrigger asChild>
-                                                                        <FormControl>
-                                                                            <Button
-                                                                                variant={"outline"}
-                                                                                className={cn(
-                                                                                    "w-full h-12 pl-3 text-left font-normal bg-white border-gray-200 text-black hover:bg-gray-50 shadow-none uppercase",
-                                                                                    !field.value && "text-gray-400"
-                                                                                )}
-                                                                            >
-                                                                                {field.value ? (
-                                                                                    format(field.value, "PPP")
-                                                                                ) : (
-                                                                                    <span>mm/dd/yyyy</span>
-                                                                                )}
-                                                                                <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                                                                            </Button>
-                                                                        </FormControl>
-                                                                    </PopoverTrigger>
-                                                                    <PopoverContent className="w-auto p-0" align="start">
-                                                                        <Calendar
-                                                                            mode="single"
-                                                                            selected={field.value as any}
-                                                                            onSelect={field.onChange}
-                                                                            initialFocus
-                                                                        />
-                                                                    </PopoverContent>
-                                                                </Popover>
-                                                                <FormMessage />
-                                                            </FormItem>
-                                                        )}
-                                                    />
-                                                )}
-                                            </div>
-                                        )}
+                                            {doc.hasExpiry && (
+                                                <FormField
+                                                    control={form.control}
+                                                    name={`${doc.id}_date` as any}
+                                                    render={({ field }) => (
+                                                        <FormItem className="flex flex-col">
+                                                            <FormLabel className="text-gray-600 text-xs font-semibold uppercase tracking-wider">
+                                                                {doc.labelEx || "Expiration Date"}
+                                                            </FormLabel>
+                                                            <Popover>
+                                                                <PopoverTrigger asChild>
+                                                                    <FormControl>
+                                                                        <Button
+                                                                            variant={"outline"}
+                                                                            className={cn(
+                                                                                "w-full h-12 pl-3 text-left font-normal bg-white border-gray-200 text-black hover:bg-gray-50 shadow-none uppercase",
+                                                                                !field.value && "text-gray-400"
+                                                                            )}
+                                                                        >
+                                                                            {field.value ? (
+                                                                                format(field.value, "PPP")
+                                                                            ) : (
+                                                                                <span>mm/dd/yyyy</span>
+                                                                            )}
+                                                                            <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                                                                        </Button>
+                                                                    </FormControl>
+                                                                </PopoverTrigger>
+                                                                <PopoverContent className="w-auto p-0" align="start">
+                                                                    <Calendar
+                                                                        mode="single"
+                                                                        selected={field.value as any}
+                                                                        onSelect={field.onChange}
+                                                                        initialFocus
+                                                                    />
+                                                                </PopoverContent>
+                                                            </Popover>
+                                                            <FormMessage />
+                                                        </FormItem>
+                                                    )}
+                                                />
+                                            )}
+                                        </div>
                                     </div>
                                 ))}
                             </div>
@@ -395,11 +527,26 @@ const DocumentUploader = () => {
                                     render={({ field }) => (
                                         <FormItem>
                                             <FormControl>
-                                                <div className="relative">
-                                                    <Input
-                                                        placeholder="Select one or more skills"
-                                                        readOnly
-                                                        className="bg-white border-gray-200 text-gray-500 h-14 focus:ring-0 focus-visible:ring-0 border rounded-sm placeholder:text-gray-500 cursor-pointer"
+                                                <div className="flex flex-wrap items-center gap-2 p-2 min-h-14 bg-white border border-gray-200 rounded-sm focus-within:ring-1 focus-within:ring-black">
+                                                    {field.value?.map((skill: string) => (
+                                                        <Badge
+                                                            key={skill}
+                                                            variant="secondary"
+                                                            className="bg-gray-100 text-black hover:bg-gray-200 flex items-center gap-1 px-2 py-1"
+                                                        >
+                                                            {skill}
+                                                            <X
+                                                                className="w-3 h-3 cursor-pointer"
+                                                                onClick={() => removeSkill(skill, field.value || [], field.onChange)}
+                                                            />
+                                                        </Badge>
+                                                    ))}
+                                                    <input
+                                                        className="flex-1 bg-transparent border-none outline-none text-black placeholder:text-gray-500 min-w-[120px] h-9"
+                                                        placeholder={field.value && field.value.length > 0 ? "" : "Select one or more skills"}
+                                                        value={skillInput}
+                                                        onChange={(e) => setSkillInput(e.target.value)}
+                                                        onKeyDown={(e) => handleKeyDown(e, field.value || [], field.onChange)}
                                                     />
                                                 </div>
                                             </FormControl>
@@ -414,9 +561,10 @@ const DocumentUploader = () => {
                         <div className="pt-2">
                             <Button
                                 type="submit"
-                                className="w-[50%] md:w-[40%] lg:w-[30%] h-12 bg-black text-white hover:bg-gray-800 transition-all text-sm md:text-sm lg:text-lg font-bold rounded-lg group"
+                                disabled={isSubmitting}
+                                className="w-[50%] md:w-[40%] lg:w-[30%] h-12 bg-black text-white hover:bg-gray-800 transition-all text-sm md:text-sm lg:text-lg font-bold rounded-lg group disabled:bg-gray-400"
                             >
-                                Submit My Application
+                                {isSubmitting ? "Submitting..." : "Submit My Application"}
                                 <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
                             </Button>
                         </div>
@@ -424,10 +572,27 @@ const DocumentUploader = () => {
                     </form>
                 </Form>
 
-                {/* Footer info or disclaimer if needed */}
-                {/* <p className="mt-12 text-center text-gray-400 text-sm italic">
-                    Designed for excellence and ease of use.
-                </p> */}
+                <AlertDialog open={openSuccess} onOpenChange={setOpenSuccess}>
+                    <AlertDialogContent className="bg-white">
+                        <AlertDialogHeader>
+                            <AlertDialogTitle className="text-xl font-bold flex items-center gap-2">
+                                <CheckCircle2 className="text-green-600 w-6 h-6" />
+                                Application Submitted!
+                            </AlertDialogTitle>
+                            <AlertDialogDescription className="text-gray-600 text-base">
+                                Your application has been successfully submitted. We will review your documents and contact you shortly.
+                            </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                            <AlertDialogAction 
+                                className="bg-black text-white hover:bg-gray-800"
+                                onClick={() => setOpenSuccess(false)}
+                            >
+                                Continue
+                            </AlertDialogAction>
+                        </AlertDialogFooter>
+                    </AlertDialogContent>
+                </AlertDialog>
             </div>
         </div>
     );
