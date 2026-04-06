@@ -39,7 +39,7 @@ const Hero = () => {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6 animate-fade-in">
             <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
             <span className="text-sm font-medium text-white">
-              From Customer to Business
+              AI Voice Infrastructure
             </span>
           </div>
 
