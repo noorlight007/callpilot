@@ -247,12 +247,7 @@ const DocumentUploader = () => {
                     form.setFocus("qualification_card_front" as any);
                 }
 
-                setAlertConfig({
-                    open: true,
-                    title: "Submission Failed",
-                    description: result.error || result.message || "Please check the highlighted fields.",
-                    type: "error",
-                });
+                }
             }
         } catch (error) {
             setAlertConfig({
@@ -428,21 +423,33 @@ const DocumentUploader = () => {
                                     <FormField control={form.control} name="availableFromDate" render={({ field, fieldState }) => (
                                         <FormItem className="flex flex-col">
                                             <FormLabel className="text-black font-semibold mb-1">Available from Date</FormLabel>
-                                            <div className="relative">
-                                                <Popover>
-                                                    <PopoverTrigger asChild>
-                                                        <FormControl>
-                                                            <Button variant={"outline"} className={cn("w-full h-12 pl-3 text-left font-normal bg-white border-gray-200 text-black", !field.value && "text-gray-400", fieldState.error && "border-red-500")}>
-                                                                {field.value ? format(field.value, "PPP") : <span>mm/dd/yyyy</span>}
-                                                                <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                                                            </Button>
-                                                        </FormControl>
-                                                    </PopoverTrigger>
-                                                    <PopoverContent className="w-auto p-0" align="start">
-                                                        <Calendar mode="single" selected={field.value} onSelect={field.onChange} initialFocus />
-                                                    </PopoverContent>
-                                                </Popover>
-                                            </div>
+                                                    <div className="relative">
+                                                        <Popover>
+                                                            <PopoverTrigger asChild>
+                                                                <FormControl>
+                                                                    <Button variant={"outline"} className={cn("w-full h-12 pl-3 text-left font-normal bg-white border-gray-200 text-black pr-20", !field.value && "text-gray-400", fieldState.error && "border-red-500")}>
+                                                                        {field.value ? format(field.value, "PPP") : <span>mm/dd/yyyy</span>}
+                                                                        <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                                                                    </Button>
+                                                                </FormControl>
+                                                            </PopoverTrigger>
+                                                            <PopoverContent className="w-auto p-0" align="start">
+                                                                <Calendar mode="single" selected={field.value} onSelect={field.onChange} initialFocus />
+                                                            </PopoverContent>
+                                                        </Popover>
+                                                        {field.value && (
+                                                            <button
+                                                                type="button"
+                                                                onClick={(e) => {
+                                                                    e.preventDefault();
+                                                                    field.onChange(undefined);
+                                                                }}
+                                                                className="absolute right-12 top-1/2 -translate-y-1/2 text-gray-400 hover:text-red-500 transition-colors p-2 z-10"
+                                                            >
+                                                                <X className="w-4 h-4" />
+                                                            </button>
+                                                        )}
+                                                    </div>
                                             <FormMessage className="text-red-500 font-medium" />
                                         </FormItem>
                                     )} />
@@ -472,7 +479,7 @@ const DocumentUploader = () => {
                                                         <Popover>
                                                             <PopoverTrigger asChild>
                                                                 <FormControl>
-                                                                    <Button variant={"outline"} className={cn("w-full h-12 pl-3 text-left font-normal bg-white border-gray-200 text-black uppercase", !field.value && "text-gray-400", fieldState.error && "border-red-500")}>
+                                                                    <Button variant={"outline"} className={cn("w-full h-12 pl-3 text-left font-normal bg-white border-gray-200 text-black uppercase pr-20", !field.value && "text-gray-400", fieldState.error && "border-red-500")}>
                                                                         {field.value ? format(field.value as Date, "PPP") : <span>mm/dd/yyyy</span>}
                                                                         <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                                                                     </Button>
@@ -482,6 +489,18 @@ const DocumentUploader = () => {
                                                                 <Calendar mode="single" selected={field.value as any} onSelect={field.onChange} initialFocus />
                                                             </PopoverContent>
                                                         </Popover>
+                                                        {field.value && (
+                                                            <button
+                                                                type="button"
+                                                                onClick={(e) => {
+                                                                    e.preventDefault();
+                                                                    field.onChange(undefined);
+                                                                }}
+                                                                className="absolute right-12 top-1/2 -translate-y-1/2 text-gray-400 hover:text-red-500 transition-colors p-2 z-10"
+                                                            >
+                                                                <X className="w-4 h-4" />
+                                                            </button>
+                                                        )}
                                                     </div>
                                                     <FormMessage className="text-red-500 font-medium" />
                                                 </FormItem>
