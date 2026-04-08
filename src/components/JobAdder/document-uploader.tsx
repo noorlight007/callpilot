@@ -122,8 +122,8 @@ const DocumentUploader = () => {
     const searchParams = useSearchParams();
     const uid = searchParams.get("uid");
     
-    const [skillInput, setSkillInput] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [formError, setFormError] = useState<string | null>(null);
     
     const [alertConfig, setAlertConfig] = useState<{
         open: boolean;
@@ -171,6 +171,7 @@ const DocumentUploader = () => {
 
     const onSubmit = async (values: FormValues) => {
         setIsSubmitting(true);
+        setFormError(null);
         try {
             const formData = new FormData();
             formData.append("firstName", values.firstName || "");
@@ -181,9 +182,7 @@ const DocumentUploader = () => {
                 formData.append("availableFrom", format(values.availableFromDate, "yyyy-MM-dd"));
             }
             
-            if (values.skills && values.skills.length > 0) {
-                values.skills.forEach(skill => formData.append("skills", skill));
-            }
+            
 
             documentLabels.forEach(label => {
                 const files = values[label as keyof FormValues] as File[];
@@ -254,6 +253,7 @@ const DocumentUploader = () => {
                     scrollToField("qualification_card_front");
                 }
 
+                setFormError(result.error || result.message || "Please check the highlighted fields.");
                 }
             } catch (error) {
             setAlertConfig({
@@ -267,22 +267,7 @@ const DocumentUploader = () => {
         }
     };
 
-    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, currentSkills: string[], onChange: (value: string[]) => void) => {
-        if (e.key === "," || e.key === "Enter") {
-            e.preventDefault();
-            const trimmedValue = skillInput.trim();
-            if (trimmedValue && !currentSkills.includes(trimmedValue)) {
-                onChange([...currentSkills, trimmedValue]);
-                setSkillInput("");
-            }
-        } else if (e.key === "Backspace" && skillInput === "" && currentSkills.length > 0) {
-            onChange(currentSkills.slice(0, -1));
-        }
-    };
 
-    const removeSkill = (skillToRemove: string, currentSkills: string[], onChange: (value: string[]) => void) => {
-        onChange(currentSkills.filter((skill) => skill !== skillToRemove));
-    };
 
     const documentTypes = [
         { id: "qualification_card_front", label: "Qualification Card (Front)", hasExpiry: true },
@@ -378,6 +363,13 @@ const DocumentUploader = () => {
                     <h1 className="text-3xl font-bold text-black border-none">Documents Upload</h1>
                     {logo && <img src={logo.src} alt="Logo" className="h-16 w-auto" />}
                 </div>
+
+                {formError && (
+                    <div className="mb-8 p-4 bg-red-50 border border-red-200 rounded-xl flex items-center gap-3 animate-in fade-in slide-in-from-top-2 duration-300">
+                        <AlertCircle className="w-5 h-5 text-red-600 shrink-0" />
+                        <p className="text-red-700 font-medium text-sm">{formError}</p>
+                    </div>
+                )}
 
                 <div className="bg-[#f0f9f1] border border-[#d1e9d2] rounded-xl p-6 mb-10">
                     <h2 className="text-sm font-bold text-black uppercase tracking-wider mb-4 flex items-center gap-2">Important reminders</h2>
@@ -517,30 +509,7 @@ const DocumentUploader = () => {
                             </div>
                         </section>
 
-                        <section>
-                            <div className="flex items-center justify-between mb-4">
-                                <h2 className="text-xl font-bold text-black border-none">Skills</h2>
-                            </div>
-                            <div className="space-y-2">
-                                <FormLabel className="text-black font-semibold block">Skills / Notes</FormLabel>
-                                <FormField control={form.control} name="skills" render={({ field }) => (
-                                    <FormItem>
-                                        <FormControl>
-                                            <div className="flex flex-wrap items-center gap-2 p-2 min-h-14 bg-white border border-gray-200 rounded-sm focus-within:ring-1 focus-within:ring-black">
-                                                {field.value?.map((skill: string) => (
-                                                    <Badge key={skill} variant="secondary" className="bg-gray-100 text-black flex items-center gap-1 px-2 py-1">
-                                                        {skill}
-                                                        <X className="w-3 h-3 cursor-pointer hover:text-red-500" onClick={() => removeSkill(skill, field.value || [], field.onChange)} />
-                                                    </Badge>
-                                                ))}
-                                                <input className="flex-1 bg-transparent border-none outline-none text-black placeholder:text-gray-500 min-w-[120px] h-9" placeholder="Select one or more skills" value={skillInput} onChange={(e) => setSkillInput(e.target.value)} onKeyDown={(e) => handleKeyDown(e, field.value || [], field.onChange)} />
-                                            </div>
-                                        </FormControl>
-                                        <FormMessage />
-                                    </FormItem>
-                                )} />
-                            </div>
-                        </section>
+
 
                         <div className="pt-2">
                             <Button type="submit" disabled={isSubmitting} className="w-[50%] md:w-[40%] lg:w-[30%] h-12 bg-black text-white hover:bg-gray-800 transition-all font-bold rounded-lg group disabled:bg-gray-400">
