@@ -155,6 +155,13 @@ const DocumentUploader = () => {
         }
     }, [uid, form]);
 
+    const scrollToField = (id: string) => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+    };
+
     const documentLabels = [
         "qualification_card_front", "qualification_card_back", "certificate_1", "certificate_2",
         "passport", "visa", "birth_certificate", "p45_if_not_working",
@@ -233,9 +240,9 @@ const DocumentUploader = () => {
                     });
                     
                     const firstMsg = result.errors[0].toLowerCase();
-                    if (firstMsg.includes("firstname")) form.setFocus("firstName");
-                    else if (firstMsg.includes("lastname")) form.setFocus("lastName");
-                    else if (firstMsg.includes("email")) form.setFocus("email");
+                    if (firstMsg.includes("firstname")) scrollToField("firstName");
+                    else if (firstMsg.includes("lastname")) scrollToField("lastName");
+                    else if (firstMsg.includes("email")) scrollToField("email");
                 }
 
                 // Global document error
@@ -244,7 +251,7 @@ const DocumentUploader = () => {
                         form.setError(label as any, { message: result.error });
                         form.setError(`${label}_date` as any, { message: "Date Required" });
                     });
-                    form.setFocus("qualification_card_front" as any);
+                    scrollToField("qualification_card_front");
                 }
 
                 }
@@ -393,7 +400,7 @@ const DocumentUploader = () => {
                                     <FormItem>
                                         <FormLabel className="text-black font-semibold">First Name <span className="text-red-500">*</span></FormLabel>
                                         <FormControl>
-                                            <Input placeholder="Your first name" {...field} className={cn("bg-white border-gray-200 text-black h-12", fieldState.error && "border-red-500")} />
+                                            <Input id="firstName" placeholder="Your first name" {...field} className={cn("bg-white border-gray-200 text-black h-12", fieldState.error && "border-red-500")} />
                                         </FormControl>
                                         <FormMessage className="text-red-500 font-medium" />
                                     </FormItem>
@@ -402,7 +409,7 @@ const DocumentUploader = () => {
                                     <FormItem>
                                         <FormLabel className="text-black font-semibold">Last Name <span className="text-red-500">*</span></FormLabel>
                                         <FormControl>
-                                            <Input placeholder="Your last name" {...field} className={cn("bg-white border-gray-200 text-black h-12", fieldState.error && "border-red-500")} />
+                                            <Input id="lastName" placeholder="Your last name" {...field} className={cn("bg-white border-gray-200 text-black h-12", fieldState.error && "border-red-500")} />
                                         </FormControl>
                                         <FormMessage className="text-red-500 font-medium" />
                                     </FormItem>
@@ -412,7 +419,7 @@ const DocumentUploader = () => {
                                         <FormItem>
                                             <FormLabel className="text-black font-semibold">Email <span className="text-red-500">*</span></FormLabel>
                                             <FormControl>
-                                                <Input placeholder="your@example.com" {...field} className={cn("bg-white border-gray-200 text-black h-12", fieldState.error && "border-red-500")} />
+                                                <Input id="email" placeholder="your@example.com" {...field} className={cn("bg-white border-gray-200 text-black h-12", fieldState.error && "border-red-500")} />
                                             </FormControl>
                                             <FormMessage className="text-red-500 font-medium" />
                                         </FormItem>
@@ -420,7 +427,7 @@ const DocumentUploader = () => {
                                 </div>
                                 <div className="md:col-span-2">
                                     <FormField control={form.control} name="availableFromDate" render={({ field, fieldState }) => (
-                                        <FormItem className="flex flex-col">
+                                        <FormItem className="flex flex-col" id="availableFromDate">
                                             <FormLabel className="text-black font-semibold mb-1">Available from Date</FormLabel>
                                                     <div className="relative">
                                                         <Popover>
