@@ -154,7 +154,7 @@ const DocumentUploader = () => {
         }
     }, [uid, form]);
 
-    const firstError = Object.values(form.formState.errors)[0]?.message as string | undefined;
+    const allErrors = Array.from(new Set(Object.values(form.formState.errors).map(err => err?.message as string).filter(Boolean)));
 
     const scrollToField = (id: string) => {
         const element = document.getElementById(id);
@@ -363,10 +363,14 @@ const DocumentUploader = () => {
                     {logo && <img src={logo.src} alt="Logo" className="h-16 w-auto" />}
                 </div>
 
-                {firstError && (
-                    <div className="mb-10 p-4 bg-red-50 border border-red-200 rounded-xl flex items-center gap-3 text-red-600 font-semibold animate-in fade-in slide-in-from-top-2 duration-300">
-                        <AlertCircle className="w-6 h-6 flex-shrink-0" />
-                        <p className="text-lg">{firstError}</p>
+                {allErrors.length > 0 && (
+                    <div className="mb-10 p-4 bg-red-50 border border-red-200 rounded-xl space-y-2 animate-in fade-in slide-in-from-top-2 duration-300">
+                        {allErrors.map((err, idx) => (
+                            <div key={idx} className="flex items-center gap-3 text-red-600 font-semibold">
+                                <AlertCircle className="w-5 h-5 flex-shrink-0" />
+                                <p className="text-lg">{err}</p>
+                            </div>
+                        ))}
                     </div>
                 )}
 
