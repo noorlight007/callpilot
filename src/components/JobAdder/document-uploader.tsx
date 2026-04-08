@@ -241,8 +241,8 @@ const DocumentUploader = () => {
                 // Global document error
                 if (result.error === "At least one document must be uploaded.") {
                     documentLabels.forEach(label => {
-                        form.setError(label as any, { message: "Document Required" });
-                        form.setError(`${label}_date` as any, { message: "Date Required" });
+                        form.setError(label as any, { message: result.error });
+                        form.setError(`${label}_date` as any, { message: result.error });
                     });
                     form.setFocus("qualification_card_front" as any);
                 }
