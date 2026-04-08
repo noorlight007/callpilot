@@ -364,10 +364,10 @@ const DocumentUploader = () => {
                     {logo && <img src={logo.src} alt="Logo" className="h-16 w-auto" />}
                 </div>
 
-                {formError && (
+                {fieldState.error && (
                     <div className="mb-8 p-4 bg-red-50 border border-red-200 rounded-xl flex items-center gap-3 animate-in fade-in slide-in-from-top-2 duration-300">
                         <AlertCircle className="w-5 h-5 text-red-600 shrink-0" />
-                        <p className="text-red-700 font-medium text-sm">{formError}</p>
+                        <p className="text-red-700 font-medium text-sm">{fieldState.error}</p>
                     </div>
                 )}
 
