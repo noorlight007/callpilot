@@ -286,8 +286,8 @@ const DocumentUploader = () => {
         { id: "disclosure", label: "Disclosure", hasExpiry: true, labelEx: "Disclosure Issue Date" },
     ];
 
-    const Dropzone = React.forwardRef<HTMLDivElement, { label: string; id: string; value: any; onChange: (files: File[]) => void; hasError?: boolean }>(
-        ({ label, id, value, onChange, hasError }, ref) => {
+    const Dropzone = React.forwardRef<HTMLInputElement, { label: string; id: string; value: any; onChange: (files: File[]) => void; onBlur?: () => void; name?: string; hasError?: boolean }>(
+        ({ label, id, value, onChange, onBlur, name, hasError }, ref) => {
             const [dragActive, setDragActive] = useState(false);
             const files = (value as File[]) || [];
 
@@ -322,7 +322,7 @@ const DocumentUploader = () => {
             };
 
             return (
-                <div className="space-y-3" ref={ref} id={id}>
+                <div className="space-y-3" id={id}>
                     <div
                         className={cn(
                             "relative border-2 border-dashed rounded-lg p-6 transition-all duration-200 flex flex-col items-center justify-center gap-2",
@@ -342,6 +342,9 @@ const DocumentUploader = () => {
                         <input
                             type="file"
                             multiple
+                            ref={ref}
+                            name={name}
+                            onBlur={onBlur}
                             className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                             onChange={(e) => {
                                 if (e.target.files) {
