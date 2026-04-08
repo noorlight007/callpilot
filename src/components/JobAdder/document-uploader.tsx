@@ -248,8 +248,7 @@ const DocumentUploader = () => {
                 }
 
                 }
-            }
-        } catch (error) {
+            } catch (error) {
             setAlertConfig({
                 open: true,
                 title: "Error",
