@@ -98,6 +98,27 @@ const formSchema = z.object({
     
     skills: z.array(z.string()).optional(),
     uid: z.string().optional(),
+}).superRefine((data, ctx) => {
+    const documentTypes = [
+        "qualification_card_front", "qualification_card_back", "certificate_1", "certificate_2",
+        "passport", "visa", "birth_certificate", "p45_if_not_working",
+        "drivers_license_front", "drivers_license_back", "driver_digi_card_front",
+        "driver_digi_card_back", "driver_cpc_card_front", "driver_cpc_card_back", "disclosure"
+    ];
+
+    documentTypes.forEach((docId) => {
+        const fileValue = data[docId as keyof typeof data];
+        const dateValue = data[`${docId}_date` as keyof typeof data];
+
+        // If date is provided but no file is uploaded
+        if (dateValue && (!fileValue || (Array.isArray(fileValue) && fileValue.length === 0))) {
+            ctx.addIssue({
+                code: z.ZodIssueCode.custom,
+                message: "Document file is required when a date is provided",
+                path: [docId],
+            });
+        }
+    });
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -265,99 +286,102 @@ const DocumentUploader = () => {
         { id: "disclosure", label: "Disclosure", hasExpiry: true, labelEx: "Disclosure Issue Date" },
     ];
 
-    const Dropzone = ({ label, id, value, onChange }: { label: string; id: string; value: any; onChange: (files: File[]) => void }) => {
-        const [dragActive, setDragActive] = useState(false);
-        const files = (value as File[]) || [];
+    const Dropzone = React.forwardRef<HTMLDivElement, { label: string; id: string; value: any; onChange: (files: File[]) => void; hasError?: boolean }>(
+        ({ label, id, value, onChange, hasError }, ref) => {
+            const [dragActive, setDragActive] = useState(false);
+            const files = (value as File[]) || [];
 
-        const handleDrag = (e: React.DragEvent) => {
-            e.preventDefault();
-            e.stopPropagation();
-            if (e.type === "dragenter" || e.type === "dragover") {
-                setDragActive(true);
-            } else if (e.type === "dragleave") {
+            const handleDrag = (e: React.DragEvent) => {
+                e.preventDefault();
+                e.stopPropagation();
+                if (e.type === "dragenter" || e.type === "dragover") {
+                    setDragActive(true);
+                } else if (e.type === "dragleave") {
+                    setDragActive(false);
+                }
+            };
+
+            const handleDrop = (e: React.DragEvent) => {
+                e.preventDefault();
+                e.stopPropagation();
                 setDragActive(false);
-            }
-        };
+                if (e.dataTransfer.files) {
+                    const newFiles = Array.from(e.dataTransfer.files);
+                    onChange([...files, ...newFiles]);
+                }
+            };
 
-        const handleDrop = (e: React.DragEvent) => {
-            e.preventDefault();
-            e.stopPropagation();
-            setDragActive(false);
-            if (e.dataTransfer.files) {
-                const newFiles = Array.from(e.dataTransfer.files);
-                onChange([...files, ...newFiles]);
-            }
-        };
+            const removeFile = (index: number) => {
+                const updatedFiles = [...files];
+                updatedFiles.splice(index, 1);
+                onChange(updatedFiles);
+            };
 
-        const removeFile = (index: number) => {
-            const updatedFiles = [...files];
-            updatedFiles.splice(index, 1);
-            onChange(updatedFiles);
-        };
+            const clearAllFiles = () => {
+                onChange([]);
+            };
 
-        const clearAllFiles = () => {
-            onChange([]);
-        };
-
-        return (
-            <div className="space-y-3">
-                <div
-                    className={cn(
-                        "relative border-2 border-dashed rounded-lg p-6 transition-all duration-200 flex flex-col items-center justify-center gap-2",
-                        dragActive ? "border-black bg-gray-50 scale-[1.01]" : "border-gray-200 hover:border-gray-400 bg-white",
-                        files.length > 0 ? "border-green-500 bg-green-50/10" : ""
-                    )}
-                    onDragEnter={handleDrag}
-                    onDragLeave={handleDrag}
-                    onDragOver={handleDrag}
-                    onDrop={handleDrop}
-                >
-                    <Upload className={cn("w-8 h-8", files.length > 0 ? "text-green-600" : "text-gray-400")} />
-                    <p className="text-sm font-medium text-black">
-                        {files.length > 0 ? `${files.length} file(s) selected` : "Drag & drop files here or click to upload"}
-                    </p>
-                    <input
-                        type="file"
-                        multiple
-                        className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                        onChange={(e) => {
-                            if (e.target.files) {
-                                const newFiles = Array.from(e.target.files);
-                                onChange([...files, ...newFiles]);
-                            }
-                        }}
-                    />
-                </div>
-                
-                {files.length > 0 && (
-                    <div className="flex flex-col gap-3">
-                        <div className="flex flex-wrap gap-2">
-                            {files.map((file, idx) => (
-                                <Badge key={idx} variant="outline" className="flex items-center gap-2 py-1 px-2 border-gray-200 bg-white text-gray-700">
-                                    <FileUp className="w-3 h-3 text-gray-400" />
-                                    <span className="max-w-[150px] truncate">{file.name}</span>
-                                    <X 
-                                        className="w-3 h-3 cursor-pointer hover:text-red-500 transition-colors" 
-                                        onClick={() => removeFile(idx)}
-                                    />
-                                </Badge>
-                            ))}
-                        </div>
-                        <Button 
-                            type="button" 
-                            variant="ghost" 
-                            size="sm" 
-                            onClick={clearAllFiles}
-                            className="text-red-500 hover:text-red-700 hover:bg-red-50 w-fit h-7 px-2 text-xs font-semibold"
-                        >
-                            <X className="w-3 h-3 mr-1" />
-                            Clear All Files
-                        </Button>
+            return (
+                <div className="space-y-3" ref={ref} id={id}>
+                    <div
+                        className={cn(
+                            "relative border-2 border-dashed rounded-lg p-6 transition-all duration-200 flex flex-col items-center justify-center gap-2",
+                            dragActive ? "border-black bg-gray-50 scale-[1.01]" : "border-gray-200 hover:border-gray-400 bg-white",
+                            files.length > 0 ? "border-green-500 bg-green-50/10" : "",
+                            hasError ? "border-red-500 bg-red-50/10" : ""
+                        )}
+                        onDragEnter={handleDrag}
+                        onDragLeave={handleDrag}
+                        onDragOver={handleDrag}
+                        onDrop={handleDrop}
+                    >
+                        <Upload className={cn("w-8 h-8", files.length > 0 ? "text-green-600" : (hasError ? "text-red-500" : "text-gray-400"))} />
+                        <p className={cn("text-sm font-medium", hasError ? "text-red-600" : "text-black")}>
+                            {files.length > 0 ? `${files.length} file(s) selected` : "Drag & drop files here or click to upload"}
+                        </p>
+                        <input
+                            type="file"
+                            multiple
+                            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                            onChange={(e) => {
+                                if (e.target.files) {
+                                    const newFiles = Array.from(e.target.files);
+                                    onChange([...files, ...newFiles]);
+                                }
+                            }}
+                        />
                     </div>
-                )}
-            </div>
-        );
-    };
+                    
+                    {files.length > 0 && (
+                        <div className="flex flex-col gap-3">
+                            <div className="flex flex-wrap gap-2">
+                                {files.map((file, idx) => (
+                                    <Badge key={idx} variant="outline" className="flex items-center gap-2 py-1 px-2 border-gray-200 bg-white text-gray-700">
+                                        <FileUp className="w-3 h-3 text-gray-400" />
+                                        <span className="max-w-[150px] truncate">{file.name}</span>
+                                        <X 
+                                            className="w-3 h-3 cursor-pointer hover:text-red-500 transition-colors" 
+                                            onClick={() => removeFile(idx)}
+                                        />
+                                    </Badge>
+                                ))}
+                            </div>
+                            <Button 
+                                type="button" 
+                                variant="ghost" 
+                                size="sm" 
+                                onClick={clearAllFiles}
+                                className="text-red-500 hover:text-red-700 hover:bg-red-50 w-fit h-7 px-2 text-xs font-semibold"
+                            >
+                                <X className="w-3 h-3 mr-1" />
+                                Clear All Files
+                            </Button>
+                        </div>
+                    )}
+                </div>
+            );
+        }
+    );
 
     return (
         <div className="bg-white min-h-screen text-black font-['Inter'] py-12">
@@ -517,17 +541,17 @@ const DocumentUploader = () => {
                                             <FormField
                                                 control={form.control}
                                                 name={doc.id as any}
-                                                render={({ field }) => (
+                                                render={({ field, fieldState }) => (
                                                     <FormItem>
                                                         <FormControl>
                                                             <Dropzone 
+                                                                {...field}
                                                                 label={doc.label} 
                                                                 id={doc.id} 
-                                                                value={field.value} 
-                                                                onChange={field.onChange} 
+                                                                hasError={!!fieldState.error}
                                                             />
                                                         </FormControl>
-                                                        <FormMessage />
+                                                        <FormMessage className="text-red-500 font-medium" />
                                                     </FormItem>
                                                 )}
                                             />
