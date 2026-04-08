@@ -123,7 +123,6 @@ const DocumentUploader = () => {
     const uid = searchParams.get("uid");
     
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [formError, setFormError] = useState<string | null>(null);
     
     const [alertConfig, setAlertConfig] = useState<{
         open: boolean;
@@ -155,6 +154,8 @@ const DocumentUploader = () => {
         }
     }, [uid, form]);
 
+    const firstError = Object.values(form.formState.errors)[0]?.message as string | undefined;
+
     const scrollToField = (id: string) => {
         const element = document.getElementById(id);
         if (element) {
@@ -171,7 +172,6 @@ const DocumentUploader = () => {
 
     const onSubmit = async (values: FormValues) => {
         setIsSubmitting(true);
-        setFormError(null);
         try {
             const formData = new FormData();
             formData.append("firstName", values.firstName || "");
@@ -253,7 +253,6 @@ const DocumentUploader = () => {
                     scrollToField("qualification_card_front");
                 }
 
-                setFormError(result.error || result.message || "Please check the highlighted fields.");
                 }
             } catch (error) {
             setAlertConfig({
@@ -364,10 +363,10 @@ const DocumentUploader = () => {
                     {logo && <img src={logo.src} alt="Logo" className="h-16 w-auto" />}
                 </div>
 
-                {fieldState.error && (
-                    <div className="mb-8 p-4 bg-red-50 border border-red-200 rounded-xl flex items-center gap-3 animate-in fade-in slide-in-from-top-2 duration-300">
-                        <AlertCircle className="w-5 h-5 text-red-600 shrink-0" />
-                        <p className="text-red-700 font-medium text-sm">{fieldState.error}</p>
+                {firstError && (
+                    <div className="mb-10 p-4 bg-red-50 border border-red-200 rounded-xl flex items-center gap-3 text-red-600 font-semibold animate-in fade-in slide-in-from-top-2 duration-300">
+                        <AlertCircle className="w-6 h-6 flex-shrink-0" />
+                        <p className="text-lg">{firstError}</p>
                     </div>
                 )}
 
