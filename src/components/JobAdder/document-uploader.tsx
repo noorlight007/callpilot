@@ -94,6 +94,7 @@ const formSchema = z.object({
     
     skills: z.array(z.string()).optional(),
     uid: z.string().optional(),
+    interview_uid: z.string().optional(),
 }).superRefine((data, ctx) => {
     const documentTypes = [
         "qualification_card_front", "qualification_card_back", "certificate_1", "certificate_2",
@@ -121,6 +122,7 @@ type FormValues = z.infer<typeof formSchema>;
 const DocumentUploader = () => {
     const searchParams = useSearchParams();
     const uid = searchParams.get("uid");
+    const interview_uid = searchParams.get("interview_uid");
     
     const [isSubmitting, setIsSubmitting] = useState(false);
     
@@ -145,6 +147,7 @@ const DocumentUploader = () => {
             email: "",
             skills: [],
             uid: uid || "",
+            interview_uid: interview_uid || "",
         },
     });
 
@@ -152,7 +155,10 @@ const DocumentUploader = () => {
         if (uid) {
             form.setValue("uid", uid);
         }
-    }, [uid, form]);
+        if (interview_uid) {
+            form.setValue("interview_uid", interview_uid);
+        }
+    }, [uid, interview_uid, form]);
 
     const allErrors = Array.from(new Set(Object.values(form.formState.errors).map(err => err?.message as string).filter(Boolean)));
 
@@ -177,6 +183,7 @@ const DocumentUploader = () => {
             formData.append("firstName", values.firstName || "");
             formData.append("lastName", values.lastName || "");
             formData.append("email", values.email || "");
+            formData.append("interview_uid", values.interview_uid || "");
             
             if (values.availableFromDate) {
                 formData.append("availableFrom", format(values.availableFromDate, "yyyy-MM-dd"));
