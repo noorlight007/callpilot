@@ -41,69 +41,87 @@ import {
 import { cn } from "@/lib/utils";
 import logo from "@/assets/call_pilot_logo.png";
 
+const documentLabels = [
+    "qualification_card_front", "qualification_card_back", "certificate_1", "certificate_2",
+    "passport", "visa", "birth_certificate", "p45_if_not_working",
+    "drivers_license_front", "drivers_license_back", "driver_digi_card_front",
+    "driver_digi_card_back", "driver_cpc_card_front", "driver_cpc_card_back", "disclosure"
+];
+
+const documentTypes = [
+    { id: "qualification_card_front", label: "Qualification Card (Front)", hasExpiry: true },
+    { id: "qualification_card_back", label: "Qualification Card (Back)", hasExpiry: true },
+    { id: "certificate_1", label: "Certificate 1", hasExpiry: true },
+    { id: "certificate_2", label: "Certificate 2", hasExpiry: true },
+    { id: "passport", label: "Passport", hasExpiry: true },
+    { id: "visa", label: "Visa", hasExpiry: true },
+    { id: "birth_certificate", label: "Birth Certificate", hasExpiry: true },
+    { id: "p45_if_not_working", label: "P45 (if not working)", hasExpiry: true },
+    { id: "drivers_license_front", label: "Drivers Licence (Front)", hasExpiry: true },
+    { id: "drivers_license_back", label: "Drivers Licence (Back)", hasExpiry: true },
+    { id: "driver_digi_card_front", label: "Driver Digi-Card (Front)", hasExpiry: true },
+    { id: "driver_digi_card_back", label: "Driver Digi-Card (Back)", hasExpiry: true },
+    { id: "driver_cpc_card_front", label: "Driver CPC Card (Front)", hasExpiry: true },
+    { id: "driver_cpc_card_back", label: "Driver CPC Card (Back)", hasExpiry: true },
+    { id: "disclosure", label: "Disclosure", hasExpiry: true, labelEx: "Disclosure Issue Date" },
+];
+
 const formSchema = z.object({
     firstName: z.string().optional(),
     lastName: z.string().optional(),
     email: z.string().optional(),
     availableFromDate: z.date().optional(),
-    
+
     qualification_card_front: z.array(z.any()).optional(),
     qualification_card_front_date: z.date().optional(),
-    
+
     qualification_card_back: z.array(z.any()).optional(),
     qualification_card_back_date: z.date().optional(),
-    
+
     certificate_1: z.array(z.any()).optional(),
     certificate_1_date: z.date().optional(),
-    
+
     certificate_2: z.array(z.any()).optional(),
     certificate_2_date: z.date().optional(),
-    
+
     passport: z.array(z.any()).optional(),
     passport_date: z.date().optional(),
-    
+
     visa: z.array(z.any()).optional(),
     visa_date: z.date().optional(),
-    
+
     birth_certificate: z.array(z.any()).optional(),
     birth_certificate_date: z.date().optional(),
-    
+
     p45_if_not_working: z.array(z.any()).optional(),
     p45_if_not_working_date: z.date().optional(),
-    
+
     drivers_license_front: z.array(z.any()).optional(),
     drivers_license_front_date: z.date().optional(),
-    
+
     drivers_license_back: z.array(z.any()).optional(),
     drivers_license_back_date: z.date().optional(),
-    
+
     driver_digi_card_front: z.array(z.any()).optional(),
     driver_digi_card_front_date: z.date().optional(),
-    
+
     driver_digi_card_back: z.array(z.any()).optional(),
     driver_digi_card_back_date: z.date().optional(),
-    
+
     driver_cpc_card_front: z.array(z.any()).optional(),
     driver_cpc_card_front_date: z.date().optional(),
-    
+
     driver_cpc_card_back: z.array(z.any()).optional(),
     driver_cpc_card_back_date: z.date().optional(),
-    
+
     disclosure: z.array(z.any()).optional(),
     disclosure_date: z.date().optional(),
-    
+
     skills: z.array(z.string()).optional(),
     uid: z.string().optional(),
     interview_uid: z.string().optional(),
 }).superRefine((data, ctx) => {
-    const documentTypes = [
-        "qualification_card_front", "qualification_card_back", "certificate_1", "certificate_2",
-        "passport", "visa", "birth_certificate", "p45_if_not_working",
-        "drivers_license_front", "drivers_license_back", "driver_digi_card_front",
-        "driver_digi_card_back", "driver_cpc_card_front", "driver_cpc_card_back", "disclosure"
-    ];
-
-    documentTypes.forEach((docId) => {
+    documentLabels.forEach((docId) => {
         const fileValue = data[docId as keyof typeof data];
         const dateValue = data[`${docId}_date` as keyof typeof data];
 
@@ -119,15 +137,87 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
+const Dropzone = React.forwardRef<HTMLInputElement, { label: string; id: string; value: any; onChange: (files: File[]) => void; onBlur?: () => void; name?: string; hasError?: boolean }>(
+    ({ label, id, value, onChange, onBlur, name, hasError }, ref) => {
+        const [dragActive, setDragActive] = useState(false);
+        const files = (value as File[]) || [];
+
+        const handleDrag = (e: React.DragEvent) => {
+            e.preventDefault(); e.stopPropagation();
+            if (e.type === "dragenter" || e.type === "dragover") setDragActive(true);
+            else if (e.type === "dragleave") setDragActive(false);
+        };
+
+        const handleDrop = (e: React.DragEvent) => {
+            e.preventDefault(); e.stopPropagation();
+            setDragActive(false);
+            if (e.dataTransfer.files) {
+                const newFiles = Array.from(e.dataTransfer.files);
+                onChange([...files, ...newFiles]);
+            }
+        };
+
+        return (
+            <div className="space-y-3" id={id}>
+                <div
+                    className={cn(
+                        "relative border-2 border-dashed rounded-lg p-6 transition-all duration-200 flex flex-col items-center justify-center gap-2",
+                        dragActive ? "border-black bg-gray-50 scale-[1.01]" : "border-gray-200 hover:border-gray-400 bg-white",
+                        files.length > 0 ? "border-green-500 bg-green-50/10" : "",
+                        hasError ? "border-red-500 bg-red-50/10" : ""
+                    )}
+                    onDragEnter={handleDrag} onDragLeave={handleDrag} onDragOver={handleDrag} onDrop={handleDrop}
+                >
+                    <Upload className={cn("w-8 h-8", files.length > 0 ? "text-green-600" : (hasError ? "text-red-500" : "text-gray-400"))} />
+                    <p className={cn("text-sm font-medium", hasError ? "text-red-600" : "text-black")}>
+                        {files.length > 0 ? `${files.length} file(s) selected` : "Drag & drop files here or click to upload"}
+                    </p>
+                    <input
+                        type="file" multiple ref={ref} name={name} onBlur={onBlur}
+                        className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                        onChange={(e) => {
+                            if (e.target.files) {
+                                const newFiles = Array.from(e.target.files);
+                                onChange([...files, ...newFiles]);
+                                // Reset value to allow selecting the same file again
+                                e.target.value = "";
+                            }
+                        }}
+                    />
+                </div>
+                {files.length > 0 && (
+                    <div className="flex flex-col gap-3">
+                        <div className="flex flex-wrap gap-2">
+                            {files.map((file, idx) => (
+                                <Badge key={idx} variant="outline" className="flex items-center gap-2 py-1 px-2 border-gray-200 bg-white text-gray-700">
+                                    <FileUp className="w-3 h-3 text-gray-400" />
+                                    <span className="max-w-[150px] truncate">{file.name}</span>
+                                    <X className="w-3 h-3 cursor-pointer hover:text-red-500" onClick={() => {
+                                        const updated = [...files]; updated.splice(idx, 1); onChange(updated);
+                                    }} />
+                                </Badge>
+                            ))}
+                        </div>
+                        <Button type="button" variant="ghost" size="sm" onClick={() => onChange([])} className="text-red-500 hover:text-red-700 hover:bg-red-50 w-fit h-7 px-2 text-xs font-semibold">
+                            <X className="w-3 h-3 mr-1" /> Clear All Files
+                        </Button>
+                    </div>
+                )}
+            </div>
+        );
+    }
+);
+Dropzone.displayName = "Dropzone";
+
 const DocumentUploader = () => {
     const searchParams = useSearchParams();
     const uid = searchParams.get("uid");
     const interview_uid = searchParams.get("interview_uid");
-    
+
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isAvailableDateOpen, setIsAvailableDateOpen] = useState(false);
     const [openPopovers, setOpenPopovers] = useState<Record<string, boolean>>({});
-    
+
     const [alertConfig, setAlertConfig] = useState<{
         open: boolean;
         title: string;
@@ -150,6 +240,10 @@ const DocumentUploader = () => {
             skills: [],
             uid: uid || "",
             interview_uid: interview_uid || "",
+            // Initialize document fields to empty arrays
+            ...Object.fromEntries(documentLabels.map(id => [id, []])),
+            // Initialize date fields to undefined
+            ...Object.fromEntries(documentLabels.map(id => [`${id}_date`, undefined])),
         },
     });
 
@@ -171,13 +265,6 @@ const DocumentUploader = () => {
         }
     };
 
-    const documentLabels = [
-        "qualification_card_front", "qualification_card_back", "certificate_1", "certificate_2",
-        "passport", "visa", "birth_certificate", "p45_if_not_working",
-        "drivers_license_front", "drivers_license_back", "driver_digi_card_front",
-        "driver_digi_card_back", "driver_cpc_card_front", "driver_cpc_card_back", "disclosure"
-    ];
-
     const onSubmit = async (values: FormValues) => {
         setIsSubmitting(true);
         try {
@@ -185,13 +272,10 @@ const DocumentUploader = () => {
             formData.append("firstName", values.firstName || "");
             formData.append("lastName", values.lastName || "");
             formData.append("email", values.email || "");
-            //formData.append("interview_uid", values.interview_uid || "");
-            
+
             if (values.availableFromDate) {
                 formData.append("availableFrom", format(values.availableFromDate, "yyyy-MM-dd"));
             }
-            
-            
 
             documentLabels.forEach(label => {
                 const files = values[label as keyof FormValues] as File[];
@@ -200,7 +284,7 @@ const DocumentUploader = () => {
                         formData.append(`file-${label}`, file);
                     });
                 }
-                
+
                 const dateKey = `${label}_date` as keyof FormValues;
                 const docDate = values[dateKey] as Date;
                 if (docDate) {
@@ -224,7 +308,7 @@ const DocumentUploader = () => {
                     type: "success",
                     warnings: result.upload_warnings || [],
                 });
-                
+
                 form.reset({
                     firstName: "",
                     lastName: "",
@@ -232,13 +316,11 @@ const DocumentUploader = () => {
                     skills: [],
                     availableFromDate: undefined,
                     uid: uid || "",
-                });
-                documentLabels.forEach(label => {
-                    form.setValue(label as any, []);
-                    form.setValue(`${label}_date` as any, undefined);
+                    interview_uid: interview_uid || "",
+                    ...Object.fromEntries(documentLabels.map(id => [id, []])),
+                    ...Object.fromEntries(documentLabels.map(id => [`${id}_date`, undefined])),
                 });
             } else {
-                // Field-specific validation from errors array
                 if (result.errors && Array.isArray(result.errors)) {
                     result.errors.forEach((err: string) => {
                         const lower = err.toLowerCase();
@@ -246,14 +328,13 @@ const DocumentUploader = () => {
                         if (lower.includes("lastname")) form.setError("lastName", { message: err });
                         if (lower.includes("email")) form.setError("email", { message: err });
                     });
-                    
+
                     const firstMsg = result.errors[0].toLowerCase();
                     if (firstMsg.includes("firstname")) scrollToField("firstName");
                     else if (firstMsg.includes("lastname")) scrollToField("lastName");
                     else if (firstMsg.includes("email")) scrollToField("email");
                 }
 
-                // Global document error
                 if (result.error === "At least one document must be uploaded.") {
                     documentLabels.forEach(label => {
                         form.setError(label as any, { message: result.error });
@@ -261,9 +342,8 @@ const DocumentUploader = () => {
                     });
                     scrollToField("qualification_card_front");
                 }
-
-                }
-            } catch (error) {
+            }
+        } catch (error) {
             setAlertConfig({
                 open: true,
                 title: "Error",
@@ -274,95 +354,6 @@ const DocumentUploader = () => {
             setIsSubmitting(false);
         }
     };
-
-
-
-    const documentTypes = [
-        { id: "qualification_card_front", label: "Qualification Card (Front)", hasExpiry: true },
-        { id: "qualification_card_back", label: "Qualification Card (Back)", hasExpiry: true },
-        { id: "certificate_1", label: "Certificate 1", hasExpiry: true },
-        { id: "certificate_2", label: "Certificate 2", hasExpiry: true },
-        { id: "passport", label: "Passport", hasExpiry: true },
-        { id: "visa", label: "Visa", hasExpiry: true },
-        { id: "birth_certificate", label: "Birth Certificate", hasExpiry: true },
-        { id: "p45_if_not_working", label: "P45 (if not working)", hasExpiry: true },
-        { id: "drivers_license_front", label: "Drivers Licence (Front)", hasExpiry: true },
-        { id: "drivers_license_back", label: "Drivers Licence (Back)", hasExpiry: true },
-        { id: "driver_digi_card_front", label: "Driver Digi-Card (Front)", hasExpiry: true },
-        { id: "driver_digi_card_back", label: "Driver Digi-Card (Back)", hasExpiry: true },
-        { id: "driver_cpc_card_front", label: "Driver CPC Card (Front)", hasExpiry: true },
-        { id: "driver_cpc_card_back", label: "Driver CPC Card (Back)", hasExpiry: true },
-        { id: "disclosure", label: "Disclosure", hasExpiry: true, labelEx: "Disclosure Issue Date" },
-    ];
-
-    const Dropzone = React.forwardRef<HTMLInputElement, { label: string; id: string; value: any; onChange: (files: File[]) => void; onBlur?: () => void; name?: string; hasError?: boolean }>(
-        ({ label, id, value, onChange, onBlur, name, hasError }, ref) => {
-            const [dragActive, setDragActive] = useState(false);
-            const files = (value as File[]) || [];
-
-            const handleDrag = (e: React.DragEvent) => {
-                e.preventDefault(); e.stopPropagation();
-                if (e.type === "dragenter" || e.type === "dragover") setDragActive(true);
-                else if (e.type === "dragleave") setDragActive(false);
-            };
-
-            const handleDrop = (e: React.DragEvent) => {
-                e.preventDefault(); e.stopPropagation();
-                setDragActive(false);
-                if (e.dataTransfer.files) {
-                    const newFiles = Array.from(e.dataTransfer.files);
-                    onChange([...files, ...newFiles]);
-                }
-            };
-
-            return (
-                <div className="space-y-3" id={id}>
-                    <div
-                        className={cn(
-                            "relative border-2 border-dashed rounded-lg p-6 transition-all duration-200 flex flex-col items-center justify-center gap-2",
-                            dragActive ? "border-black bg-gray-50 scale-[1.01]" : "border-gray-200 hover:border-gray-400 bg-white",
-                            files.length > 0 ? "border-green-500 bg-green-50/10" : "",
-                            hasError ? "border-red-500 bg-red-50/10" : ""
-                        )}
-                        onDragEnter={handleDrag} onDragLeave={handleDrag} onDragOver={handleDrag} onDrop={handleDrop}
-                    >
-                        <Upload className={cn("w-8 h-8", files.length > 0 ? "text-green-600" : (hasError ? "text-red-500" : "text-gray-400"))} />
-                        <p className={cn("text-sm font-medium", hasError ? "text-red-600" : "text-black")}>
-                            {files.length > 0 ? `${files.length} file(s) selected` : "Drag & drop files here or click to upload"}
-                        </p>
-                        <input
-                            type="file" multiple ref={ref} name={name} onBlur={onBlur}
-                            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                            onChange={(e) => {
-                                if (e.target.files) {
-                                    const newFiles = Array.from(e.target.files);
-                                    onChange([...files, ...newFiles]);
-                                }
-                            }}
-                        />
-                    </div>
-                    {files.length > 0 && (
-                        <div className="flex flex-col gap-3">
-                            <div className="flex flex-wrap gap-2">
-                                {files.map((file, idx) => (
-                                    <Badge key={idx} variant="outline" className="flex items-center gap-2 py-1 px-2 border-gray-200 bg-white text-gray-700">
-                                        <FileUp className="w-3 h-3 text-gray-400" />
-                                        <span className="max-w-[150px] truncate">{file.name}</span>
-                                        <X className="w-3 h-3 cursor-pointer hover:text-red-500" onClick={() => {
-                                            const updated = [...files]; updated.splice(idx, 1); onChange(updated);
-                                        }} />
-                                    </Badge>
-                                ))}
-                            </div>
-                            <Button type="button" variant="ghost" size="sm" onClick={() => onChange([])} className="text-red-500 hover:text-red-700 hover:bg-red-50 w-fit h-7 px-2 text-xs font-semibold">
-                                <X className="w-3 h-3 mr-1" /> Clear All Files
-                            </Button>
-                        </div>
-                    )}
-                </div>
-            );
-        }
-    );
 
     return (
         <div className="bg-white min-h-screen text-black font-['Inter'] py-12">
@@ -433,41 +424,41 @@ const DocumentUploader = () => {
                                     <FormField control={form.control} name="availableFromDate" render={({ field, fieldState }) => (
                                         <FormItem className="flex flex-col" id="availableFromDate">
                                             <FormLabel className="text-black font-semibold mb-1">Available from Date</FormLabel>
-                                                    <div className="relative">
-                                                        <Popover open={isAvailableDateOpen} onOpenChange={setIsAvailableDateOpen}>
-                                                            <PopoverTrigger asChild>
-                                                                <FormControl>
-                                                                    <Button variant={"outline"} className={cn("w-full h-12 pl-3 text-left font-normal bg-white border-gray-200 text-black pr-20", !field.value && "text-gray-400", fieldState.error && "border-red-500")}>
-                                                                        {field.value ? format(field.value, "PPP") : <span>mm/dd/yyyy</span>}
-                                                                        {!field.value && <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />}
-                                                                    </Button>
-                                                                </FormControl>
-                                                            </PopoverTrigger>
-                                                            <PopoverContent className="w-auto p-0" align="start">
-                                                                <Calendar 
-                                                                    mode="single" 
-                                                                    selected={field.value} 
-                                                                    onSelect={(date) => {
-                                                                        field.onChange(date);
-                                                                        setIsAvailableDateOpen(false);
-                                                                    }} 
-                                                                    initialFocus 
-                                                                />
-                                                            </PopoverContent>
-                                                        </Popover>
-                                                        {field.value && (
-                                                            <button
-                                                                type="button"
-                                                                onClick={(e) => {
-                                                                    e.preventDefault();
-                                                                    field.onChange(undefined);
-                                                                }}
-                                                                className="absolute right-12 top-1/2 -translate-y-1/2 text-gray-400 hover:text-red-500 transition-colors p-2 z-10"
-                                                            >
-                                                                <X className="w-4 h-4" />
-                                                            </button>
-                                                        )}
-                                                    </div>
+                                            <div className="relative">
+                                                <Popover open={isAvailableDateOpen} onOpenChange={setIsAvailableDateOpen}>
+                                                    <PopoverTrigger asChild>
+                                                        <FormControl>
+                                                            <Button variant={"outline"} className={cn("w-full h-12 pl-3 text-left font-normal bg-white border-gray-200 text-black pr-20", !field.value && "text-gray-400", fieldState.error && "border-red-500")}>
+                                                                {field.value ? format(field.value, "PPP") : <span>mm/dd/yyyy</span>}
+                                                                {!field.value && <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />}
+                                                            </Button>
+                                                        </FormControl>
+                                                    </PopoverTrigger>
+                                                    <PopoverContent className="w-auto p-0" align="start">
+                                                        <Calendar
+                                                            mode="single"
+                                                            selected={field.value}
+                                                            onSelect={(date) => {
+                                                                field.onChange(date);
+                                                                setIsAvailableDateOpen(false);
+                                                            }}
+                                                            initialFocus
+                                                        />
+                                                    </PopoverContent>
+                                                </Popover>
+                                                {field.value && (
+                                                    <button
+                                                        type="button"
+                                                        onClick={(e) => {
+                                                            e.preventDefault();
+                                                            field.onChange(undefined);
+                                                        }}
+                                                        className="absolute right-12 top-1/2 -translate-y-1/2 text-gray-400 hover:text-red-500 transition-colors p-2 z-10"
+                                                    >
+                                                        <X className="w-4 h-4" />
+                                                    </button>
+                                                )}
+                                            </div>
                                             <FormMessage className="text-red-500 font-medium" />
                                         </FormItem>
                                     )} />
@@ -494,8 +485,8 @@ const DocumentUploader = () => {
                                                 <FormItem className="flex flex-col">
                                                     <FormLabel className="text-gray-600 text-xs font-semibold uppercase tracking-wider">{doc.labelEx || "Expiration Date"}</FormLabel>
                                                     <div className="relative">
-                                                        <Popover 
-                                                            open={openPopovers[doc.id] || false} 
+                                                        <Popover
+                                                            open={openPopovers[doc.id] || false}
                                                             onOpenChange={(open) => setOpenPopovers(prev => ({ ...prev, [doc.id]: open }))}
                                                         >
                                                             <PopoverTrigger asChild>
@@ -507,14 +498,14 @@ const DocumentUploader = () => {
                                                                 </FormControl>
                                                             </PopoverTrigger>
                                                             <PopoverContent className="w-auto p-0" align="start">
-                                                                <Calendar 
-                                                                    mode="single" 
-                                                                    selected={field.value as any} 
+                                                                <Calendar
+                                                                    mode="single"
+                                                                    selected={field.value as any}
                                                                     onSelect={(date) => {
                                                                         field.onChange(date);
                                                                         setOpenPopovers(prev => ({ ...prev, [doc.id]: false }));
-                                                                    }} 
-                                                                    initialFocus 
+                                                                    }}
+                                                                    initialFocus
                                                                 />
                                                             </PopoverContent>
                                                         </Popover>
@@ -539,8 +530,6 @@ const DocumentUploader = () => {
                                 ))}
                             </div>
                         </section>
-
-
 
                         <div className="pt-2">
                             <Button type="submit" disabled={isSubmitting} className="w-[50%] md:w-[40%] lg:w-[30%] h-12 bg-black text-white hover:bg-gray-800 transition-all font-bold rounded-lg group disabled:bg-gray-400">
