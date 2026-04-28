@@ -125,6 +125,8 @@ const DocumentUploader = () => {
     const interview_uid = searchParams.get("interview_uid");
     
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isAvailableDateOpen, setIsAvailableDateOpen] = useState(false);
+    const [openPopovers, setOpenPopovers] = useState<Record<string, boolean>>({});
     
     const [alertConfig, setAlertConfig] = useState<{
         open: boolean;
@@ -183,7 +185,7 @@ const DocumentUploader = () => {
             formData.append("firstName", values.firstName || "");
             formData.append("lastName", values.lastName || "");
             formData.append("email", values.email || "");
-            formData.append("interview_uid", values.interview_uid || "");
+            //formData.append("interview_uid", values.interview_uid || "");
             
             if (values.availableFromDate) {
                 formData.append("availableFrom", format(values.availableFromDate, "yyyy-MM-dd"));
@@ -207,7 +209,7 @@ const DocumentUploader = () => {
             });
 
             const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://api.callpilot.pro/api/v1";
-            const response = await fetch(`${API_BASE_URL}/core/pre-application/${uid}/`, {
+            const response = await fetch(`${API_BASE_URL}/core/pre-application/${uid}/${interview_uid}/`, {
                 method: "POST",
                 body: formData,
             });
@@ -432,17 +434,25 @@ const DocumentUploader = () => {
                                         <FormItem className="flex flex-col" id="availableFromDate">
                                             <FormLabel className="text-black font-semibold mb-1">Available from Date</FormLabel>
                                                     <div className="relative">
-                                                        <Popover>
+                                                        <Popover open={isAvailableDateOpen} onOpenChange={setIsAvailableDateOpen}>
                                                             <PopoverTrigger asChild>
                                                                 <FormControl>
                                                                     <Button variant={"outline"} className={cn("w-full h-12 pl-3 text-left font-normal bg-white border-gray-200 text-black pr-20", !field.value && "text-gray-400", fieldState.error && "border-red-500")}>
                                                                         {field.value ? format(field.value, "PPP") : <span>mm/dd/yyyy</span>}
-                                                                        <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                                                                        {!field.value && <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />}
                                                                     </Button>
                                                                 </FormControl>
                                                             </PopoverTrigger>
                                                             <PopoverContent className="w-auto p-0" align="start">
-                                                                <Calendar mode="single" selected={field.value} onSelect={field.onChange} initialFocus />
+                                                                <Calendar 
+                                                                    mode="single" 
+                                                                    selected={field.value} 
+                                                                    onSelect={(date) => {
+                                                                        field.onChange(date);
+                                                                        setIsAvailableDateOpen(false);
+                                                                    }} 
+                                                                    initialFocus 
+                                                                />
                                                             </PopoverContent>
                                                         </Popover>
                                                         {field.value && (
@@ -484,17 +494,28 @@ const DocumentUploader = () => {
                                                 <FormItem className="flex flex-col">
                                                     <FormLabel className="text-gray-600 text-xs font-semibold uppercase tracking-wider">{doc.labelEx || "Expiration Date"}</FormLabel>
                                                     <div className="relative">
-                                                        <Popover>
+                                                        <Popover 
+                                                            open={openPopovers[doc.id] || false} 
+                                                            onOpenChange={(open) => setOpenPopovers(prev => ({ ...prev, [doc.id]: open }))}
+                                                        >
                                                             <PopoverTrigger asChild>
                                                                 <FormControl>
                                                                     <Button variant={"outline"} className={cn("w-full h-12 pl-3 text-left font-normal bg-white border-gray-200 text-black uppercase pr-20", !field.value && "text-gray-400", fieldState.error && "border-red-500")}>
                                                                         {field.value ? format(field.value as Date, "PPP") : <span>mm/dd/yyyy</span>}
-                                                                        <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                                                                        {!field.value && <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />}
                                                                     </Button>
                                                                 </FormControl>
                                                             </PopoverTrigger>
                                                             <PopoverContent className="w-auto p-0" align="start">
-                                                                <Calendar mode="single" selected={field.value as any} onSelect={field.onChange} initialFocus />
+                                                                <Calendar 
+                                                                    mode="single" 
+                                                                    selected={field.value as any} 
+                                                                    onSelect={(date) => {
+                                                                        field.onChange(date);
+                                                                        setOpenPopovers(prev => ({ ...prev, [doc.id]: false }));
+                                                                    }} 
+                                                                    initialFocus 
+                                                                />
                                                             </PopoverContent>
                                                         </Popover>
                                                         {field.value && (
