@@ -15,7 +15,7 @@ import axios from "axios";
 import { countries } from "@/lib/countries";
 import { getCountryCode } from "@/actions/geo";
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+const BASE_URL = "https://api.swiftwave.ai/api/v1";
 
 const CTASection = () => {
   const [firstName, setFirstName] = useState("");
