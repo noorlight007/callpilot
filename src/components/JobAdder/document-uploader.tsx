@@ -321,6 +321,15 @@ const DocumentUploader = () => {
                     ...Object.fromEntries(documentLabels.map(id => [`${id}_date`, undefined])),
                 });
             } else {
+                if (result.error === "Organization platform not found.") {
+                    setAlertConfig({
+                        open: true,
+                        title: "Error",
+                        description: "Organization platform not found.",
+                        type: "error",
+                    });
+                }
+
                 if (result.errors && Array.isArray(result.errors)) {
                     result.errors.forEach((err: string) => {
                         const lower = err.toLowerCase();
