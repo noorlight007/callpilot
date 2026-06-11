@@ -67,9 +67,9 @@ const documentTypes = [
 ];
 
 const formSchema = z.object({
-    firstName: z.string().optional(),
-    lastName: z.string().optional(),
-    email: z.string().optional(),
+    firstName: z.string().trim().min(1, "First Name is required"),
+    lastName: z.string().trim().min(1, "Last Name is required"),
+    email: z.string().trim().min(1, "Email is required").email("Invalid email address"),
     availableFromDate: z.date().optional(),
 
     qualification_card_front: z.array(z.any()).optional(),
@@ -121,18 +121,60 @@ const formSchema = z.object({
     uid: z.string().optional(),
     interview_uid: z.string().optional(),
 }).superRefine((data, ctx) => {
-    documentLabels.forEach((docId) => {
+    // Check if at least one document has a file uploaded
+    const hasAtLeastOneDoc = documentLabels.some((docId) => {
         const fileValue = data[docId as keyof typeof data];
-        const dateValue = data[`${docId}_date` as keyof typeof data];
+        return fileValue && Array.isArray(fileValue) && fileValue.length > 0;
+    });
 
-        if (dateValue && (!fileValue || (Array.isArray(fileValue) && fileValue.length === 0))) {
+    if (!hasAtLeastOneDoc) {
+        documentLabels.forEach((docId) => {
             ctx.addIssue({
                 code: z.ZodIssueCode.custom,
-                message: "Document file is required when a date is provided",
+                message: "At least one document must be uploaded.",
                 path: [docId],
             });
-        }
-    });
+            ctx.addIssue({
+                code: z.ZodIssueCode.custom,
+                message: "Date Required",
+                path: [`${docId}_date`],
+            });
+        });
+    } else {
+        // If at least one document is present, validate all fields pair-wise:
+        // if file is provided, date is required. if date is provided, file is required.
+        documentLabels.forEach((docId) => {
+            const fileValue = data[docId as keyof typeof data];
+            const dateValue = data[`${docId}_date` as keyof typeof data];
+
+            const hasFile = fileValue && Array.isArray(fileValue) && fileValue.length > 0;
+            const hasDate = !!dateValue;
+
+            if (hasFile && !hasDate) {
+                ctx.addIssue({
+                    code: z.ZodIssueCode.custom,
+                    message: "Expiration Date is required when a document is provided",
+                    path: [docId],
+                });
+                ctx.addIssue({
+                    code: z.ZodIssueCode.custom,
+                    message: "Expiration Date is required when a document is provided",
+                    path: [`${docId}_date`],
+                });
+            } else if (!hasFile && hasDate) {
+                ctx.addIssue({
+                    code: z.ZodIssueCode.custom,
+                    message: "Document file is required when a date is provided",
+                    path: [docId],
+                });
+                ctx.addIssue({
+                    code: z.ZodIssueCode.custom,
+                    message: "Document file is required when a date is provided",
+                    path: [`${docId}_date`],
+                });
+            }
+        });
+    }
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -364,6 +406,26 @@ const DocumentUploader = () => {
         }
     };
 
+    const onInvalidSubmit = (errors: any) => {
+        const errorKeys = Object.keys(errors);
+        if (errorKeys.length > 0) {
+            const elements = errorKeys
+                .map(key => document.getElementById(key))
+                .filter(Boolean) as HTMLElement[];
+            
+            if (elements.length > 0) {
+                elements.sort((a, b) => {
+                    const rectA = a.getBoundingClientRect();
+                    const rectB = b.getBoundingClientRect();
+                    return (rectA.top + window.scrollY) - (rectB.top + window.scrollY);
+                });
+                elements[0].scrollIntoView({ behavior: "smooth", block: "center" });
+            } else {
+                scrollToField(errorKeys[0]);
+            }
+        }
+    };
+
     return (
         <div className="bg-white min-h-screen text-black font-['Inter'] py-12">
             <div className="container mx-auto px-4 py-12 max-w-4xl border border-gray-200 rounded-2xl shadow-sm bg-white">
@@ -396,7 +458,7 @@ const DocumentUploader = () => {
                 </div>
 
                 <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-12">
+                    <form onSubmit={form.handleSubmit(onSubmit, onInvalidSubmit)} className="space-y-12">
                         <section>
                             <h2 className="text-xl font-bold mb-6 pb-2 border-b border-gray-100 italic">Personal Information</h2>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -491,7 +553,7 @@ const DocumentUploader = () => {
                                         )} />
                                         {doc.hasExpiry && (
                                             <FormField control={form.control} name={`${doc.id}_date` as any} render={({ field, fieldState }) => (
-                                                <FormItem className="flex flex-col">
+                                                <FormItem className="flex flex-col" id={`${doc.id}_date`}>
                                                     <FormLabel className="text-gray-600 text-xs font-semibold uppercase tracking-wider">{doc.labelEx || "Expiration Date"}</FormLabel>
                                                     <div className="relative">
                                                         <Popover
