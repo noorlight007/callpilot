@@ -255,6 +255,7 @@ const DocumentUploader = () => {
     const searchParams = useSearchParams();
     const uid = searchParams.get("uid");
     const interview_uid = searchParams.get("interview_uid");
+    const platform = searchParams.get("platform");
 
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isAvailableDateOpen, setIsAvailableDateOpen] = useState(false);
@@ -335,7 +336,13 @@ const DocumentUploader = () => {
             });
 
             const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://api.callpilot.pro/api/v1";
-            const response = await fetch(`${API_BASE_URL}/core/pre-application/${uid}/${interview_uid}/`, {
+            const queryParams = new URLSearchParams();
+            if (platform) {
+                queryParams.set("platform", platform);
+            }
+            const queryString = queryParams.toString();
+            const fetchUrl = `${API_BASE_URL}/core/pre-application/${uid}/${interview_uid}/${queryString ? `?${queryString}` : ""}`;
+            const response = await fetch(fetchUrl, {
                 method: "POST",
                 body: formData,
             });
