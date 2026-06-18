@@ -538,11 +538,10 @@ export default function GetStarted() {
             overflow: visible;
           }
           .brand-side{
-            border-radius:var(--panel-radius) var(--panel-radius) 0 0;
-            min-height:520px;
+            display: none;
           }
           .form-side{
-            border-radius:0 0 var(--panel-radius) var(--panel-radius);
+            border-radius: var(--panel-radius);
             overflow: visible;
           }
           form {
