@@ -318,9 +318,10 @@ export default function GetStarted() {
         .brand-content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:clamp(17px,2.6vh,30px)}
 
         .hero-badge{
-          width:clamp(140px,18vh,210px);aspect-ratio:1.18/1;
-          filter:drop-shadow(0 24px 26px rgba(0,0,0,.18));
-          animation:floatBadge 5.5s ease-in-out infinite;
+          width:clamp(250px,32vh,350px);
+          height:auto;
+          
+          animation:none;
         }
         .hex{width:100%;height:100%;position:relative;display:grid;place-items:center;}
         .hex::before,.hex::after{content:"";position:absolute;inset:0;clip-path:polygon(25% 5%,75% 5%,100% 50%,75% 95%,25% 95%,0 50%)}
@@ -553,6 +554,25 @@ export default function GetStarted() {
         @media (max-width:720px){
           .page-shell{width:94vw;margin:16px auto}.brand-side{min-height:490px;padding:28px 20px}.form-side{padding:28px 20px}.topbar{align-items:flex-start;gap:10px}.signin{font-size:12px}form{grid-template-columns:1fr;gap:14px}.span-2{grid-column:auto}.phone-row{grid-template-columns:120px 1fr}.wordmark p{letter-spacing:.22em}.feature-card{display:none}
         }
+        @media (max-width: 480px) {
+          .page-shell {
+            width: 96vw;
+            margin: 12px auto;
+          }
+          .brand-side, .form-side {
+            padding: 24px 16px;
+          }
+          .phone-row {
+            grid-template-columns: 110px 1fr;
+            gap: 8px;
+          }
+          .wordmark h1 {
+            font-size: 38px;
+          }
+          .tagline h2 {
+            font-size: 22px;
+          }
+        }
         @media (max-height:760px) and (min-width:1051px){
           .page-shell{height:96vh;margin:2vh auto}.brand-side{padding-top:24px;padding-bottom:24px}.form-side{padding-top:24px;padding-bottom:18px}.brand-content{gap:14px}.feature-card{padding:16px}.feature{gap:13px;margin-bottom:12px}.feature .bubble{flex-basis:44px;height:44px}.topbar{margin-bottom:15px}form{gap:9px 22px;margin-top:18px}.privacy{font-size:11px}.orbit-icon{width:48px;height:48px}.phone-row{grid-template-columns:158px 1fr}
         }
@@ -566,13 +586,11 @@ export default function GetStarted() {
 
           <div className="brand-content">
             <div className="hero-badge" aria-hidden="true">
-              <div className="hex">
-                <div className="hex-inner">
-                  <i className="fa-solid fa-phone phone-icon"></i>
-                  <div className="mesh"></div>
-                  <div className="bars"><b></b><b></b><b></b></div>
-                </div>
-              </div>
+              <img
+                src="/callpilot_logo.png"
+                alt="CallPilot Logo"
+                style={{ width: "100%", height: "100%", objectFit: "contain" }}
+              />
             </div>
 
             <div className="wordmark">
@@ -888,11 +906,16 @@ export default function GetStarted() {
               </button>
 
               <div className="privacy">
-                <i className="fa-regular fa-shield-check"></i> We respect your{" "}
+                <i className="fa-regular fa-shield-check"></i> By submitting, you agree to our{" "}
+                <Link href="/terms-conditions" target="_blank">
+                  Terms
+                </Link>
+                {" "}
+                and{" "}
                 <Link href="/privacy-policy" target="_blank">
                   privacy
                 </Link>
-                . Your information is safe with us.
+                .
               </div>
             </form>
           )}
