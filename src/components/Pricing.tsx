@@ -169,19 +169,21 @@ const Pricing = () => {
                 </ul>
 
                 {/* CTA Button */}
-                <div className="mt-auto">
-                  <button
-                    onClick={() => router.push('/get-started')}
-                    className={[
-                      "w-full py-3 px-4 rounded-xl font-semibold transition-all duration-200",
-                      isHighlighted
-                        ? "bg-accent text-white shadow-md hover:shadow-lg scale-[1.02]"
-                        : "bg-secondary text-headline hover:bg-secondary/80"
-                    ].join(" ")}
-                  >
-                    {tier.cta}
-                  </button>
-                </div>
+                {tier.name === "Enterprise" && (
+                  <div className="mt-auto">
+                    <button
+                      onClick={() => router.push('/get-started')}
+                      className={[
+                        "w-full py-3 px-4 rounded-xl font-semibold transition-all duration-200",
+                        isHighlighted
+                          ? "bg-accent text-white shadow-md hover:shadow-lg scale-[1.02]"
+                          : "bg-secondary text-headline hover:bg-secondary/80"
+                      ].join(" ")}
+                    >
+                      {tier.cta}
+                    </button>
+                  </div>
+                )}
               </div>
             );
           })}
