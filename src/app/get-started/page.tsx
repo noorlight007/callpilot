@@ -586,7 +586,7 @@ export default function GetStarted() {
           <div className="brand-content">
             <div className="hero-badge" aria-hidden="true">
               <img
-                src="/callpilot_logo.png"
+                src="/adjusted_callPilot_logo.png"
                 alt="CallPilot Logo"
                 style={{ width: "100%", height: "100%", objectFit: "contain" }}
               />

@@ -435,7 +435,7 @@ const DocumentUploader = () => {
 
     return (
         <div className="bg-white min-h-screen text-black font-['Inter'] py-12">
-            <div className="container mx-auto px-4 py-12 max-w-4xl border border-gray-200 rounded-2xl shadow-sm bg-white">
+            <div className="container mx-auto px-4 py-12 max-w-8xl border border-gray-200 rounded-2xl shadow-sm bg-white">
                 <div className="flex items-center justify-between mb-10">
                     <h1 className="text-3xl font-bold text-black border-none">Documents Upload</h1>
                     {/* {logo && <img src={logo.src} alt="Logo" className="h-16 w-auto" />} */}
