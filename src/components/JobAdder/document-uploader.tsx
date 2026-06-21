@@ -260,6 +260,7 @@ const DocumentUploader = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isAvailableDateOpen, setIsAvailableDateOpen] = useState(false);
     const [openPopovers, setOpenPopovers] = useState<Record<string, boolean>>({});
+    const [candidateData, setCandidateData] = useState<{ firstName: string; lastName: string; email: string } | null>(null);
 
     const [alertConfig, setAlertConfig] = useState<{
         open: boolean;
@@ -296,6 +297,30 @@ const DocumentUploader = () => {
         }
         if (interview_uid) {
             form.setValue("interview_uid", interview_uid);
+
+            const fetchCandidateData = async () => {
+                try {
+                    const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://api.callpilot.pro/api/v1";
+                    const response = await fetch(`${API_BASE_URL}/core/live/interviews/${interview_uid}/candidate`);
+                    if (response.ok) {
+                        const resData = await response.json();
+                        const candidate = resData?.candidate || resData?.data || resData;
+                        if (candidate) {
+                            const firstName = candidate.firstName || "";
+                            const lastName = candidate.lastName || "";
+                            const email = candidate.email || "";
+                            setCandidateData({ firstName, lastName, email });
+                            form.setValue("firstName", firstName);
+                            form.setValue("lastName", lastName);
+                            form.setValue("email", email);
+                        }
+                    }
+                } catch (error) {
+                    console.error("Error fetching candidate data:", error);
+                }
+            };
+
+            fetchCandidateData();
         }
     }, [uid, interview_uid, form]);
 
@@ -359,9 +384,9 @@ const DocumentUploader = () => {
                 });
 
                 form.reset({
-                    firstName: "",
-                    lastName: "",
-                    email: "",
+                    firstName: candidateData?.firstName || "",
+                    lastName: candidateData?.lastName || "",
+                    email: candidateData?.email || "",
                     skills: [],
                     availableFromDate: undefined,
                     uid: uid || "",
@@ -473,7 +498,7 @@ const DocumentUploader = () => {
                                     <FormItem>
                                         <FormLabel className="text-black font-semibold">First Name <span className="text-red-500">*</span></FormLabel>
                                         <FormControl>
-                                            <Input id="firstName" placeholder="Your first name" {...field} className={cn("bg-white border-gray-200 text-black h-12", fieldState.error && "border-red-500")} />
+                                            <Input id="firstName" placeholder="Your first name" {...field} disabled className={cn("bg-white border-gray-200 text-black h-12", fieldState.error && "border-red-500")} />
                                         </FormControl>
                                         <FormMessage className="text-red-500 font-medium" />
                                     </FormItem>
@@ -482,7 +507,7 @@ const DocumentUploader = () => {
                                     <FormItem>
                                         <FormLabel className="text-black font-semibold">Last Name <span className="text-red-500">*</span></FormLabel>
                                         <FormControl>
-                                            <Input id="lastName" placeholder="Your last name" {...field} className={cn("bg-white border-gray-200 text-black h-12", fieldState.error && "border-red-500")} />
+                                            <Input id="lastName" placeholder="Your last name" {...field} disabled className={cn("bg-white border-gray-200 text-black h-12", fieldState.error && "border-red-500")} />
                                         </FormControl>
                                         <FormMessage className="text-red-500 font-medium" />
                                     </FormItem>
@@ -492,7 +517,7 @@ const DocumentUploader = () => {
                                         <FormItem>
                                             <FormLabel className="text-black font-semibold">Email <span className="text-red-500">*</span></FormLabel>
                                             <FormControl>
-                                                <Input id="email" placeholder="your@example.com" {...field} className={cn("bg-white border-gray-200 text-black h-12", fieldState.error && "border-red-500")} />
+                                                <Input id="email" placeholder="your@example.com" {...field} disabled className={cn("bg-white border-gray-200 text-black h-12", fieldState.error && "border-red-500")} />
                                             </FormControl>
                                             <FormMessage className="text-red-500 font-medium" />
                                         </FormItem>
