@@ -503,7 +503,7 @@ const DocumentUploader = () => {
                                     <FormItem>
                                         <FormLabel className="text-black font-semibold">First Name <span className="text-red-500">*</span></FormLabel>
                                         <FormControl>
-                                            <Input id="firstName" placeholder="Your first name" {...field} disabled className={cn("bg-white border-gray-200 text-black h-12", fieldState.error && "border-red-500")} />
+                                            <Input id="firstName" placeholder="Your first name" {...field} disabled className={cn("bg-white border-gray-200 text-black h-12 disabled:text-black disabled:opacity-100", fieldState.error && "border-red-500")} />
                                         </FormControl>
                                         <FormMessage className="text-red-500 font-medium" />
                                     </FormItem>
@@ -512,7 +512,7 @@ const DocumentUploader = () => {
                                     <FormItem>
                                         <FormLabel className="text-black font-semibold">Last Name <span className="text-red-500">*</span></FormLabel>
                                         <FormControl>
-                                            <Input id="lastName" placeholder="Your last name" {...field} disabled className={cn("bg-white border-gray-200 text-black h-12", fieldState.error && "border-red-500")} />
+                                            <Input id="lastName" placeholder="Your last name" {...field} disabled className={cn("bg-white border-gray-200 text-black h-12 disabled:text-black disabled:opacity-100", fieldState.error && "border-red-500")} />
                                         </FormControl>
                                         <FormMessage className="text-red-500 font-medium" />
                                     </FormItem>
@@ -522,7 +522,7 @@ const DocumentUploader = () => {
                                         <FormItem>
                                             <FormLabel className="text-black font-semibold">Email <span className="text-red-500">*</span></FormLabel>
                                             <FormControl>
-                                                <Input id="email" placeholder="your@example.com" {...field} disabled className={cn("bg-white border-gray-200 text-black h-12", fieldState.error && "border-red-500")} />
+                                                <Input id="email" placeholder="your@example.com" {...field} disabled className={cn("bg-white border-gray-200 text-black h-12 disabled:text-black disabled:opacity-100", fieldState.error && "border-red-500")} />
                                             </FormControl>
                                             <FormMessage className="text-red-500 font-medium" />
                                         </FormItem>
