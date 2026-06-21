@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, use } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -179,6 +179,25 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
+const candidatePromises = new Map<string, Promise<any>>();
+
+function getCandidatePromise(interview_uid: string) {
+    if (!candidatePromises.has(interview_uid)) {
+        const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://api.callpilot.pro/api/v1";
+        const promise = fetch(`${API_BASE_URL}/core/live/interviews/${interview_uid}/candidate`)
+            .then(async (res) => {
+                if (res.ok) {
+                    const resData = await res.json();
+                    return resData?.candidate || resData?.data || resData || {};
+                }
+                return {};
+            })
+            .catch(() => ({}));
+        candidatePromises.set(interview_uid, promise);
+    }
+    return candidatePromises.get(interview_uid)!;
+}
+
 const Dropzone = React.forwardRef<HTMLInputElement, { label: string; id: string; value: any; onChange: (files: File[]) => void; onBlur?: () => void; name?: string; hasError?: boolean }>(
     ({ label, id, value, onChange, onBlur, name, hasError }, ref) => {
         const [dragActive, setDragActive] = useState(false);
@@ -257,10 +276,15 @@ const DocumentUploader = () => {
     const interview_uid = searchParams.get("interview_uid");
     const platform = searchParams.get("platform");
 
+    // Fetch candidate using React 19's use() hook to integrate with Suspense
+    let candidate: any = null;
+    if (interview_uid) {
+        candidate = use(getCandidatePromise(interview_uid));
+    }
+
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isAvailableDateOpen, setIsAvailableDateOpen] = useState(false);
     const [openPopovers, setOpenPopovers] = useState<Record<string, boolean>>({});
-    const [candidateData, setCandidateData] = useState<{ firstName: string; lastName: string; email: string } | null>(null);
 
     const [alertConfig, setAlertConfig] = useState<{
         open: boolean;
@@ -278,9 +302,9 @@ const DocumentUploader = () => {
     const form = useForm<FormValues>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            firstName: "",
-            lastName: "",
-            email: "",
+            firstName: candidate?.firstName || "",
+            lastName: candidate?.lastName || "",
+            email: candidate?.email || "",
             skills: [],
             uid: uid || "",
             interview_uid: interview_uid || "",
@@ -297,32 +321,13 @@ const DocumentUploader = () => {
         }
         if (interview_uid) {
             form.setValue("interview_uid", interview_uid);
-
-            const fetchCandidateData = async () => {
-                try {
-                    const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://api.callpilot.pro/api/v1";
-                    const response = await fetch(`${API_BASE_URL}/core/live/interviews/${interview_uid}/candidate`);
-                    if (response.ok) {
-                        const resData = await response.json();
-                        const candidate = resData?.candidate || resData?.data || resData;
-                        if (candidate) {
-                            const firstName = candidate.firstName || "";
-                            const lastName = candidate.lastName || "";
-                            const email = candidate.email || "";
-                            setCandidateData({ firstName, lastName, email });
-                            form.setValue("firstName", firstName);
-                            form.setValue("lastName", lastName);
-                            form.setValue("email", email);
-                        }
-                    }
-                } catch (error) {
-                    console.error("Error fetching candidate data:", error);
-                }
-            };
-
-            fetchCandidateData();
+            if (candidate) {
+                form.setValue("firstName", candidate.firstName || "");
+                form.setValue("lastName", candidate.lastName || "");
+                form.setValue("email", candidate.email || "");
+            }
         }
-    }, [uid, interview_uid, form]);
+    }, [uid, interview_uid, candidate, form]);
 
     const allErrors = Array.from(new Set(Object.values(form.formState.errors).map(err => err?.message as string).filter(Boolean)));
 
@@ -384,9 +389,9 @@ const DocumentUploader = () => {
                 });
 
                 form.reset({
-                    firstName: candidateData?.firstName || "",
-                    lastName: candidateData?.lastName || "",
-                    email: candidateData?.email || "",
+                    firstName: candidate?.firstName || "",
+                    lastName: candidate?.lastName || "",
+                    email: candidate?.email || "",
                     skills: [],
                     availableFromDate: undefined,
                     uid: uid || "",
