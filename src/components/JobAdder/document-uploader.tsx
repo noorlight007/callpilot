@@ -181,10 +181,11 @@ type FormValues = z.infer<typeof formSchema>;
 
 const candidatePromises = new Map<string, Promise<any>>();
 
-function getCandidatePromise(interview_uid: string) {
-    if (!candidatePromises.has(interview_uid)) {
+function getCandidatePromise(interview_uid: string, uid: string | null) {
+    const cacheKey = `${interview_uid}_${uid || ""}`;
+    if (!candidatePromises.has(cacheKey)) {
         const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://api.callpilot.pro/api/v1";
-        const promise = fetch(`${API_BASE_URL}/core/live/interviews/${interview_uid}/candidate`)
+        const promise = fetch(`${API_BASE_URL}/core/live/interviews/${interview_uid}/candidate/${uid}`)
             .then(async (res) => {
                 if (res.ok) {
                     const resData = await res.json();
@@ -193,9 +194,9 @@ function getCandidatePromise(interview_uid: string) {
                 return {};
             })
             .catch(() => ({}));
-        candidatePromises.set(interview_uid, promise);
+        candidatePromises.set(cacheKey, promise);
     }
-    return candidatePromises.get(interview_uid)!;
+    return candidatePromises.get(cacheKey)!;
 }
 
 const Dropzone = React.forwardRef<HTMLInputElement, { label: string; id: string; value: any; onChange: (files: File[]) => void; onBlur?: () => void; name?: string; hasError?: boolean }>(
@@ -279,7 +280,7 @@ const DocumentUploader = () => {
     // Fetch candidate using React 19's use() hook to integrate with Suspense
     let candidate: any = null;
     if (interview_uid) {
-        candidate = use(getCandidatePromise(interview_uid));
+        candidate = use(getCandidatePromise(interview_uid, uid));
     }
 
     const [isSubmitting, setIsSubmitting] = useState(false);
