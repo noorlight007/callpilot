@@ -151,7 +151,13 @@ export default function GetStarted() {
   }, []);
 
   const handleInputChange = (field: string, value: string) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
+    let cleanValue = value;
+    if (field === "phoneNumber" || field === "mobileNumber") {
+      if (cleanValue.startsWith("0")) {
+        cleanValue = cleanValue.substring(1);
+      }
+    }
+    setFormData((prev) => ({ ...prev, [field]: cleanValue }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -763,6 +769,9 @@ export default function GetStarted() {
                                   setCountryIso(country.code);
                                   handleInputChange("countryCode", country.dial_code);
                                   setOpenPhoneCombobox(false);
+                                  if (formData.phoneNumber.startsWith("0")) {
+                                    handleInputChange("phoneNumber", formData.phoneNumber.substring(1));
+                                  }
                                 }}
                                 className="group"
                               >
@@ -822,6 +831,9 @@ export default function GetStarted() {
                                   setMobileCountryIso(country.code);
                                   handleInputChange("mobileCountryCode", country.dial_code);
                                   setOpenMobileCombobox(false);
+                                  if (formData.mobileNumber.startsWith("0")) {
+                                    handleInputChange("mobileNumber", formData.mobileNumber.substring(1));
+                                  }
                                 }}
                                 className="group"
                               >

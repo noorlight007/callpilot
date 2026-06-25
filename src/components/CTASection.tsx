@@ -603,6 +603,9 @@ const CTASection = () => {
                                       onSelect={(currentValue) => {
                                         setCountryIso(country.code);
                                         setOpenCombobox(false);
+                                        if (phone.startsWith("0")) {
+                                          setPhone(phone.substring(1));
+                                        }
                                       }}
                                       className="group"
                                     >
@@ -633,7 +636,13 @@ const CTASection = () => {
                           type="tel"
                           placeholder="(555) 000-0000"
                           value={phone}
-                          onChange={(e) => setPhone(e.target.value)}
+                          onChange={(e) => {
+                            let val = e.target.value;
+                            if (val.startsWith("0")) {
+                              val = val.substring(1);
+                            }
+                            setPhone(val);
+                          }}
                           className={cn(
                             "h-12 border-input focus:border-accent focus:ring-accent/20 transition-all font-medium w-full",
                             fieldErrors.phone && "border-red-500 focus:border-red-500 focus:ring-red-500/20"
