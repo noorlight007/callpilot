@@ -169,7 +169,8 @@ const Pricing = () => {
                 </ul>
 
                 {/* CTA Button */}
-                {tier.name === "Enterprise" && (
+                {/* {tier.name === "Enterprise" && ( */}
+
                   <div className="mt-auto">
                     <button
                       onClick={() => router.push('/get-started')}
@@ -183,7 +184,7 @@ const Pricing = () => {
                       {tier.cta}
                     </button>
                   </div>
-                )}
+                {/* )} */}
               </div>
             );
           })}
