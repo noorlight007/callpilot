@@ -16,6 +16,7 @@ import { countries } from "@/lib/countries";
 import { getCountryCode } from "@/actions/geo";
 
 const BASE_URL = "https://api.swiftwave.ai/api/v1";
+const BASE_URL_CALLPILOT = "https://api.callpilot.pro/api/v1";
 
 const CTASection = () => {
   const [firstName, setFirstName] = useState("");
@@ -226,7 +227,7 @@ const CTASection = () => {
     try {
       const endpoint = callFlow === "Steve’s American Diner"
         ? `${BASE_URL}/interview/client/call/diner`
-        : `${BASE_URL}/interview/client/call/`;
+        : `${BASE_URL_CALLPILOT}/core/client-test-call/`;
       const response = await axios.post(endpoint, {
         name: `${firstName} ${lastName}`,
         phone: fullPhone,
@@ -359,7 +360,7 @@ const CTASection = () => {
     try {
       const endpoint = callFlow === "Steve’s American Diner"
         ? `${BASE_URL}/interview/client/call/diner`
-        : `${BASE_URL}/interview/client/call/`;
+        : `${BASE_URL_CALLPILOT}/core/client-test-call/`;
       const response = await axios.post(endpoint, {
         name: `${firstName} ${lastName}`,
         phone: fullPhone,
