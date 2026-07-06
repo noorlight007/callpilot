@@ -13,7 +13,10 @@ import {
   ShieldCheck,
   Play,
   Check,
-  Settings
+  Settings,
+  PhoneCall,
+  RefreshCw,
+  Bell
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -50,46 +53,78 @@ export default function IntegrationsPage() {
                 className="flex flex-col gap-6"
               >
                 <div className="text-[#064be2] font-semibold tracking-wider text-sm uppercase">
-                  Integrations
+                  INTEGRATIONS
                 </div>
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#0c0f19] tracking-tight leading-tight">
                   <span className="lg:whitespace-nowrap">CallPilot + JobAdder</span> <br />
                   <span className="text-[#064be2]">Now Live</span>
                 </h1>
-                <p className="text-lg md:text-xl text-[#0c0f19] font-semibold leading-snug max-w-xl">
-                  The next generation of AI applicant screening calls, built natively for JobAdder.
+                <p className="text-lg md:text-xl text-[#0c0f19] font-bold leading-snug max-w-xl">
+                  AI Screening Calls. Fully Integrated.
                 </p>
                 <p className="text-base text-gray-500 leading-relaxed max-w-xl">
-                  CallPilot is fully integrated with JobAdder to automatically engage every applicant, conduct AI screening calls, collect documents via WhatsApp, synchronise results back to JobAdder and prepare applicants for recruiter review — so you can focus on what drives placements and growth.
+                  CallPilot is now fully integrated with JobAdder to automate first-stage screening, collect documents via WhatsApp, sync results instantly, and notify consultants when applicants are ready.
                 </p>
 
                 <div className="flex flex-wrap gap-4 mt-2">
                   <Link
                     href="/get-started"
-                    className="w-56 h-14 px-8 bg-[#064be2] text-white font-bold uppercase rounded-lg hover:bg-[#003cb3] hover:-translate-y-0.5 active:translate-y-0 active:scale-98 transition-all shadow-md text-sm tracking-wide flex items-center justify-center text-center"
+                    className="w-52 h-12 bg-[#064be2] text-white font-bold uppercase rounded-lg hover:bg-[#003cb3] transition-all text-xs tracking-wider flex items-center justify-center text-center shadow-sm"
                   >
                     Book a Demo
                   </Link>
-                  {/* <Link
+                  <Link
                     href="#"
                     onClick={(e) => {
                       e.preventDefault();
                       setIsVideoOpen(true);
                     }}
-                    className="w-56 h-14 px-8 bg-white border border-[#064be2] text-[#064be2] font-bold uppercase rounded-lg hover:bg-blue-50/50 hover:-translate-y-0.5 active:translate-y-0 active:scale-98 transition-all flex items-center justify-center gap-2 text-sm tracking-wide"
+                    className="w-52 h-12 bg-white border-2 border-[#064be2] text-[#064be2] font-bold uppercase rounded-lg hover:bg-blue-50/30 transition-all flex items-center justify-center gap-2 text-xs tracking-wider"
                   >
                     <div className="w-5 h-5 bg-[#064be2] rounded-full flex items-center justify-center pl-0.5 flex-shrink-0">
-                      <Play className="w-3 h-3 text-white fill-white" />
+                      <Play className="w-2.5 h-2.5 text-white fill-white" />
                     </div>
                     Watch AI Call
-                  </Link> */}
+                  </Link>
                 </div>
 
-                <div className="flex items-center gap-2 mt-4 text-[#0c0f19] font-medium text-sm">
+                <div className="flex items-center gap-2 mt-2 text-[#0c0f19] font-medium text-sm">
                   <div className="w-5 h-5 bg-[#064be2] rounded-full flex items-center justify-center">
                     <Check className="w-3.5 h-3.5 text-white stroke-[3px]" />
                   </div>
-                  <span>Now Live with <span className="font-bold text-[#0c0f19]">JobAdder</span></span>
+                  <span>Now Live with <span className="font-bold text-[#064be2]">JobAdder</span></span>
+                </div>
+
+                {/* Coming Soon RecruitCRM Integration Badge */}
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 p-4 rounded-xl bg-gray-50/60 border border-gray-100 mt-14 max-w-lg select-none">
+                  {/* Left Logo and Label Column */}
+                  <div className="flex items-center gap-3">
+                    <div className="flex-shrink-0">
+                      <svg viewBox="0 0 32 32" className="w-10 h-10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="32" height="32" rx="8" fill="#2563EB" />
+                        <path d="M16 8C11.58 8 8 11.58 8 16C8 20.42 11.58 24 16 24C20.42 24 24 20.42 24 16C24 11.58 20.42 8 16 8ZM16 21C13.24 21 11 18.76 11 16C11 13.24 13.24 11 16 11C18.76 11 21 13.24 21 16C21 18.76 18.76 21 16 21Z" fill="white" />
+                      </svg>
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="text-[#064be2] font-bold text-[9px] uppercase tracking-wider leading-none mb-1">
+                        COMING SOON
+                      </span>
+                      <span className="text-[#0c0f19] font-black text-sm tracking-tight leading-none">
+                        RecruitCRM
+                      </span>
+                      <span className="text-gray-400 font-semibold text-[8px] uppercase tracking-wider leading-none mt-1">
+                        INTEGRATION IN PROGRESS
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Vertical Separator */}
+                  <div className="hidden sm:block w-px h-10 bg-gray-200" />
+
+                  {/* Right Info Description Column */}
+                  <p className="text-gray-500 text-xs leading-relaxed max-w-[240px]">
+                    We're currently integrating with RecruitCRM. More ATS integrations coming soon.
+                  </p>
                 </div>
               </motion.div>
 
@@ -112,25 +147,95 @@ export default function IntegrationsPage() {
           </div>
         </section>
 
-        {/* Exclusive Launch Offers Card Section */}
-        <section className="bg-white py-12">
+        {/* Banner Section: Consultant Sleeps. CallPilot Works 24/7 Screening. */}
+        <section className="bg-[#020917] text-white py-12 md:py-14 overflow-hidden border-t border-b border-blue-950 relative">
+          {/* Background image container for sleeping consultant on the left */}
+          <div className="absolute left-0 top-0 bottom-0 w-[40%] sm:w-[35%] lg:w-[30%] h-full z-0 overflow-hidden select-none pointer-events-none">
+            <img
+              src="/images/sleeping-consultant.png"
+              alt="Consultant Sleeping"
+              className="w-full h-full object-cover object-left"
+            />
+            {/* Gradient overlay to fade the image into the dark navy background */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#020917]/65 to-[#020917]/60 z-10"></div>
+          </div>
+
+          <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              {/* Spacer for the left-aligned background image */}
+              <div className="col-span-1 lg:col-span-4 h-24 sm:h-32 md:h-40 lg:h-auto"></div>
+
+              {/* Right Content Column: Title and Features */}
+              <div className="lg:col-span-8 flex flex-col gap-6 lg:pl-6">
+                <div>
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl text-white font-extrabold tracking-tight leading-tight">
+                    Consultant Sleeps.<br />
+                    <span className="text-[#00d8ff] block mt-2">CallPilot Works 24/7 Screening.</span>
+                  </h2>
+                </div>
+
+                {/* 4 Feature Columns with vertical separator lines on larger screens */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-0 pt-2 border-t border-white/10 mt-2">
+                  {/* Feature 1 */}
+                  <div className="flex items-center gap-3 md:pr-4 md:border-r md:border-white/10">
+                    <PhoneCall className="w-8 h-8 text-white stroke-[1.5px] flex-shrink-0" />
+                    <div className="text-xs font-semibold text-gray-300 leading-snug">
+                      Engages every<br />applicant
+                    </div>
+                  </div>
+
+                  {/* Feature 2 */}
+                  <div className="flex items-center gap-3 md:px-6 md:border-r md:border-white/10">
+                    <WhatsAppIcon className="w-8 h-8 fill-white text-white flex-shrink-0" />
+                    <div className="text-xs font-semibold text-gray-300 leading-snug">
+                      Collects documents<br />via WhatsApp
+                    </div>
+                  </div>
+
+                  {/* Feature 3 */}
+                  <div className="flex items-center gap-3 md:px-6 md:border-r md:border-white/10">
+                    <RefreshCw className="w-8 h-8 text-white stroke-[1.5px] flex-shrink-0" />
+                    <div className="text-xs font-semibold text-gray-300 leading-snug">
+                      Syncs results<br />to JobAdder
+                    </div>
+                  </div>
+
+                  {/* Feature 4 */}
+                  <div className="flex items-center gap-3 md:pl-6">
+                    <Bell className="w-8 h-8 text-white stroke-[1.5px] flex-shrink-0" />
+                    <div className="text-xs font-semibold text-gray-300 leading-snug">
+                      Notifies consultants<br />when ready
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Exclusive Launch Offers Section */}
+        <section className="bg-white py-16">
           <div className="max-w-6xl mx-auto px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="border border-blue-300 bg-white rounded-3xl shadow-xl shadow-blue-500/5 flex flex-col p-8 md:p-12 gap-10"
+              className="flex flex-col gap-12"
             >
               {/* Card Content - Top */}
-              <div className="text-center flex flex-col items-center gap-3">
+              <div className="text-center flex flex-col items-center gap-4">
                 <span className="text-[#064be2] font-bold tracking-widest text-xs uppercase">
                   EXCLUSIVE JOBADDER LAUNCH OFFERS
                 </span>
-                <h2 className="text-3xl md:text-4xl font-extrabold text-[#0c0f19]">
-                  Limited-Time Benefits for the First 20 Customers
-                </h2>
-                <p className="text-gray-600 text-sm md:text-base max-w-2xl">
+                <div className="flex items-center justify-center gap-6 w-full">
+                  <div className="hidden md:block h-px bg-gray-200 w-16 lg:w-24"></div>
+                  <h2 className="text-3xl md:text-4xl font-extrabold text-[#0c0f19] tracking-tight">
+                    Limited-Time Benefits for the First 20 Customers
+                  </h2>
+                  <div className="hidden md:block h-px bg-gray-200 w-16 lg:w-24"></div>
+                </div>
+                <p className="text-gray-600 text-sm md:text-base max-w-2xl mt-1">
                   Get started faster with complimentary setup and credit to experience CallPilot in action.
                 </p>
               </div>
@@ -138,7 +243,7 @@ export default function IntegrationsPage() {
               {/* 4-Column launch offers grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-8 lg:gap-y-0 w-full mt-2">
                 {/* Item 1 */}
-                <div className="flex flex-col items-center text-center gap-4 px-4 lg:px-8 lg:first:pl-0 lg:last:pr-0 lg:border-r lg:border-blue-300 last:border-r-0">
+                <div className="flex flex-col items-center text-center gap-4 px-4 lg:px-8 lg:first:pl-0 lg:last:pr-0 lg:border-r lg:border-gray-300 last:border-r-0">
                   <div className="w-16 h-16 rounded-full bg-[#25d366]/10 flex items-center justify-center">
                     <WhatsAppIcon className="w-6 h-6 fill-[#0c0f19]" />
                   </div>
@@ -155,7 +260,7 @@ export default function IntegrationsPage() {
                 </div>
 
                 {/* Item 2 */}
-                <div className="flex flex-col items-center text-center gap-4 px-4 lg:px-8 lg:first:pl-0 lg:last:pr-0 lg:border-r lg:border-blue-300 last:border-r-0">
+                <div className="flex flex-col items-center text-center gap-4 px-4 lg:px-8 lg:first:pl-0 lg:last:pr-0 lg:border-r lg:border-gray-300 last:border-r-0">
                   <div className="w-16 h-16 rounded-full bg-[#064be2]/10 flex items-center justify-center">
                     <Settings className="w-6 h-6 text-[#0c0f19]" />
                   </div>
@@ -172,9 +277,9 @@ export default function IntegrationsPage() {
                 </div>
 
                 {/* Item 3 */}
-                <div className="flex flex-col items-center text-center gap-4 px-4 lg:px-8 lg:first:pl-0 lg:last:pr-0 lg:border-r lg:border-blue-300 last:border-r-0">
+                <div className="flex flex-col items-center text-center gap-4 px-4 lg:px-8 lg:first:pl-0 lg:last:pr-0 lg:border-r lg:border-gray-300 last:border-r-0">
                   <div className="w-16 h-16 rounded-full bg-purple-100/50 flex items-center justify-center">
-                    <Phone className="w-6 h-6 text-[#0c0f19]" />
+                    <PhoneCall className="w-6 h-6 text-[#0c0f19]" />
                   </div>
                   <div className="flex flex-col items-center gap-2">
                     <h3 className="font-extrabold text-[#0c0f19] text-lg leading-tight tracking-tight">
@@ -189,7 +294,7 @@ export default function IntegrationsPage() {
                 </div>
 
                 {/* Item 4 */}
-                <div className="flex flex-col items-center text-center gap-4 px-4 lg:px-8 lg:first:pl-0 lg:last:pr-0 lg:border-r lg:border-blue-300 last:border-r-0">
+                <div className="flex flex-col items-center text-center gap-4 px-4 lg:px-8 lg:first:pl-0 lg:last:pr-0 lg:border-r lg:border-gray-300 last:border-r-0">
                   <div className="w-16 h-16 rounded-full bg-amber-100/50 flex items-center justify-center">
                     <Star className="w-6 h-6 text-[#0c0f19]" />
                   </div>
@@ -206,7 +311,7 @@ export default function IntegrationsPage() {
               </div>
 
               {/* Bottom Blue Banner */}
-              <div className="bg-[#064be2] text-white py-4 px-6 md:px-8 rounded-xl md:rounded-2xl flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6 text-center select-none mt-2">
+              <div className="bg-[#064be2] text-white py-4 px-6 md:px-8 rounded-xl flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6 text-center select-none mt-2">
                 <div className="flex items-center gap-2 font-bold text-xs md:text-sm uppercase tracking-wider">
                   <ShieldCheck className="w-5 h-5 text-white" />
                   FOUNDING JOBADDER CUSTOMER BENEFITS
@@ -229,7 +334,7 @@ export default function IntegrationsPage() {
               viewport={{ once: true }}
               className="text-2xl md:text-3xl font-extrabold text-[#0c0f19] relative pb-4"
             >
-              More Time. Better Applicants. Higher Revenue.
+              Why Recruitment Teams Choose CallPilot
               <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-16 h-1 bg-[#064be2] rounded-full"></span>
             </motion.h2>
 
