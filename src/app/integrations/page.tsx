@@ -44,7 +44,7 @@ export default function IntegrationsPage() {
         {/* Hero Section */}
         <section className="pt-16 md:pt-24 pb-16 overflow-hidden">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-0 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
               {/* Left Column (Text Content) */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -133,12 +133,12 @@ Less admin. More placements.
               </motion.div>
 
               {/* Right Column (Image Mockup) */}
-              <div className="relative flex justify-center lg:justify-start">
+              <div className="relative flex justify-center lg:justify-end">
                 <motion.div
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6 }}
-                  className="w-full max-w-lg lg:max-w-2xl lg:-ml-22 xl:-ml-32"
+                  className="w-full max-w-lg lg:max-w-2xl"
                 >
                   <img
                     src="/images/unnamed.png"
