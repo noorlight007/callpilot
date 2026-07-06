@@ -73,7 +73,7 @@ export default function IntegrationsPage() {
                   >
                     Book a Demo
                   </Link>
-                  <Link
+                  {/* <Link
                     href="#"
                     onClick={(e) => {
                       e.preventDefault();
@@ -85,7 +85,7 @@ export default function IntegrationsPage() {
                       <Play className="w-2.5 h-2.5 text-white fill-white" />
                     </div>
                     Watch AI Call
-                  </Link>
+                  </Link> */}
                 </div>
 
                 <div className="flex items-center gap-2 mt-2 text-[#0c0f19] font-medium text-sm">
