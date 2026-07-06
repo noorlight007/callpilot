@@ -141,7 +141,7 @@ Less admin. More placements.
                   className="w-full max-w-lg lg:max-w-2xl lg:-ml-22 xl:-ml-32"
                 >
                   <img
-                    src="/images/integration-laptop.png"
+                    src="/images/unnamed.png"
                     alt="CallPilot + JobAdder Integration Mockup"
                     className="w-full h-auto object-contain drop-shadow-xl"
                   />
