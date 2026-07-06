@@ -88,15 +88,15 @@ export default function IntegrationsPage() {
                   </Link> */}
                 </div>
 
-                <div className="flex items-center gap-2 mt-2 text-[#0c0f19] font-medium text-sm">
+                {/* <div className="flex items-center gap-2 mt-2 text-[#0c0f19] font-medium text-sm">
                   <div className="w-5 h-5 bg-[#064be2] rounded-full flex items-center justify-center">
                     <Check className="w-3.5 h-3.5 text-white stroke-[3px]" />
                   </div>
                   <span>Now Live with <span className="font-bold text-[#064be2]">JobAdder</span></span>
-                </div>
+                </div> */}
 
                 {/* Coming Soon RecruitCRM Integration Badge */}
-                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 p-4 rounded-xl bg-gray-50/60 border border-gray-100 mt-14 max-w-lg select-none">
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 p-4 rounded-xl bg-gray-50/60 border border-gray-100 mt-28 max-w-lg select-none">
                   {/* Left Logo and Label Column */}
                   <div className="flex items-center gap-3">
                     <div className="flex-shrink-0">
