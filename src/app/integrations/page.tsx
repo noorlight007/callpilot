@@ -63,7 +63,10 @@ export default function IntegrationsPage() {
                   Next Generation AI Applicant Screening Call + Automation.
                 </p>
                 <p className="text-base text-gray-500 leading-relaxed max-w-xl">
-                  CallPilot is now fully integrated with JobAdder to automate first-stage screening, collect documents via WhatsApp, sync results instantly, and notify consultants when applicants are ready.
+                  CallPilot is now fully integrated with JobAdder.
+18 months of live recruitment testing.
+Human-like AI conversations.
+Less admin. More placements.
                 </p>
 
                 <div className="flex flex-wrap gap-4 mt-2">
@@ -100,10 +103,11 @@ export default function IntegrationsPage() {
                   {/* Left Logo and Label Column */}
                   <div className="flex items-center gap-3">
                     <div className="flex-shrink-0">
-                      <svg viewBox="0 0 32 32" className="w-10 h-10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="32" height="32" rx="8" fill="#2563EB" />
-                        <path d="M16 8C11.58 8 8 11.58 8 16C8 20.42 11.58 24 16 24C20.42 24 24 20.42 24 16C24 11.58 20.42 8 16 8ZM16 21C13.24 21 11 18.76 11 16C11 13.24 13.24 11 16 11C18.76 11 21 13.24 21 16C21 18.76 18.76 21 16 21Z" fill="white" />
-                      </svg>
+                      <img
+                        src="/images/Recruit_CRM_icon.jpeg"
+                        alt="RecruitCRM Logo"
+                        className="w-10 h-10 rounded-lg object-cover"
+                      />
                     </div>
                     <div className="flex flex-col">
                       <span className="text-[#064be2] font-bold text-[9px] uppercase tracking-wider leading-none mb-1">
@@ -170,7 +174,7 @@ export default function IntegrationsPage() {
                 <div>
                   <h2 className="text-2xl sm:text-3xl md:text-4xl text-white font-extrabold tracking-tight leading-tight">
                     Consultant Sleeps.<br />
-                    <span className="text-[#00d8ff] block mt-2">CallPilot Works 24/7 Screening.</span>
+                    <span className="text-white block mt-2">CallPilot Works 24/7 Screening.</span>
                   </h2>
                 </div>
 
