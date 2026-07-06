@@ -60,7 +60,7 @@ export default function IntegrationsPage() {
                   <span className="text-[#064be2]">Now Live</span>
                 </h1>
                 <p className="text-lg md:text-xl text-[#0c0f19] font-bold leading-snug max-w-xl">
-                  AI Screening Calls. Fully Integrated.
+                  Next Generation AI Applicant Screening Call + Automation.
                 </p>
                 <p className="text-base text-gray-500 leading-relaxed max-w-xl">
                   CallPilot is now fully integrated with JobAdder to automate first-stage screening, collect documents via WhatsApp, sync results instantly, and notify consultants when applicants are ready.
