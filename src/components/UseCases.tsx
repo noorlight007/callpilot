@@ -53,6 +53,14 @@ const UseCases = () => {
           <p className="text-lg text-body">
             From sales to support, CallPilot adapts to your unique business needs.
           </p>
+          <div className="mt-6 inline-flex flex-col sm:flex-col items-center gap-2 sm:gap-3 bg-blue-50/50 border border-blue-100/60 py-2 px-5 rounded-full select-none">
+            <span className="text-xs font-bold text-[#064be2] uppercase tracking-wider bg-white py-1 px-2.5 rounded-full shadow-sm">
+              Recruitment
+            </span>
+            <span className="text-xs md:text-sm font-semibold text-gray-700">
+              Next-Generation AI Applicant Screening Calls + Automation
+            </span>
+          </div>
         </div>
 
         {/* Use Case Grid */}
