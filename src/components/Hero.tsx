@@ -82,29 +82,37 @@ const Hero = () => {
               </span>
               <div className="h-px bg-gradient-to-l from-transparent to-[#d97706] w-12 sm:w-20"></div>
             </div>
-            
+
             <h3 className="text-[21.6px] sm:text-[27px] font-normal text-white mb-8 text-center">
               Live & In Progress
             </h3>
 
             {/* Grid container */}
-            <div className="grid grid-cols-2 gap-3 sm:gap-4 max-w-xl mx-auto text-left">
+            <div className="flex flex-row items-center justify-center gap-12 sm:gap-24 max-w-3xl mx-auto text-left bg-[#0a2540] p-6 sm:p-8 rounded-2xl shadow-2xl relative overflow-hidden">
+              {/* Fade overlays */}
+              <div className="absolute left-0 right-0 top-0 h-12 xs:h-14 sm:h-16 md:h-18 lg:h-20 xl:h-22 bg-gradient-to-b from-black/60 to-transparent z-10 pointer-events-none" />
+              <div className="absolute left-0 right-0 bottom-0 h-12 xs:h-14 sm:h-16 md:h-18 lg:h-20 xl:h-22 bg-gradient-to-t from-black/60 to-transparent z-10 pointer-events-none" />
+              <div className="absolute left-0 top-0 bottom-0 w-8 xs:w-12 sm:w-16 md:w-20 lg:w-24 xl:w-28 2xl:w-32 bg-gradient-to-r from-[#0a2540] to-transparent z-10 pointer-events-none" />
+              <div className="absolute right-0 top-0 bottom-0 w-8 xs:w-12 sm:w-16 md:w-20 lg:w-24 xl:w-28 2xl:w-32 bg-gradient-to-l from-[#0a2540] to-transparent z-10 pointer-events-none" />
+              {/* <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+              <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" /> */}
+
               {/* Card 1: JobAdder */}
               <Link
                 href="/integrations"
-                className="border border-emerald-500/20 bg-white/[0.02] backdrop-blur-md rounded-2xl p-2 sm:p-3 flex flex-col justify-between hover:border-emerald-500/35 transition-colors relative cursor-pointer block"
+                className="flex flex-col justify-between p-2 sm:p-3 w-[200px] h-[140px] sm:w-[240px] sm:h-[170px] hover:opacity-80 transition-opacity relative cursor-pointer z-20"
               >
                 <div>
                   <div className="inline-flex items-center px-3 py-1 rounded-full border border-emerald-500/30 text-emerald-400 text-[10px] font-bold tracking-wider uppercase bg-emerald-950/20 mb-4">
                     LIVE
                   </div>
-                  
+
                   {/* JobAdder Logo */}
                   <div className="h-[40px] sm:h-[54px] flex items-center justify-center mb-2">
                     <img
                       src="/images/JobAdder.png"
                       alt="JobAdder Logo"
-                      className="h-full object-contain max-h-[22px] sm:max-h-[41px]"
+                      className="h-full object-contain max-h-[18px] sm:max-h-[41px]"
                     />
                   </div>
                 </div>
@@ -115,21 +123,21 @@ const Hero = () => {
               </Link>
 
               {/* Card 2: Recruit CRM */}
-              <div className="border border-amber-500/20 bg-white/[0.02] backdrop-blur-md rounded-2xl p-2 sm:p-3 flex flex-col justify-between hover:border-amber-500/35 transition-colors relative">
+              <div className="flex flex-col justify-between p-2 sm:p-3 w-[200px] h-[140px] sm:w-[240px] sm:h-[170px] hover:opacity-80 transition-opacity relative z-20">
                 <div>
                   <div className="inline-flex items-center px-3 py-1 rounded-full border border-amber-500/30 text-amber-400 text-[10px] font-bold tracking-wider uppercase bg-amber-950/20 mb-4">
                     IN PROGRESS
                   </div>
-                  
+
                   {/* Recruit CRM Logo */}
                   <div className="h-[44px] sm:h-[54px] flex items-center justify-center mb-2">
-                    <div className="flex items-center gap-1.5 sm:gap-2 h-full max-h-[32px] sm:max-h-[41px]">
+                    <div className="flex items-center gap-1.5 sm:gap-2 h-full max-h-[22px] sm:max-h-[41px]">
                       <img
                         src="/images/Recruit_CRM_icon.jpeg"
                         alt="Recruit CRM Icon"
                         className="h-full w-auto rounded-lg object-cover"
                       />
-                      <span className="text-white text-[22px] sm:text-[31px] font-black tracking-tight leading-none">recruit crm</span>
+                      <span className="text-white text-[16px] sm:text-[28px] font-black tracking-tight leading-none">recruit crm</span>
                     </div>
                   </div>
                 </div>
