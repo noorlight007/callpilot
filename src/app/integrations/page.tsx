@@ -50,7 +50,7 @@ export default function IntegrationsPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="flex flex-col gap-6"
+                className="flex flex-col gap-6 order-2 lg:order-1"
               >
                 <div className="text-[#064be2] font-semibold tracking-wider text-sm uppercase">
                   INTEGRATIONS
@@ -133,7 +133,7 @@ Less admin. More placements.
               </motion.div>
 
               {/* Right Column (Image Mockup) */}
-              <div className="relative flex justify-center lg:justify-end">
+              <div className="relative flex justify-center lg:justify-end order-1 lg:order-2">
                 <motion.div
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
