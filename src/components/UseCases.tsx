@@ -1,4 +1,5 @@
-import { PhoneOutgoing, PhoneIncoming, Calendar, ClipboardCheck, HeartPulse, Building2, FileUser } from "lucide-react";
+import { PhoneOutgoing, PhoneIncoming, Calendar, ClipboardCheck, HeartPulse, Building2, FileUser, Briefcase } from "lucide-react";
+import Link from "next/link";
 
 const useCases = [
   {
@@ -53,13 +54,24 @@ const UseCases = () => {
           <p className="text-lg text-body">
             From sales to support, CallPilot adapts to your unique business needs.
           </p>
-          <div className="mt-6 inline-flex flex-col sm:flex-col items-center gap-2 sm:gap-3 bg-blue-50/50 border border-blue-100/60 py-2 px-5 rounded-full select-none">
-            <span className="text-xs font-bold text-[#064be2] uppercase tracking-wider bg-white py-1 px-2.5 rounded-full shadow-sm">
-              Recruitment
-            </span>
-            <span className="text-xs md:text-sm font-semibold text-gray-700">
-              Next-Generation AI Applicant Screening Calls + Automation
-            </span>
+          <div className="mt-6 flex justify-center">
+            <Link
+              href="/integrations"
+              className="group relative bg-card rounded-xl p-6 border border-border-card card-hover overflow-hidden text-left max-w-sm w-full cursor-pointer block"
+            >
+              {/* Accent line on top */}
+              <div className="absolute top-0 left-0 right-0 h-1 gradient-accent opacity-0 group-hover:opacity-100 transition-opacity" />
+              
+              <div className="w-12 h-12 rounded-lg bg-secondary flex items-center justify-center mb-4 group-hover:accent-tint-bg transition-colors">
+                <Briefcase className="w-6 h-6 text-muted-text group-hover:accent-text transition-colors" />
+              </div>
+              <h3 className="text-lg font-semibold text-headline mb-2">
+                Recruitment
+              </h3>
+              <p className="text-body">
+                Next-Generation AI Applicant Screening Calls + Automation
+              </p>
+            </Link>
           </div>
         </div>
 

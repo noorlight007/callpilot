@@ -83,7 +83,7 @@ const Hero = () => {
               <div className="h-px bg-gradient-to-l from-transparent to-[#d97706] w-12 sm:w-20"></div>
             </div>
             
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-white mb-8 text-center">
+            <h3 className="text-[21.6px] sm:text-[27px] font-normal text-white mb-8 text-center">
               Live & In Progress
             </h3>
 
@@ -100,11 +100,11 @@ const Hero = () => {
                   </div>
                   
                   {/* JobAdder Logo */}
-                  <div className="h-[54px] flex items-center justify-center mb-2">
+                  <div className="h-[40px] sm:h-[54px] flex items-center justify-center mb-2">
                     <img
                       src="/images/JobAdder.png"
                       alt="JobAdder Logo"
-                      className="h-full object-contain max-h-[41px]"
+                      className="h-full object-contain max-h-[22px] sm:max-h-[41px]"
                     />
                   </div>
                 </div>
@@ -122,14 +122,14 @@ const Hero = () => {
                   </div>
                   
                   {/* Recruit CRM Logo */}
-                  <div className="h-[54px] flex items-center justify-center mb-2">
-                    <div className="flex items-center gap-2 h-full max-h-[41px]">
+                  <div className="h-[44px] sm:h-[54px] flex items-center justify-center mb-2">
+                    <div className="flex items-center gap-1.5 sm:gap-2 h-full max-h-[32px] sm:max-h-[41px]">
                       <img
                         src="/images/Recruit_CRM_icon.jpeg"
                         alt="Recruit CRM Icon"
                         className="h-full w-auto rounded-lg object-cover"
                       />
-                      <span className="text-white text-[31px] font-black tracking-tight leading-none">recruit crm</span>
+                      <span className="text-white text-[22px] sm:text-[31px] font-black tracking-tight leading-none">recruit crm</span>
                     </div>
                   </div>
                 </div>

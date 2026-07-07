@@ -71,10 +71,10 @@ Less admin. More placements.
 
                 <div className="flex flex-wrap gap-4 mt-2">
                   <Link
-                    href="/get-started"
+                    href="/#cta"
                     className="w-52 h-12 bg-[#064be2] text-white font-bold uppercase rounded-lg hover:bg-[#003cb3] transition-all text-xs tracking-wider flex items-center justify-center text-center shadow-sm"
                   >
-                    Book a Demo
+                    Try AI Call
                   </Link>
                   {/* <Link
                     href="#"
@@ -99,8 +99,8 @@ Less admin. More placements.
                 </div> */}
 
                 {/* Coming Soon RecruitCRM Integration Badge */}
-                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 p-4 rounded-xl bg-gray-50/60 border border-gray-100 mt-28 max-w-lg select-none">
-                  {/* Left Logo and Label Column */}
+                {/* <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 p-4 rounded-xl bg-gray-50/60 border border-gray-100 mt-28 max-w-lg select-none">
+                 
                   <div className="flex items-center gap-3">
                     <div className="flex-shrink-0">
                       <img
@@ -122,14 +122,14 @@ Less admin. More placements.
                     </div>
                   </div>
 
-                  {/* Vertical Separator */}
+                  
                   <div className="hidden sm:block w-px h-10 bg-gray-200" />
 
-                  {/* Right Info Description Column */}
+                  
                   <p className="text-gray-500 text-xs leading-relaxed max-w-[240px]">
                     We're currently integrating with RecruitCRM. More ATS integrations coming soon.
                   </p>
-                </div>
+                </div> */}
               </motion.div>
 
               {/* Right Column (Image Mockup) */}
@@ -153,8 +153,17 @@ Less admin. More placements.
 
         {/* Banner Section: Consultant Sleeps. CallPilot Works 24/7 Screening. */}
         <section className="bg-[#020917] text-white py-12 md:py-14 overflow-hidden border-t border-b border-blue-950 relative">
-          {/* Background image container for sleeping consultant on the left */}
-          <div className="absolute left-0 top-0 bottom-0 w-[40%] sm:w-[35%] lg:w-[30%] h-full z-0 overflow-hidden select-none pointer-events-none">
+          {/* Mobile Background Image (Only on mobile) */}
+          <div className="absolute inset-0 z-0 sm:hidden select-none pointer-events-none">
+            <img
+              src="/images/sleeping-consultant-mobile.jpg"
+              alt="Consultant Sleeping Mobile"
+              className="w-full h-full object-cover object-top"
+            />
+          </div>
+
+          {/* Desktop/Tablet Background Image (Only on sm and above) */}
+          <div className="hidden sm:block absolute left-0 top-0 bottom-0 w-[40%] sm:w-[35%] lg:w-[30%] h-full z-0 overflow-hidden select-none pointer-events-none">
             <img
               src="/images/sleeping-consultant.png"
               alt="Consultant Sleeping"
@@ -166,12 +175,12 @@ Less admin. More placements.
 
           <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-              {/* Spacer for the left-aligned background image */}
-              <div className="col-span-1 lg:col-span-4 h-24 sm:h-32 md:h-40 lg:h-auto"></div>
+              {/* Spacer for the left-aligned background image / mobile image vertical height */}
+              <div className="col-span-1 lg:col-span-4 h-[460px] sm:h-32 md:h-40 lg:h-auto"></div>
 
               {/* Right Content Column: Title and Features */}
               <div className="lg:col-span-8 flex flex-col gap-6 lg:pl-6">
-                <div>
+                <div className="hidden sm:block">
                   <h2 className="text-2xl sm:text-3xl md:text-4xl text-white font-extrabold tracking-tight leading-tight">
                     Consultant Sleeps.<br />
                     <span className="text-white block mt-2">CallPilot Works 24/7 Screening.</span>
@@ -330,7 +339,7 @@ Less admin. More placements.
         </section>
 
         {/* Benefits Grid Section */}
-        <section className="bg-white py-20">
+        <section className="bg-white pt-20 pb-6 sm:py-20">
           <div className="max-w-6xl mx-auto px-6 lg:px-8 text-center flex flex-col items-center">
             <motion.h2
               initial={{ opacity: 0, y: 15 }}
@@ -415,7 +424,7 @@ Less admin. More placements.
         </section>
 
         {/* Bottom CTA Card Section */}
-        <section className="bg-white py-12 pb-24">
+        <section className="bg-white pt-4 pb-16 sm:py-12 sm:pb-24">
           <div className="max-w-6xl mx-auto px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, scale: 0.98 }}
