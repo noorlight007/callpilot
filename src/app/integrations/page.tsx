@@ -254,7 +254,7 @@ export default function IntegrationsPage() {
                 <div className="flex items-center justify-center gap-6 w-full">
                   <div className="hidden md:block h-px bg-gray-200 w-16 lg:w-24"></div>
                   <h2 className="text-3xl md:text-4xl font-extrabold text-[#0c0f19] tracking-tight">
-                    Benefits or Offers
+                    Limited-Time Launch Offers
                   </h2>
                   <div className="hidden md:block h-px bg-gray-200 w-16 lg:w-24"></div>
                 </div>
