@@ -50,7 +50,7 @@ export default function IntegrationsPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="flex flex-col gap-6 order-2 lg:order-1"
+                className="flex flex-col gap-6"
               >
                 <div className="text-[#064be2] font-semibold tracking-wider text-sm uppercase">
                   INTEGRATIONS
@@ -59,14 +59,24 @@ export default function IntegrationsPage() {
                   <span className="lg:whitespace-nowrap">CallPilot + <span className="text-[#0069b2]">JobAdder</span></span> <br />
                   <span className="text-black">Now Live</span>
                 </h1>
+
+                {/* Mobile Image Mockup (Visible only on mobile devices) */}
+                <div className="block lg:hidden my-4 relative">
+                  <img
+                    src="/images/unnamed.png"
+                    alt="CallPilot + JobAdder Integration Mockup"
+                    className="w-full h-auto object-contain drop-shadow-xl max-w-sm mx-auto"
+                  />
+                </div>
+
                 <p className="text-lg md:text-xl text-[#0c0f19] font-bold leading-snug max-w-xl">
                   Next Generation AI Applicant Screening Call + Automation.
                 </p>
                 <p className="text-base text-gray-500 leading-relaxed max-w-xl">
                   CallPilot is now fully integrated with JobAdder.
-18 months of live recruitment testing.
-Human-like AI conversations.
-Less admin. More placements.
+                  18 months of live recruitment testing.
+                  Human-like AI conversations.
+                  Less admin. More placements.
                 </p>
 
                 <div className="flex flex-wrap gap-4 mt-2">
@@ -132,8 +142,8 @@ Less admin. More placements.
                 </div> */}
               </motion.div>
 
-              {/* Right Column (Image Mockup) */}
-              <div className="relative flex justify-center lg:justify-end order-1 lg:order-2">
+              {/* Right Column (Image Mockup - Desktop) */}
+              <div className="hidden lg:flex justify-center lg:justify-end relative">
                 <motion.div
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
