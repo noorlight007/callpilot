@@ -56,8 +56,8 @@ export default function IntegrationsPage() {
                   INTEGRATIONS
                 </div>
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#0c0f19] tracking-tight leading-tight">
-                  <span className="lg:whitespace-nowrap">CallPilot + JobAdder</span> <br />
-                  <span className="text-[#064be2]">Now Live</span>
+                  <span className="lg:whitespace-nowrap">CallPilot + <span className="text-[#0069b2]">JobAdder</span></span> <br />
+                  <span className="text-black">Now Live</span>
                 </h1>
                 <p className="text-lg md:text-xl text-[#0c0f19] font-bold leading-snug max-w-xl">
                   Next Generation AI Applicant Screening Call + Automation.
@@ -95,7 +95,7 @@ Less admin. More placements.
                   <div className="w-5 h-5 bg-[#064be2] rounded-full flex items-center justify-center">
                     <Check className="w-3.5 h-3.5 text-white stroke-[3px]" />
                   </div>
-                  <span>Now Live with <span className="font-bold text-[#064be2]">JobAdder</span></span>
+                  <span>Now Live with <span className="font-bold text-[#0069b2]">JobAdder</span></span>
                 </div> */}
 
                 {/* Coming Soon RecruitCRM Integration Badge */}
@@ -230,7 +230,7 @@ Less admin. More placements.
               {/* Card Content - Top */}
               <div className="text-center flex flex-col items-center gap-4">
                 <span className="text-[#064be2] font-bold tracking-widest text-xs uppercase">
-                  EXCLUSIVE JOBADDER LAUNCH OFFERS
+                  EXCLUSIVE <span className="text-[#0069b2]">JOBADDER</span> LAUNCH OFFERS
                 </span>
                 <div className="flex items-center justify-center gap-6 w-full">
                   <div className="hidden md:block h-px bg-gray-200 w-16 lg:w-24"></div>
@@ -434,7 +434,7 @@ Less admin. More placements.
                 <div>
                   <h3 className="text-2xl md:text-3xl font-extrabold text-[#0c0f19] leading-tight">
                     Ready to See CallPilot <br className="hidden md:block" />
-                    in Action with <span className="text-[#064be2]">JobAdder</span>?
+                    in Action with <span className="text-[#0069b2]">JobAdder</span>?
                   </h3>
                   <p className="text-gray-500 text-sm md:text-base mt-2 max-w-xl leading-relaxed">
                     Book a personalised demo and see how AI applicant screening can transform your recruitment process.

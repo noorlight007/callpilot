@@ -88,58 +88,53 @@ const Hero = () => {
             </h3>
 
             {/* Grid container */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto text-left">
+            <div className="grid grid-cols-2 gap-3 sm:gap-4 max-w-xl mx-auto text-left">
               {/* Card 1: JobAdder */}
-              <div className="border border-emerald-500/20 bg-white/[0.02] backdrop-blur-md rounded-2xl p-6 flex flex-col justify-between hover:border-emerald-500/35 transition-colors relative">
+              <Link
+                href="/integrations"
+                className="border border-emerald-500/20 bg-white/[0.02] backdrop-blur-md rounded-2xl p-2 sm:p-3 flex flex-col justify-between hover:border-emerald-500/35 transition-colors relative cursor-pointer block"
+              >
                 <div>
-                  <div className="inline-flex items-center px-3 py-1 rounded-full border border-emerald-500/30 text-emerald-400 text-[10px] font-bold tracking-wider uppercase bg-emerald-950/20 mb-6">
+                  <div className="inline-flex items-center px-3 py-1 rounded-full border border-emerald-500/30 text-emerald-400 text-[10px] font-bold tracking-wider uppercase bg-emerald-950/20 mb-4">
                     LIVE
                   </div>
                   
                   {/* JobAdder Logo */}
-                  <div className="h-16 flex items-center justify-center mb-6">
+                  <div className="h-[54px] flex items-center justify-center mb-2">
                     <img
                       src="/images/JobAdder.png"
                       alt="JobAdder Logo"
-                      className="h-full object-contain max-h-12"
+                      className="h-full object-contain max-h-[41px]"
                     />
                   </div>
                 </div>
 
-                <div className="flex items-end justify-between mt-4">
-                  <div className="flex flex-col gap-1">
-                    <span className="text-white font-extrabold text-base leading-none">JobAdder</span>
-                    <span className="text-emerald-400/90 text-xs font-medium">Live Integration</span>
-                  </div>
+                <div className="flex items-center justify-end mt-2">
                   <CheckCircle2 className="w-5 h-5 text-emerald-400" />
                 </div>
-              </div>
+              </Link>
 
               {/* Card 2: Recruit CRM */}
-              <div className="border border-amber-500/20 bg-white/[0.02] backdrop-blur-md rounded-2xl p-6 flex flex-col justify-between hover:border-amber-500/35 transition-colors relative">
+              <div className="border border-amber-500/20 bg-white/[0.02] backdrop-blur-md rounded-2xl p-2 sm:p-3 flex flex-col justify-between hover:border-amber-500/35 transition-colors relative">
                 <div>
-                  <div className="inline-flex items-center px-3 py-1 rounded-full border border-amber-500/30 text-amber-400 text-[10px] font-bold tracking-wider uppercase bg-amber-950/20 mb-6">
+                  <div className="inline-flex items-center px-3 py-1 rounded-full border border-amber-500/30 text-amber-400 text-[10px] font-bold tracking-wider uppercase bg-amber-950/20 mb-4">
                     IN PROGRESS
                   </div>
                   
                   {/* Recruit CRM Logo */}
-                  <div className="h-16 flex items-center justify-center mb-6">
-                    <div className="flex items-center gap-2.5 h-full max-h-12">
+                  <div className="h-[54px] flex items-center justify-center mb-2">
+                    <div className="flex items-center gap-2 h-full max-h-[41px]">
                       <img
                         src="/images/Recruit_CRM_icon.jpeg"
                         alt="Recruit CRM Icon"
                         className="h-full w-auto rounded-lg object-cover"
                       />
-                      <span className="text-white text-4xl font-black tracking-tight leading-none">recruit crm</span>
+                      <span className="text-white text-[31px] font-black tracking-tight leading-none">recruit crm</span>
                     </div>
                   </div>
                 </div>
 
-                <div className="flex items-end justify-between mt-4">
-                  <div className="flex flex-col gap-1">
-                    <span className="text-white font-extrabold text-base leading-none">Recruit CRM</span>
-                    <span className="text-amber-400/90 text-xs font-medium">Integration In Progress</span>
-                  </div>
+                <div className="flex items-center justify-end mt-2">
                   <Clock className="w-5 h-5 text-amber-400" />
                 </div>
               </div>
