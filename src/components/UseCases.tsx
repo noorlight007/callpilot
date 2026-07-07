@@ -3,6 +3,11 @@ import Link from "next/link";
 
 const useCases = [
   {
+    icon: Briefcase,
+    title: "Recruitment",
+    description: "Next-Generation AI Applicant Screening Calls + Automation",
+  },
+  {
     icon: PhoneOutgoing,
     title: "Outbound Sales",
     description: "Automate prospecting calls, qualify leads, and book meetings at scale.",
@@ -54,12 +59,12 @@ const UseCases = () => {
           <p className="text-lg text-body">
             From sales to support, CallPilot adapts to your unique business needs.
           </p>
-          <div className="mt-6 flex justify-center">
+          {/* <div className="mt-6 flex justify-center">
             <Link
               href="/integrations"
               className="group relative bg-card rounded-xl p-6 border border-border-card card-hover overflow-hidden text-left max-w-sm w-full cursor-pointer block"
             >
-              {/* Accent line on top */}
+              
               <div className="absolute top-0 left-0 right-0 h-1 gradient-accent opacity-0 group-hover:opacity-100 transition-opacity" />
               
               <div className="w-12 h-12 rounded-lg bg-secondary flex items-center justify-center mb-4 group-hover:accent-tint-bg transition-colors">
@@ -72,7 +77,7 @@ const UseCases = () => {
                 Next-Generation AI Applicant Screening Calls + Automation
               </p>
             </Link>
-          </div>
+          </div> */}
         </div>
 
         {/* Use Case Grid */}
