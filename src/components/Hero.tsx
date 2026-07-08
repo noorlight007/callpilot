@@ -60,7 +60,7 @@ const Hero = () => {
             <Button
               variant="cta"
               size="xl"
-              className="w-full sm:w-auto group"
+              className="w-auto sm:w-auto group"
               onClick={scrollToCTA}
             >
               <Phone size={20} />

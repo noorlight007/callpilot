@@ -151,7 +151,7 @@ const Header = () => {
   const socialLinks = [
     { label: "Facebook", href: "https://www.facebook.com/profile.php?id=61588398835586", Icon: FacebookIcon },
     { label: "Instagram", href: "https://www.instagram.com/callpilot.pro/", Icon: InstagramIcon },
-    { label: "Linkedin", href: "https://www.linkedin.com/company/callpilot-ai-call/", Icon: LinkedinIcon}
+    { label: "Linkedin", href: "https://www.linkedin.com/company/callpilot-ai-call/", Icon: LinkedinIcon }
   ];
 
   const SocialIcons = ({ className = "" }: { className?: string }) => (

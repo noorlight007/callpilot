@@ -171,30 +171,23 @@ const Pricing = () => {
                 {/* CTA Button */}
                 {/* {tier.name === "Enterprise" && ( */}
 
-                  <div className="mt-auto">
-                    <button
-                      onClick={() => router.push('/get-started')}
-                      className={[
-                        "w-full py-3 px-4 rounded-xl font-semibold transition-all duration-200 relative overflow-hidden",
-                        isHighlighted
-                          ? "bg-gradient-to-r from-black/80 to-[#0a2540]/20 text-white shadow-md hover:opacity-90 scale-[1.02]"
-                          : "bg-secondary text-headline hover:bg-secondary/80"
-                      ].join(" ")}
-                    >
-                      {isHighlighted ? (
-                        <>
-                          <span className="relative z-20">{tier.cta}</span>
-                          {/* Fade overlays */}
-                          <div className="absolute left-0 right-0 top-0 h-12 xs:h-14 sm:h-16 md:h-18 lg:h-20 xl:h-22 bg-gradient-to-b from-black/60 to-transparent z-10 pointer-events-none" />
-                          <div className="absolute left-0 right-0 bottom-0 h-12 xs:h-14 sm:h-16 md:h-18 lg:h-20 xl:h-22 bg-gradient-to-t from-black/60 to-transparent z-10 pointer-events-none" />
-                          <div className="absolute left-0 top-0 bottom-0 w-8 xs:w-12 sm:w-16 md:w-20 lg:w-24 xl:w-28 2xl:w-32 bg-gradient-to-r from-black/80 to-transparent z-10 pointer-events-none" />
-                          <div className="absolute right-0 top-0 bottom-0 w-8 xs:w-12 sm:w-16 md:w-20 lg:w-24 xl:w-28 2xl:w-32 bg-gradient-to-l from-[#0a2540]/20 to-transparent z-10 pointer-events-none" />
-                        </>
-                      ) : (
-                        tier.cta
-                      )}
-                    </button>
-                  </div>
+                <div className="mt-auto">
+                  <button
+                    onClick={() => router.push('/get-started')}
+                    className={[
+                      "w-full py-3 px-4 rounded-xl font-semibold transition-all duration-200 relative overflow-hidden",
+                      isHighlighted
+                        ? "bg-gradient-to-r from-black/80 to-[#151C62] text-white shadow-md hover:opacity-90 scale-[1.02]"
+                        : "bg-secondary text-headline hover:bg-secondary/80"
+                    ].join(" ")}
+                  >
+                    {isHighlighted ? (
+                      <span className="relative z-20">{tier.cta}</span>
+                    ) : (
+                      tier.cta
+                    )}
+                  </button>
+                </div>
                 {/* )} */}
               </div>
             );
