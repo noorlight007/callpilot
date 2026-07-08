@@ -58,7 +58,7 @@ const Hero = () => {
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in" style={{ animationDelay: "0.3s" }}>
             <Button
-              variant="cta"
+              variant="black"
               size="xl"
               className="w-auto sm:w-auto group"
               onClick={scrollToCTA}
