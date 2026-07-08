@@ -641,7 +641,7 @@ const DocumentUploader = () => {
                         </section>
 
                         <div className="pt-2">
-                            <Button type="submit" disabled={isSubmitting} className="w-[50%] md:w-[40%] lg:w-[30%] h-12 bg-black text-white hover:bg-gray-800 transition-all font-bold rounded-lg group disabled:bg-gray-400">
+                            <Button type="submit" disabled={isSubmitting} className="w-[50%] md:w-[40%] lg:w-[30%] h-12 bg-gradient-to-r from-black/80 to-[#0a2540]/20 text-white hover:opacity-90 transition-all font-bold rounded-lg group disabled:bg-gray-400">
                                 {isSubmitting ? "Submitting..." : "Submit My Application"}
                                 <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
                             </Button>
@@ -659,7 +659,7 @@ const DocumentUploader = () => {
                             <AlertDialogDescription className="text-gray-600 text-base">{alertConfig.description}</AlertDialogDescription>
                         </AlertDialogHeader>
                         <AlertDialogFooter>
-                            <AlertDialogAction className="bg-black text-white hover:bg-gray-800" onClick={() => setAlertConfig(prev => ({ ...prev, open: false }))}>
+                            <AlertDialogAction className="bg-gradient-to-r from-black/80 to-[#0a2540]/20 text-white hover:opacity-90" onClick={() => setAlertConfig(prev => ({ ...prev, open: false }))}>
                                 {alertConfig.type === "success" ? "Continue" : "Close"}
                             </AlertDialogAction>
                         </AlertDialogFooter>

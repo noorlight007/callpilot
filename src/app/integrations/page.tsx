@@ -16,7 +16,9 @@ import {
   Settings,
   PhoneCall,
   RefreshCw,
-  Bell
+  Bell,
+  MessageSquare,
+  Link as LinkIcon
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -82,9 +84,14 @@ export default function IntegrationsPage() {
                 <div className="flex flex-wrap gap-4 mt-2">
                   <Link
                     href="/#cta"
-                    className="w-52 h-12 bg-[#064be2] text-white font-bold uppercase rounded-lg hover:bg-[#003cb3] transition-all text-xs tracking-wider flex items-center justify-center text-center shadow-sm"
+                    className="w-52 h-12 bg-gradient-to-r from-black/80 to-[#0a2540]/20 text-white font-bold uppercase rounded-lg hover:opacity-90 transition-all text-xs tracking-wider flex items-center justify-center text-center shadow-sm relative overflow-hidden"
                   >
-                    Try AI Call
+                    <span className="relative z-20">Try AI Call</span>
+                    {/* Fade overlays */}
+                    <div className="absolute left-0 right-0 top-0 h-12 xs:h-14 sm:h-16 md:h-18 lg:h-20 xl:h-22 bg-gradient-to-b from-black/60 to-transparent z-10 pointer-events-none" />
+                    <div className="absolute left-0 right-0 bottom-0 h-12 xs:h-14 sm:h-16 md:h-18 lg:h-20 xl:h-22 bg-gradient-to-t from-black/60 to-transparent z-10 pointer-events-none" />
+                    <div className="absolute left-0 top-0 bottom-0 w-8 xs:w-12 sm:w-16 md:w-20 lg:w-24 xl:w-28 2xl:w-32 bg-gradient-to-r from-black/80 to-transparent z-10 pointer-events-none" />
+                    <div className="absolute right-0 top-0 bottom-0 w-8 xs:w-12 sm:w-16 md:w-20 lg:w-24 xl:w-28 2xl:w-32 bg-gradient-to-l from-[#0a2540]/20 to-transparent z-10 pointer-events-none" />
                   </Link>
                   {/* <Link
                     href="#"
@@ -267,7 +274,7 @@ export default function IntegrationsPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-8 lg:gap-y-0 w-full mt-2">
                 {/* Item 1 */}
                 <div className="flex flex-col items-center text-center gap-4 px-4 lg:px-8 lg:first:pl-0 lg:last:pr-0 lg:border-r lg:border-gray-300 last:border-r-0">
-                  <div className="w-16 h-16 rounded-full bg-[#25d366]/10 flex items-center justify-center">
+                  <div className="w-16 h-16 rounded-full bg-green-100/60 flex items-center justify-center">
                     <WhatsAppIcon className="w-6 h-6 fill-[#0c0f19]" />
                   </div>
                   <div className="flex flex-col items-center gap-2">
@@ -277,14 +284,31 @@ export default function IntegrationsPage() {
                       Automation
                     </h3>
                     <p className="text-gray-500 text-sm leading-relaxed max-w-[220px]">
-                      We set up your document collection workflow via WhatsApp – free.
+                      We set up your document collection and automation – free.
                     </p>
                   </div>
                 </div>
 
                 {/* Item 2 */}
                 <div className="flex flex-col items-center text-center gap-4 px-4 lg:px-8 lg:first:pl-0 lg:last:pr-0 lg:border-r lg:border-gray-300 last:border-r-0">
-                  <div className="w-16 h-16 rounded-full bg-[#064be2]/10 flex items-center justify-center">
+                  <div className="w-16 h-16 rounded-full bg-amber-100/70 flex items-center justify-center">
+                    <MessageSquare className="w-6 h-6 text-[#0c0f19]" />
+                  </div>
+                  <div className="flex flex-col items-center gap-2">
+                    <h3 className="font-extrabold text-[#0c0f19] text-lg leading-tight tracking-tight">
+                      FREE <br />
+                      SMS <br />
+                      Automation
+                    </h3>
+                    <p className="text-gray-500 text-sm leading-relaxed max-w-[220px]">
+                      We set up your document collection and automation – free.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Item 3 */}
+                <div className="flex flex-col items-center text-center gap-4 px-4 lg:px-8 lg:first:pl-0 lg:last:pr-0 lg:border-r lg:border-gray-300 last:border-r-0">
+                  <div className="w-16 h-16 rounded-full bg-blue-100/70 flex items-center justify-center">
                     <Settings className="w-6 h-6 text-[#0c0f19]" />
                   </div>
                   <div className="flex flex-col items-center gap-2">
@@ -299,10 +323,10 @@ export default function IntegrationsPage() {
                   </div>
                 </div>
 
-                {/* Item 3 */}
+                {/* Item 4 */}
                 <div className="flex flex-col items-center text-center gap-4 px-4 lg:px-8 lg:first:pl-0 lg:last:pr-0 lg:border-r lg:border-gray-300 last:border-r-0">
-                  <div className="w-16 h-16 rounded-full bg-purple-100/50 flex items-center justify-center">
-                    <PhoneCall className="w-6 h-6 text-[#0c0f19]" />
+                  <div className="w-16 h-16 rounded-full bg-purple-100/70 flex items-center justify-center">
+                    <LinkIcon className="w-6 h-6 text-[#0c0f19]" />
                   </div>
                   <div className="flex flex-col items-center gap-2">
                     <h3 className="font-extrabold text-[#0c0f19] text-lg leading-tight tracking-tight">
@@ -312,22 +336,6 @@ export default function IntegrationsPage() {
                     </h3>
                     <p className="text-gray-500 text-sm leading-relaxed max-w-[220px]">
                       Experience CallPilot with real applicants before you commit.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Item 4 */}
-                <div className="flex flex-col items-center text-center gap-4 px-4 lg:px-8 lg:first:pl-0 lg:last:pr-0 lg:border-r lg:border-gray-300 last:border-r-0">
-                  <div className="w-16 h-16 rounded-full bg-amber-100/50 flex items-center justify-center">
-                    <Star className="w-6 h-6 text-[#0c0f19]" />
-                  </div>
-                  <div className="flex flex-col items-center gap-2">
-                    <h3 className="font-extrabold text-[#0c0f19] text-lg leading-tight tracking-tight">
-                      Priority <br />
-                      Onboarding
-                    </h3>
-                    <p className="text-gray-500 text-sm leading-relaxed max-w-[220px]">
-                      Get your system live faster with priority implementation.
                     </p>
                   </div>
                 </div>
@@ -462,11 +470,16 @@ export default function IntegrationsPage() {
               </div>
 
               <Link
-                href="/get-started"
-                className="w-full lg:w-auto px-8 py-4 bg-[#064be2] text-white font-bold uppercase rounded-xl hover:bg-[#003cb3] hover:-translate-y-0.5 active:translate-y-0 active:scale-98 transition-all text-center whitespace-nowrap shadow-md text-sm tracking-wide"
-              >
-                BOOK A DEMO
-              </Link>
+                    href="/#cta"
+                    className="w-52 h-12 bg-gradient-to-r from-black/80 to-[#0a2540]/20 text-white font-bold uppercase rounded-lg hover:opacity-90 transition-all text-xs tracking-wider flex items-center justify-center text-center shadow-sm relative overflow-hidden"
+                  >
+                    <span className="relative z-20">Try AI Call</span>
+                    {/* Fade overlays */}
+                    <div className="absolute left-0 right-0 top-0 h-12 xs:h-14 sm:h-16 md:h-18 lg:h-20 xl:h-22 bg-gradient-to-b from-black/60 to-transparent z-10 pointer-events-none" />
+                    <div className="absolute left-0 right-0 bottom-0 h-12 xs:h-14 sm:h-16 md:h-18 lg:h-20 xl:h-22 bg-gradient-to-t from-black/60 to-transparent z-10 pointer-events-none" />
+                    <div className="absolute left-0 top-0 bottom-0 w-8 xs:w-12 sm:w-16 md:w-20 lg:w-24 xl:w-28 2xl:w-32 bg-gradient-to-r from-black/80 to-transparent z-10 pointer-events-none" />
+                    <div className="absolute right-0 top-0 bottom-0 w-8 xs:w-12 sm:w-16 md:w-20 lg:w-24 xl:w-28 2xl:w-32 bg-gradient-to-l from-[#0a2540]/20 to-transparent z-10 pointer-events-none" />
+                  </Link>
             </motion.div>
           </div>
         </section>
