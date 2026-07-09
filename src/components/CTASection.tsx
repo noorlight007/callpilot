@@ -25,6 +25,8 @@ const CTASection = () => {
   const [email, setEmail] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [companySize, setCompanySize] = useState("");
+  const [jobTitle, setJobTitle] = useState("");
+  const [companyWebsite, setCompanyWebsite] = useState("");
   const [callFlow, setCallFlow] = useState("Business Booking Asking");
   const [agreed, setAgreed] = useState(false);
 
@@ -55,6 +57,8 @@ const CTASection = () => {
   const emailRef = useRef<HTMLInputElement>(null);
   const companyNameRef = useRef<HTMLInputElement>(null);
   const companySizeRef = useRef<HTMLButtonElement>(null);
+  const jobTitleRef = useRef<HTMLInputElement>(null);
+  const companyWebsiteRef = useRef<HTMLInputElement>(null);
   const termsRef = useRef<HTMLDivElement>(null);
   const resultRef = useRef<HTMLDivElement>(null);
   const dateTriggerRef = useRef<HTMLButtonElement>(null);
@@ -195,6 +199,14 @@ const CTASection = () => {
       newFieldErrors.company_size = ["This field is required"];
       hasError = true;
     }
+    if (!jobTitle) {
+      newFieldErrors.job_title = ["This field is required"];
+      hasError = true;
+    }
+    if (!companyWebsite) {
+      newFieldErrors.company_website = ["This field is required"];
+      hasError = true;
+    }
     if (!agreed) {
       newFieldErrors.agreed = ["This field is required"];
       hasError = true;
@@ -234,6 +246,8 @@ const CTASection = () => {
         email: email,
         company_name: companyName,
         company_size: companySize,
+        job_title: jobTitle || null,
+        company_website: companyWebsite || null,
         call_type: "NOW",
       });
       if (response.status === 200 || response.status === 201) {
@@ -259,6 +273,10 @@ const CTASection = () => {
           companyNameRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
         } else if (error.response.data.company_size) {
           companySizeRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+        } else if (error.response.data.job_title) {
+          jobTitleRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+        } else if (error.response.data.company_website) {
+          companyWebsiteRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
         } else if (error.response.data.agreed) {
           termsRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
         }
@@ -367,6 +385,8 @@ const CTASection = () => {
         email: email,
         company_name: companyName,
         company_size: companySize,
+        job_title: jobTitle || null,
+        company_website: companyWebsite || null,
         scheduled_at: scheduledDate ? scheduledDate.toISOString() : null,
         timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
         call_type: "SCHEDULE",
@@ -393,6 +413,10 @@ const CTASection = () => {
           companyNameRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
         } else if (error.response.data.company_size) {
           companySizeRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+        } else if (error.response.data.job_title) {
+          jobTitleRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+        } else if (error.response.data.company_website) {
+          companyWebsiteRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
         } else if (error.response.data.scheduled_at) {
           if (!selectedDate) {
             dateTriggerRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -417,6 +441,8 @@ const CTASection = () => {
     setEmail("");
     setCompanyName("");
     setCompanySize("");
+    setJobTitle("");
+    setCompanyWebsite("");
     setAgreed(false);
     setSelectedDate(undefined);
     setHour("");
@@ -570,6 +596,48 @@ const CTASection = () => {
                     )}
                   </div>
 
+                  {/* Job Title */}
+                  <div className="space-y-2">
+                    <label htmlFor="jobTitle" className="text-sm font-medium text-headline">
+                      Job Title
+                    </label>
+                    <Input
+                      id="jobTitle"
+                      ref={jobTitleRef}
+                      placeholder="Product Manager"
+                      value={jobTitle}
+                      onChange={(e) => setJobTitle(e.target.value)}
+                      className={cn(
+                        "h-12 border-input focus:border-accent focus:ring-accent/20 transition-all font-medium",
+                        fieldErrors.job_title && "border-red-500 focus:border-red-500 focus:ring-red-500/20"
+                      )}
+                    />
+                    {fieldErrors.job_title && (
+                      <p className="text-sm text-red-500 mt-1">{fieldErrors.job_title[0]}</p>
+                    )}
+                  </div>
+
+                  {/* Company Website */}
+                  <div className="space-y-2">
+                    <label htmlFor="companyWebsite" className="text-sm font-medium text-headline">
+                      Company Website
+                    </label>
+                    <Input
+                      id="companyWebsite"
+                      ref={companyWebsiteRef}
+                      placeholder="https://example.com"
+                      value={companyWebsite}
+                      onChange={(e) => setCompanyWebsite(e.target.value)}
+                      className={cn(
+                        "h-12 border-input focus:border-accent focus:ring-accent/20 transition-all font-medium",
+                        fieldErrors.company_website && "border-red-500 focus:border-red-500 focus:ring-red-500/20"
+                      )}
+                    />
+                    {fieldErrors.company_website && (
+                      <p className="text-sm text-red-500 mt-1">{fieldErrors.company_website[0]}</p>
+                    )}
+                  </div>
+
                   {/* Phone Number */}
                   <div className="space-y-2 col-span-1 md:col-span-2">
                     <div className="flex flex-col sm:flex-row gap-6">
@@ -711,6 +779,50 @@ const CTASection = () => {
                     )}
                   </div>
                 </div>
+
+                {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  
+                  <div className="space-y-2">
+                    <label htmlFor="jobTitle" className="text-sm font-medium text-headline">
+                      Job Title
+                    </label>
+                    <Input
+                      id="jobTitle"
+                      ref={jobTitleRef}
+                      placeholder="Product Manager"
+                      value={jobTitle}
+                      onChange={(e) => setJobTitle(e.target.value)}
+                      className={cn(
+                        "h-12 border-input focus:border-accent focus:ring-accent/20 transition-all font-medium",
+                        fieldErrors.job_title && "border-red-500 focus:border-red-500 focus:ring-red-500/20"
+                      )}
+                    />
+                    {fieldErrors.job_title && (
+                      <p className="text-sm text-red-500 mt-1">{fieldErrors.job_title[0]}</p>
+                    )}
+                  </div>
+
+                  
+                  <div className="space-y-2">
+                    <label htmlFor="companyWebsite" className="text-sm font-medium text-headline">
+                      Company Website
+                    </label>
+                    <Input
+                      id="companyWebsite"
+                      ref={companyWebsiteRef}
+                      placeholder="https://example.com"
+                      value={companyWebsite}
+                      onChange={(e) => setCompanyWebsite(e.target.value)}
+                      className={cn(
+                        "h-12 border-input focus:border-accent focus:ring-accent/20 transition-all font-medium",
+                        fieldErrors.company_website && "border-red-500 focus:border-red-500 focus:ring-red-500/20"
+                      )}
+                    />
+                    {fieldErrors.company_website && (
+                      <p className="text-sm text-red-500 mt-1">{fieldErrors.company_website[0]}</p>
+                    )}
+                  </div>
+                </div> */}
 
                 {/* Call Flow Selection */}
                 <div className="space-y-2 hidden">
