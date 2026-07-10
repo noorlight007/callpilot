@@ -83,7 +83,7 @@ export default function IntegrationsPage() {
 
                 <div className="flex items-center justify-center sm:justify-start flex-wrap gap-4 mt-2">
                   <Link
-                    href="/#cta"
+                    href="/try-ai-call"
                     className="w-52 h-12 bg-gradient-to-r from-black/80 to-[#151C62] text-white font-bold uppercase rounded-lg hover:opacity-90 transition-all text-xs tracking-wider flex items-center justify-center text-center shadow-sm relative overflow-hidden"
                   >
                     <span className="relative z-20">Try AI Call</span>
@@ -470,15 +470,10 @@ export default function IntegrationsPage() {
               </div>
 
               <Link
-                    href="/#cta"
+                    href="/try-ai-call"
                     className="w-52 h-12 bg-gradient-to-r from-black/80 to-[#151C62] text-white font-bold uppercase rounded-lg hover:opacity-90 transition-all text-xs tracking-wider flex items-center justify-center text-center shadow-sm relative overflow-hidden"
                   >
                     <span className="relative z-20">Try AI Call</span>
-                    {/* Fade overlays */}
-                    {/* <div className="absolute left-0 right-0 top-0 h-12 xs:h-14 sm:h-16 md:h-18 lg:h-20 xl:h-22 bg-gradient-to-b from-black/80 to-[#151C62]/20 z-10 pointer-events-none" /> */}
-                    {/* <div className="absolute left-0 right-0 bottom-0 h-12 xs:h-14 sm:h-16 md:h-18 lg:h-20 xl:h-22 bg-gradient-to-t from-black/60 to-transparent z-10 pointer-events-none" />
-                    <div className="absolute left-0 top-0 bottom-0 w-8 xs:w-12 sm:w-16 md:w-20 lg:w-24 xl:w-28 2xl:w-32 bg-gradient-to-r from-black/80 to-transparent z-10 pointer-events-none" />
-                    <div className="absolute right-0 top-0 bottom-0 w-8 xs:w-12 sm:w-16 md:w-20 lg:w-24 xl:w-28 2xl:w-32 bg-gradient-to-l from-[#151C62]/20 to-transparent z-10 pointer-events-none" /> */}
                   </Link>
             </motion.div>
           </div>

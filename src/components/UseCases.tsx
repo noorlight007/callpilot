@@ -61,7 +61,7 @@ const UseCases = () => {
           </p>
           {/* <div className="mt-6 flex justify-center">
             <Link
-              href="/integrations"
+              href="/integration"
               className="group relative bg-card rounded-xl p-6 border border-border-card card-hover overflow-hidden text-left max-w-sm w-full cursor-pointer block"
             >
               

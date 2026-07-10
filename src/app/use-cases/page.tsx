@@ -174,8 +174,8 @@ const UseCasesPage = () => {
                                 to real estate, sales to support.
                             </p>
                             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                                <Link href="/try-it">
-                                    <Button variant="cta" size="xl" className="w-full sm:w-auto group" onClick={() => router.push("/try-it")}>
+                                <Link href="/try-ai-call">
+                                    <Button variant="cta" size="xl" className="w-full sm:w-auto group" onClick={() => router.push("/try-ai-call")}>
                                         Try a Free Call
                                         <ArrowRight size={18} className="ml-1 transition-transform group-hover:translate-x-1" />
                                     </Button>

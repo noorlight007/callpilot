@@ -5,18 +5,6 @@ import { Phone, ArrowRight, CheckCircle2, Clock } from "lucide-react";
 import Link from "next/link";
 
 const Hero = () => {
-  const scrollToCTA = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-
-    // Trigger country sync in CTASection
-    window.dispatchEvent(new CustomEvent("trigger-country-sync"));
-
-    const element = document.getElementById("cta");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
     <section className="relative pt-40 lg:pt-40 pb-16 lg:pb-24 overflow-hidden">
       {/* Background Video */}
@@ -57,16 +45,17 @@ const Hero = () => {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in" style={{ animationDelay: "0.3s" }}>
-            <Button
-              variant="black"
-              size="xl"
-              className="w-auto sm:w-auto group"
-              onClick={scrollToCTA}
-            >
-              <Phone size={20} />
-              Try a Free AI Call
-              <ArrowRight size={18} className="ml-1 transition-transform group-hover:translate-x-1" />
-            </Button>
+            <Link href="/try-ai-call" className="w-auto sm:w-auto">
+              <Button
+                variant="black"
+                size="xl"
+                className="w-full sm:w-auto group"
+              >
+                <Phone size={20} />
+                Try a Free AI Call
+                <ArrowRight size={18} className="ml-1 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </Link>
             {/* <Button variant="ctaSecondary" size="xl" className="w-full sm:w-auto bg-white/10 border-white/30 text-white hover:bg-white/20">
               Book a Demo
             </Button> */}
@@ -99,7 +88,7 @@ const Hero = () => {
 
               {/* Card 1: JobAdder */}
               <Link
-                href="/integrations"
+                href="/integration"
                 className="flex flex-col justify-between p-2 sm:p-3 w-[200px] h-[140px] sm:w-[240px] sm:h-[170px] hover:opacity-80 transition-opacity relative cursor-pointer z-20"
               >
                 <div>
