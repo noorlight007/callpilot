@@ -216,13 +216,13 @@ const Hero = () => {
                       <img
                         src="/images/JobAdder.png"
                         alt="JobAdder Logo"
-                        className="h-full object-contain max-h-[12px] sm:max-h-[34px]"
+                        className="h-full object-contain max-h-[13.2px] sm:max-h-[37.4px]"
                       />
                     </div>
                   </div>
 
                   <div className="flex items-center justify-end mt-1 sm:mt-2">
-                    <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400" />
+                    <div className="w-5 h-5 sm:w-[25px] sm:h-[25px] rounded-full bg-emerald-500 shadow-[0_0_10px_#10b981]" />
                   </div>
                 </Link>
 
@@ -247,7 +247,7 @@ const Hero = () => {
                   </div>
 
                   <div className="flex items-center justify-end mt-1 sm:mt-2">
-                    <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-amber-400" />
+                    <div className="w-5 h-5 sm:w-[25px] sm:h-[25px] rounded-full bg-amber-500 shadow-[0_0_10px_#f59e0b]" />
                   </div>
                 </div>
 
@@ -263,13 +263,13 @@ const Hero = () => {
                       <img
                         src="/wordmark.svg"
                         alt="Ashby Logo"
-                        className="h-full object-contain max-h-[16px] sm:max-h-[41px] filter"
+                        className="h-full object-contain max-h-[17.6px] sm:max-h-[45.1px] filter"
                       />
                     </div>
                   </div>
 
                   <div className="flex items-center justify-end mt-1 sm:mt-2">
-                    <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-amber-400" />
+                    <div className="w-5 h-5 sm:w-[25px] sm:h-[25px] rounded-full bg-amber-500 shadow-[0_0_10px_#f59e0b]" />
                   </div>
                 </div>
 
@@ -292,7 +292,7 @@ const Hero = () => {
                   </div>
 
                   <div className="flex items-center justify-end mt-1 sm:mt-2">
-                    <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-amber-400" />
+                    <div className="w-5 h-5 sm:w-[25px] sm:h-[25px] rounded-full bg-amber-500 shadow-[0_0_10px_#f59e0b]" />
                   </div>
                 </div> */}
 
@@ -315,7 +315,7 @@ const Hero = () => {
                   </div>
 
                   <div className="flex items-center justify-end mt-1 sm:mt-2">
-                    <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-amber-400" />
+                    <div className="w-5 h-5 sm:w-[25px] sm:h-[25px] rounded-full bg-amber-500 shadow-[0_0_10px_#f59e0b]" />
                   </div>
                 </div> */}
               </div>
