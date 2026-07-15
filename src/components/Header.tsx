@@ -155,7 +155,7 @@ const Header = () => {
   ];
 
   const SocialIcons = ({ className = "" }: { className?: string }) => (
-    <div className={`flex items-center gap-2 ${className}`}>
+    <div className={`flex items-center gap-[9.2px] ${className}`}>
       {socialLinks.map(({ label, href, Icon }) => (
         <Link
           key={label}
@@ -165,7 +165,7 @@ const Header = () => {
           aria-label={label}
           className="inline-flex items-center justify-center hover:opacity-90 transition-opacity"
         >
-          <span className="w-6 h-6 md:w-7 md:h-7">
+          <span className="w-[27px] h-[27px] md:w-[31px] md:h-[31px]">
             <Icon className="w-full h-full" />
           </span>
         </Link>
@@ -175,14 +175,14 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-26 lg:h-32">
+      <div className="container mx-auto pl-0 pr-[18px] sm:pl-0 sm:pr-[26px] lg:pl-0 lg:pr-[35px]">
+        <div className="flex items-center justify-between h-[120px] md:h-[145px] lg:h-[160px]">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
+          <Link href="/" className="flex items-center -ml-[24px] md:-ml-[40px] lg:-ml-[50px]">
             <img
               src={logo.src}
               alt="CallPilot.pro"
-              className="h-[110px] md:h-[147px] lg:h-[166px] w-auto"
+              className="h-[143px] md:h-[191px] lg:h-[216px] w-auto block object-contain"
             />
           </Link>
 
@@ -200,9 +200,9 @@ const Header = () => {
           </nav>
 
           {/* Desktop CTA */}
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-6">
             {/* Social icons (desktop) - before login button */}
-            <SocialIcons />
+            <SocialIcons className="transform translate-x-[20%]" />
 
             <Link href="https://panel.callpilot.pro/login">
               <Button variant="ctaSecondary" size="default">
@@ -218,16 +218,16 @@ const Header = () => {
           </div>
 
           {/* Mobile right side: social icons + hamburger */}
-          <div className="md:hidden flex items-center gap-2">
+          <div className="md:hidden flex items-center gap-4">
             {/* Social icons (mobile) - before collapse icon */}
-            <SocialIcons />
+            <SocialIcons className="transform translate-x-[20%]" />
 
             <button
-              className="p-2 text-headline"
+              className="p-3 text-headline flex items-center justify-center inline-flex"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
             >
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {mobileMenuOpen ? <X size={28} strokeWidth={2.2} /> : <Menu size={28} strokeWidth={2.2} />}
             </button>
           </div>
         </div>

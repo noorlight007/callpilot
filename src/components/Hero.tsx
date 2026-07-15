@@ -72,11 +72,11 @@ const Hero = () => {
             </div>
 
             {/* JobAdder Logo */}
-            <div className="h-[36px] sm:h-[54px] flex items-center justify-center mb-1 sm:mb-2">
+            <div className="h-[41px] sm:h-[62px] flex items-center justify-center mb-1 sm:mb-2">
               <img
                 src="/images/JobAdder.png"
                 alt="JobAdder Logo"
-                className="h-full object-contain max-h-[13.2px] sm:max-h-[37.4px]"
+                className="h-full object-contain max-h-[15.2px] sm:max-h-[43px]"
               />
             </div>
           </div>
@@ -100,14 +100,14 @@ const Hero = () => {
             </div>
 
             {/* Recruit CRM Logo */}
-            <div className="h-[36px] sm:h-[54px] flex items-center justify-center mb-1 sm:mb-2">
-              <div className="flex items-center gap-1 sm:gap-2 h-full max-h-[18px] sm:max-h-[41px]">
+            <div className="h-[41px] sm:h-[62px] flex items-center justify-center mb-1 sm:mb-2">
+              <div className="flex items-center gap-1 sm:gap-2 h-full max-h-[20.7px] sm:max-h-[47.2px]">
                 <img
                   src="/images/Recruit_CRM_icon.jpeg"
                   alt="Recruit CRM Icon"
                   className="h-full w-auto rounded object-cover"
                 />
-                <span className="text-white text-[12px] sm:text-[28px] font-black tracking-tight leading-none">recruit crm</span>
+                <span className="text-white text-[13.8px] sm:text-[32.2px] font-black tracking-tight leading-none">recruit crm</span>
               </div>
             </div>
           </div>
@@ -131,11 +131,11 @@ const Hero = () => {
             </div>
 
             {/* Ashby Logo */}
-            <div className="h-[36px] sm:h-[54px] flex items-center justify-center mb-1 sm:mb-2">
+            <div className="h-[41px] sm:h-[62px] flex items-center justify-center mb-1 sm:mb-2">
               <img
                 src="/wordmark.svg"
                 alt="Ashby Logo"
-                className="h-full object-contain max-h-[17.6px] sm:max-h-[45.1px] filter"
+                className="h-full object-contain max-h-[20.2px] sm:max-h-[51.9px] filter"
               />
             </div>
           </div>
