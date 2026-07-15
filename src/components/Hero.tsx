@@ -62,7 +62,7 @@ const Hero = () => {
       render: (key: string) => (
         <Link
           key={key}
-          href="/integration"
+          href="/integrations"
           onClick={handleLinkClick}
           className="flex flex-col justify-between p-2 sm:p-3 w-[calc(50%-8px)] sm:w-[240px] h-[130px] sm:h-[170px] hover:opacity-80 transition-opacity relative cursor-pointer z-20 flex-shrink-0"
         >

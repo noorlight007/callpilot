@@ -144,7 +144,7 @@ const Header = () => {
     { label: "Use Cases", href: "/use-cases" },
     { label: "Try It", href: "/try-ai-call" },
     { label: "Pricing", href: "/pricing" },
-    { label: "Integrations", href: "/integration" },
+    { label: "Integrations", href: "/integrations" },
   ];
 
   // Replace these with your real profile URLs
