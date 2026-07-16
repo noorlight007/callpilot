@@ -231,7 +231,7 @@ const Hero = () => {
           </div>
 
           {/* Integrations Section */}
-          <div className="mt-16 pt-12 border-t border-white/10 animate-fade-in" style={{ animationDelay: "0.4s" }}>
+          <div className="mt-4 pt-1 border-t border-white/10 animate-fade-in" style={{ animationDelay: "0.4s" }}>
             {/* Header */}
             <div className="flex items-center justify-center gap-4 mb-2">
               <div className="h-px bg-gradient-to-r from-transparent to-[#d97706] w-12 sm:w-20"></div>
@@ -241,7 +241,7 @@ const Hero = () => {
               <div className="h-px bg-gradient-to-l from-transparent to-[#d97706] w-12 sm:w-20"></div>
             </div>
 
-            <h3 className="text-[21.6px] sm:text-[27px] font-normal text-white mb-8 text-center">
+            <h3 className="text-[21.6px] sm:text-[27px] font-normal text-white mb-4 text-center">
               Live & In Progress
             </h3>
 
