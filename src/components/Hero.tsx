@@ -64,7 +64,7 @@ const Hero = () => {
           key={key}
           href="/integrations"
           onClick={handleLinkClick}
-          className="flex flex-col justify-between p-2 sm:p-3 w-[calc(50%-8px)] sm:w-[240px] h-[130px] sm:h-[170px] hover:opacity-80 transition-opacity relative cursor-pointer z-20 flex-shrink-0"
+          className="flex flex-col justify-between p-2 sm:p-3 w-[calc(50%-8px)] sm:w-[276px] h-[150px] sm:h-[195px] hover:opacity-80 transition-opacity relative cursor-pointer z-20 flex-shrink-0"
         >
           <div>
             <div className="inline-flex items-center px-2 py-0.5 sm:px-3 sm:py-1 rounded-full border border-emerald-500/30 text-emerald-400 text-[9px] sm:text-[10px] font-bold tracking-wider uppercase bg-emerald-950/20 mb-2 sm:mb-4">
@@ -72,11 +72,11 @@ const Hero = () => {
             </div>
 
             {/* JobAdder Logo */}
-            <div className="h-[41px] sm:h-[62px] flex items-center justify-center mb-1 sm:mb-2">
+            <div className="h-[47px] sm:h-[71px] flex items-center justify-center mb-1 sm:mb-2">
               <img
                 src="/images/JobAdder.png"
                 alt="JobAdder Logo"
-                className="h-full object-contain max-h-[15.2px] sm:max-h-[43px]"
+                className="h-full object-contain max-h-[17.5px] sm:max-h-[49.5px]"
               />
             </div>
           </div>
@@ -92,7 +92,7 @@ const Hero = () => {
       render: (key: string) => (
         <div
           key={key}
-          className="flex flex-col justify-between p-2 sm:p-3 w-[calc(50%-8px)] sm:w-[240px] h-[130px] sm:h-[170px] hover:opacity-80 transition-opacity relative z-20 flex-shrink-0"
+          className="flex flex-col justify-between p-2 sm:p-3 w-[calc(50%-8px)] sm:w-[276px] h-[150px] sm:h-[195px] hover:opacity-80 transition-opacity relative z-20 flex-shrink-0"
         >
           <div>
             <div className="inline-flex items-center px-2 py-0.5 sm:px-3 sm:py-1 rounded-full border border-amber-500/30 text-amber-400 text-[9px] sm:text-[10px] font-bold tracking-wider uppercase bg-amber-950/20 mb-2 sm:mb-4">
@@ -100,14 +100,14 @@ const Hero = () => {
             </div>
 
             {/* Recruit CRM Logo */}
-            <div className="h-[41px] sm:h-[62px] flex items-center justify-center mb-1 sm:mb-2">
-              <div className="flex items-center gap-1 sm:gap-2 h-full max-h-[20.7px] sm:max-h-[47.2px]">
+            <div className="h-[47px] sm:h-[71px] flex items-center justify-center mb-1 sm:mb-2">
+              <div className="flex items-center gap-1 sm:gap-2 h-full max-h-[23.8px] sm:max-h-[54.3px]">
                 <img
                   src="/images/Recruit_CRM_icon.jpeg"
                   alt="Recruit CRM Icon"
                   className="h-full w-auto rounded object-cover"
                 />
-                <span className="text-white text-[13.8px] sm:text-[32.2px] font-black tracking-tight leading-none">recruit crm</span>
+                <span className="text-white text-[15.9px] sm:text-[37px] font-black tracking-tight leading-none">recruit crm</span>
               </div>
             </div>
           </div>
@@ -123,7 +123,7 @@ const Hero = () => {
       render: (key: string) => (
         <div
           key={key}
-          className="flex flex-col justify-between p-2 sm:p-3 w-[calc(50%-8px)] sm:w-[240px] h-[130px] sm:h-[170px] hover:opacity-80 transition-opacity relative z-20 flex-shrink-0"
+          className="flex flex-col justify-between p-2 sm:p-3 w-[calc(50%-8px)] sm:w-[276px] h-[150px] sm:h-[195px] hover:opacity-80 transition-opacity relative z-20 flex-shrink-0"
         >
           <div>
             <div className="inline-flex items-center px-2 py-0.5 sm:px-3 sm:py-1 rounded-full border border-amber-500/30 text-amber-400 text-[9px] sm:text-[10px] font-bold tracking-wider uppercase bg-amber-950/20 mb-2 sm:mb-4">
@@ -131,11 +131,11 @@ const Hero = () => {
             </div>
 
             {/* Ashby Logo */}
-            <div className="h-[41px] sm:h-[62px] flex items-center justify-center mb-1 sm:mb-2">
+            <div className="h-[47px] sm:h-[71px] flex items-center justify-center mb-1 sm:mb-2">
               <img
                 src="/wordmark.svg"
                 alt="Ashby Logo"
-                className="h-full object-contain max-h-[20.2px] sm:max-h-[51.9px] filter"
+                className="h-full object-contain max-h-[23.2px] sm:max-h-[59.7px] filter"
               />
             </div>
           </div>
