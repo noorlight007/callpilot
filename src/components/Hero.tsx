@@ -219,7 +219,7 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in" style={{ animationDelay: "0.3s" }}>
             <Link href="/try-ai-call" className="w-auto sm:w-auto">
               <Button
-                variant="black"
+                variant="white"
                 size="xl"
                 className="w-full sm:w-auto group"
               >
