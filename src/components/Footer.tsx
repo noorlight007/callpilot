@@ -8,7 +8,8 @@ const Footer = () => {
     product: [
       { label: "Features", href: "/features" },
       { label: "Use Cases", href: "/use-cases" },
-      { label: "Pricing", href: "#pricing" },
+      { label: "Pricing", href: "/pricing" },
+      { label: "News & Insights", href: "#" },
     ],
     company: [
       { label: "About Us", href: "/about-us" },
