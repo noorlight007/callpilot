@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import logo from "@/assets/call_pilot_logo.png";
 import Link from "next/link";
 
@@ -138,6 +138,41 @@ const InstagramIcon = ({ className = "" }: { className?: string }) => (
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [appsOpen, setAppsOpen] = useState(false);
+  const [mobileAppsOpen, setMobileAppsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Close dropdown on click outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setAppsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  // Close dropdown on Escape key
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setAppsOpen(false);
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
+  const appsList = [
+    { label: "AI Recruiter ChatGPT", status: "Coming Soon" },
+    { label: "AI Automation", status: "Coming Soon" },
+    { label: "AI CV Formatter", status: "Coming Soon" },
+  ];
 
   const navLinks = [
     { label: "Features", href: "/features" },
@@ -188,6 +223,37 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
+            {/* Apps Dropdown */}
+            <div ref={dropdownRef} className="relative">
+              <button
+                onClick={() => setAppsOpen(!appsOpen)}
+                onMouseEnter={() => setAppsOpen(true)}
+                className="flex items-center gap-1.5 text-body hover:text-headline transition-colors font-medium py-2 focus:outline-none"
+                aria-haspopup="true"
+                aria-expanded={appsOpen}
+              >
+                Apps
+                <ChevronDown size={15} className={`transition-transform duration-200 ${appsOpen ? "rotate-180" : ""}`} />
+              </button>
+
+              {appsOpen && (
+                <div
+                  className="absolute top-full left-0 mt-2 w-64 bg-white border border-border rounded-lg shadow-xl py-2 z-50 animate-fade-in"
+                  onMouseLeave={() => setAppsOpen(false)}
+                >
+                  {appsList.map((app) => (
+                    <div
+                      key={app.label}
+                      className="px-4 py-2.5 flex flex-col hover:bg-secondary/40 transition-colors border-b border-border/50 last:border-b-0"
+                    >
+                      <span className="font-semibold text-headline text-sm">{app.label}</span>
+                      <span className="text-[10px] text-muted-text font-medium mt-0.5 tracking-wider uppercase">{app.status}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
             {navLinks.map((link) => (
               <Link
                 key={link.label}
@@ -236,6 +302,27 @@ const Header = () => {
         {mobileMenuOpen && (
           <div className="md:hidden py-4 border-t border-border">
             <nav className="flex flex-col gap-4">
+              {/* Apps mobile dropdown */}
+              <div className="px-2">
+                <button
+                  onClick={() => setMobileAppsOpen(!mobileAppsOpen)}
+                  className="flex items-center justify-between w-full text-body hover:text-headline transition-colors font-medium py-2 focus:outline-none"
+                >
+                  <span>Apps</span>
+                  <ChevronDown size={16} className={`transition-transform duration-200 ${mobileAppsOpen ? "rotate-180" : ""}`} />
+                </button>
+                {mobileAppsOpen && (
+                  <div className="mt-2 pl-4 border-l border-border flex flex-col gap-3 py-1">
+                    {appsList.map((app) => (
+                      <div key={app.label} className="flex flex-col">
+                        <span className="font-semibold text-headline text-sm">{app.label}</span>
+                        <span className="text-[10px] text-muted-text font-medium mt-0.5 tracking-wider uppercase">{app.status}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
               {navLinks.map((link) => (
                 <Link
                   key={link.label}
