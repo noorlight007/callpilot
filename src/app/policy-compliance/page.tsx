@@ -120,9 +120,12 @@ export default function PoliciesAndCompliancePage() {
 
                     <div className="text-sm text-body leading-relaxed">
                       <p className="font-medium text-headline">Swiftwave FZ-LLC</p>
-                      <p>RAKEZ Business Zone</p>
-                      <p>Ras Al Khaimah</p>
+                      <p>Compass Building,</p>
+                      <p>Al Shohada Road,</p>
+                      <p>AL Hamra Industrial Zone-FZ,</p>
+                      <p>Ras Al Khaimah,</p>
                       <p>United Arab Emirates</p>
+                      <p>FAMC1471</p>
                     </div>
 
                     <p className="text-sm text-body">
@@ -413,9 +416,12 @@ export default function PoliciesAndCompliancePage() {
                     <div className="rounded-2xl border border-border bg-card/40 p-4 sm:p-5">
                       <div className="text-sm text-body leading-relaxed">
                         <p className="font-medium text-headline">Swiftwave FZ-LLC</p>
-                        <p>RAKEZ Business Zone</p>
-                        <p>Ras Al Khaimah</p>
+                        <p>Compass Building,</p>
+                        <p>Al Shohada Road,</p>
+                        <p>AL Hamra Industrial Zone-FZ,</p>
+                        <p>Ras Al Khaimah,</p>
                         <p>United Arab Emirates</p>
+                        <p>FAMC1471</p>
                       </div>
 
                       <p className="mt-3 text-sm text-body">
@@ -450,9 +456,12 @@ export default function PoliciesAndCompliancePage() {
 
                     <div className="text-sm text-body leading-relaxed">
                       <p className="font-medium text-headline">Swiftwave FZ-LLC</p>
-                      <p>RAKEZ Business Zone</p>
-                      <p>Ras Al Khaimah</p>
+                      <p>Compass Building,</p>
+                      <p>Al Shohada Road,</p>
+                      <p>AL Hamra Industrial Zone-FZ,</p>
+                      <p>Ras Al Khaimah,</p>
                       <p>United Arab Emirates</p>
+                      <p>FAMC1471</p>
                     </div>
 
                     <p className="text-sm text-body">
@@ -681,9 +690,12 @@ export default function PoliciesAndCompliancePage() {
 
                     <div className="text-sm text-body leading-relaxed">
                     <p className="font-medium text-headline">Swiftwave FZ-LLC</p>
-                    <p>RAKEZ Business Zone</p>
-                    <p>Ras Al Khaimah</p>
+                    <p>Compass Building,</p>
+                    <p>Al Shohada Road,</p>
+                    <p>AL Hamra Industrial Zone-FZ,</p>
+                    <p>Ras Al Khaimah,</p>
                     <p>United Arab Emirates</p>
+                    <p>FAMC1471</p>
                     </div>
 
                     <p className="text-sm text-body">
@@ -884,9 +896,12 @@ export default function PoliciesAndCompliancePage() {
 
                     <div className="text-sm text-body leading-relaxed">
                     <p className="font-medium text-headline">Swiftwave FZ-LLC</p>
-                    <p>RAKEZ Business Zone</p>
-                    <p>Ras Al Khaimah</p>
+                    <p>Compass Building,</p>
+                    <p>Al Shohada Road,</p>
+                    <p>AL Hamra Industrial Zone-FZ,</p>
+                    <p>Ras Al Khaimah,</p>
                     <p>United Arab Emirates</p>
+                    <p>FAMC1471</p>
                     </div>
 
                     <p className="text-sm text-body">
@@ -1078,9 +1093,12 @@ export default function PoliciesAndCompliancePage() {
 
                     <div className="text-sm text-body leading-relaxed">
                     <p className="font-medium text-headline">Swiftwave FZ-LLC</p>
-                    <p>RAKEZ Business Zone</p>
-                    <p>Ras Al Khaimah</p>
+                    <p>Compass Building,</p>
+                    <p>Al Shohada Road,</p>
+                    <p>AL Hamra Industrial Zone-FZ,</p>
+                    <p>Ras Al Khaimah,</p>
                     <p>United Arab Emirates</p>
+                    <p>FAMC1471</p>
                     </div>
 
                     <p className="text-sm text-body">
@@ -1261,9 +1279,12 @@ export default function PoliciesAndCompliancePage() {
 
                     <div className="text-sm text-body leading-relaxed">
                     <p className="font-medium text-headline">Swiftwave FZ-LLC</p>
-                    <p>RAKEZ Business Zone</p>
-                    <p>Ras Al Khaimah</p>
+                    <p>Compass Building,</p>
+                    <p>Al Shohada Road,</p>
+                    <p>AL Hamra Industrial Zone-FZ,</p>
+                    <p>Ras Al Khaimah,</p>
                     <p>United Arab Emirates</p>
+                    <p>FAMC1471</p>
                     </div>
 
                     <p className="text-sm text-body">

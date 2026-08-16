@@ -78,11 +78,12 @@ const Footer = () => {
             <h4 className="font-semibold text-headline mb-4">Address</h4>
             <div className="space-y-1 text-sm text-body">
               <p className="font-medium text-headline">Swiftwave FZ-LLC</p>
-              <p>RAKEZ Business Zone,</p>
-              <p>Al Nakheel Area,</p>
-              <p>P.O. Box No. 10055,</p>
+              <p>Compass Building,</p>
+              <p>Al Shohada Road,</p>
+              <p>AL Hamra Industrial Zone-FZ,</p>
               <p>Ras Al Khaimah,</p>
               <p>United Arab Emirates</p>
+              <p>FAMC1471</p>
             </div>
           </div>
 
