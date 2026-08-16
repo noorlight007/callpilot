@@ -89,6 +89,8 @@ const Features = () => {
                 alt="CallPilot System Architecture"
                 className="min-w-[900px] sm:min-w-0 h-auto rounded-lg"
                 onLoad={centerScroll}
+                width={aiDiagram.width}
+                height={aiDiagram.height}
               />
             </div>
           </div>

@@ -480,7 +480,7 @@ const CTASection = () => {
                 <div className="w-16 h-16 rounded-full accent-tint-bg flex items-center justify-center mx-auto mb-4">
                   <CheckCircle className="w-8 h-8 accent-text" />
                 </div>
-                <h4 className="text-lg font-semibold text-headline mb-2">Call Incoming{firstName ? `, ${firstName}` : ""}!</h4>
+                <h3 className="text-lg font-semibold text-headline mb-2">Call Incoming{firstName ? `, ${firstName}` : ""}!</h3>
                 <p className="text-body mb-6">
                   Our AI will call you at <span className="font-medium">{getCountryDialCode(countryIso)}{phone}</span> within 60 seconds.
                 </p>
@@ -494,7 +494,7 @@ const CTASection = () => {
                 <div className="w-16 h-16 rounded-full accent-tint-bg flex items-center justify-center mx-auto mb-4">
                   <CheckCircle className="w-8 h-8 accent-text" />
                 </div>
-                <h4 className="text-lg font-semibold text-headline mb-2">Demo Scheduled!</h4>
+                <h3 className="text-lg font-semibold text-headline mb-2">Demo Scheduled!</h3>
                 <p className="text-body mb-6">
                   We'll see you on{" "}
                   <span className="font-medium">
@@ -516,7 +516,7 @@ const CTASection = () => {
                 <div className="w-16 h-16 rounded-full bg-red-100 dark:bg-red-900/20 flex items-center justify-center mx-auto mb-4">
                   <XCircle className="w-8 h-8 text-red-600 dark:text-red-400" />
                 </div>
-                <h4 className="text-lg font-semibold text-headline mb-2">Error</h4>
+                <h3 className="text-lg font-semibold text-headline mb-2">Error</h3>
                 <p className="text-body mb-6">
                   {errorMessage}
                 </p>

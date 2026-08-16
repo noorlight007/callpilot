@@ -264,6 +264,8 @@ function NewsContent() {
                     src={activeArticle.image}
                     alt={activeArticle.title}
                     className="w-full h-full object-cover"
+                    width={1200}
+                    height={514}
                   />
                 </div>
               )}
@@ -302,6 +304,8 @@ function NewsContent() {
                       alt={article.title}
                       className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500 ease-out"
                       loading="lazy"
+                      width={800}
+                      height={450}
                     />
                   </div>
                 )}

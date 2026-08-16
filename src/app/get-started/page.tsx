@@ -595,6 +595,8 @@ export default function GetStarted() {
                 src="/adjusted_callPilot_logo.png"
                 alt="CallPilot Logo"
                 style={{ width: "100%", height: "100%", objectFit: "contain" }}
+                width={419}
+                height={383}
               />
             </div>
 

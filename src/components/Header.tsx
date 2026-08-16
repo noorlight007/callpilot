@@ -218,6 +218,8 @@ const Header = () => {
               src={logo.src}
               alt="CallPilot.pro"
               className="h-[143px] md:h-[191px] lg:h-[216px] w-auto block object-contain"
+              width={logo.width}
+              height={logo.height}
             />
           </Link>
 
