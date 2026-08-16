@@ -9,7 +9,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-gradient-to-r from-black/80 to-[#151C62] text-white hover:opacity-90",
+        default: "bg-gradient-to-r from-black/80 to-[#36454F] text-white hover:opacity-90",
         black: "bg-black/80 text-white hover:opacity-90",
         white: "bg-transparent border border-[#c89528] text-white hover:opacity-90",
         destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
@@ -17,9 +17,9 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-secondary hover:text-foreground",
         link: "text-accent underline-offset-4 hover:underline",
-        cta: "bg-gradient-to-r from-black/80 to-[#151C62] text-white hover:opacity-90 focus-visible:glow-focus shadow-sm",
+        cta: "bg-gradient-to-r from-black/80 to-[#36454F] text-white hover:opacity-90 focus-visible:glow-focus shadow-sm",
         ctaSecondary: "bg-background border border-border text-foreground hover:bg-secondary focus-visible:glow-focus",
-        accent: "bg-gradient-to-r from-black/80 to-[#151C62] text-white hover:opacity-90 shadow-sm",
+        accent: "bg-gradient-to-r from-black/80 to-[#36454F] text-white hover:opacity-90 shadow-sm",
       },
       size: {
         default: "h-10 px-4 py-2",
@@ -38,7 +38,7 @@ const buttonVariants = cva(
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
+  VariantProps<typeof buttonVariants> {
   asChild?: boolean;
 }
 

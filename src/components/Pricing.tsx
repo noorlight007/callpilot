@@ -177,7 +177,7 @@ const Pricing = () => {
                     className={[
                       "w-full py-3 px-4 rounded-xl font-semibold transition-all duration-200 relative overflow-hidden",
                       isHighlighted
-                        ? "bg-gradient-to-r from-black/80 to-[#151C62] text-white shadow-md hover:opacity-90 scale-[1.02]"
+                        ? "bg-gradient-to-r from-black/80 to-[#36454F] text-white shadow-md hover:opacity-90 scale-[1.02]"
                         : "bg-secondary text-headline hover:bg-secondary/80"
                     ].join(" ")}
                   >
