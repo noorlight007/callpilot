@@ -10,7 +10,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/try-ai-call",
     "/pricing",
     "/features",
-    "/use-cases"
+    "/use-cases",
+    "/about-us",
+    "/integrations",
+    "/news",
+    "/privacy-policy",
+    "/terms-conditions",
+    "/cookie-policy",
+    "/policy-compliance"
   ];
 
   return staticPages.map((path) => ({

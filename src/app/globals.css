@@ -32,7 +32,7 @@
 
     /* Muted */
     --muted: 215 28% 17%;
-    --muted-foreground: 215 16% 47%;
+    --muted-foreground: 215 16% 40%;
 
     /* Accent - AI Blue */
     --accent: 205 100% 58%;
@@ -61,7 +61,7 @@
     /* Text colors */
     --text-headline: 222 47% 11%;
     --text-body: 215 28% 28%;
-    --text-muted: 215 16% 47%;
+    --text-muted: 215 16% 40%;
 
     /* Sidebar - keeping defaults */
     --sidebar-background: 0 0% 98%;

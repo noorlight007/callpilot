@@ -206,6 +206,7 @@ export default function SignInPage() {
                       poster="/video-poster.jpg"
                     >
                       <source src="videos/call_pilot_v.mp4" type="video/mp4" />
+                      <track kind="captions" src="/captions.vtt" srcLang="en" label="English" default />
                       Your browser does not support the video tag.
                     </video>
 
@@ -228,6 +229,8 @@ export default function SignInPage() {
                         src={logo.src}
                         alt="CallPilot"
                         className="h-20 sm:h-18 lg:h-20 w-auto"
+                        width={logo.width}
+                        height={logo.height}
                       />
                     </Link>
 

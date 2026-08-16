@@ -68,6 +68,8 @@ export default function IntegrationsPage() {
                     src="/images/unnamed.png"
                     alt="CallPilot + JobAdder Integration Mockup"
                     className="w-full h-auto object-contain drop-shadow-xl max-w-sm mx-auto"
+                    width={1536}
+                    height={1024}
                   />
                 </div>
 
@@ -161,6 +163,8 @@ export default function IntegrationsPage() {
                     src="/images/unnamed.png"
                     alt="CallPilot + JobAdder Integration Mockup"
                     className="w-full h-auto object-contain drop-shadow-xl"
+                    width={1536}
+                    height={1024}
                   />
                 </motion.div>
               </div>
@@ -176,6 +180,8 @@ export default function IntegrationsPage() {
               src="/images/sleeping-consultant-mobile.jpg"
               alt="Consultant Sleeping Mobile"
               className="w-full h-full object-cover object-top"
+              width={496}
+              height={1024}
             />
           </div>
 
@@ -185,6 +191,8 @@ export default function IntegrationsPage() {
               src="/images/sleeping-consultant.png"
               alt="Consultant Sleeping"
               className="w-full h-full object-cover object-left"
+              width={1024}
+              height={1024}
             />
             {/* Gradient overlay to fade the image into the dark navy background */}
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#020917]/65 to-[#020917]/60 z-10"></div>
@@ -456,6 +464,8 @@ export default function IntegrationsPage() {
                     src="/images/callpilot-logo.png"
                     alt="CallPilot Logo"
                     className="w-full h-full object-contain"
+                    width={802}
+                    height={535}
                   />
                 </div>
                 <div>

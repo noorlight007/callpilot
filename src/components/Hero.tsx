@@ -80,6 +80,8 @@ const Hero = () => {
                 src="/images/JobAdder.png"
                 alt="JobAdder Logo"
                 className="h-full object-contain max-h-[17.5px] sm:max-h-[54.5px]"
+                width={820}
+                height={139}
               />
             </div>
           </div>
@@ -108,6 +110,8 @@ const Hero = () => {
                   src="/images/Recruit_CRM_icon.jpeg"
                   alt="Recruit CRM Icon"
                   className="h-full w-auto rounded object-cover"
+                  width={400}
+                  height={400}
                 />
                 <span className="text-white text-[15.9px] sm:text-[41px] font-black tracking-tight leading-none">recruit crm</span>
               </div>
@@ -137,6 +141,8 @@ const Hero = () => {
                 src="/wordmark.svg"
                 alt="Ashby Logo"
                 className="h-full object-contain max-h-[23.2px] sm:max-h-[65.7px] filter"
+                width={1001}
+                height={328}
               />
             </div>
           </div>
@@ -185,6 +191,7 @@ const Hero = () => {
         className="absolute inset-0 w-full h-full object-cover"
       >
         <source src="/videos/ai-video.mov" type="video/mp4" />
+        <track kind="captions" src="/captions.vtt" srcLang="en" label="English" default />
       </video>
 
       {/* Dark Overlay for readability */}
@@ -241,9 +248,9 @@ const Hero = () => {
               <div className="h-px bg-gradient-to-l from-transparent to-[#d97706] w-12 sm:w-20"></div>
             </div>
 
-            <h3 className="text-[21.6px] sm:text-[27px] font-normal text-white mb-4 text-center">
+            <h2 className="text-[21.6px] sm:text-[27px] font-normal text-white mb-4 text-center">
               Live & In Progress
-            </h3>
+            </h2>
 
             {/* Grid container */}
             <div className="max-w-2xl mx-auto relative overflow-hidden rounded-2xl shadow-2xl bg-gradient-to-r from-black/80 to-[#0a2540]/20 p-1 sm:p-1 text-left">
