@@ -28,6 +28,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import Pricing from "@/components/Pricing";
 
 const WhatsAppIcon = ({ className = "w-6 h-6 fill-[#25D366]" }: { className?: string }) => (
   <svg viewBox="0 0 24 24" className={className}>
@@ -490,6 +491,8 @@ export default function IntegrationsPage() {
         </section>
 
       </div>
+
+      <Pricing />
 
       <Footer />
 
