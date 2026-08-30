@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Phone, ArrowRight } from "lucide-react";
+import { Phone, ArrowRight, Plug } from "lucide-react";
 import Link from "next/link";
 import { useRef, useState, useEffect } from "react";
 
@@ -121,6 +121,40 @@ const Hero = () => {
       ),
     },
     {
+      key: "greenhouse",
+      render: (key: string) => (
+        <div
+          key={key}
+          className="flex flex-col p-2 sm:p-3 w-[calc(50%-8px)] sm:w-[304px] h-[150px] sm:h-[215px] hover:opacity-80 transition-opacity relative z-20 flex-shrink-0"
+        >
+          <div>
+            <div className="inline-flex items-center gap-2 px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-full border border-amber-500/30 text-amber-400 text-[11px] sm:text-[12px] font-bold tracking-wider uppercase bg-amber-950/20 mb-2 sm:mb-4">
+              <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-amber-500 shadow-[0_0_8px_#f59e0b]" />
+              IN PROGRESS
+            </div>
+          </div>
+
+          <div className="flex-1 flex items-center justify-center">
+            {/* Greenhouse Logo */}
+            <div className="h-[47px] sm:h-[78px] flex items-center justify-center">
+              <div className="flex items-center gap-1 sm:gap-2 h-full max-h-[23.8px] sm:max-h-[59.7px]">
+                <div className="w-14 h-14 rounded-xl bg-[#008F52] flex items-center justify-center flex-shrink-0 p-3 shadow-sm">
+                  <img
+                    src="/images/greenhouse.png"
+                    alt="Recruit CRM Icon"
+                    className="h-full w-auto rounded object-cover brightness-0 invert"
+                    width={400}
+                    height={400}
+                  />
+                </div>
+                <span className="text-white text-[15.9px] sm:text-[41px] font-black tracking-tight leading-none">Greenhouse</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    {
       key: "ashby",
       render: (key: string) => (
         <div
@@ -144,6 +178,34 @@ const Hero = () => {
                 width={1001}
                 height={328}
               />
+            </div>
+          </div>
+        </div>
+      ),
+    },
+    {
+      key: "icims",
+      render: (key: string) => (
+        <div
+          key={key}
+          className="flex flex-col p-2 sm:p-3 w-[calc(50%-8px)] sm:w-[304px] h-[150px] sm:h-[215px] hover:opacity-80 transition-opacity relative z-20 flex-shrink-0"
+        >
+          <div>
+            <div className="inline-flex items-center gap-2 px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-full border border-sky-500/30 text-sky-400 text-[11px] sm:text-[12px] font-bold tracking-wider uppercase bg-sky-950/20 mb-2 sm:mb-4">
+              <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-sky-500 shadow-[0_0_8px_#0ea5e9]" />
+              COMING SOON
+            </div>
+          </div>
+
+          <div className="flex-1 flex items-center justify-center">
+            {/* iCIMS Logo/Icon */}
+            <div className="h-[47px] sm:h-[78px] flex items-center justify-center">
+              <div className="flex items-center gap-2 sm:gap-3 h-full max-h-[30px] sm:max-h-[60px]">
+                <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-xl border border-white/10 bg-white/5 flex items-center justify-center flex-shrink-0">
+                  <Plug className="w-4 h-4 sm:w-6 sm:h-6 text-gray-400 rotate-45" />
+                </div>
+                <span className="text-white text-[15.9px] sm:text-[41px] font-black tracking-tight leading-none">iCIMS</span>
+              </div>
             </div>
           </div>
         </div>
@@ -254,7 +316,8 @@ const Hero = () => {
 
             {/* Grid container */}
             <div className="max-w-2xl mx-auto relative overflow-hidden rounded-2xl shadow-2xl bg-gradient-to-r from-black/80 to-[#0a2540]/20 p-1 sm:p-1 text-left">
-              <style dangerouslySetInnerHTML={{ __html: `
+              <style dangerouslySetInnerHTML={{
+                __html: `
                 .scrollbar-none::-webkit-scrollbar {
                   display: none;
                 }
