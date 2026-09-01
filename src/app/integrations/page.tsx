@@ -179,7 +179,7 @@ export default function IntegrationsPage() {
           <div className="absolute inset-0 z-0 sm:hidden select-none pointer-events-none">
             <img
               src="/images/sleeping-consultant-mobile.jpg"
-              alt="Consultant Sleeping Mobile"
+              alt="Recruitment consultant sleeping while CallPilot handles screening calls"
               className="w-full h-full object-cover object-top"
               width={496}
               height={1024}
@@ -190,7 +190,7 @@ export default function IntegrationsPage() {
           <div className="hidden sm:block absolute left-0 top-0 bottom-0 w-[40%] sm:w-[35%] lg:w-[30%] h-full z-0 overflow-hidden select-none pointer-events-none">
             <img
               src="/images/sleeping-consultant.png"
-              alt="Consultant Sleeping"
+              alt="Recruitment consultant sleeping while CallPilot AI operates 24/7"
               className="w-full h-full object-cover object-left"
               width={1024}
               height={1024}

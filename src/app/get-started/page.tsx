@@ -346,7 +346,7 @@ export default function GetStarted() {
         .orbit-icon.phone{left:8%;top:22%;}.orbit-icon.chart{right:12%;top:27%;animation-delay:1.1s}
 
         .wordmark{line-height:1;margin-top:.2vh;}
-        .wordmark h1{margin:0;font-size:clamp(44px,7.2vh,82px);font-weight:900;letter-spacing:-.06em;text-shadow:0 12px 24px rgba(0,0,0,.14)}
+        .wordmark h1{margin:0;font-size:clamp(28px,4.5vh,48px);font-weight:900;letter-spacing:-.04em;text-shadow:0 12px 24px rgba(0,0,0,.14)}
         .wordmark h1 span{background:linear-gradient(90deg,#e8f5ff 0 36%,#28dbff 58%,#0f92ff 100%);-webkit-background-clip:text;background-clip:text;color:transparent;}
         .wordmark p{margin:12px 0 0;letter-spacing:.42em;font-size:clamp(11px,1.45vh,18px);font-weight:500;color:rgba(255,255,255,.9)}
         .wordmark p::before,.wordmark p::after{content:"";display:inline-block;width:34px;height:1px;background:rgba(255,255,255,.75);vertical-align:middle;margin:0 14px 4px 0}.wordmark p::after{margin:0 0 4px 14px}
@@ -601,7 +601,7 @@ export default function GetStarted() {
             </div>
 
             <div className="wordmark">
-              <h1>Call<span>Pilot</span></h1>
+              <h1>Get Started with <span>CallPilot</span></h1>
               <p>AI PHONE CALLS</p>
             </div>
 

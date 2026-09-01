@@ -5,8 +5,41 @@ import WhatsAppWidget from "@/components/WhatsAppWidget";
 import Script from "next/script";
 
 export const metadata: Metadata = {
-    title: "CallPilot.pro",
-    description: "AI-powered voice technology for modern businesses.",
+    metadataBase: new URL("https://callpilot.pro"),
+    title: "CallPilot | AI Applicant Screening Calls for Recruiters",
+    description: "AI voice calls that screen applicants in under a minute, sync straight into your ATS, and run 24/7. No call, no charge.",
+    alternates: {
+        canonical: "https://callpilot.pro/",
+    },
+    openGraph: {
+        title: "CallPilot | AI Applicant Screening Calls for Recruiters",
+        description: "AI voice calls that screen applicants in under a minute, sync straight into your ATS, and run 24/7. No call, no charge.",
+        url: "https://callpilot.pro/",
+        siteName: "CallPilot",
+        type: "website",
+        images: [
+            {
+                url: "https://callpilot.pro/og-image.png",
+                width: 1200,
+                height: 630,
+                alt: "CallPilot",
+            },
+        ],
+    },
+};
+
+const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "CallPilot",
+    "url": "https://callpilot.pro",
+    "logo": "https://callpilot.pro/adjusted_callPilot_logo.png",
+    "description": "AI voice calls that screen applicants in under a minute, sync straight into your ATS, and run 24/7.",
+    "parentOrganization": {
+        "@type": "Organization",
+        "name": "Swiftwave FZ-LLC",
+        "url": "https://www.swiftwave.ai/callpilot"
+    }
 };
 
 export default function RootLayout({
@@ -16,6 +49,12 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
+            <head>
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+                />
+            </head>
             <body>
                 {/* Google Tag Manager (noscript) */}
                 <noscript>

@@ -227,7 +227,7 @@ export default function SignInPage() {
                     <Link href="/" className="inline-flex items-center">
                       <img
                         src={logo.src}
-                        alt="CallPilot"
+                        alt="CallPilot logo"
                         className="h-20 sm:h-18 lg:h-20 w-auto"
                         width={logo.width}
                         height={logo.height}

@@ -108,7 +108,7 @@ const Hero = () => {
               <div className="flex items-center gap-1 sm:gap-2 h-full max-h-[23.8px] sm:max-h-[59.7px]">
                 <img
                   src="/images/Recruit_CRM_icon.jpeg"
-                  alt="Recruit CRM Icon"
+                  alt="Recruit CRM Logo"
                   className="h-full w-auto rounded object-cover"
                   width={400}
                   height={400}
@@ -141,7 +141,7 @@ const Hero = () => {
                 <div className="w-14 h-14 rounded-xl bg-[#008F52] flex items-center justify-center flex-shrink-0 p-3 shadow-sm">
                   <img
                     src="/images/greenhouse.png"
-                    alt="Recruit CRM Icon"
+                    alt="Greenhouse ATS Logo"
                     className="h-full w-auto rounded object-cover brightness-0 invert"
                     width={400}
                     height={400}

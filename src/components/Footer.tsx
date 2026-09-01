@@ -33,7 +33,7 @@ const Footer = () => {
           {/* Logo & Description */}
           <div className="col-span-2 md:col-span-1">
             <a href="/">
-                <img src={logo.src} alt="CallPilot.pro" className="h-12 md:h-20 w-auto mb-4" width={logo.width} height={logo.height} />
+                <img src={logo.src} alt="CallPilot logo" className="h-12 md:h-20 w-auto mb-4" width={logo.width} height={logo.height} />
             </a>
             
             <p className="text-sm text-muted-text mb-4">

@@ -22,7 +22,7 @@ const PricingPage = () => {
         <div className="min-h-screen bg-background">
             <Header />
             <main className="py-16 md:py-24 lg:py-24"> 
-                <Pricing />
+                <Pricing asH1={true} />
                 {/* Custom Solutions */}
                 <section className="py-15 lg:py-18 my-10">
                     <div className="container mx-auto px-4 sm:px-6 lg:px-8">

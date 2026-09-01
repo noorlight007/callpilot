@@ -65,7 +65,11 @@ const CALLPILOT_PRICING_CONFIG = {
   ]
 };
 
-const Pricing = () => {
+interface PricingProps {
+  asH1?: boolean;
+}
+
+const Pricing = ({ asH1 = false }: PricingProps) => {
   const [hoveredPlan, setHoveredPlan] = useState<string | null>(null);
 
   return (
@@ -113,9 +117,15 @@ const Pricing = () => {
       <div className="container mx-auto px-6 sm:px-8 max-w-7xl">
         {/* Header Block */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-5xl font-black text-[#05070A] tracking-tight mt-2 mb-3">
-            Choose Your Screening Plan
-          </h2>
+          {asH1 ? (
+            <h1 className="text-3xl sm:text-5xl font-black text-[#05070A] tracking-tight mt-2 mb-3">
+              AI Applicant Call Plans
+            </h1>
+          ) : (
+            <h2 className="text-3xl sm:text-5xl font-black text-[#05070A] tracking-tight mt-2 mb-3">
+              Choose Your Screening Plan
+            </h2>
+          )}
           <div className="text-xl sm:text-2xl font-extrabold text-[#36454F] mb-3">
             No Answer. No Charge.
           </div>

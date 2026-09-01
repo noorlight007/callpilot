@@ -86,7 +86,7 @@ const Features = () => {
               <img
                 ref={imgRef}
                 src={aiDiagram.src}
-                alt="CallPilot System Architecture"
+                alt="Diagram of CallPilot's AI call flow from screening to ATS sync"
                 className="min-w-[900px] sm:min-w-0 h-auto rounded-lg"
                 onLoad={centerScroll}
                 width={aiDiagram.width}

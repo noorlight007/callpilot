@@ -181,7 +181,7 @@ const Header = () => {
           <Link href="/" className="flex items-center -ml-[24px] md:-ml-[40px] lg:-ml-[50px]">
             <img
               src={logo.src}
-              alt="CallPilot.pro"
+              alt="CallPilot logo"
               className="h-[143px] md:h-[191px] lg:h-[216px] w-auto block object-contain"
               width={logo.width}
               height={logo.height}
