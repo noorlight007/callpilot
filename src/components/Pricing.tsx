@@ -410,7 +410,7 @@ const Pricing = ({ asH1 = false }: PricingProps) => {
 
       <div className="callpilot-pricing-wrap">
         {/* Header with Switcher / Tab Button */}
-        <div className="flex items-center justify-end mb-6 sm:mb-8">
+        <div className="flex items-center justify-start sm:justify-end pt-8 sm:pt-0 mb-6 sm:mb-8">
           <div className="inline-flex border border-[#0a0a0a] rounded-full overflow-hidden bg-white shadow-xs">
             <button
               type="button"
