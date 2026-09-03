@@ -59,7 +59,7 @@ export default function IntegrationsPage() {
                   INTEGRATIONS
                 </div>
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#0c0f19] tracking-tight leading-tight">
-                  <span className="lg:whitespace-nowrap">CallPilot + <span className="text-[#0069b2]">JobAdder</span></span> <br />
+                  <span>CallPilot + <span className="text-[#0069b2]">JobAdder</span> + <span className="text-[#0069b2]">Recruit CRM</span></span> <br />
                   <span className="text-black">Now Live</span>
                 </h1>
 
