@@ -96,9 +96,9 @@ const Hero = () => {
           className="flex flex-col p-2 sm:p-3 w-[calc(50%-8px)] sm:w-[304px] h-[150px] sm:h-[215px] hover:opacity-80 transition-opacity relative z-20 flex-shrink-0"
         >
           <div>
-            <div className="inline-flex items-center gap-2 px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-full border border-amber-500/30 text-amber-400 text-[11px] sm:text-[12px] font-bold tracking-wider uppercase bg-amber-950/20 mb-2 sm:mb-4">
-              <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-amber-500 shadow-[0_0_8px_#f59e0b]" />
-              IN PROGRESS
+            <div className="inline-flex items-center gap-2 px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-full border border-emerald-500/30 text-emerald-400 text-[11px] sm:text-[12px] font-bold tracking-wider uppercase bg-emerald-950/20 mb-2 sm:mb-4">
+              <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-emerald-500 shadow-[0_0_8px_#10b981]" />
+              LIVE
             </div>
           </div>
 
