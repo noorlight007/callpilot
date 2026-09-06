@@ -336,7 +336,12 @@ export default function IntegrationDetailClient({ data }: Props) {
                 <span className="w-2 h-2 rounded-full bg-[#f3c34d] shadow-[0_0_8px_#f3c34d] animate-pulse" />
                 {data.hitech?.tag}
               </span>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-3">{data.hitech?.h2}</h2>
+              <h2
+                className="text-white !text-white text-2xl sm:text-3xl md:text-4xl font-extrabold mb-3"
+                style={{ color: "#ffffff" }}
+              >
+                {data.hitech?.h2}
+              </h2>
               <p className="text-white/60 text-sm md:text-base max-w-xl mx-auto mb-10">
                 {data.hitech?.description}
               </p>
@@ -456,7 +461,12 @@ export default function IntegrationDetailClient({ data }: Props) {
       {/* Traffic-Light Scoring */}
       <section className="py-20 px-6 bg-black text-white" id="scoring">
         <div className="max-w-5xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Automatic Traffic-Light Scoring</h2>
+          <h2
+            className="text-white !text-white text-3xl sm:text-4xl font-bold mb-4"
+            style={{ color: "#ffffff" }}
+          >
+            Automatic Traffic-Light Scoring
+          </h2>
           <p className="text-white/70 max-w-xl mx-auto mb-12 text-sm sm:text-base">
             {data.trafficLights.lead}
           </p>
@@ -617,7 +627,12 @@ export default function IntegrationDetailClient({ data }: Props) {
       {/* Final CTA */}
       <section className="py-24 px-6 bg-black text-white text-center" id="book-a-demo">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-extrabold mb-4">{data.finalCta.h2}</h2>
+          <h2
+            className="text-white !text-white text-3xl sm:text-4xl font-extrabold mb-4"
+            style={{ color: "#ffffff" }}
+          >
+            {data.finalCta.h2}
+          </h2>
           <p className="text-white/75 text-base sm:text-lg max-w-xl mx-auto mb-8 leading-relaxed">
             {data.finalCta.lead}
           </p>

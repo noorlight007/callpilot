@@ -171,7 +171,7 @@ export default function IntegrationsHubPage() {
         {/* CTA */}
         <section className="bg-black text-white py-24 px-6 text-center">
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl font-extrabold mb-4">
+            <h2 className="text-white !text-white text-3xl sm:text-4xl font-extrabold mb-4" style={{color: "#ffffff"}}>
               Ready to automate applicant qualification?
             </h2>
             <p className="text-white/75 text-base sm:text-lg mb-8">
