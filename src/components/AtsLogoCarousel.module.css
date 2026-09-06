@@ -1,0 +1,21 @@
+/* CallPilot.pro — ATS logo marquee animation
+   28s = one full loop. Lower the number to speed it up, raise it to slow
+   it down — that's the only value controlling speed. */
+
+@keyframes ats-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.track {
+  animation: ats-marquee 28s linear infinite;
+  width: max-content;
+}
+
+.track:hover {
+  animation-play-state: paused;
+}

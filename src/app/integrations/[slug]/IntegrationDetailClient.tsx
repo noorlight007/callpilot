@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import { ATSIntegration, allIntegrations } from "@/data/integrations";
 
@@ -51,8 +51,24 @@ export default function IntegrationDetailClient({ data }: Props) {
   const [receivedPct, setReceivedPct] = useState(33);
   const [verifiedPct, setVerifiedPct] = useState(25);
   const [rows, setRows] = useState<BoardRowItem[]>([]);
+  
+  // Modal state
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalName, setModalName] = useState("");
+  const [modalCompany, setModalCompany] = useState("");
+  const [modalEmail, setModalEmail] = useState("");
+  const [modalPhone, setModalPhone] = useState("");
+  const [modalSending, setModalSending] = useState(false);
+  const [modalSuccess, setModalSuccess] = useState(false);
+  const [modalError, setModalError] = useState(false);
+
+  // Inline waitlist state
   const [waitlistEmail, setWaitlistEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  const [waitlistSending, setWaitlistSending] = useState(false);
+  const [waitlistSuccess, setWaitlistSuccess] = useState(false);
+  const [waitlistError, setWaitlistError] = useState(false);
+
+  const nameInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const wobbleReq = makeWobble(45, 50);
@@ -119,16 +135,137 @@ export default function IntegrationDetailClient({ data }: Props) {
     }
   }, [data.panelType]);
 
-  const handleWaitlistSubmit = (e: React.FormEvent) => {
+  // Modal handlers
+  const openModal = () => {
+    setIsModalOpen(true);
+    setModalError(false);
+    setTimeout(() => {
+      nameInputRef.current?.focus();
+    }, 100);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  // Close on Escape key
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && isModalOpen) {
+        closeModal();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isModalOpen]);
+
+  // Handle modal submit
+  const handleModalSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setModalSending(true);
+    setModalError(false);
+
+    const isLive = data.status === "Live";
+    const isWaitlist = data.status === "Coming Soon";
+    const subject = isLive
+      ? `New CallPilot Activation Request – ${data.name}`
+      : isWaitlist
+      ? `New Waitlist Signup – ${data.name}`
+      : `New Early Access Request – ${data.name}`;
+
+    const formData = new FormData();
+    formData.append("_subject", subject);
+    formData.append("_template", "table");
+    formData.append("_captcha", "false");
+    formData.append("Source", `${data.name} integration page – popup modal`);
+    formData.append("Name", modalName);
+    formData.append("Company Name", modalCompany);
+    formData.append("Email Address", modalEmail);
+    formData.append("Contact Number", modalPhone);
+
+    try {
+      const res = await fetch("https://formsubmit.co/ajax/steven@rd1.co.uk", {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (!res.ok) throw new Error("bad-response");
+      setModalSuccess(true);
+    } catch {
+      setModalError(true);
+    } finally {
+      setModalSending(false);
+    }
+  };
+
+  // Handle inline waitlist submit
+  const handleWaitlistSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!waitlistEmail) return;
-    setSubmitted(true);
+
+    setWaitlistSending(true);
+    setWaitlistError(false);
+
+    const formData = new FormData();
+    formData.append("_subject", `New Waitlist Signup (quick capture) – ${data.name}`);
+    formData.append("_template", "table");
+    formData.append("_captcha", "false");
+    formData.append("Source", `${data.name} integration page – inline waitlist card`);
+    formData.append("Email Address", waitlistEmail);
+
+    try {
+      const res = await fetch("https://formsubmit.co/ajax/steven@rd1.co.uk", {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (!res.ok) throw new Error("bad-response");
+      setWaitlistSuccess(true);
+    } catch {
+      setWaitlistError(true);
+    } finally {
+      setWaitlistSending(false);
+    }
   };
+
+  const navCtaText =
+    data.status === "Live"
+      ? "Get Connected"
+      : data.status === "Coming Soon"
+      ? "Join the Waitlist"
+      : "Get Early Access";
+
+  const isLive = data.status === "Live";
+  const isWaitlist = data.status === "Coming Soon";
+
+  const modalTitle = isLive
+    ? "Get Connected — Activate AI Call"
+    : isWaitlist
+    ? `Join the ${data.name} Waitlist`
+    : `Get Early Access to ${data.name} Sync`;
+
+  const modalSubtitle = isLive
+    ? `Tell us a bit about your business and we’ll set up your CallPilot login so you can start making AI screening calls on your ${data.name} applicants right away.`
+    : isWaitlist
+    ? `Leave your details and you’ll get an email the moment native ${data.name} sync goes live, plus early access ahead of general release.`
+    : `Leave your details and you’ll be among the first connected the moment ${data.name} sync goes live, with early access ahead of general availability.`;
+
+  const modalSubmitText = isLive
+    ? "Request My Login"
+    : isWaitlist
+    ? "Join the Waitlist"
+    : "Get Early Access";
 
   return (
     <div className="ats-page-root">
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200">
+      <header className="sticky top-0 z-50 bg-white/94 backdrop-blur-md border-b border-gray-200">
         <nav className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="font-extrabold text-xl tracking-tight text-black">
             CallPilot
@@ -176,32 +313,43 @@ export default function IntegrationDetailClient({ data }: Props) {
             <a href="#pricing" className="hover:text-emerald-600 transition-colors">Pricing</a>
             <a href="#faq" className="hover:text-emerald-600 transition-colors">FAQ</a>
           </div>
-          <a
-            href="#book-a-demo"
+          <button
+            type="button"
+            onClick={openModal}
             className="bg-black text-white px-5 py-2.5 rounded-full font-semibold text-sm hover:bg-gray-800 transition-colors"
           >
-            {data.status === "Live" ? "Get Connected" : data.status === "Coming Soon" ? "Join the Waitlist" : "Get Early Access"}
-          </a>
+            {navCtaText}
+          </button>
         </nav>
       </header>
 
       {/* Hero Section */}
       <section className="bg-black text-white pt-24 pb-20 text-center px-6">
         <div className="max-w-4xl mx-auto">
-          <div className="inline-flex items-center gap-2 text-xs font-bold tracking-wider uppercase px-3.5 py-1.5 rounded-full border mb-6"
+          <div
+            className="inline-flex items-center gap-2 text-xs font-bold tracking-wider uppercase px-3.5 py-1.5 rounded-full border mb-6"
             style={{
-              backgroundColor: data.status === "Live" ? "rgba(30,158,80,0.18)" : "rgba(226,162,32,0.18)",
-              color: data.status === "Live" ? "#4ee08a" : data.status === "Coming Soon" ? "rgba(255,255,255,0.7)" : "#f3c34d",
-              borderColor: data.status === "Live" ? "rgba(78,224,138,0.35)" : "rgba(243,195,77,0.35)"
+              backgroundColor: isLive
+                ? "rgba(30,158,80,0.18)"
+                : isWaitlist
+                ? "rgba(255,255,255,0.08)"
+                : "rgba(226,162,32,0.18)",
+              color: isLive ? "#4ee08a" : isWaitlist ? "rgba(255,255,255,0.7)" : "#f3c34d",
+              borderColor: isLive
+                ? "rgba(78,224,138,0.35)"
+                : isWaitlist
+                ? "rgba(255,255,255,0.18)"
+                : "rgba(243,195,77,0.35)",
             }}
           >
             <span
               className="w-2 h-2 rounded-full"
               style={{
-                backgroundColor: data.status === "Live" ? "#4ee08a" : data.status === "Coming Soon" ? "#999" : "#f3c34d"
+                backgroundColor: isLive ? "#4ee08a" : isWaitlist ? "#999" : "#f3c34d",
               }}
             />
-            <span>{data.hero.eyebrowText}</span>
+            <span className="text-white">{data.name} Integration</span>:{" "}
+            {isLive ? "LIVE" : isWaitlist ? "COMING SOON" : "LIVE SOON"}
           </div>
 
           <div className="text-xs md:text-sm font-bold tracking-widest text-white/60 uppercase mb-4">
@@ -233,12 +381,13 @@ export default function IntegrationDetailClient({ data }: Props) {
           </div>
 
           <div className="flex flex-wrap justify-center gap-4">
-            <a
-              href={data.hero.primaryCtaLink}
+            <button
+              type="button"
+              onClick={openModal}
               className="bg-white text-black px-7 py-3.5 rounded-full font-bold text-sm hover:bg-gray-200 transition-colors"
             >
               {data.hero.primaryCtaText}
-            </a>
+            </button>
             <a
               href={data.hero.secondaryCtaLink}
               className="border border-white/50 text-white px-7 py-3.5 rounded-full font-bold text-sm hover:border-white transition-colors"
@@ -285,7 +434,7 @@ export default function IntegrationDetailClient({ data }: Props) {
                         ? "bg-amber-100 text-amber-800"
                         : row.status === "received"
                         ? "bg-emerald-100 text-emerald-700"
-                        : "bg-blue-100 text-blue-700"
+                        : "bg-black text-white"
                     }`}
                   >
                     <span
@@ -298,7 +447,7 @@ export default function IntegrationDetailClient({ data }: Props) {
                           ? "bg-amber-500"
                           : row.status === "received"
                           ? "bg-emerald-500"
-                          : "bg-blue-500"
+                          : "bg-white"
                       }`}
                     />
                     {row.statusLabel}
@@ -332,8 +481,22 @@ export default function IntegrationDetailClient({ data }: Props) {
           {/* Hi-Tech Metrics Panel */}
           <section className="bg-[#05070d] text-white py-16 px-6 relative border-y border-gray-800">
             <div className="max-w-4xl mx-auto text-center">
-              <span className="inline-flex items-center gap-2 font-mono text-xs font-bold tracking-widest text-[#f3c34d] bg-[#f3c34d]/10 border border-[#f3c34d]/30 px-3 py-1 rounded-full mb-4">
-                <span className="w-2 h-2 rounded-full bg-[#f3c34d] shadow-[0_0_8px_#f3c34d] animate-pulse" />
+              <span
+                className="inline-flex items-center gap-2 font-mono text-xs font-bold tracking-widest px-3 py-1 rounded-full mb-4"
+                style={{
+                  color: isWaitlist ? "#4fa8f0" : "#f3c34d",
+                  backgroundColor: isWaitlist ? "rgba(47,150,224,0.08)" : "rgba(243,195,77,0.08)",
+                  borderColor: isWaitlist ? "rgba(47,150,224,0.3)" : "rgba(243,195,77,0.3)",
+                  borderWidth: 1,
+                }}
+              >
+                <span
+                  className="w-2 h-2 rounded-full animate-pulse"
+                  style={{
+                    backgroundColor: isWaitlist ? "#4fa8f0" : "#f3c34d",
+                    boxShadow: isWaitlist ? "0 0 8px #4fa8f0" : "0 0 8px #f3c34d",
+                  }}
+                />
                 {data.hitech?.tag}
               </span>
               <h2
@@ -348,30 +511,79 @@ export default function IntegrationDetailClient({ data }: Props) {
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                 <div className="bg-white/5 border border-white/10 rounded-2xl p-5 text-center">
-                  <div className="w-14 h-14 mx-auto rounded-full border-2 border-[#f3c34d]/40 flex items-center justify-center mb-2">
-                    <b className="font-mono text-xl text-[#f3c34d]">{calls}</b>
+                  <div
+                    className="w-14 h-14 mx-auto rounded-full border-2 flex items-center justify-center mb-2"
+                    style={{
+                      borderColor: isWaitlist ? "rgba(47,150,224,0.35)" : "rgba(243,195,77,0.35)",
+                    }}
+                  >
+                    <b
+                      className="font-mono text-xl"
+                      style={{ color: isWaitlist ? "#4fa8f0" : "#f3c34d" }}
+                    >
+                      {calls}
+                    </b>
                   </div>
                   <span className="text-xs uppercase tracking-wider text-white/50">AI Calls Handled</span>
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded-2xl p-5 text-center">
                   <div className="h-1.5 w-full bg-white/10 rounded-full mb-3 overflow-hidden">
-                    <div className="h-full bg-gradient-to-r from-[#e2a220] to-[#f3c34d]" style={{ width: `${requestedPct}%` }} />
+                    <div
+                      className="h-full"
+                      style={{
+                        width: `${requestedPct}%`,
+                        background: isWaitlist
+                          ? "linear-gradient(90deg,#2f6fed,#4fa8f0)"
+                          : "linear-gradient(90deg,#e2a220,#f3c34d)",
+                      }}
+                    />
                   </div>
-                  <b className="block font-mono text-2xl text-[#f3c34d] mb-1">{requestedPct}%</b>
+                  <b
+                    className="block font-mono text-2xl mb-1"
+                    style={{ color: isWaitlist ? "#4fa8f0" : "#f3c34d" }}
+                  >
+                    {requestedPct}%
+                  </b>
                   <span className="text-xs uppercase tracking-wider text-white/50">Documents Requested</span>
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded-2xl p-5 text-center">
                   <div className="h-1.5 w-full bg-white/10 rounded-full mb-3 overflow-hidden">
-                    <div className="h-full bg-gradient-to-r from-[#e2a220] to-[#f3c34d]" style={{ width: `${receivedPct}%` }} />
+                    <div
+                      className="h-full"
+                      style={{
+                        width: `${receivedPct}%`,
+                        background: isWaitlist
+                          ? "linear-gradient(90deg,#2f6fed,#4fa8f0)"
+                          : "linear-gradient(90deg,#e2a220,#f3c34d)",
+                      }}
+                    />
                   </div>
-                  <b className="block font-mono text-2xl text-[#f3c34d] mb-1">{receivedPct}%</b>
+                  <b
+                    className="block font-mono text-2xl mb-1"
+                    style={{ color: isWaitlist ? "#4fa8f0" : "#f3c34d" }}
+                  >
+                    {receivedPct}%
+                  </b>
                   <span className="text-xs uppercase tracking-wider text-white/50">Documents Received</span>
                 </div>
                 <div className="bg-white/5 border border-white/10 rounded-2xl p-5 text-center">
                   <div className="h-1.5 w-full bg-white/10 rounded-full mb-3 overflow-hidden">
-                    <div className="h-full bg-gradient-to-r from-[#e2a220] to-[#f3c34d]" style={{ width: `${verifiedPct}%` }} />
+                    <div
+                      className="h-full"
+                      style={{
+                        width: `${verifiedPct}%`,
+                        background: isWaitlist
+                          ? "linear-gradient(90deg,#2f6fed,#4fa8f0)"
+                          : "linear-gradient(90deg,#e2a220,#f3c34d)",
+                      }}
+                    />
                   </div>
-                  <b className="block font-mono text-2xl text-[#f3c34d] mb-1">{verifiedPct}%</b>
+                  <b
+                    className="block font-mono text-2xl mb-1"
+                    style={{ color: isWaitlist ? "#4fa8f0" : "#f3c34d" }}
+                  >
+                    {verifiedPct}%
+                  </b>
                   <span className="text-xs uppercase tracking-wider text-white/50">Submitted to Client</span>
                 </div>
               </div>
@@ -391,26 +603,38 @@ export default function IntegrationDetailClient({ data }: Props) {
                   <h3 className="text-lg font-bold text-gray-900 mb-1">{data.waitlist?.cardTitle}</h3>
                   <p className="text-xs sm:text-sm text-gray-500 max-w-sm">{data.waitlist?.cardDesc}</p>
                 </div>
-                {submitted ? (
-                  <div className="bg-emerald-100 text-emerald-800 text-sm font-bold px-5 py-3 rounded-full">
-                    Thank you! You're on the early access list.
-                  </div>
+                {waitlistSuccess ? (
+                  <p className="text-sm font-bold text-gray-900">
+                    You're on the list — we'll email you the moment it's live.
+                  </p>
                 ) : (
-                  <form onSubmit={handleWaitlistSubmit} className="flex gap-2 w-full md:w-auto">
-                    <input
-                      type="email"
-                      value={waitlistEmail}
-                      onChange={(e) => setWaitlistEmail(e.target.value)}
-                      placeholder="you@company.com"
-                      required
-                      className="px-4 py-2.5 rounded-full border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-black flex-1 md:w-56"
-                    />
-                    <button
-                      type="submit"
-                      className="bg-black text-white px-5 py-2.5 rounded-full text-sm font-bold hover:bg-gray-800 transition-colors whitespace-nowrap"
-                    >
-                      {data.waitlist?.buttonText}
-                    </button>
+                  <form onSubmit={handleWaitlistSubmit} className="flex flex-col gap-2 w-full md:w-auto">
+                    <div className="flex gap-2">
+                      <input
+                        type="email"
+                        value={waitlistEmail}
+                        onChange={(e) => setWaitlistEmail(e.target.value)}
+                        placeholder="you@company.com"
+                        required
+                        className="px-4 py-2.5 rounded-full border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-black flex-1 md:w-56"
+                      />
+                      <button
+                        type="submit"
+                        disabled={waitlistSending}
+                        className="bg-black text-white px-5 py-2.5 rounded-full text-sm font-bold hover:bg-gray-800 transition-colors whitespace-nowrap disabled:opacity-60"
+                      >
+                        {waitlistSending ? "Sending…" : data.waitlist?.buttonText || "Notify Me"}
+                      </button>
+                    </div>
+                    {waitlistError && (
+                      <p className="text-xs text-red-600 mt-1">
+                        Couldn’t send that — email{" "}
+                        <a href="mailto:steven@rd1.co.uk" className="underline">
+                          steven@rd1.co.uk
+                        </a>{" "}
+                        instead.
+                      </p>
+                    )}
                   </form>
                 )}
               </div>
@@ -502,14 +726,14 @@ export default function IntegrationDetailClient({ data }: Props) {
             <span
               className="px-4 py-2 rounded-full font-bold text-xs uppercase tracking-wider shrink-0 flex items-center gap-2"
               style={{
-                backgroundColor: data.status === "Live" ? "#e7f6ec" : data.status === "Coming Soon" ? "#eee" : "#fdf3df",
-                color: data.status === "Live" ? "#1e9e50" : data.status === "Coming Soon" ? "#666" : "#8a5a00"
+                backgroundColor: isLive ? "#e7f6ec" : isWaitlist ? "#eee" : "#fdf3df",
+                color: isLive ? "#1e9e50" : isWaitlist ? "#666" : "#8a5a00",
               }}
             >
               <span
                 className="w-2 h-2 rounded-full"
                 style={{
-                  backgroundColor: data.status === "Live" ? "#1e9e50" : data.status === "Coming Soon" ? "#999" : "#e2a220"
+                  backgroundColor: isLive ? "#1e9e50" : isWaitlist ? "#999" : "#e2a220",
                 }}
               />
               {data.callout.badgeText}
@@ -637,12 +861,13 @@ export default function IntegrationDetailClient({ data }: Props) {
             {data.finalCta.lead}
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <a
-              href={data.finalCta.primaryUrl}
+            <button
+              type="button"
+              onClick={openModal}
               className="bg-white text-black px-8 py-3.5 rounded-full font-bold text-sm hover:bg-gray-200 transition-colors"
             >
               {data.finalCta.primaryText}
-            </a>
+            </button>
             <a
               href={data.finalCta.secondaryUrl}
               className="border border-white/50 text-white px-8 py-3.5 rounded-full font-bold text-sm hover:border-white transition-colors"
@@ -656,7 +881,7 @@ export default function IntegrationDetailClient({ data }: Props) {
       {/* Footer */}
       <footer className="py-8 px-6 border-t border-gray-200 bg-white">
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
-          <div>CallPilot is a brand of Swiftwave.ai. Tested and built in a live recruitment environment over 18 months.</div>
+          <div>CallPilot is a brand of Swiftwave.ai. This product was tested and built in a live recruitment environment over 18 months.</div>
           <div className="flex gap-6 font-medium">
             <a href="#pricing" className="hover:text-black transition-colors">Pricing</a>
             <a href="https://www.swiftwave.ai/callpilot" className="hover:text-black transition-colors">Features</a>
@@ -664,6 +889,139 @@ export default function IntegrationDetailClient({ data }: Props) {
           </div>
         </div>
       </footer>
+
+      {/* Lead-Capture Modal */}
+      {isModalOpen && (
+        <div
+          className="fixed inset-0 bg-black/60 z-[999] flex items-center justify-center p-4"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) closeModal();
+          }}
+          role="dialog"
+          aria-modal="true"
+        >
+          <div className="bg-white text-gray-900 rounded-2xl max-w-md w-full p-7 sm:p-8 relative shadow-2xl animate-in fade-in zoom-in-95 duration-150 text-left">
+            <button
+              type="button"
+              onClick={closeModal}
+              className="absolute top-3.5 right-3.5 text-gray-400 hover:text-gray-900 hover:bg-gray-100 w-8 h-8 rounded-full flex items-center justify-center text-2xl leading-none"
+              aria-label="Close"
+            >
+              &times;
+            </button>
+
+            {modalSuccess ? (
+              <div className="text-left py-2">
+                {isLive ? (
+                  <>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">Request received</h3>
+                    <p className="text-sm text-gray-600 mb-6">
+                      Thanks — we’ll email your CallPilot login shortly so you can activate AI Call.
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">You’re on the list</h3>
+                    <p className="text-sm text-gray-600 mb-6">
+                      Thanks — we’ll {isWaitlist ? "email you" : "be in touch"} the moment {data.name} sync is live.
+                    </p>
+                  </>
+                )}
+                <button
+                  type="button"
+                  onClick={closeModal}
+                  className="bg-black text-white px-6 py-2.5 rounded-full font-bold text-sm hover:bg-gray-800 transition-colors"
+                >
+                  Close
+                </button>
+              </div>
+            ) : (
+              <>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">{modalTitle}</h3>
+                <p className="text-sm text-gray-500 mb-5 leading-relaxed">{modalSubtitle}</p>
+
+                <form onSubmit={handleModalSubmit} className="space-y-3.5">
+                  <div>
+                    <label htmlFor="cpName" className="block text-xs font-bold text-gray-800 mb-1">
+                      Name
+                    </label>
+                    <input
+                      ref={nameInputRef}
+                      type="text"
+                      id="cpName"
+                      value={modalName}
+                      onChange={(e) => setModalName(e.target.value)}
+                      required
+                      autoComplete="name"
+                      className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-sm text-gray-900 focus:outline-none focus:border-black"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="cpCompany" className="block text-xs font-bold text-gray-800 mb-1">
+                      Company Name
+                    </label>
+                    <input
+                      type="text"
+                      id="cpCompany"
+                      value={modalCompany}
+                      onChange={(e) => setModalCompany(e.target.value)}
+                      required
+                      autoComplete="organization"
+                      className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-sm text-gray-900 focus:outline-none focus:border-black"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="cpEmail" className="block text-xs font-bold text-gray-800 mb-1">
+                      Email Address
+                    </label>
+                    <input
+                      type="email"
+                      id="cpEmail"
+                      value={modalEmail}
+                      onChange={(e) => setModalEmail(e.target.value)}
+                      required
+                      autoComplete="email"
+                      className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-sm text-gray-900 focus:outline-none focus:border-black"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="cpPhone" className="block text-xs font-bold text-gray-800 mb-1">
+                      Contact Number
+                    </label>
+                    <input
+                      type="tel"
+                      id="cpPhone"
+                      value={modalPhone}
+                      onChange={(e) => setModalPhone(e.target.value)}
+                      required
+                      autoComplete="tel"
+                      className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-sm text-gray-900 focus:outline-none focus:border-black"
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={modalSending}
+                    className="w-full mt-2 bg-black text-white py-3 rounded-full font-bold text-sm hover:bg-gray-800 transition-colors disabled:opacity-60"
+                  >
+                    {modalSending ? "Sending…" : modalSubmitText}
+                  </button>
+
+                  {modalError && (
+                    <p className="text-xs text-red-600 mt-2">
+                      Something went wrong sending that — please email{" "}
+                      <a href="mailto:steven@rd1.co.uk" className="underline">
+                        steven@rd1.co.uk
+                      </a>{" "}
+                      directly and we'll sort it out.
+                    </p>
+                  )}
+                </form>
+              </>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
