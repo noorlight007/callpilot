@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Screening Calls for JobAdder Agencies | CallPilot</title>
+<meta name="description" content="CallPilot's AI voice calls screen every JobAdder applicant day or night, weekends included, so temp and contract desks never lose one to slow follow-up.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://callpilot.pro/integrations/jobadder">
+<meta property="og:title" content="AI Screening Calls for JobAdder Agencies | CallPilot">
+<meta property="og:description" content="Human-like AI screening calls with instant traffic-light scoring, built for high-volume JobAdder agencies running temp and contract desks day or night.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://callpilot.pro/integrations/jobadder">
+<meta property="og:site_name" content="CallPilot">
+<meta property="og:image" content="https://callpilot.pro/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI Screening Calls for JobAdder Agencies | CallPilot">
+<meta name="twitter:description" content="CallPilot's AI voice calls screen every JobAdder applicant day or night, weekends included, so temp and contract desks never lose one to slow follow-up.">
+<meta name="twitter:image" content="https://callpilot.pro/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "CallPilot AI Screening Calls for JobAdder",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "description": "AI voice screening calls with instant traffic-light scoring, integrated directly with JobAdder for high-volume recruitment agencies.",
+  "offers": [
+    {"@type": "Offer", "name": "Starter", "price": "395", "priceCurrency": "USD", "description": "100 AI screening calls per month"},
+    {"@type": "Offer", "name": "Growth", "price": "1400", "priceCurrency": "USD", "description": "400 AI screening calls per month"},
+    {"@type": "Offer", "name": "Pro", "price": "2950", "priceCurrency": "USD", "description": "1,000 AI screening calls per month"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is the JobAdder integration actually live?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Yes. It's live now, applicant status and documents sync into the JobAdder record automatically as soon as CallPilot has them."}
+    },
+    {
+      "@type": "Question",
+      "name": "How does the traffic-light scoring work?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Every screening call is scored amber, green, or red against the job brief the moment it ends. Amber is qualified and awaiting documents, green is qualified and documents received, red is unsuccessful. No recruiter has to sit and mark it manually."}
+    },
+    {
+      "@type": "Question",
+      "name": "How much does AI applicant screening cost?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Plans start at $395/month for 100 screenings ($3.95 each). Growth is $1,400/month for 400 screenings, Pro is $2,950/month for 1,000 screenings, and Enterprise pricing is custom for 2,000+. New clients get their first 100 AI screening calls free."}
+    },
+    {
+      "@type": "Question",
+      "name": "What happens after an applicant qualifies?",
+      "acceptedAnswer": {"@type": "Answer", "text": "They're messaged automatically over WhatsApp or SMS for a photo ID and their qualifications. Once sent, it's attached to their JobAdder record, the status flips over, and the recruiter gets one email to sign it off."}
+    }
+  ]
+}
+</script>
+<style>
+  :root{
+    --black:#0a0a0a;
+    --white:#ffffff;
+    --ink:#121212;
+    --muted:#5b5b5b;
+    --line:#e5e5e5;
+    --green:#1e9e50;
+    --green-bg:#e7f6ec;
+    --amber:#e2a220;
+    --amber-bg:#fdf3df;
+    --blue:#2f6fed;
+    --blue-bg:#e8effd;
+    --red:#d13b3b;
+    --red-bg:#fbe7e7;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+  section{padding:88px 0;}
+  h1,h2,h3{line-height:1.15;margin:0 0 16px;font-weight:700;letter-spacing:-0.02em;}
+  h1{font-size:clamp(2.1rem,4.5vw,3.4rem);}
+  h2{font-size:clamp(1.6rem,3vw,2.2rem);}
+  h3{font-size:1.15rem;}
+  p{margin:0 0 16px;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:0.78rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
+    padding:7px 14px;border-radius:999px;
+  }
+  .dot{width:8px;height:8px;border-radius:50%;display:inline-block;}
+
+  /* NAV */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,0.94);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 24px;max-width:1120px;margin:0 auto;
+  }
+  .logo{font-weight:800;font-size:1.15rem;letter-spacing:-0.02em;}
+  .nav-links{display:flex;align-items:center;gap:28px;font-size:0.95rem;font-weight:500;}
+  .nav-links>a:hover{color:var(--green);}
+
+  /* INTEGRATIONS NAV DROPDOWN */
+  .nav-drop{position:relative;}
+  .nav-drop-trigger{display:inline-flex;align-items:center;gap:5px;cursor:pointer;}
+  .nav-drop-trigger:hover{color:var(--green);}
+  .nav-drop-caret{font-size:0.7em;opacity:0.6;}
+  .nav-drop-panel{
+    position:absolute;top:100%;left:0;margin-top:16px;z-index:60;
+    background:var(--white);border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 14px 34px rgba(0,0,0,0.14);
+    width:230px;padding:8px;
+    opacity:0;visibility:hidden;transform:translateY(4px);
+    transition:opacity .15s ease,transform .15s ease;
+  }
+  .nav-drop:hover .nav-drop-panel,
+  .nav-drop:focus-within .nav-drop-panel{opacity:1;visibility:visible;transform:translateY(0);}
+  .nav-drop-item{
+    display:flex;align-items:center;justify-content:space-between;gap:10px;
+    padding:9px 10px;border-radius:8px;font-size:0.88rem;font-weight:500;color:var(--ink);
+  }
+  .nav-drop-item:hover{background:#f5f5f5;}
+  .nav-drop-item.is-current{background:#f0f0f0;font-weight:700;}
+  .nav-drop-badge{font-size:0.66rem;font-weight:700;padding:3px 8px;border-radius:999px;white-space:nowrap;}
+  .badge-live{background:var(--green-bg);color:var(--green);}
+  .badge-soon{background:var(--amber-bg);color:#8a5a00;}
+  .badge-later{background:#eee;color:#666;}
+  .nav-drop-viewall{
+    display:block;margin-top:4px;padding:10px;border-top:1px solid var(--line);
+    font-size:0.84rem;font-weight:700;color:var(--ink);text-align:center;
+  }
+  .nav-drop-viewall:hover{color:var(--green);}
+  .nav-cta{
+    background:var(--black);color:var(--white);
+    padding:10px 20px;border-radius:999px;font-weight:600;font-size:0.92rem;
+    white-space:nowrap;
+  }
+  .nav-mobile-hide{display:flex;}
+  @media(max-width:760px){.nav-mobile-hide{display:none;}}
+
+  /* HERO - black bg, white text */
+  .hero{
+    background:var(--black);color:var(--white);
+    padding:96px 0 72px;text-align:center;
+  }
+  .hero .eyebrow{background:rgba(30,158,80,0.18);color:#4ee08a;border:1px solid rgba(78,224,138,0.35);}
+  .eyebrow-brand{color:#5b9dfa;}
+  .hero h1{color:#ffffff !important;max-width:820px;margin-left:auto;margin-right:auto;}
+  .hero p.lead{
+    color:rgba(255,255,255,0.78);font-size:1.15rem;max-width:640px;margin:0 auto 32px;
+  }
+  .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .btn{
+    display:inline-block;padding:14px 28px;border-radius:999px;font-weight:700;font-size:0.98rem;
+    border:1.5px solid transparent;
+  }
+  .btn-primary-dark{background:var(--white);color:var(--black);}
+  .btn-primary-dark:hover{background:#e9e9e9;}
+  .btn-outline-light{border-color:rgba(255,255,255,0.5);color:var(--white);}
+  .btn-outline-light:hover{border-color:var(--white);}
+  .btn-primary-light{background:var(--black);color:var(--white);}
+  .btn-primary-light:hover{background:#222;}
+  .btn-outline-dark{border-color:var(--black);color:var(--black);}
+  .overline{
+    display:block;font-size:0.95rem;font-weight:700;letter-spacing:0.04em;
+    color:rgba(255,255,255,0.55);margin:18px 0 6px;text-transform:uppercase;
+  }
+  .flow{
+    display:flex;flex-wrap:wrap;justify-content:center;align-items:center;
+    gap:8px;margin:36px auto 8px;max-width:780px;
+  }
+  .flow-node{
+    background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);
+    color:var(--white);font-size:0.82rem;font-weight:600;
+    padding:8px 14px;border-radius:999px;white-space:nowrap;
+  }
+  .flow-arrow{color:rgba(255,255,255,0.4);font-size:0.9rem;}
+
+  /* STAT STRIP */
+  .stats{
+    background:#111;color:var(--white);
+    border-top:1px solid #262626;
+  }
+  .stats .wrap{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:0;padding:52px 24px;
+  }
+  .stat{padding:0 36px;border-right:1px solid #262626;text-align:center;}
+  .stat:last-child{border-right:none;}
+  .stat b{display:block;font-size:2.3rem;font-weight:800;color:var(--white);margin-bottom:10px;letter-spacing:-0.01em;}
+  .stat span{display:block;color:rgba(255,255,255,0.6);font-size:0.82rem;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;}
+  @media(max-width:700px){
+    .stats .wrap{grid-template-columns:1fr;gap:28px;padding:44px 24px;}
+    .stat{border-right:none;border-bottom:1px solid #262626;padding:0 0 28px;}
+    .stat:last-child{border-bottom:none;padding-bottom:0;}
+  }
+
+  /* LIVE BOARD - white */
+  .board{background:var(--white);}
+  .board .wrap{max-width:760px;}
+  .board-head{text-align:center;margin-bottom:8px;}
+  .board-head h2{margin-bottom:4px;}
+  .board-note{color:var(--muted);font-size:0.85rem;text-align:center;margin-bottom:32px;}
+  .board-card{
+    border:1px solid var(--line);border-radius:var(--radius);
+    padding:10px;background:#fafafa;overflow:hidden;
+    display:flex;flex-direction:column;gap:8px;min-height:326px;
+  }
+  .board-row{
+    display:flex;align-items:center;gap:14px;
+    background:var(--white);border:1px solid var(--line);border-radius:10px;
+    padding:12px 16px;
+    animation:rowIn 0.4s ease;
+  }
+  @keyframes rowIn{from{opacity:0;transform:translateY(-10px);}to{opacity:1;transform:translateY(0);}}
+  .avatar{
+    flex:none;width:36px;height:36px;border-radius:50%;
+    background:var(--black);color:var(--white);
+    display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;
+  }
+  .row-info{flex:1;min-width:0;}
+  .row-name{font-weight:700;font-size:0.92rem;}
+  .row-job{color:var(--muted);font-size:0.82rem;}
+  .row-status{
+    flex:none;font-size:0.78rem;font-weight:700;padding:6px 12px;border-radius:999px;
+    display:flex;align-items:center;gap:6px;white-space:nowrap;
+  }
+  .row-status .dot{width:7px;height:7px;}
+  .status-calling{background:#f0f0f0;color:#555;}
+  .status-calling .dot{background:#999;animation:pulse 1s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
+  .status-green{background:var(--green-bg);color:var(--green);}
+  .status-green .dot{background:var(--green);}
+  .status-amber{background:var(--amber-bg);color:#8a5a00;}
+  .status-amber .dot{background:var(--amber);}
+  .status-blue{background:var(--blue-bg);color:#1d4ed8;}
+  .status-blue .dot{background:var(--blue);}
+  .status-red{background:var(--red-bg);color:var(--red);}
+  .status-red .dot{background:var(--red);}
+  @media(max-width:600px){.row-job{display:none;}}
+
+  /* SCOREBOARD */
+  .scoreboard{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:24px;}
+  .score-tile{
+    border:1px solid var(--line);border-radius:var(--radius);
+    padding:18px 12px;text-align:center;background:#fafafa;
+  }
+  .score-tile b{display:block;font-size:1.5rem;font-weight:800;color:var(--ink);margin-bottom:2px;}
+  .score-tile span{color:var(--muted);font-size:0.78rem;}
+  @media(max-width:640px){.scoreboard{grid-template-columns:1fr 1fr;}}
+
+  /* HOW IT WORKS - white */
+  .steps{counter-reset:step;}
+  .step-list{display:grid;gap:20px;margin-top:40px;}
+  .step{
+    display:flex;gap:20px;align-items:flex-start;
+    padding:22px;border:1px solid var(--line);border-radius:var(--radius);
+  }
+  .step-num{
+    flex:none;width:40px;height:40px;border-radius:50%;
+    background:var(--black);color:var(--white);
+    display:flex;align-items:center;justify-content:center;font-weight:800;
+  }
+  .step h3{margin-bottom:6px;}
+  .step p{margin:0;color:var(--muted);}
+
+  /* TRAFFIC LIGHT FEATURE - black */
+  .lights{background:var(--black);color:var(--white);text-align:center;}
+  .lights h2{color:var(--white);}
+  .lights p.lead{color:rgba(255,255,255,0.75);max-width:620px;margin:0 auto 48px;}
+  .light-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;text-align:left;}
+  .light-card{
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.12);
+    border-radius:var(--radius);padding:28px;
+  }
+  .light-card .dot{width:26px;height:26px;margin-bottom:16px;}
+  .light-card h3{color:var(--white);}
+  .light-card p{color:rgba(255,255,255,0.68);margin:0;}
+  .dot-green{background:#4ee08a;box-shadow:0 0 0 6px rgba(78,224,138,0.15);}
+  .dot-amber{background:#f3c34d;box-shadow:0 0 0 6px rgba(243,195,77,0.15);}
+  .dot-red{background:#ef6a6a;box-shadow:0 0 0 6px rgba(239,106,106,0.15);}
+  @media(max-width:760px){.light-grid{grid-template-columns:1fr;}}
+
+  /* INTEGRATION CALLOUT - white */
+  .integration-box{
+    border:1px solid var(--line);border-radius:var(--radius);
+    padding:36px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;
+  }
+  .status-pill{
+    background:var(--green-bg);color:var(--green);
+    padding:8px 16px;border-radius:999px;font-weight:700;font-size:0.85rem;
+    display:inline-flex;align-items:center;gap:8px;
+  }
+  .status-pill .dot{background:var(--green);}
+
+  /* PRICING - white */
+  .pricing-banner{
+    background:var(--green-bg);color:#146638;
+    border:1px solid rgba(30,158,80,0.25);
+    border-radius:var(--radius);padding:18px 24px;text-align:center;
+    font-weight:700;margin-bottom:44px;
+  }
+  .price-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  .price-card{
+    border:1px solid var(--line);border-radius:var(--radius);padding:26px 22px;
+    display:flex;flex-direction:column;
+  }
+  .price-card.recommended{border:2px solid var(--black);position:relative;}
+  .price-card.recommended::before{
+    content:"RECOMMENDED";position:absolute;top:-13px;left:22px;
+    background:var(--black);color:var(--white);font-size:0.7rem;font-weight:800;
+    padding:5px 12px;border-radius:999px;letter-spacing:0.05em;
+  }
+  .plan-name{font-weight:800;font-size:1.05rem;margin-bottom:4px;}
+  .plan-price{font-size:2rem;font-weight:800;margin:6px 0 2px;}
+  .plan-sub{color:var(--muted);font-size:0.85rem;margin-bottom:18px;}
+  .plan-feat{list-style:none;padding:0;margin:0 0 22px;font-size:0.9rem;color:var(--ink);}
+  .plan-feat li{padding:7px 0;border-top:1px solid var(--line);}
+  .plan-feat li:first-child{border-top:none;}
+  .price-card .btn{margin-top:auto;text-align:center;}
+  @media(max-width:900px){.price-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:560px){.price-grid{grid-template-columns:1fr;}}
+  .fee-note{color:var(--muted);font-size:0.9rem;margin-top:28px;text-align:center;}
+
+  /* FAQ - white */
+  .faq-item{border-top:1px solid var(--line);padding:22px 0;}
+  .faq-item:last-child{border-bottom:1px solid var(--line);}
+  .faq-item h3{margin-bottom:8px;}
+  .faq-item p{color:var(--muted);margin:0;}
+
+  /* FINAL CTA - black */
+  .final-cta{background:var(--black);color:var(--white);text-align:center;}
+  .final-cta h2{color:var(--white);}
+  .final-cta p{color:rgba(255,255,255,0.75);max-width:520px;margin:0 auto 32px;}
+
+  footer{padding:40px 24px;border-top:1px solid var(--line);}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;align-items:center;}
+  .foot-links{display:flex;gap:24px;font-size:0.88rem;color:var(--muted);}
+  .foot-links a:hover{color:var(--ink);}
+  .copyright{font-size:0.82rem;color:var(--muted);}
+
+  .center{text-align:center;}
+  .section-lead{color:var(--muted);max-width:640px;}
+  .mx-auto{margin-left:auto;margin-right:auto;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="/" class="logo">CallPilot</a>
+    <div class="nav-links nav-mobile-hide">
+      <div class="nav-drop">
+        <a href="/integrations" class="nav-drop-trigger">Integrations <span class="nav-drop-caret">▾</span></a>
+        <div class="nav-drop-panel">
+          <a href="/integrations/recruit-crm" class="nav-drop-item"><span>Recruit CRM</span><span class="nav-drop-badge badge-live">Live</span></a>
+          <a href="/integrations/jobadder" class="nav-drop-item is-current"><span>JobAdder</span><span class="nav-drop-badge badge-live">Live</span></a>
+          <a href="/integrations/greenhouse" class="nav-drop-item"><span>Greenhouse</span><span class="nav-drop-badge badge-soon">Live Soon</span></a>
+          <a href="/integrations/ashby" class="nav-drop-item"><span>Ashby</span><span class="nav-drop-badge badge-soon">Live Soon</span></a>
+          <a href="/integrations/icims" class="nav-drop-item"><span>iCIMS</span><span class="nav-drop-badge badge-later">Coming Soon</span></a>
+          <a href="/integrations" class="nav-drop-viewall">View all integrations →</a>
+        </div>
+      </div>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#scoring">Traffic-Light Scoring</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a href="#book-a-demo" class="nav-cta">Get Connected</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow"><span class="dot" style="background:#4ee08a"></span><span class="eyebrow-brand">JobAdder Integration</span>: LIVE</span>
+    <span class="overline">AI Screening Calls + WhatsApp Automation</span>
+    <h1>Looking for Faster Hiring With End-to-End Automation? CallPilot Has Cracked It.</h1>
+    <p class="lead">No more applicants going cold in the queue. CallPilot calls and screens every JobAdder applicant within the hour, day or night, weekends included, so high-volume temp and contract desks stop losing applicants to slow follow-up.</p>
+    <div class="flow">
+      <span class="flow-node">Advert</span><span class="flow-arrow">→</span>
+      <span class="flow-node">Applies</span><span class="flow-arrow">→</span>
+      <span class="flow-node">AI Call</span><span class="flow-arrow">→</span>
+      <span class="flow-node">Qualifies</span><span class="flow-arrow">→</span>
+      <span class="flow-node">WhatsApp / SMS / Email</span><span class="flow-arrow">→</span>
+      <span class="flow-node">ID &amp; Documents</span><span class="flow-arrow">→</span>
+      <span class="flow-node">JobAdder Updated</span>
+    </div>
+    <div class="cta-row">
+      <a href="#book-a-demo" class="btn btn-primary-dark">Get Connected</a>
+      <a href="#pricing" class="btn btn-outline-light">See Pricing</a>
+    </div>
+  </div>
+</section>
+
+<section class="board">
+  <div class="wrap">
+    <div class="board-head"><h2>AI Screening Calls, Live</h2></div>
+    <p class="board-note">Illustrative example of CallPilot qualifying applicants in real time. Names shown are not real applicants.</p>
+    <div class="board-card" id="live-board"></div>
+    <div class="scoreboard" id="scoreboard">
+      <div class="score-tile"><b id="score-calls">0</b><span>AI Calls</span></div>
+      <div class="score-tile"><b id="score-requested">0%</b><span>Documents Requested</span></div>
+      <div class="score-tile"><b id="score-received">0%</b><span>Documents Received</span></div>
+      <div class="score-tile"><b id="score-verified">0%</b><span>Submitted to Client</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><b>100% Faster</b><span>Applicant follow-up</span></div>
+    <div class="stat"><b>70% Less</b><span>Time spent chasing</span></div>
+    <div class="stat"><b>100 Free</b><span>New client screening calls</span></div>
+  </div>
+</div>
+
+<section class="steps" id="how-it-works">
+  <div class="wrap">
+    <h2>From Application to Screened in One Call</h2>
+    <p class="section-lead">No queue, no backlog, no chasing paperwork. Here's what happens the moment someone applies to a job posted through JobAdder.</p>
+    <div class="step-list">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div><h3>An applicant applies to your JobAdder ad, or a recruiter adds one to a job</h3><p>CallPilot dials automatically, usually inside the hour, any time of day or night.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div><h3>CallPilot runs the screening interview</h3><p>It reads the job spec from the advert and asks the qualifying questions in a natural, human-like voice conversation.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div><h3>The call is scored the second it ends</h3><p>Traffic-light scoring runs automatically. Nobody has to listen back or double-check the result.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div><h3>Qualified applicants are messaged instantly</h3><p>A WhatsApp or SMS request for ID and qualifications, with a secure email upload link if they'd rather use that.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div><h3>Documents land straight in JobAdder</h3><p>Whatever they send back updates the applicant's status and attaches the files to their record automatically.</p></div>
+      </div>
+      <div class="step">
+        <div class="step-num">6</div>
+        <div><h3>One email, ready to verify</h3><p>The recruiter gets notified once and confirms. No spreadsheet, no follow-up calls, no lost paperwork.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="lights" id="scoring">
+  <div class="wrap center">
+    <h2>Automatic Traffic-Light Scoring</h2>
+    <p class="lead mx-auto">No manual review, no listening back to calls. JobAdder gets updated the second a call ends, and the right person is notified straight away.</p>
+    <div class="light-grid">
+      <div class="light-card">
+        <span class="dot dot-amber"></span>
+        <h3>Qualified</h3>
+        <p>The applicant passed the screening call, so no shift or start date is lost to a slow follow-up. CallPilot requests their documents straight over WhatsApp or SMS, with email as a backup.</p>
+      </div>
+      <div class="light-card">
+        <span class="dot dot-green"></span>
+        <h3>Documents Received</h3>
+        <p>ID and right-to-work documents land straight on the JobAdder record, ready for a quick check before the next shift needs filling.</p>
+      </div>
+      <div class="light-card">
+        <span class="dot dot-red"></span>
+        <h3>Unsuccessful</h3>
+        <p>Ruled out automatically, so a recruiter's time never goes on a callback or interview slot for a mismatch.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="integration-box">
+      <div>
+        <h3 style="margin-bottom:8px;">JobAdder Sync, Live Both Ways</h3>
+        <p style="margin:0;color:var(--muted);max-width:520px;">Every call outcome, document, and status change writes straight to the JobAdder record the moment it happens. No exports, no re-keying, no lag between CallPilot and your ATS.</p>
+      </div>
+      <span class="status-pill"><span class="dot"></span>JobAdder: LIVE</span>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <h2>AI Applicant Call Plans</h2>
+    <p class="section-lead" style="margin-bottom:32px;">No Call. No Charge.</p>
+    <div class="pricing-banner">New clients: your first 100 AI screening calls are free.</div>
+    <div class="price-grid">
+      <div class="price-card">
+        <div class="plan-name">Starter</div>
+        <div class="plan-price">$395<span style="font-size:1rem;font-weight:500;">/mo</span></div>
+        <div class="plan-sub">100 screening calls included</div>
+        <ul class="plan-feat">
+          <li>$3.95 per screening</li>
+          <li>$4.45 per top-up screening</li>
+          <li>JobAdder sync included</li>
+        </ul>
+        <a href="#book-a-demo" class="btn btn-outline-dark">Get Started</a>
+      </div>
+      <div class="price-card recommended">
+        <div class="plan-name">Growth</div>
+        <div class="plan-price">$1,400<span style="font-size:1rem;font-weight:500;">/mo</span></div>
+        <div class="plan-sub">400 screening calls included</div>
+        <ul class="plan-feat">
+          <li>$3.50 per screening</li>
+          <li>$3.90 per top-up screening</li>
+          <li>JobAdder sync included</li>
+        </ul>
+        <a href="#book-a-demo" class="btn btn-primary-light">Get Started</a>
+      </div>
+      <div class="price-card">
+        <div class="plan-name">Pro</div>
+        <div class="plan-price">$2,950<span style="font-size:1rem;font-weight:500;">/mo</span></div>
+        <div class="plan-sub">1,000 screening calls included</div>
+        <ul class="plan-feat">
+          <li>$2.95 per screening</li>
+          <li>$2.95 per top-up screening</li>
+          <li>JobAdder sync included</li>
+        </ul>
+        <a href="#book-a-demo" class="btn btn-outline-dark">Get Started</a>
+      </div>
+      <div class="price-card">
+        <div class="plan-name">Enterprise</div>
+        <div class="plan-price">Custom</div>
+        <div class="plan-sub">2,000+ screening calls</div>
+        <ul class="plan-feat">
+          <li>Volume pricing</li>
+          <li>Tailored terms</li>
+          <li>JobAdder sync included</li>
+        </ul>
+        <a href="#book-a-demo" class="btn btn-outline-dark">Talk to Us</a>
+      </div>
+    </div>
+    <p class="fee-note">Plus $10/month for an AI phone number (or connect your own compatible number). Unused screenings carry over for one month, then expire. Billed monthly in advance.</p>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>Is the JobAdder integration actually live?</h3>
+      <p>Yes. It's live now, applicant status and documents sync into the JobAdder record automatically as soon as CallPilot has them.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How does the traffic-light scoring work?</h3>
+      <p>Every screening call is scored amber, green, or red against the job brief the moment it ends. Amber is qualified and awaiting documents, green is qualified and documents received, red is unsuccessful. No recruiter has to sit and mark it manually.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How much does AI applicant screening cost?</h3>
+      <p>Plans start at $395/month for 100 screenings ($3.95 each). Growth is $1,400/month for 400 screenings, Pro is $2,950/month for 1,000 screenings, and Enterprise pricing is custom for 2,000+. New clients get their first 100 AI screening calls free.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What happens after an applicant qualifies?</h3>
+      <p>They're messaged automatically over WhatsApp or SMS for a photo ID and their qualifications. Once sent, it's attached to their JobAdder record, the status flips over, and the recruiter gets one email to sign it off.</p>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta" id="book-a-demo">
+  <div class="wrap">
+    <h2>Ready to Put JobAdder Screening on Autopilot?</h2>
+    <p>Every applicant called, scored, and actioned the moment they apply, no matter the hour. No backlog on Monday morning, no chasing paperwork, no missed applicants.</p>
+    <div class="cta-row">
+      <a href="https://www.callpilot.pro/?utm_source=integrations&utm_medium=cta&utm_campaign=jobadder&utm_content=get-connected" class="btn btn-primary-dark">Get Connected</a>
+      <a href="https://www.callpilot.pro/?utm_source=integrations&utm_medium=cta&utm_campaign=jobadder&utm_content=arrange-a-call" class="btn btn-outline-light">Arrange a Call</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="copyright">CallPilot is a brand of Swiftwave.ai. This product was tested and built in a live recruitment environment over 18 months.</div>
+    <div class="foot-links">
+      <a href="#pricing">Pricing</a>
+      <a href="https://www.swiftwave.ai/callpilot">Features</a>
+      <a href="#faq">FAQ</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var firstNames=["Jordan","Casey","Morgan","Taylor","Riley","Sam","Alex","Jamie","Devon","Avery","Cameron","Reese","Skyler","Peyton","Quinn","Emerson","Rowan","Hayden"];
+  var lastInitials=["A","B","C","D","H","J","K","L","M","P","R","S","T","W"];
+  var jobs=["Warehouse Associate","CDL Class A Driver","Forklift Operator","Registered Nurse","Customer Service Rep","Administrative Assistant","Machine Operator","Retail Sales Associate","Delivery Driver","Certified Nursing Assistant","Line Cook","Maintenance Technician","Data Entry Clerk","Security Officer","HVAC Technician"];
+  var board=document.getElementById('live-board');
+  var MAX_ROWS=5;
+  // Board rows resolve with genuine weighted-random odds (below) so the
+  // animation itself never looks scripted. The three scoreboard percentages
+  // are tracked separately, each held on a small live "wobble" inside its
+  // own fixed band, so they read as accurate immediately and hold this
+  // ranking at all times: Documents Requested highest (45-50%), Documents
+  // Received second (30-35%), Submitted to Client lowest (~22-28%). The
+  // bands never overlap, so that order can never flip.
+  var totals={calls:0};
+  var elCalls=document.getElementById('score-calls');
+  var elRequested=document.getElementById('score-requested');
+  var elReceived=document.getElementById('score-received');
+  var elVerified=document.getElementById('score-verified');
+  function rand(arr){return arr[Math.floor(Math.random()*arr.length)];}
+  function makeWobble(min,max){
+    var value=(min+max)/2;
+    return function(){
+      value+=(Math.random()-0.5)*2.4;
+      if(value<min) value=min;
+      if(value>max) value=max;
+      return Math.round(value);
+    };
+  }
+  var wobbleRequested=makeWobble(45,50);
+  var wobbleReceived=makeWobble(30,35);
+  var wobbleVerified=makeWobble(22,28);
+  function updateScoreboard(){
+    if(elCalls) elCalls.textContent=totals.calls;
+    if(elRequested) elRequested.textContent=wobbleRequested()+'%';
+    if(elReceived) elReceived.textContent=wobbleReceived()+'%';
+    if(elVerified) elVerified.textContent=wobbleVerified()+'%';
+  }
+  function pickOutcome(){
+    var r=Math.random();
+    if(r<0.03) return 'unsuccessful';
+    if(r<0.48) return 'requested';
+    if(r<0.78) return 'received';
+    return 'verified';
+  }
+  function makeRow(){
+    totals.calls++;
+    updateScoreboard();
+    var name=rand(firstNames)+" "+rand(lastInitials)+".";
+    var job=rand(jobs);
+    var row=document.createElement('div');
+    row.className='board-row';
+    row.innerHTML='<div class="avatar">'+name.charAt(0)+'</div>'+
+      '<div class="row-info"><div class="row-name">'+name+'</div><div class="row-job">'+job+'</div></div>'+
+      '<div class="row-status status-calling"><span class="dot"></span>Calling…</div>';
+    return row;
+  }
+  function resolveRow(row){
+    var outcome=pickOutcome();
+    var cls,label;
+    if(outcome==='unsuccessful'){cls='status-red';label='Unsuccessful';}
+    else if(outcome==='requested'){cls='status-amber';label='Qualified';}
+    else if(outcome==='received'){cls='status-green';label='Documents Received';}
+    else {cls='status-blue';label='Verified';}
+    var statusEl=row.querySelector('.row-status');
+    if(!statusEl) return;
+    statusEl.className='row-status '+cls;
+    statusEl.innerHTML='<span class="dot"></span>'+label;
+  }
+  function tick(){
+    if(!board) return;
+    var row=makeRow();
+    board.insertBefore(row,board.firstChild);
+    setTimeout(function(){resolveRow(row);},1100);
+    while(board.children.length>MAX_ROWS){
+      board.removeChild(board.lastChild);
+    }
+  }
+  if(board){
+    for(var i=0;i<3;i++){ tick(); }
+    setInterval(tick,1800);
+  }
+})();
+</script>
+</body>
+</html>

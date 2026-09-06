@@ -13,6 +13,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/use-cases",
     "/about-us",
     "/integrations",
+    "/integrations/recruit-crm",
+    "/integrations/jobadder",
+    "/integrations/greenhouse",
+    "/integrations/ashby",
+    "/integrations/icims",
     "/news",
     "/privacy-policy",
     "/terms-conditions",
@@ -24,6 +29,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${baseUrl}${path}`,
     lastModified: new Date(),
     changeFrequency: "weekly",
-    priority: path === "" ? 1 : 0.8,
+    priority: path === "" ? 1 : path.startsWith("/integrations") ? 0.9 : 0.8,
   }));
 }

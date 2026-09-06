@@ -1,8 +1,5 @@
-"use client";
-
-import { useEffect, useRef, useCallback } from "react";
+import React from "react";
 import { Brain, Shield, BarChart3, Users, Headphones } from "lucide-react";
-import aiDiagram from "@/assets/ai-system-diagram.jpeg";
 
 const features = [
   {
@@ -36,36 +33,6 @@ const features = [
 ];
 
 const Features = () => {
-  const scrollerRef = useRef<HTMLDivElement | null>(null);
-  const imgRef = useRef<HTMLImageElement | null>(null);
-
-  const centerScroll = useCallback(() => {
-    const el = scrollerRef.current;
-    if (!el) return;
-    el.scrollLeft = (el.scrollWidth - el.clientWidth) / 2;
-  }, []);
-
-  useEffect(() => {
-    // Center after mount (layout might not be ready immediately)
-    const raf = requestAnimationFrame(() => centerScroll());
-
-    // If image is already cached, onLoad may not fire; handle that too.
-    if (imgRef.current?.complete) centerScroll();
-
-    // Fallback: small delay to ensure widths are computed
-    const t = window.setTimeout(() => centerScroll(), 50);
-
-    // Optional: keep centered if viewport size changes
-    const onResize = () => centerScroll();
-    window.addEventListener("resize", onResize);
-
-    return () => {
-      cancelAnimationFrame(raf);
-      window.clearTimeout(t);
-      window.removeEventListener("resize", onResize);
-    };
-  }, [centerScroll]);
-
   return (
     <section id="features" className="py-16 lg:py-24 bg-alt">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -80,19 +47,20 @@ const Features = () => {
         </div>
 
         {/* Central Diagram */}
-        <div className="mx-auto mb-16 sm:max-w-3xl">
+        <div className="mx-auto mb-16 max-w-5xl">
           <div className="relative rounded-2xl overflow-hidden shadow-xl border border-border bg-background p-2 sm:p-4">
-            <div ref={scrollerRef} className="overflow-x-auto">
-              <img
-                ref={imgRef}
-                src={aiDiagram.src}
-                alt="Diagram of CallPilot's AI call flow from screening to ATS sync"
-                className="min-w-[900px] sm:min-w-0 h-auto rounded-lg"
-                onLoad={centerScroll}
-                width={aiDiagram.width}
-                height={aiDiagram.height}
-              />
-            </div>
+            {/* Mobile Image (< md screens) */}
+            <img
+              src="/feature_mobile.png"
+              alt="CallPilot AI Call Platform Workflow"
+              className="w-full h-auto rounded-lg block md:hidden"
+            />
+            {/* Desktop/Laptop Image (>= md screens) */}
+            <img
+              src="/feature_desktop.png"
+              alt="CallPilot AI Call Platform Workflow"
+              className="w-full h-auto rounded-lg hidden md:block"
+            />
           </div>
         </div>
 
