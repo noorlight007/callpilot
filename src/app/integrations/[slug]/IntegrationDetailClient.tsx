@@ -3,6 +3,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import { ATSIntegration, allIntegrations } from "@/data/integrations";
+import logo from "@/assets/call_pilot_logo.png";
 
 interface Props {
   data: ATSIntegration;
@@ -265,10 +266,16 @@ export default function IntegrationDetailClient({ data }: Props) {
   return (
     <div className="ats-page-root">
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-white/94 backdrop-blur-md border-b border-gray-200">
-        <nav className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link href="/" className="font-extrabold text-xl tracking-tight text-black">
-            CallPilot
+      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200">
+        <nav className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-[120px] md:h-[145px] lg:h-[160px]">
+          <Link href="/" className="flex items-center -ml-[24px] md:-ml-[40px] lg:-ml-[50px]">
+            <img
+              src={logo.src}
+              alt="CallPilot logo"
+              className="h-[143px] md:h-[191px] lg:h-[216px] w-auto block object-contain"
+              width={logo.width}
+              height={logo.height}
+            />
           </Link>
           <div className="hidden md:flex items-center gap-7 text-[0.95rem] font-medium text-gray-700">
             <div className="relative group">
