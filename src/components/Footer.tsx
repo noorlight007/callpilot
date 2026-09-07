@@ -10,6 +10,7 @@ const Footer = () => {
       { label: "Use Cases", href: "/use-cases" },
       { label: "Pricing", href: "/pricing" },
       { label: "News & Insights", href: "/news" },
+      { label: "Setup & Help Guide", href: "/setup-help-guide" },
     ],
     company: [
       { label: "About Us", href: "/about-us" },
@@ -45,9 +46,9 @@ const Footer = () => {
           </div>
 
 
-          {/* Product */}
+          {/* Products */}
           <div>
-            <h4 className="font-semibold text-headline mb-4">Product</h4>
+            <h4 className="font-semibold text-headline mb-4">Products</h4>
             <ul className="space-y-3">
               {footerLinks.product.map((link) => (
                 <li key={link.label}>

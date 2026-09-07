@@ -8,6 +8,16 @@ const nextConfig = {
         destination: "https://callpilot.pro/:path*",
         permanent: true,
       },
+      {
+        source: "/help",
+        destination: "/setup-help-guide",
+        permanent: false,
+      },
+      {
+        source: "/helps",
+        destination: "/setup-help-guide",
+        permanent: false,
+      },
     ];
   },
 };
