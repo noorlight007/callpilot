@@ -1,21 +1,28 @@
 /* CallPilot.pro — ATS logo marquee animation
-   28s = one full loop. Lower the number to speed it up, raise it to slow
-   it down — that's the only value controlling speed. */
+   Faster speed on mobile (10s per loop) and smooth pace on larger screens (25s per loop) */
 
 @keyframes ats-marquee {
   from {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
   to {
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
 .track {
-  animation: ats-marquee 28s linear infinite;
+  animation: ats-marquee 10s linear infinite;
   width: max-content;
+  will-change: transform;
+}
+
+@media (min-width: 640px) {
+  .track {
+    animation-duration: 25s;
+  }
 }
 
 .track:hover {
   animation-play-state: paused;
 }
+

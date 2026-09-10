@@ -10,7 +10,7 @@
 // What changed vs. what's live now:
 // - It actually moves: previously this measured at 0px of movement over 5+
 //   seconds — it only responded to manual drag. This auto-scrolls
-//   continuously at a readable pace (28s per full loop) and pauses on hover.
+//   continuously (10s on mobile, 25s on desktop) and pauses on hover.
 // - Every logo now uses the SAME max-height at each breakpoint. Live site
 //   currently has each logo on its own arbitrary size (JobAdder 17.5px/54.5px,
 //   Ashby 23.2px/65.7px, Recruit CRM & Greenhouse unsized), which is why they
