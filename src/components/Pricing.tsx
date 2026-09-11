@@ -133,7 +133,7 @@ const DEFAULT_AI_CALL_PLANS: AiCallPlanItem[] = [
   },
   {
     id: "growing",
-    name: "Growing",
+    name: "Growth",
     price: 1000,
     period: "month + VAT",
     checkoutUrl: "https://callpilot.pro/get-started",
