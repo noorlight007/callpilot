@@ -421,7 +421,7 @@ const Pricing = ({ asH1 = false }: PricingProps) => {
                   : "bg-white text-[#0a0a0a] hover:bg-black/5"
               }`}
             >
-              AI Screening Calls
+              Screening
             </button>
             <button
               type="button"
@@ -432,7 +432,7 @@ const Pricing = ({ asH1 = false }: PricingProps) => {
                   : "bg-white text-[#0a0a0a] hover:bg-black/5"
               }`}
             >
-              AI Calls
+              Minutes
             </button>
           </div>
         </div>
