@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const data = integrationsData[slug];
   if (!data) return {};
 
-  const canonicalUrl = `https://callpilot.pro/integrations/${data.slug}`;
+  const canonicalUrl = `https://callpilot.pro/integrations/${data.slug}/`;
 
   return {
     title: data.seo.title,
@@ -71,6 +71,7 @@ export default async function IntegrationSlugPage({ params }: Props) {
     applicationCategory: "BusinessApplication",
     operatingSystem: "Web",
     description: data.seo.schemaDescription,
+    url: `https://callpilot.pro/integrations/${data.slug}/`,
     offers: [
       {
         "@type": "Offer",
@@ -109,9 +110,33 @@ export default async function IntegrationSlugPage({ params }: Props) {
     })),
   };
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://callpilot.pro/",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Integrations",
+        item: "https://callpilot.pro/integrations/",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: data.name,
+        item: `https://callpilot.pro/integrations/${data.slug}/`,
+      },
+    ],
+  };
+
   return (
     <>
-      {/* Schema Injection */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareSchema) }}
@@ -119,6 +144,10 @@ export default async function IntegrationSlugPage({ params }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <IntegrationDetailClient data={data} />
     </>

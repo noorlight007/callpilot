@@ -4,20 +4,20 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import { newsArticles } from "@/data/articles";
+import { blogArticles } from "@/data/articles";
 import { authors } from "@/data/authors";
-import { Calendar, Clock, ArrowRight, Sparkles } from "lucide-react";
+import { Calendar, Clock, ArrowRight, BookOpen } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "CallPilot News & ATS Announcements | AI Applicant Screening",
-  description: "Official product announcements, ATS integrations, and release notes from CallPilot. Explore live connections with Ashby, Recruit CRM, JobAdder, and more.",
+  title: "Recruitment Automation Guides & AI Screening Insights | CallPilot Blog",
+  description: "Practical guides, benchmarks, and tactical playbooks on AI applicant screening calls, high-volume recruitment, and automated document collection.",
   alternates: {
-    canonical: "https://callpilot.pro/news/",
+    canonical: "https://callpilot.pro/blog/",
   },
   openGraph: {
-    title: "CallPilot News & ATS Announcements | AI Applicant Screening",
-    description: "Official product announcements, ATS integrations, and release notes from CallPilot.",
-    url: "https://callpilot.pro/news/",
+    title: "Recruitment Automation Guides & AI Screening Insights | CallPilot Blog",
+    description: "Practical guides, benchmarks, and tactical playbooks on AI applicant screening calls, high-volume recruitment, and automated document collection.",
+    url: "https://callpilot.pro/blog/",
     siteName: "CallPilot",
     type: "website",
     images: [
@@ -25,25 +25,25 @@ export const metadata: Metadata = {
         url: "https://callpilot.pro/og-image.png",
         width: 1200,
         height: 630,
-        alt: "CallPilot News",
+        alt: "CallPilot Blog",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "CallPilot News & ATS Announcements | AI Applicant Screening",
-    description: "Official product announcements, ATS integrations, and release notes from CallPilot.",
+    title: "Recruitment Automation Guides & AI Screening Insights | CallPilot Blog",
+    description: "Practical guides, benchmarks, and tactical playbooks on AI applicant screening calls, high-volume recruitment, and automated document collection.",
     images: ["https://callpilot.pro/og-image.png"],
   },
 };
 
-export default function NewsIndexPage() {
+export default function BlogIndexPage() {
   const collectionSchema = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "CallPilot News & Announcements",
-    description: "Official product announcements and ATS integration releases.",
-    url: "https://callpilot.pro/news/",
+    name: "CallPilot AI Recruitment Guides & Blog",
+    description: "Expert tactical playbooks and benchmarks on AI applicant qualification.",
+    url: "https://callpilot.pro/blog/",
   };
 
   return (
@@ -55,31 +55,31 @@ export default function NewsIndexPage() {
       <Header />
 
       <main className="pt-28 md:pt-36 pb-24">
-        {/* Header Hero */}
+        {/* Blog Hero */}
         <section className="bg-black text-white py-16 px-6 text-center">
           <div className="max-w-4xl mx-auto">
             <span className="inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase bg-white/10 text-emerald-400 border border-emerald-500/30 px-4 py-1.5 rounded-full mb-6">
-              <Sparkles className="w-3.5 h-3.5" />
-              COMPANY &amp; PRODUCT ANNOUNCEMENTS
+              <BookOpen className="w-3.5 h-3.5" />
+              GUIDES, BENCHMARKS &amp; PLAYBOOKS
             </span>
             <h1
               className="text-white !text-white text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-4"
               style={{ color: "#ffffff" }}
             >
-              CallPilot News &amp; Releases
+              Recruitment Automation Insights
             </h1>
             <p className="text-base sm:text-lg text-white/75 max-w-2xl mx-auto">
-              The latest platform updates, native ATS integration launches, and recruitment automation milestones.
+              Tactical playbooks on cutting time-to-contact, scaling candidate throughput, and automating document collection without adding headcount.
             </p>
           </div>
         </section>
 
-        {/* News Feed Grid */}
+        {/* Blog Articles Grid */}
         <section className="max-w-6xl mx-auto px-6 pt-12">
-          <Breadcrumbs items={[{ label: "News" }]} />
+          <Breadcrumbs items={[{ label: "Blog" }]} />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-6">
-            {newsArticles.map((article) => {
+            {blogArticles.map((article) => {
               const author = authors[article.authorSlug] || authors["marcus-vance"];
               return (
                 <article
@@ -112,7 +112,7 @@ export default function NewsIndexPage() {
                       </div>
 
                       <h2 className="text-xl font-extrabold text-gray-900 mb-3 line-clamp-2 hover:text-emerald-600 transition-colors">
-                        <Link href={`/news/${article.slug}/`}>{article.h1}</Link>
+                        <Link href={`/blog/${article.slug}/`}>{article.h1}</Link>
                       </h2>
 
                       <p className="text-sm text-gray-600 mb-6 line-clamp-3 leading-relaxed">
@@ -135,10 +135,10 @@ export default function NewsIndexPage() {
                     </Link>
 
                     <Link
-                      href={`/news/${article.slug}/`}
+                      href={`/blog/${article.slug}/`}
                       className="text-xs font-bold text-black hover:text-emerald-600 inline-flex items-center gap-1"
                     >
-                      Read story <ArrowRight className="w-3.5 h-3.5" />
+                      Read guide <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
                   </div>
                 </article>
@@ -147,27 +147,27 @@ export default function NewsIndexPage() {
           </div>
         </section>
 
-        {/* Hub CTA */}
+        {/* Free Trial Banner */}
         <section className="max-w-4xl mx-auto px-6 mt-20">
-          <div className="bg-gray-50 border border-gray-200 rounded-3xl p-8 sm:p-12 text-center">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
-              Explore Our ATS Integration Hub
+          <div className="bg-black text-white rounded-3xl p-8 sm:p-12 text-center">
+            <h2 className="text-white !text-white text-2xl sm:text-3xl font-extrabold mb-4" style={{ color: "#ffffff" }}>
+              Put Your Applicant Screening on Autopilot
             </h2>
-            <p className="text-gray-600 text-sm sm:text-base mb-8 max-w-xl mx-auto">
-              Looking for dedicated product workflows? Explore live integrations and claim 100 free screening credits.
+            <p className="text-white/75 text-sm sm:text-base mb-8 max-w-xl mx-auto">
+              Screen every applicant in under 2 minutes and gather ID documents via WhatsApp. Claim your 100 free screening credits.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link
-                href="/integrations"
-                className="bg-black text-white px-7 py-3 rounded-full font-bold text-sm hover:bg-gray-800 transition-colors"
-              >
-                Browse All Integrations
-              </Link>
-              <Link
-                href="/free-trial"
-                className="border border-gray-300 text-gray-900 px-7 py-3 rounded-full font-bold text-sm hover:border-black transition-colors"
+                href="/free-trial/"
+                className="bg-white text-black font-bold text-sm px-8 py-3.5 rounded-full hover:bg-gray-200 transition-colors"
               >
                 Claim 100 Free Credits
+              </Link>
+              <Link
+                href="/integrations/"
+                className="border border-white/40 text-white font-bold text-sm px-8 py-3.5 rounded-full hover:border-white transition-colors"
+              >
+                Browse Integrations
               </Link>
             </div>
           </div>

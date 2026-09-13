@@ -35,6 +35,16 @@ const organizationSchema = {
     "url": "https://callpilot.pro",
     "logo": "https://callpilot.pro/adjusted_callPilot_logo.png",
     "description": "AI voice calls that screen applicants in under a minute, sync straight into your ATS, and run 24/7.",
+    "sameAs": [
+        "https://www.linkedin.com/company/callpilot-ai-call/",
+        "https://www.facebook.com/profile.php?id=61588398835586",
+        "https://www.instagram.com/callpilot.pro/"
+    ],
+    "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "url": "https://callpilot.pro/get-started"
+    },
     "parentOrganization": {
         "@type": "Organization",
         "name": "Swiftwave FZ-LLC",

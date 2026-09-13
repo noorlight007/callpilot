@@ -142,9 +142,9 @@ const Header = () => {
   const navLinks = [
     { label: "Features", href: "/features" },
     { label: "Use Cases", href: "/use-cases" },
-    { label: "Try It", href: "/try-ai-call" },
-    { label: "Pricing", href: "/pricing" },
     { label: "Integrations", href: "/integrations" },
+    { label: "Blog", href: "/blog" },
+    { label: "Pricing", href: "/pricing" },
   ];
 
   // Replace these with your real profile URLs

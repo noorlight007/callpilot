@@ -331,8 +331,23 @@ export default function IntegrationDetailClient({ data }: Props) {
       </header>
 
       {/* Hero Section */}
-      <section className="bg-black text-white pt-24 pb-20 text-center px-6">
+      <section className="bg-black text-white pt-20 pb-20 text-center px-6">
         <div className="max-w-4xl mx-auto">
+          {/* Visible Breadcrumbs */}
+          <nav aria-label="Breadcrumb" className="mb-6 flex items-center justify-center text-xs text-white/60">
+            <ol className="flex items-center gap-2">
+              <li>
+                <Link href="/" className="hover:text-white transition-colors">Home</Link>
+              </li>
+              <li className="text-white/40">/</li>
+              <li>
+                <Link href="/integrations" className="hover:text-white transition-colors">Integrations</Link>
+              </li>
+              <li className="text-white/40">/</li>
+              <li className="font-semibold text-white">{data.name}</li>
+            </ol>
+          </nav>
+
           <div
             className="inline-flex items-center gap-2 text-xs font-bold tracking-wider uppercase px-3.5 py-1.5 rounded-full border mb-6"
             style={{
@@ -852,6 +867,26 @@ export default function IntegrationDetailClient({ data }: Props) {
               </div>
             ))}
           </div>
+
+          {/* Cross-linking other ATS integrations */}
+          {data.crossLinks && data.crossLinks.length > 0 && (
+            <div className="mt-12 pt-8 border-t border-gray-200 text-center">
+              <h3 className="text-sm font-bold uppercase tracking-wider text-gray-500 mb-4">
+                Also Available For
+              </h3>
+              <div className="flex flex-wrap items-center justify-center gap-3">
+                {data.crossLinks.map((cl) => (
+                  <Link
+                    key={cl.slug}
+                    href={`/integrations/${cl.slug}`}
+                    className="inline-flex items-center px-4 py-2 rounded-full border border-gray-200 text-sm font-medium text-gray-800 hover:bg-black hover:text-white hover:border-black transition-colors"
+                  >
+                    {cl.title}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </section>
 

@@ -9,6 +9,11 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: "/trial",
+        destination: "/free-trial",
+        permanent: true,
+      },
+      {
         source: "/help",
         destination: "/setup-help-guide",
         permanent: false,
