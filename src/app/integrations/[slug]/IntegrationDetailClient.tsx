@@ -4,6 +4,7 @@ import React, { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import { ATSIntegration, allIntegrations } from "@/data/integrations";
 import logo from "@/assets/call_pilot_logo.png";
+import VoipTeaser from "@/components/VoipTeaser";
 
 interface Props {
   data: ATSIntegration;
@@ -760,6 +761,9 @@ export default function IntegrationDetailClient({ data }: Props) {
               />
               {data.callout.badgeText}
             </span>
+          </div>
+          <div className="mt-4 text-center">
+            <VoipTeaser variant="ats" />
           </div>
         </div>
       </section>

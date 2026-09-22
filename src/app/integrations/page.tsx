@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import VoipTeaser from "@/components/VoipTeaser";
 import { allIntegrations } from "@/data/integrations";
 import { CheckCircle2, ArrowRight, PhoneCall, Zap, Shield, Sparkles } from "lucide-react";
 
@@ -70,13 +71,16 @@ export default function IntegrationsHubPage() {
 
         {/* Integration Directory Grid */}
         <section className="py-24 px-6 max-w-7xl mx-auto" id="all-integrations">
-          <div className="text-center max-w-2xl mx-auto mb-16">
+          <div className="text-center max-w-2xl mx-auto mb-12">
             <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">
               Supported ATS Platforms
             </h2>
             <p className="text-gray-600 text-base">
               Select your ATS to see how CallPilot automates initial qualification, collects documents via WhatsApp &amp; SMS, and syncs status in real-time.
             </p>
+            <div className="mt-4 inline-block bg-blue-50/60 border border-blue-100 px-6 py-1 rounded-full">
+              <VoipTeaser variant="integrations" />
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

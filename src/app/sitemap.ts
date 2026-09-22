@@ -59,11 +59,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: page.priority,
   }));
 
+  const businessVoipNewsEntry: MetadataRoute.Sitemap[number] = {
+    url: `${baseUrl}/news/business-voip-whatsapp-sms-ats-integration`,
+    lastModified: new Date("2026-09-22"),
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  };
+
   return [
     ...staticEntries,
     ...integrationEntries,
     ...newsEntries,
     ...blogEntries,
     ...authorEntries,
+    businessVoipNewsEntry,
   ];
 }

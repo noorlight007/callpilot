@@ -5,6 +5,7 @@ import UseCases from "@/components/UseCases";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 import Pricing from "@/components/Pricing";
+import VoipTeaser from "@/components/VoipTeaser";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
@@ -20,6 +21,13 @@ export default function Home() {
                 <UseCases />
                 <Pricing />
                 <CTASection />
+
+                {/* Business VoIP Announcement Banner */}
+                <section className="py-6 bg-blue-50/50 border-y border-blue-100 text-center px-4">
+                    <div className="container mx-auto max-w-4xl flex items-center justify-center">
+                        <VoipTeaser variant="home" />
+                    </div>
+                </section>
 
                 {/* Custom Solutions */}
                 <section className="py-10 lg:py-15">
