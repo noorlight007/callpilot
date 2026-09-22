@@ -6,9 +6,9 @@ const Footer = () => {
 
   const footerLinks = {
     integrations: [
-      { label: "Ashby AI Screening", href: "/integrations/ashby/" },
-      { label: "Recruit CRM AI Screening", href: "/integrations/recruit-crm/" },
-      { label: "JobAdder AI Screening", href: "/integrations/jobadder/" },
+      // { label: "Ashby AI Screening", href: "/integrations/ashby/" },
+      // { label: "Recruit CRM AI Screening", href: "/integrations/recruit-crm/" },
+      // { label: "JobAdder AI Screening", href: "/integrations/jobadder/" },
       { label: "Greenhouse (Waitlist)", href: "/integrations/greenhouse/" },
       { label: "iCIMS (Waitlist)", href: "/integrations/icims/" },
       { label: "All ATS Integrations", href: "/integrations/" },
