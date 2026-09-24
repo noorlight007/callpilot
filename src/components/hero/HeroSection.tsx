@@ -1,15 +1,17 @@
-// CallPilot homepage HERO only. Drop in to replace the current hero.
-// Server component, no client JS. Image: /public/images/hero-dashboard-laptop.webp
+// CallPilot homepage HERO
+// Image: /public/images/hero-dashboard-laptop.webp
 
 import Image from "next/image";
 import Link from "next/link";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import type { SVGProps } from "react";
+import { AtsLogoCarousel } from "@/components/AtsLogoCarousel";
 import styles from "./HeroSection.module.css";
 
 const font = Plus_Jakarta_Sans({ subsets: ["latin"], weight: ["400", "500", "700", "800"], display: "swap" });
 
-const BOOK_DEMO_HREF = "/book-a-demo";
+const BOOK_DEMO_HREF = "/get-started";
+const FREE_TRIAL_HREF = "/free-trial";
 
 /* ---------- icons ---------- */
 type P = SVGProps<SVGSVGElement>;
@@ -60,6 +62,9 @@ export default function HeroSection() {
             <Link href={BOOK_DEMO_HREF} className={styles.btn}>
               Book a Demo <ArrowRightIcon className={styles.btnIcon} />
             </Link>
+            <Link href={FREE_TRIAL_HREF} className={styles.btnSecondary}>
+              Claim 100 Free Credits
+            </Link>
           </div>
           <ul className={styles.features}>
             {FEATURES.map(({ icon: Icon, text }) => (
@@ -73,7 +78,7 @@ export default function HeroSection() {
         <div className={styles.visual}>
           <Image
             src="/images/hero-dashboard-laptop.webp"
-            alt="CallPilot dashboard showing AI screening calls, qualified applicants and documents received"
+            alt="CallPilot AI call agent dashboard showing AI applicant screening calls"
             width={1600}
             height={1350}
             priority
@@ -82,6 +87,21 @@ export default function HeroSection() {
           />
         </div>
       </div>
+
+      {/* Integrations Marquee Section */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 pt-6">
+        <div className="flex items-center justify-center gap-4 mb-3">
+          <div className="h-px bg-gradient-to-r from-transparent to-gray-300 w-12 sm:w-20" />
+          <span className="text-xs font-bold tracking-widest text-gray-500 uppercase">
+            LIVE &amp; UPCOMING ATS INTEGRATIONS
+          </span>
+          <div className="h-px bg-gradient-to-l from-transparent to-gray-300 w-12 sm:w-20" />
+        </div>
+        <div className="max-w-2xl mx-auto relative overflow-hidden rounded-2xl shadow-sm border border-gray-200 bg-white p-2">
+          <AtsLogoCarousel />
+        </div>
+      </div>
     </section>
   );
 }
+
