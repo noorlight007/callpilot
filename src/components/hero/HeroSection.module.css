@@ -69,25 +69,33 @@
   gap: 16px;
 }
 
-.btn {
+.btn,
+.btnSecondary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
   min-height: 56px;
+  height: 56px;
   padding: 0 32px;
   border-radius: 8px;
-  background: var(--ink);
-  color: #fff;
   font-weight: 700;
   font-size: 17px;
   text-decoration: none;
   white-space: nowrap;
   transition: all 0.15s;
+  box-sizing: border-box;
+}
+
+.btn {
+  background: var(--ink);
+  color: #fff;
+  border: 1px solid var(--ink);
 }
 
 .btn:hover {
   background: #000;
+  border-color: #000;
   color: #fff;
   transform: translateY(-1px);
 }
@@ -98,25 +106,20 @@
 }
 
 .btnSecondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 56px;
-  padding: 0 28px;
-  border-radius: 8px;
   background: #fff;
   color: var(--ink);
-  font-weight: 700;
-  font-size: 17px;
   border: 1px solid var(--line);
-  text-decoration: none;
-  white-space: nowrap;
-  transition: all 0.15s;
 }
 
 .btnSecondary:hover {
   background: var(--line);
   border-color: #cbd5e1;
+  transform: translateY(-1px);
+}
+
+.btnSecondary:focus-visible {
+  outline: 3px solid #1553e6;
+  outline-offset: 2px;
 }
 
 .btnIcon {
@@ -185,8 +188,16 @@
     white-space: normal;
   }
 
-  .btn {
+  .ctas {
+    flex-direction: column;
     width: 100%;
+  }
+
+  .btn,
+  .btnSecondary {
+    width: 100%;
+    min-height: 56px;
+    height: 56px;
   }
 
   .features {

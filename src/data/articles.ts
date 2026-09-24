@@ -39,7 +39,7 @@ export const allArticles: ArticleData[] = [
     publishDate: "24 September 2026",
     isoDate: "2026-09-24T09:00:00Z",
     modifiedDate: "2026-09-24T09:00:00Z",
-    authorSlug: "steven-peddie",
+    authorSlug: "marcus-vance",
     targetKeyword: "AI applicant screening calls",
     category: "Product & Company News",
     readingTime: "3 min read",
@@ -77,18 +77,10 @@ export const allArticles: ArticleData[] = [
 
 <p class="mb-6">Businesses will be able to start with a VoIP line and add the AI call agent and automation when they are ready. All of it is managed from one platform.</p>
 
-<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Founder comment</h2>
-<blockquote class="p-5 my-6 bg-gray-50 border-l-4 border-emerald-500 rounded-r-xl">
-  <p class="text-lg italic text-gray-800 mb-2">"Recruiters don't lose candidates because they're bad at their job. They lose them because they can't be on the phone at 11pm on a Sunday. CallPilot can. It calls every applicant, qualifies them in under 2 minutes, chases the documents and updates the ATS, so by the morning the recruiter has a list of qualified candidates ready to verify. Adding business VoIP lines means one platform now covers the line, the AI call and everything that happens after it."</p>
-  <footer class="font-bold text-gray-900">— Steven Peddie, Founder, CallPilot</footer>
-</blockquote>
-
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Pricing and availability</h2>
 <ul class="list-disc pl-6 space-y-2 mb-6 text-gray-700">
-  <li><strong>AI applicant screening calls:</strong> available now at <strong>$1.33 per completed screen</strong>. See <a href="/ai-applicant-screening" class="text-blue-600 font-semibold underline hover:text-blue-800">AI applicant screening calls</a>.</li>
-  <li><strong>Business VoIP lines + automation:</strong> launching soon. Register interest at <a href="/business-voip" class="text-blue-600 font-semibold underline hover:text-blue-800">business VoIP lines</a>.</li>
-  <li><strong>Demos:</strong> book a demo at <a href="/get-started" class="text-blue-600 font-semibold underline hover:text-blue-800">https://www.callpilot.pro/book-a-demo</a></li>
-  <li><strong>Full announcement:</strong> <a href="/news/callpilot-launches-ai-call-agent-business-voip-lines-automation" class="text-blue-600 font-semibold underline hover:text-blue-800">https://www.callpilot.pro/news/callpilot-launches-ai-call-agent-business-voip-lines-automation</a></li>
+  <li><strong>AI applicant screening calls:</strong> available now. <a href="/pricing" class="text-blue-600 font-semibold underline hover:text-blue-800">See pricing</a>.</li>
+  <li><strong>Business VoIP lines + automation:</strong> launching soon. <a href="/business-voip" class="text-blue-600 font-semibold underline hover:text-blue-800">Register interest</a>.</li>
 </ul>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Who CallPilot is for</h2>
@@ -99,7 +91,7 @@ export const allArticles: ArticleData[] = [
 </ul>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">About CallPilot</h2>
-<p class="mb-4">CallPilot is an AI phone calls platform that combines an AI call agent, business VoIP lines and automation. Its AI applicant screening calls qualify job applicants 24/7 in under 2 minutes, request documents by WhatsApp, SMS and email, and sync results to leading applicant tracking systems. CallPilot is a brand of Swiftwave.ai, operated by Swiftwave FZ-LLC, Ras Al Khaimah, United Arab Emirates. Learn more at <a href="https://www.callpilot.pro" class="text-blue-600 font-semibold underline hover:text-blue-800">www.callpilot.pro</a>.</p>
+<p class="mb-4">CallPilot is an AI phone calls platform that combines an AI call agent, business VoIP lines and automation. Its AI applicant screening calls qualify job applicants 24/7 in under 2 minutes, request documents by WhatsApp, SMS and email, and sync results to leading applicant tracking systems. CallPilot is a brand of Swiftwave.ai, operated by Swiftwave FZ-LLC, Ras Al Khaimah, United Arab Emirates.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Media contact</h2>
 <p class="text-gray-700 leading-relaxed">

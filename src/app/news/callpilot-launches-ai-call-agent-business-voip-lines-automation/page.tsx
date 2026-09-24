@@ -171,33 +171,15 @@ export default function NewsPost() {
               ready. All of it is managed from one platform.
             </p>
 
-            <h2>Founder comment</h2>
-            <blockquote className={styles.quote}>
-              <p>
-                &ldquo;Recruiters don&apos;t lose candidates because they&apos;re bad at their job. They lose them because
-                they can&apos;t be on the phone at 11pm on a Sunday. CallPilot can. It calls every applicant, qualifies them
-                in under 2 minutes, chases the documents and updates the ATS, so by the morning the recruiter has a list of
-                qualified candidates ready to verify. Adding business VoIP lines means one platform now covers the line,
-                the AI call and everything that happens after it.&rdquo;
-              </p>
-              <footer>Steven Peddie, Founder, CallPilot</footer>
-            </blockquote>
-
             <h2>Pricing and availability</h2>
             <ul>
               <li>
-                <strong>AI applicant screening calls:</strong> available now at <strong>$1.33 per completed screen</strong>.{" "}
-                <Link href={LINKS.screening}>See AI applicant screening calls</Link>.
+                <strong>AI applicant screening calls:</strong> available now.{" "}
+                <Link href={LINKS.pricing}>See pricing</Link>.
               </li>
               <li>
                 <strong>Business VoIP lines + automation:</strong> launching soon.{" "}
-                <Link href={LINKS.voip}>Register interest at business VoIP lines</Link>.
-              </li>
-              <li>
-                <strong>Demos:</strong> book a demo at <Link href={LINKS.demo}>https://www.callpilot.pro/book-a-demo</Link>.
-              </li>
-              <li>
-                <strong>Full announcement:</strong> <Link href={SLUG}>https://www.callpilot.pro{SLUG}</Link>
+                <Link href={LINKS.voip}>Register interest</Link>.
               </li>
             </ul>
 
@@ -220,8 +202,7 @@ export default function NewsPost() {
               CallPilot is an AI phone calls platform that combines an AI call agent, business VoIP lines and automation.
               Its AI applicant screening calls qualify job applicants 24/7 in under 2 minutes, request documents by
               WhatsApp, SMS and email, and sync results to leading applicant tracking systems. CallPilot is a brand of
-              Swiftwave.ai, operated by Swiftwave FZ-LLC, Ras Al Khaimah, United Arab Emirates. Learn more at{" "}
-              <Link href="https://www.callpilot.pro">www.callpilot.pro</Link>.
+              Swiftwave.ai, operated by Swiftwave FZ-LLC, Ras Al Khaimah, United Arab Emirates.
             </p>
 
             <h2>Media contact</h2>
@@ -239,4 +220,5 @@ export default function NewsPost() {
     </div>
   );
 }
+
 
