@@ -23,6 +23,21 @@ const nextConfig = {
         destination: "/setup-help-guide",
         permanent: false,
       },
+      {
+        source: "/ai-applicant-screening",
+        destination: "/features",
+        permanent: false,
+      },
+      {
+        source: "/business-voip",
+        destination: "/news/business-voip-whatsapp-sms-ats-integration",
+        permanent: false,
+      },
+      {
+        source: "/book-a-demo",
+        destination: "/get-started",
+        permanent: false,
+      },
     ];
   },
 };

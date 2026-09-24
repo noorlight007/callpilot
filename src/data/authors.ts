@@ -25,6 +25,14 @@ export const authors: Record<string, Author> = {
     bio: "Sarah Jenkins specializes in high-volume talent acquisition workflows, Right to Work compliance, and automated document collection architecture for recruitment agencies and enterprise employers.",
     avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&auto=format&fit=crop&q=80",
     linkedin: "https://www.linkedin.com/company/callpilot-ai-call/",
+  },
+  "steven-peddie": {
+    slug: "steven-peddie",
+    name: "Steven Peddie",
+    role: "Founder at CallPilot",
+    bio: "Steven Peddie is the Founder of CallPilot and Swiftwave.ai, developing conversational AI voice calling systems, screening automation, and business VoIP lines for high-volume recruitment.",
+    avatar: "/images/callpilot-logo.png",
+    linkedin: "https://www.linkedin.com/company/callpilot-ai-call/",
   }
 };
 

@@ -27,6 +27,90 @@ export interface ArticleData {
 }
 
 export const allArticles: ArticleData[] = [
+  // 0. News Release — Thu 24 Sep (News)
+  {
+    id: "news-callpilot-launches-ai-call-agent-business-voip-lines-automation",
+    slug: "callpilot-launches-ai-call-agent-business-voip-lines-automation",
+    type: "news",
+    title: "CallPilot Launches One Platform for Business VoIP Lines, an AI Call Agent and Automation",
+    seoTitle: "CallPilot Launches AI Call Agent, VoIP Lines & Automation",
+    metaDescription: "CallPilot's AI applicant screening calls qualify candidates 24/7 in under 2 minutes and sync to your ATS. Business VoIP lines with automation launch soon.",
+    h1: "CallPilot Launches One Platform for Business VoIP Lines, an AI Call Agent and Automation",
+    publishDate: "24 September 2026",
+    isoDate: "2026-09-24T09:00:00Z",
+    modifiedDate: "2026-09-24T09:00:00Z",
+    authorSlug: "steven-peddie",
+    targetKeyword: "AI applicant screening calls",
+    category: "Product & Company News",
+    readingTime: "3 min read",
+    featuredImage: "/images/hero-dashboard-laptop.webp",
+    excerpt: "AI applicant screening calls qualify job applicants 24/7 in under 2 minutes, chase documents by WhatsApp, SMS and email, and update the ATS automatically. Business VoIP lines are launching soon.",
+    canonicalUrl: "https://callpilot.pro/news/callpilot-launches-ai-call-agent-business-voip-lines-automation/",
+    contentHtml: `
+<p class="lead text-xl text-gray-700 font-medium mb-6">AI applicant screening calls qualify job applicants 24/7 in under 2 minutes, chase documents by WhatsApp, SMS and email, and update the ATS automatically. Business VoIP lines are launching soon.</p>
+
+<p class="mb-4"><strong>RAS AL KHAIMAH, UAE, 24 September 2026:</strong> <a href="https://www.callpilot.pro" class="text-blue-600 font-semibold underline hover:text-blue-800">CallPilot</a>, the AI phone calls platform from Swiftwave.ai, today announced one platform that brings together business VoIP lines, an AI call agent and workflow automation. The launch is led by CallPilot's <a href="/ai-applicant-screening" class="text-blue-600 font-semibold underline hover:text-blue-800">AI applicant screening calls</a>, which are live now for staffing agencies, recruitment firms and high-volume employers. Low-cost <a href="/business-voip" class="text-blue-600 font-semibold underline hover:text-blue-800">business VoIP lines</a> with built-in automation will follow soon.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">The problem: applicants go cold while recruiters are busy or asleep</h2>
+<p class="mb-4">High-volume hiring runs on speed. Applicants apply at all hours, often to several jobs at once, and the first recruiter to reach them usually wins. But recruiters can only make so many calls in a day. They spend hours phoning applicants who don't meet basic requirements, and hours more chasing ID and work authorisation documents.</p>
+<p class="mb-6">CallPilot takes that repetitive first stage off the recruiter's desk.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">How CallPilot AI applicant screening calls work</h2>
+<ol class="list-decimal pl-6 space-y-2 mb-6 text-gray-700">
+  <li><strong>The AI call agent phones every applicant, 24/7.</strong> CallPilot calls applicants day or night, including evenings and weekends.</li>
+  <li><strong>Role-specific screening in under 2 minutes.</strong> The AI asks the questions set for each role. A "No" on any requirement ends the screen immediately as Unsuccessful. It is not a scoring system, so results are clear-cut.</li>
+  <li><strong>Documents requested automatically.</strong> Qualified applicants are asked for their documents by WhatsApp, SMS and email, and follow-ups continue until the documents arrive.</li>
+  <li><strong>Traffic-light results in the ATS.</strong> Every outcome is written back to the recruiter's applicant tracking system: Qualified, Awaiting Docs or Unsuccessful.</li>
+  <li><strong>The recruiter is notified to verify.</strong> CallPilot deliberately stops at verification. The recruiter's judgement starts where the automation ends.</li>
+</ol>
+
+<p class="mb-6">CallPilot integrates with <strong>Recruit CRM, Ashby, Greenhouse and JobAdder</strong>, with <strong>iCIMS</strong> coming soon.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Business VoIP lines with automation: launching soon</h2>
+<p class="mb-4">Alongside AI calling, CallPilot is launching <strong>business VoIP lines</strong> for recruitment agencies and businesses of all sizes. One low-cost number will handle:</p>
+<ul class="list-disc pl-6 space-y-2 mb-6 text-gray-700">
+  <li>Calls, WhatsApp, SMS and email on the same line</li>
+  <li>Call forwarding, IVR menus and call routing</li>
+  <li>Automation and workflows connected to the AI call agent</li>
+  <li>ATS integration, so every call and message is logged in one place</li>
+</ul>
+
+<p class="mb-6">Businesses will be able to start with a VoIP line and add the AI call agent and automation when they are ready. All of it is managed from one platform.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Founder comment</h2>
+<blockquote class="p-5 my-6 bg-gray-50 border-l-4 border-emerald-500 rounded-r-xl">
+  <p class="text-lg italic text-gray-800 mb-2">"Recruiters don't lose candidates because they're bad at their job. They lose them because they can't be on the phone at 11pm on a Sunday. CallPilot can. It calls every applicant, qualifies them in under 2 minutes, chases the documents and updates the ATS, so by the morning the recruiter has a list of qualified candidates ready to verify. Adding business VoIP lines means one platform now covers the line, the AI call and everything that happens after it."</p>
+  <footer class="font-bold text-gray-900">— Steven Peddie, Founder, CallPilot</footer>
+</blockquote>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Pricing and availability</h2>
+<ul class="list-disc pl-6 space-y-2 mb-6 text-gray-700">
+  <li><strong>AI applicant screening calls:</strong> available now at <strong>$1.33 per completed screen</strong>. See <a href="/ai-applicant-screening" class="text-blue-600 font-semibold underline hover:text-blue-800">AI applicant screening calls</a>.</li>
+  <li><strong>Business VoIP lines + automation:</strong> launching soon. Register interest at <a href="/business-voip" class="text-blue-600 font-semibold underline hover:text-blue-800">business VoIP lines</a>.</li>
+  <li><strong>Demos:</strong> book a demo at <a href="/get-started" class="text-blue-600 font-semibold underline hover:text-blue-800">https://www.callpilot.pro/book-a-demo</a></li>
+  <li><strong>Full announcement:</strong> <a href="/news/callpilot-launches-ai-call-agent-business-voip-lines-automation" class="text-blue-600 font-semibold underline hover:text-blue-800">https://www.callpilot.pro/news/callpilot-launches-ai-call-agent-business-voip-lines-automation</a></li>
+</ul>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Who CallPilot is for</h2>
+<ul class="list-disc pl-6 space-y-2 mb-6 text-gray-700">
+  <li>Staffing and recruitment agencies handling large applicant volumes</li>
+  <li>In-house talent teams and RPOs running high-volume hiring</li>
+  <li>Businesses that want a low-cost business phone line with messaging and automation built in</li>
+</ul>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">About CallPilot</h2>
+<p class="mb-4">CallPilot is an AI phone calls platform that combines an AI call agent, business VoIP lines and automation. Its AI applicant screening calls qualify job applicants 24/7 in under 2 minutes, request documents by WhatsApp, SMS and email, and sync results to leading applicant tracking systems. CallPilot is a brand of Swiftwave.ai, operated by Swiftwave FZ-LLC, Ras Al Khaimah, United Arab Emirates. Learn more at <a href="https://www.callpilot.pro" class="text-blue-600 font-semibold underline hover:text-blue-800">www.callpilot.pro</a>.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Media contact</h2>
+<p class="text-gray-700 leading-relaxed">
+  CallPilot Media Relations<br />
+  <a href="mailto:support@callpilot.pro" class="text-blue-600 font-semibold underline hover:text-blue-800">support@callpilot.pro</a><br />
+  <a href="https://www.callpilot.pro" class="text-blue-600 font-semibold underline hover:text-blue-800">https://www.callpilot.pro</a>
+</p>
+`,
+    relatedSlugs: ["callpilot-ashby-integration", "business-voip-whatsapp-sms-ats-integration", "how-fast-can-ai-qualify-an-applicant"]
+  },
+
   // 1. Post 1 — Mon 14 Sep (News)
   {
     id: "post-1-ashby-news",

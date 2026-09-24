@@ -1,0 +1,153 @@
+.wrap {
+  --ink: #111418;
+  --ink-2: #2b3038;
+  --muted: #4b5563;
+  --line: #e6e8ec;
+  --soft: #f5f6f8;
+  color: var(--ink);
+  background: #fff;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 32px clamp(16px, 4vw, 24px) 80px;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap *,
+.wrap *::before,
+.wrap *::after {
+  box-sizing: border-box;
+}
+.wrap a {
+  color: #1553e6;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.wrap a:hover {
+  color: #0e3fb3;
+}
+
+.crumbs {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+.crumbs a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.head {
+  margin-bottom: 28px;
+}
+.kicker {
+  margin: 0 0 12px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.h1 {
+  margin: 0;
+  font-size: clamp(30px, 4.6vw, 44px);
+  line-height: 1.08;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+.standfirst {
+  margin: 18px 0 0;
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+.meta {
+  margin: 16px 0 0;
+  font-size: 15px;
+  color: var(--muted);
+}
+
+.hero {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 16px;
+  background: var(--soft);
+  margin-bottom: 36px;
+}
+
+.body {
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--ink-2);
+}
+.body h2 {
+  margin: 44px 0 12px;
+  font-size: 26px;
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.body p {
+  margin: 0 0 18px;
+}
+.body ul,
+.body ol {
+  margin: 0 0 18px;
+  padding-left: 24px;
+}
+.body li {
+  margin-bottom: 10px;
+}
+.body strong {
+  color: var(--ink);
+}
+
+.quote {
+  margin: 8px 0 24px;
+  padding: 24px 28px;
+  background: var(--soft);
+  border-radius: 14px;
+}
+.quote p {
+  margin: 0 0 12px;
+  font-size: 19px;
+  color: var(--ink);
+}
+.quote footer {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.cta {
+  margin: 40px 0 8px;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.cta p {
+  margin: 0;
+  font-weight: 700;
+  color: var(--ink);
+}
+.wrap .btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 52px;
+  padding: 0 26px;
+  border-radius: 8px;
+  background: var(--ink);
+  color: #fff;
+  font-weight: 700;
+  font-size: 17px;
+  text-decoration: none;
+}
+.wrap .btn:hover {
+  background: #000;
+  color: #fff;
+}
