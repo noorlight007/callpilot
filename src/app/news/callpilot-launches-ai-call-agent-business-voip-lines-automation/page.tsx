@@ -77,7 +77,7 @@ export default function NewsPost() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      <main className={`${styles.wrap} ${font.className} pt-28 md:pt-36 pb-24`}>
+      <main className={`${styles.wrap} ${font.className}`}>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
         <nav className={styles.crumbs} aria-label="Breadcrumb">
