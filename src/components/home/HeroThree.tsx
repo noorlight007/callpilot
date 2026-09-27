@@ -41,7 +41,7 @@ export default function HeroThree() {
         <header className={s.head}>
           <p className={s.eyebrow}><span className={s.dot} /> VoIP Phone Lines · AI Call Agent · Automation</p>
           <h1 id="hero-title" className={s.h1}>
-            VoIP Phone Lines + AI Applicant Screening. <span className={s.accent}>All Automated.</span>
+            Call VoIP Phone Lines + AI Applicant Screening Call. <span className={s.accent}>All Automated.</span>
           </h1>
           <p className={s.lead}>
             Business calls, WhatsApp, SMS and email on one low-cost number, plus an AI call agent that screens every
