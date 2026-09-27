@@ -6,50 +6,29 @@ import Script from "next/script";
 
 export const metadata: Metadata = {
     metadataBase: new URL("https://callpilot.pro"),
-    title: "CallPilot | AI Applicant Screening Calls for Recruiters",
-    description: "AI voice calls that screen applicants in under a minute, sync straight into your ATS, and run 24/7. No call, no charge.",
+    title: {
+        default: "CallPilot | VoIP Phone Lines + AI Applicant Screening",
+        template: "%s | CallPilot",
+    },
+    description: "Low-cost VoIP phone lines with WhatsApp, SMS and email automation, plus AI applicant screening calls that qualify every applicant 24/7 in under 2 minutes.",
     alternates: {
-        canonical: "https://callpilot.pro/",
+        canonical: "/",
     },
     openGraph: {
-        title: "CallPilot | AI Applicant Screening Calls for Recruiters",
-        description: "AI voice calls that screen applicants in under a minute, sync straight into your ATS, and run 24/7. No call, no charge.",
+        title: "CallPilot | VoIP Phone Lines + AI Applicant Screening",
+        description: "Low-cost VoIP phone lines with WhatsApp, SMS and email automation, plus AI applicant screening calls that qualify every applicant 24/7 in under 2 minutes.",
         url: "https://callpilot.pro/",
         siteName: "CallPilot",
         type: "website",
         images: [
             {
-                url: "https://callpilot.pro/og-image.png",
+                url: "/images/og-callpilot.png",
                 width: 1200,
                 height: 630,
-                alt: "CallPilot",
+                alt: "CallPilot: VoIP Phone Lines + AI Applicant Screening",
             },
         ],
     },
-};
-
-const organizationSchema = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "CallPilot",
-    "url": "https://callpilot.pro",
-    "logo": "https://callpilot.pro/adjusted_callPilot_logo.png",
-    "description": "AI voice calls that screen applicants in under a minute, sync straight into your ATS, and run 24/7.",
-    "sameAs": [
-        "https://www.linkedin.com/company/callpilot-ai-call/",
-        "https://www.facebook.com/profile.php?id=61588398835586",
-        "https://www.instagram.com/callpilot.pro/"
-    ],
-    "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "customer support",
-        "url": "https://callpilot.pro/get-started"
-    },
-    "parentOrganization": {
-        "@type": "Organization",
-        "name": "Swiftwave FZ-LLC",
-        "url": "https://www.swiftwave.ai/callpilot"
-    }
 };
 
 export default function RootLayout({
@@ -59,12 +38,6 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <head>
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-                />
-            </head>
             <body>
                 {/* Google Tag Manager (noscript) */}
                 <noscript>

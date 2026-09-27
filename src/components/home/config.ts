@@ -25,6 +25,6 @@ export const ATS: {
   { name: "JobAdder", slug: "jobadder", logo: "/images/unname.png", w: 140, h: 32 },
   { name: "Recruit CRM", slug: "recruit-crm", logo: "/images/Recruit_CRM.webp", w: 150, h: 32 },
   { name: "Ashby", slug: "ashby", logo: "/wordmark.svg", w: 110, h: 32 },
-  { name: "Greenhouse", slug: "greenhouse", logo: "/images/GREENHOUSE_WORDMARK_GREEN.jpg", w: 150, h: 32 },
+  { name: "Greenhouse", slug: "greenhouse", logo: "/images/GREENHOUSE_WORDMARK_GREEN.jpg", w: 150, h: 32, note: "Coming soon" },
   { name: "iCIMS", slug: "icims", w: 100, h: 32, note: "Coming soon" },
 ];

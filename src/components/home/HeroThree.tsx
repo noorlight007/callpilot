@@ -2,12 +2,10 @@
 // 1) VoIP Phone Lines  2) One Platform. All Automated.  3) AI Applicant Screening Call
 import Image from "next/image";
 import Link from "next/link";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { font } from "./font";
 import s from "./hero3.module.css";
 import { ArrowRight, Chat, Check, Mail, Phone, Sms, Route, Bolt, Sync, Doc, Headset } from "./icons";
 import { ATS, LINKS } from "./config";
-
-const font = Plus_Jakarta_Sans({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800"], display: "swap" });
 
 function AtsTile({ a, hidden }: { a: (typeof ATS)[number]; hidden?: boolean }) {
   return (
@@ -137,7 +135,7 @@ export default function HeroThree() {
             <div className={s.body}>
               <span className={s.num}>03</span>
               <h2 className={s.h2}>AI Applicant Screening Call</h2>
-              <p className={s.text}>Recruiters sleep. CallPilot works: every applicant called and qualified while you&apos;re off the clock.</p>
+              <p className={s.text}>Every applicant called and qualified while you&apos;re off the clock.</p>
               <ul className={s.list}>
                 <li><Headset /> AI calls every applicant 24/7</li>
                 <li><Check /> Screened in under 2 minutes</li>

@@ -479,17 +479,62 @@
 }
 @media (max-width: 760px) {
   .container {
-    padding-top: 130px;
+    padding-top: 135px;
+    padding-bottom: 36px;
   }
-  .btn {
-    flex: 1 1 100%;
+  .head {
+    margin-bottom: 32px;
+  }
+  .ctas {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+  .ctas .btn {
+    width: 100%;
+    justify-content: center;
   }
   .ats {
     grid-template-columns: 1fr;
+    text-align: center;
     gap: 14px;
+    margin-top: 32px;
   }
   .visual {
-    height: 270px;
+    height: 250px;
+  }
+  .visualPhone {
+    padding: 0 12px;
+    gap: 10px;
+  }
+  .phone {
+    height: 210px;
+  }
+  .results {
+    min-width: 145px;
+    padding: 10px;
+    font-size: 12px;
+  }
+  .body {
+    padding: 22px 20px 24px;
+  }
+}
+@media (max-width: 420px) {
+  .visual {
+    height: 230px;
+  }
+  .phone {
+    height: 190px;
+  }
+  .results {
+    min-width: 130px;
+    padding: 8px;
+    font-size: 11.5px;
+    gap: 5px;
+  }
+  .result {
+    padding: 6px 8px;
+    gap: 6px;
   }
 }
 @media (prefers-reduced-motion: reduce) {

@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: "News & Insights - CallPilot.pro",
   description: "Read the latest articles, updates, and insights about AI voice technology and recruitment automations.",
   robots: {
-    index: false,
+    index: true,
     follow: true,
   },
   alternates: {
