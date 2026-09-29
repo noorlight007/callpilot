@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Setup & Help Guide | CallPilot",
+  title: "Setup & Help Guide",
   description: "Step-by-step instructions for setting up your CallPilot account: provisioning AI numbers, configuring AI calls, connecting ATS integrations, and reading analytics reports.",
   alternates: {
     canonical: "https://callpilot.pro/setup-help-guide",

@@ -15,21 +15,32 @@ interface Props {
   }>;
 }
 
+export const revalidate = 3600;
+
 export function generateStaticParams() {
-  return blogArticles.map((article) => ({
-    slug: article.slug,
-  }));
+  const now = new Date();
+  return blogArticles
+    .filter((article) => new Date(article.isoDate || article.publishDate) <= now)
+    .map((article) => ({
+      slug: article.slug,
+    }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const article = getArticleBySlug(slug);
-  if (!article || article.type !== "blog") return {};
+  const now = new Date();
 
-  const canonicalUrl = `https://callpilot.pro/blog/${article.slug}/`;
+  if (!article || article.type !== "blog" || new Date(article.isoDate || article.publishDate) > now) {
+    return {};
+  }
+
+  const canonicalUrl = `https://callpilot.pro/blog/${article.slug}`;
+  // Remove brand suffix if present since root template adds " | CallPilot"
+  const cleanTitle = (article.seoTitle || article.title).replace(/\s*\|\s*CallPilot(\.pro)?$/i, "").trim();
 
   return {
-    title: article.seoTitle,
+    title: cleanTitle,
     description: article.metaDescription,
     robots: {
       index: true,
@@ -39,14 +50,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       canonical: canonicalUrl,
     },
     openGraph: {
-      title: article.seoTitle,
+      title: cleanTitle,
       description: article.metaDescription,
       url: canonicalUrl,
       siteName: "CallPilot",
       type: "article",
       publishedTime: article.isoDate,
       modifiedTime: article.modifiedDate || article.isoDate,
-      authors: [authors[article.authorSlug]?.name || "Marcus Vance"],
+      authors: [authors[article.authorSlug]?.name || "Steven Peddie"],
       images: [
         {
           url: article.featuredImage,
@@ -58,7 +69,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: article.seoTitle,
+      title: cleanTitle,
       description: article.metaDescription,
       images: [article.featuredImage],
     },
@@ -68,12 +79,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function BlogSlugPage({ params }: Props) {
   const { slug } = await params;
   const article = getArticleBySlug(slug);
+  const now = new Date();
 
-  if (!article || article.type !== "blog") {
+  if (!article || article.type !== "blog" || new Date(article.isoDate || article.publishDate) > now) {
     notFound();
   }
 
-  const author = authors[article.authorSlug] || authors["marcus-vance"];
+  const author = authors[article.authorSlug] || authors["steven-peddie"];
 
   const articleSchema = {
     "@context": "https://schema.org",
@@ -85,13 +97,13 @@ export default async function BlogSlugPage({ params }: Props) {
     dateModified: article.modifiedDate || article.isoDate,
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://callpilot.pro/blog/${article.slug}/`,
+      "@id": `https://callpilot.pro/blog/${article.slug}`,
     },
     author: {
       "@type": "Person",
       name: author.name,
       jobTitle: author.role,
-      url: `https://callpilot.pro/authors/${author.slug}/`,
+      url: "https://callpilot.pro/blog",
       sameAs: author.linkedin,
     },
     publisher: {
@@ -100,7 +112,7 @@ export default async function BlogSlugPage({ params }: Props) {
       url: "https://callpilot.pro",
       logo: {
         "@type": "ImageObject",
-        url: "https://callpilot.pro/adjusted_callPilot_logo.png",
+        url: "https://callpilot.pro/images/callpilot-logo.png",
       },
     },
   };
@@ -126,10 +138,10 @@ export default async function BlogSlugPage({ params }: Props) {
     { label: article.h1 },
   ];
 
-  // Related articles
+  // Related articles (only published ones)
   const relatedList = (article.relatedSlugs || [])
     .map((s) => allArticles.find((a) => a.slug === s))
-    .filter(Boolean) as typeof allArticles;
+    .filter((a): a is typeof allArticles[0] => !!a && new Date(a.isoDate || a.publishDate) <= now);
 
   return (
     <div className="min-h-screen bg-white">
@@ -163,19 +175,15 @@ export default async function BlogSlugPage({ params }: Props) {
             {/* Author and Date metadata bar */}
             <div className="flex flex-wrap items-center justify-between gap-4 py-4 border-y border-gray-200 text-sm text-gray-600">
               <div className="flex items-center gap-3">
-                <Link href={`/authors/${author.slug}/`} className="group flex items-center gap-3">
-                  <img
-                    src={author.avatar}
-                    alt={author.name}
-                    className="w-10 h-10 rounded-full object-cover border border-gray-200 group-hover:border-black transition-colors"
-                  />
-                  <div>
-                    <div className="font-bold text-gray-900 group-hover:text-emerald-600 transition-colors">
-                      {author.name}
-                    </div>
-                    <div className="text-xs text-gray-500">{author.role}</div>
-                  </div>
-                </Link>
+                <img
+                  src={author.avatar}
+                  alt={author.name}
+                  className="w-10 h-10 rounded-full object-cover border border-gray-200"
+                />
+                <div>
+                  <div className="font-bold text-gray-900">{author.name}</div>
+                  <div className="text-xs text-gray-500">{author.role}</div>
+                </div>
               </div>
 
               <div className="flex items-center gap-4 text-xs sm:text-sm">
@@ -240,13 +248,13 @@ export default async function BlogSlugPage({ params }: Props) {
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link
-                href="/free-trial/"
+                href="/free-trial"
                 className="bg-white text-black font-bold text-sm px-8 py-3.5 rounded-full hover:bg-gray-200 transition-colors"
               >
                 Get 100 Free Screening Credits
               </Link>
               <Link
-                href="/integrations/"
+                href="/integrations"
                 className="border border-white/40 text-white font-bold text-sm px-8 py-3.5 rounded-full hover:border-white transition-colors"
               >
                 View ATS Integrations
@@ -263,17 +271,11 @@ export default async function BlogSlugPage({ params }: Props) {
             />
             <div className="text-center sm:text-left">
               <div className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">Written by</div>
-              <Link href={`/authors/${author.slug}/`} className="text-lg font-bold text-gray-900 hover:text-emerald-600 transition-colors">
+              <span className="text-lg font-bold text-gray-900">
                 {author.name}
-              </Link>
+              </span>
               <div className="text-xs text-gray-600 mb-2">{author.role}</div>
-              <p className="text-sm text-gray-600 leading-relaxed mb-3">{author.bio}</p>
-              <Link
-                href={`/authors/${author.slug}/`}
-                className="text-xs font-semibold text-black underline hover:text-emerald-600"
-              >
-                View full author profile &amp; all articles →
-              </Link>
+              <p className="text-sm text-gray-600 leading-relaxed">{author.bio}</p>
             </div>
           </div>
 
@@ -285,7 +287,7 @@ export default async function BlogSlugPage({ params }: Props) {
                 {relatedList.map((rel) => (
                   <Link
                     key={rel.slug}
-                    href={rel.type === "news" ? `/news/${rel.slug}/` : `/blog/${rel.slug}/`}
+                    href={rel.type === "news" ? `/news/${rel.slug}` : `/blog/${rel.slug}`}
                     className="p-5 border border-gray-200 rounded-2xl hover:border-black hover:shadow-md transition-all flex flex-col justify-between"
                   >
                     <div>

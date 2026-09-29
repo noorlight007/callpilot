@@ -1,77 +1,66 @@
 import type { MetadataRoute } from "next";
-import { allIntegrations } from "@/data/integrations";
-import { newsArticles, blogArticles } from "@/data/articles";
-import { authors } from "@/data/authors";
+
+const BASE = "https://callpilot.pro";
+
+// Update the date when a page's content actually changes
+const pages: { path: string; updated: string; priority: number; freq: "daily" | "weekly" | "monthly" }[] = [
+  { path: "", updated: "2026-09-29", priority: 1.0, freq: "weekly" },
+  { path: "/pricing", updated: "2026-09-29", priority: 0.9, freq: "weekly" },
+  { path: "/features", updated: "2026-09-29", priority: 0.9, freq: "monthly" },
+  { path: "/use-cases", updated: "2026-09-29", priority: 0.8, freq: "monthly" },
+  { path: "/integrations", updated: "2026-09-27", priority: 0.9, freq: "weekly" },
+  { path: "/integrations/jobadder", updated: "2026-09-27", priority: 0.85, freq: "monthly" },
+  { path: "/integrations/recruit-crm", updated: "2026-09-27", priority: 0.85, freq: "monthly" },
+  { path: "/integrations/ashby", updated: "2026-09-27", priority: 0.85, freq: "monthly" },
+  { path: "/integrations/greenhouse", updated: "2026-09-27", priority: 0.7, freq: "monthly" },
+  { path: "/integrations/icims", updated: "2026-09-27", priority: 0.7, freq: "monthly" },
+  { path: "/free-trial", updated: "2026-09-27", priority: 0.8, freq: "monthly" },
+  { path: "/get-started", updated: "2026-09-29", priority: 0.7, freq: "monthly" },
+  { path: "/book-a-demo", updated: "2026-09-29", priority: 0.7, freq: "monthly" },
+  { path: "/news", updated: "2026-09-24", priority: 0.7, freq: "weekly" },
+  { path: "/blog", updated: "2026-09-28", priority: 0.7, freq: "weekly" },
+  { path: "/about-us", updated: "2026-09-27", priority: 0.5, freq: "monthly" },
+  { path: "/setup-help-guide", updated: "2026-09-27", priority: 0.5, freq: "monthly" },
+  { path: "/privacy-policy", updated: "2026-09-27", priority: 0.3, freq: "monthly" },
+  { path: "/terms-conditions", updated: "2026-09-27", priority: 0.3, freq: "monthly" },
+  { path: "/cookie-policy", updated: "2026-09-27", priority: 0.3, freq: "monthly" },
+  { path: "/policy-compliance", updated: "2026-09-27", priority: 0.3, freq: "monthly" },
+];
+
+// Posts: publish date. Anything dated in the future is left out until that day.
+const posts: { path: string; date: string }[] = [
+  { path: "/news/callpilot-ashby-integration", date: "2026-09-14" },
+  { path: "/news/callpilot-recruit-crm-integration", date: "2026-09-18" },
+  { path: "/news/callpilot-jobadder-integration", date: "2026-09-21" },
+  { path: "/news/business-voip-whatsapp-sms-ats-integration", date: "2026-09-22" },
+  { path: "/news/callpilot-launches-ai-call-agent-business-voip-lines-automation", date: "2026-09-24" },
+  { path: "/blog/how-fast-can-ai-qualify-an-applicant", date: "2026-09-16" },
+  { path: "/blog/speed-up-recruitment-without-hiring-more-recruiters", date: "2026-09-23" },
+  { path: "/blog/ai-screening-call-vs-ai-video-interview", date: "2026-09-28" },
+  { path: "/blog/why-ai-voice-calls-screen-applicants-better", date: "2026-10-02" },
+  { path: "/blog/24-7-applicant-screening", date: "2026-10-05" },
+  { path: "/blog/high-volume-applicant-screening", date: "2026-10-07" },
+  { path: "/blog/what-happens-after-the-ai-screening-call", date: "2026-10-09" },
+];
+
+export const revalidate = 3600; // rebuild hourly so scheduled posts appear on their date
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://callpilot.pro";
-
-  const staticPages = [
-    { path: "", priority: 1.0, changeFrequency: "daily" as const },
-    { path: "/free-trial", priority: 0.95, changeFrequency: "weekly" as const },
-    { path: "/get-started", priority: 0.9, changeFrequency: "weekly" as const },
-    { path: "/pricing", priority: 0.9, changeFrequency: "weekly" as const },
-    { path: "/features", priority: 0.85, changeFrequency: "weekly" as const },
-    { path: "/use-cases", priority: 0.85, changeFrequency: "weekly" as const },
-    { path: "/integrations", priority: 0.95, changeFrequency: "daily" as const },
-    { path: "/news", priority: 0.9, changeFrequency: "daily" as const },
-    { path: "/blog", priority: 0.9, changeFrequency: "daily" as const },
-    { path: "/about-us", priority: 0.7, changeFrequency: "monthly" as const },
-    { path: "/setup-help-guide", priority: 0.7, changeFrequency: "monthly" as const },
-    { path: "/privacy-policy", priority: 0.5, changeFrequency: "monthly" as const },
-    { path: "/terms-conditions", priority: 0.5, changeFrequency: "monthly" as const },
-    { path: "/cookie-policy", priority: 0.5, changeFrequency: "monthly" as const },
-    { path: "/policy-compliance", priority: 0.5, changeFrequency: "monthly" as const },
-  ];
-
-  const integrationEntries = allIntegrations.map((item) => ({
-    url: `${baseUrl}/integrations/${item.slug}/`,
-    lastModified: new Date(),
-    changeFrequency: "weekly" as const,
-    priority: 0.95,
-  }));
-
-  const newsEntries = newsArticles.map((article) => ({
-    url: `${baseUrl}/news/${article.slug}/`,
-    lastModified: new Date(article.modifiedDate || article.isoDate),
-    changeFrequency: "weekly" as const,
-    priority: 0.85,
-  }));
-
-  const blogEntries = blogArticles.map((article) => ({
-    url: `${baseUrl}/blog/${article.slug}/`,
-    lastModified: new Date(article.modifiedDate || article.isoDate),
-    changeFrequency: "weekly" as const,
-    priority: 0.85,
-  }));
-
-  const authorEntries = Object.keys(authors).map((slug) => ({
-    url: `${baseUrl}/authors/${slug}/`,
-    lastModified: new Date(),
-    changeFrequency: "monthly" as const,
-    priority: 0.6,
-  }));
-
-  const staticEntries = staticPages.map((page) => ({
-    url: `${baseUrl}${page.path}${page.path ? "/" : ""}`,
-    lastModified: new Date(),
-    changeFrequency: page.changeFrequency,
-    priority: page.priority,
-  }));
-
-  const businessVoipNewsEntry: MetadataRoute.Sitemap[number] = {
-    url: `${baseUrl}/news/business-voip-whatsapp-sms-ats-integration`,
-    lastModified: new Date("2026-09-22"),
-    changeFrequency: "monthly" as const,
-    priority: 0.8,
-  };
-
+  const now = new Date();
   return [
-    ...staticEntries,
-    ...integrationEntries,
-    ...newsEntries,
-    ...blogEntries,
-    ...authorEntries,
-    businessVoipNewsEntry,
+    ...pages.map((p) => ({
+      url: `${BASE}${p.path}`,
+      lastModified: new Date(p.updated),
+      changeFrequency: p.freq,
+      priority: p.priority,
+    })),
+    ...posts
+      .filter((p) => new Date(p.date) <= now)
+      .map((p) => ({
+        url: `${BASE}${p.path}`,
+        lastModified: new Date(p.date),
+        changeFrequency: "monthly" as const,
+        priority: 0.6,
+      })),
   ];
 }

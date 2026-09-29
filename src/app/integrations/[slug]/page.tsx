@@ -21,10 +21,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const data = integrationsData[slug];
   if (!data) return {};
 
-  const canonicalUrl = `https://callpilot.pro/integrations/${data.slug}/`;
+  const canonicalUrl = `https://callpilot.pro/integrations/${data.slug}`;
+  const cleanTitle = (data.seo.title || data.name).replace(/\s*\|\s*CallPilot(\.pro)?$/i, "").trim();
 
   return {
-    title: data.seo.title,
+    title: cleanTitle,
     description: data.seo.description,
     robots: {
       index: true,

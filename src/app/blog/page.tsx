@@ -9,20 +9,20 @@ import { authors } from "@/data/authors";
 import { Calendar, Clock, ArrowRight, BookOpen } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Recruitment Automation Guides & AI Screening Insights | CallPilot Blog",
+  title: "Recruitment Automation Guides & AI Screening Insights",
   description: "Practical guides, benchmarks, and tactical playbooks on AI applicant screening calls, high-volume recruitment, and automated document collection.",
   alternates: {
-    canonical: "https://callpilot.pro/blog/",
+    canonical: "https://callpilot.pro/blog",
   },
   openGraph: {
-    title: "Recruitment Automation Guides & AI Screening Insights | CallPilot Blog",
+    title: "Recruitment Automation Guides & AI Screening Insights",
     description: "Practical guides, benchmarks, and tactical playbooks on AI applicant screening calls, high-volume recruitment, and automated document collection.",
-    url: "https://callpilot.pro/blog/",
+    url: "https://callpilot.pro/blog",
     siteName: "CallPilot",
     type: "website",
     images: [
       {
-        url: "https://callpilot.pro/og-image.png",
+        url: "https://callpilot.pro/images/og-callpilot.png",
         width: 1200,
         height: 630,
         alt: "CallPilot Blog",
@@ -31,19 +31,26 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Recruitment Automation Guides & AI Screening Insights | CallPilot Blog",
+    title: "Recruitment Automation Guides & AI Screening Insights",
     description: "Practical guides, benchmarks, and tactical playbooks on AI applicant screening calls, high-volume recruitment, and automated document collection.",
-    images: ["https://callpilot.pro/og-image.png"],
+    images: ["https://callpilot.pro/images/og-callpilot.png"],
   },
 };
 
+export const revalidate = 3600;
+
 export default function BlogIndexPage() {
+  const now = new Date();
+  const visibleArticles = blogArticles.filter(
+    (article) => new Date(article.isoDate || article.publishDate) <= now
+  );
+
   const collectionSchema = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     name: "CallPilot AI Recruitment Guides & Blog",
     description: "Expert tactical playbooks and benchmarks on AI applicant qualification.",
-    url: "https://callpilot.pro/blog/",
+    url: "https://callpilot.pro/blog",
   };
 
   return (
@@ -79,8 +86,8 @@ export default function BlogIndexPage() {
           <Breadcrumbs items={[{ label: "Blog" }]} />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-6">
-            {blogArticles.map((article) => {
-              const author = authors[article.authorSlug] || authors["marcus-vance"];
+            {visibleArticles.map((article) => {
+              const author = authors[article.authorSlug] || authors["steven-peddie"];
               return (
                 <article
                   key={article.slug}
@@ -112,7 +119,7 @@ export default function BlogIndexPage() {
                       </div>
 
                       <h2 className="text-xl font-extrabold text-gray-900 mb-3 line-clamp-2 hover:text-emerald-600 transition-colors">
-                        <Link href={`/blog/${article.slug}/`}>{article.h1}</Link>
+                        <Link href={`/blog/${article.slug}`}>{article.h1}</Link>
                       </h2>
 
                       <p className="text-sm text-gray-600 mb-6 line-clamp-3 leading-relaxed">
@@ -122,20 +129,17 @@ export default function BlogIndexPage() {
                   </div>
 
                   <div className="p-6 pt-0 border-t border-gray-100 mt-auto flex items-center justify-between">
-                    <Link
-                      href={`/authors/${author.slug}/`}
-                      className="flex items-center gap-2 text-xs font-medium text-gray-700 hover:text-black"
-                    >
+                    <div className="flex items-center gap-2 text-xs font-medium text-gray-700">
                       <img
                         src={author.avatar}
                         alt={author.name}
                         className="w-6 h-6 rounded-full object-cover"
                       />
                       <span>{author.name}</span>
-                    </Link>
+                    </div>
 
                     <Link
-                      href={`/blog/${article.slug}/`}
+                      href={`/blog/${article.slug}`}
                       className="text-xs font-bold text-black hover:text-emerald-600 inline-flex items-center gap-1"
                     >
                       Read guide <ArrowRight className="w-3.5 h-3.5" />
@@ -158,13 +162,13 @@ export default function BlogIndexPage() {
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link
-                href="/free-trial/"
+                href="/free-trial"
                 className="bg-white text-black font-bold text-sm px-8 py-3.5 rounded-full hover:bg-gray-200 transition-colors"
               >
                 Claim 100 Free Credits
               </Link>
               <Link
-                href="/integrations/"
+                href="/integrations"
                 className="border border-white/40 text-white font-bold text-sm px-8 py-3.5 rounded-full hover:border-white transition-colors"
               >
                 Browse Integrations

@@ -2,9 +2,9 @@
 export const LINKS = {
   bookDemo: "/book-a-demo",
   pricing: "/pricing",
-  screeningPricing: "/pricing#ai-screening",
-  screening: "/ai-applicant-screening",
-  voip: "/business-voip",
+  screeningPricing: "/pricing#screening",
+  screening: "/features#ai-applicant-screening",
+  voip: "/features#voip-phone-lines",
   integrations: "/integrations",
 };
 

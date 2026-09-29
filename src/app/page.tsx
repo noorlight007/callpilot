@@ -17,7 +17,9 @@ const DESCRIPTION =
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
-  title: TITLE,
+  title: {
+    absolute: TITLE,
+  },
   description: DESCRIPTION,
   keywords: [
     "VoIP phone lines", "business VoIP", "WhatsApp calling", "SMS automation", "email automation",
@@ -39,7 +41,7 @@ export const metadata: Metadata = {
 
 // Structured data: verified facts only.
 const jsonLd = {
-  "@context": "https://schema.org",
+  "@context": "https://schema.org/",
   "@graph": [
     {
       "@type": "Organization",
@@ -47,36 +49,24 @@ const jsonLd = {
       name: "CallPilot",
       url: SITE,
       logo: `${SITE}/images/callpilot-logo.png`,
-      parentOrganization: { "@type": "Organization", name: "Swiftwave FZ-LLC", url: "https://swiftwave.ai" },
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: "Compass Building, Al Shohada Road, Al Hamra Industrial Zone-FZ",
-        addressLocality: "Ras Al Khaimah",
-        addressCountry: "AE",
+      sameAs: [
+        "https://www.linkedin.com/company/callpilot-ai-call/",
+        "https://www.instagram.com/callpilot.pro/",
+        "https://www.facebook.com/profile.php?id=61588398835586",
+      ],
+      parentOrganization: {
+        "@type": "Organization",
+        name: "Swiftwave FZ-LLC",
       },
     },
-    { "@type": "WebSite", "@id": `${SITE}/#website`, url: SITE, name: "CallPilot", publisher: { "@id": `${SITE}/#org` } },
     {
-      "@type": "SoftwareApplication",
-      name: "CallPilot",
-      applicationCategory: "BusinessApplication",
-      operatingSystem: "Web",
+      "@type": "WebSite",
+      "@id": `${SITE}/#website`,
       url: SITE,
-      publisher: { "@id": `${SITE}/#org` },
-      description:
-        "VoIP phone lines with WhatsApp calling and messaging, SMS and email automation, plus AI applicant screening calls that qualify applicants 24/7 in under 2 minutes and sync results to your ATS.",
-      offers: [
-        { "@type": "Offer", name: "CallPilot VoIP", price: "5.99", priceCurrency: "USD", description: "Per VoIP line per month" },
-        { "@type": "Offer", name: "CallPilot VoIP + 100 minutes", price: "9.99", priceCurrency: "USD", description: "Per VoIP line per month, 100 outbound minutes" },
-        { "@type": "Offer", name: "CallPilot VoIP + Automation", price: "14.99", priceCurrency: "USD", description: "Per VoIP line per month, 100 outbound minutes and automation" },
-        { "@type": "Offer", name: "AI Screening Starter", price: "395", priceCurrency: "USD", description: "100 screenings per month" },
-        { "@type": "Offer", name: "AI Screening Growth", price: "1400", priceCurrency: "USD", description: "400 screenings per month" },
-        { "@type": "Offer", name: "AI Screening Pro", price: "2950", priceCurrency: "USD", description: "1,000 screenings per month" },
-      ],
-    },
-    {
-      "@type": "FAQPage",
-      mainEntity: FAQS.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+      name: "CallPilot",
+      publisher: {
+        "@id": `${SITE}/#org`,
+      },
     },
   ],
 };
@@ -87,7 +77,8 @@ export default function Page() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Header />
       <main id="main">
-        <HeroThree /> {/* the LIVE hero: keep your existing components/home/HeroThree.tsx exactly as it is */}
+        <HeroThree /> 
+        {/* the LIVE hero: keep your existing components/home/HeroThree.tsx exactly as it is */}
         <VoipSection />
         <ScreeningSection />
         <FeaturesSection />

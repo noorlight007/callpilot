@@ -41,7 +41,7 @@ export default function HeroThree() {
         <header className={s.head}>
           <p className={s.eyebrow}><span className={s.dot} /> VoIP Phone Lines · AI Call Agent · Automation</p>
           <h1 id="hero-title" className={s.h1}>
-            Call VoIP Phone Lines + AI Applicant Screening Call. <span className={s.accent}>All Automated.</span>
+            VoIP Phone Lines + AI Applicant Screening Calls. <span className={s.accent}>All Automated.</span>
           </h1>
           <p className={s.lead}>
             Business calls, WhatsApp, SMS and email on one low-cost number, plus an AI call agent that screens every
@@ -62,7 +62,7 @@ export default function HeroThree() {
             <div className={s.visual}>
               <div className={s.lineCard} aria-hidden>
                 <div className={s.lineHead}>
-                  <span><em>Your business line</em>+44 (0) 20 8000 7000</span>
+                  <span><em>Your business line</em>+44 (0) 20 7946 0000</span>
                   <span className={s.online}><span /> Online</span>
                 </div>
                 <div className={s.lineRow}><span className={`${s.ch} ${s.chCall}`}><Phone /></span><b>Incoming call</b><i>Forwarded</i></div>

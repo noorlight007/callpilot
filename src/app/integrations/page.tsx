@@ -8,7 +8,7 @@ import { allIntegrations } from "@/data/integrations";
 import { CheckCircle2, ArrowRight, PhoneCall, Zap, Shield, Sparkles } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "ATS Integrations | CallPilot",
+  title: "ATS Integrations: JobAdder, Recruit CRM, Ashby & More",
   description: "Connect CallPilot's AI screening call engine to your ATS. Explore native integrations for JobAdder, Recruit CRM, Greenhouse, Ashby, and iCIMS.",
   alternates: {
     canonical: "https://callpilot.pro/integrations",

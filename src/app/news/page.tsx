@@ -9,20 +9,20 @@ import { authors } from "@/data/authors";
 import { Calendar, Clock, ArrowRight, Sparkles } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "CallPilot News & ATS Announcements | AI Applicant Screening",
+  title: "News & Releases",
   description: "Official product announcements, ATS integrations, and release notes from CallPilot. Explore live connections with Ashby, Recruit CRM, JobAdder, and more.",
   alternates: {
-    canonical: "https://callpilot.pro/news/",
+    canonical: "https://callpilot.pro/news",
   },
   openGraph: {
-    title: "CallPilot News & ATS Announcements | AI Applicant Screening",
+    title: "News & Releases | CallPilot",
     description: "Official product announcements, ATS integrations, and release notes from CallPilot.",
-    url: "https://callpilot.pro/news/",
+    url: "https://callpilot.pro/news",
     siteName: "CallPilot",
     type: "website",
     images: [
       {
-        url: "https://callpilot.pro/og-image.png",
+        url: "https://callpilot.pro/images/og-callpilot.png",
         width: 1200,
         height: 630,
         alt: "CallPilot News",
@@ -31,11 +31,13 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "CallPilot News & ATS Announcements | AI Applicant Screening",
+    title: "News & Releases | CallPilot",
     description: "Official product announcements, ATS integrations, and release notes from CallPilot.",
-    images: ["https://callpilot.pro/og-image.png"],
+    images: ["https://callpilot.pro/images/og-callpilot.png"],
   },
 };
+
+export const revalidate = 3600;
 
 export default function NewsIndexPage() {
   const collectionSchema = {
@@ -43,7 +45,7 @@ export default function NewsIndexPage() {
     "@type": "CollectionPage",
     name: "CallPilot News & Announcements",
     description: "Official product announcements and ATS integration releases.",
-    url: "https://callpilot.pro/news/",
+    url: "https://callpilot.pro/news",
   };
 
   return (
@@ -80,7 +82,7 @@ export default function NewsIndexPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-6">
             {newsArticles.map((article) => {
-              const author = authors[article.authorSlug] || authors["marcus-vance"];
+              const author = authors[article.authorSlug] || authors["steven-peddie"];
               return (
                 <article
                   key={article.slug}
@@ -112,7 +114,7 @@ export default function NewsIndexPage() {
                       </div>
 
                       <h2 className="text-xl font-extrabold text-gray-900 mb-3 line-clamp-2 hover:text-emerald-600 transition-colors">
-                        <Link href={`/news/${article.slug}/`}>{article.h1}</Link>
+                        <Link href={`/news/${article.slug}`}>{article.h1}</Link>
                       </h2>
 
                       <p className="text-sm text-gray-600 mb-6 line-clamp-3 leading-relaxed">
@@ -122,20 +124,17 @@ export default function NewsIndexPage() {
                   </div>
 
                   <div className="p-6 pt-0 border-t border-gray-100 mt-auto flex items-center justify-between">
-                    <Link
-                      href={`/authors/${author.slug}/`}
-                      className="flex items-center gap-2 text-xs font-medium text-gray-700 hover:text-black"
-                    >
+                    <div className="flex items-center gap-2 text-xs font-medium text-gray-700">
                       <img
                         src={author.avatar}
                         alt={author.name}
                         className="w-6 h-6 rounded-full object-cover"
                       />
                       <span>{author.name}</span>
-                    </Link>
+                    </div>
 
                     <Link
-                      href={`/news/${article.slug}/`}
+                      href={`/news/${article.slug}`}
                       className="text-xs font-bold text-black hover:text-emerald-600 inline-flex items-center gap-1"
                     >
                       Read story <ArrowRight className="w-3.5 h-3.5" />

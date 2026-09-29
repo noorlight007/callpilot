@@ -10,7 +10,7 @@ export const PLANS = [
     topUp: "Top-up: $4.45 per screening",
     bestFor: "Getting started with AI screening.",
     cta: "Get Started",
-    href: "/signup?plan=starter",
+    href: "/free-trial?plan=starter",
   },
   {
     name: "Growth",
@@ -20,7 +20,7 @@ export const PLANS = [
     topUp: "Top-up: $3.90 per screening",
     bestFor: "Active hiring: 4x the volume at a lower rate per screening.",
     cta: "Get Started",
-    href: "/signup?plan=growth",
+    href: "/free-trial?plan=growth",
     recommended: true,
   },
   {
@@ -31,7 +31,7 @@ export const PLANS = [
     topUp: "Top-up: $2.95 per screening",
     bestFor: "High-volume hiring: the lowest cost per screening.",
     cta: "Get Started",
-    href: "/signup?plan=pro",
+    href: "/free-trial?plan=pro",
   },
   {
     name: "Enterprise",
@@ -41,7 +41,7 @@ export const PLANS = [
     topUp: "Volume pricing and terms scoped to you",
     bestFor: "Large teams: integrations, volume and terms scoped to you.",
     cta: "Contact Sales",
-    href: "/contact-sales",
+    href: "/get-started?intent=sales",
   },
 ];
 
@@ -59,7 +59,7 @@ export const VOIP_PLANS = [
       "Call forwarding",
       "Calls at low pay-as-you-go rates",
     ],
-    href: "/signup?plan=voip",
+    href: "/get-started?plan=voip",
   },
   {
     name: "CallPilot VoIP + 100 minutes",
@@ -69,7 +69,7 @@ export const VOIP_PLANS = [
       "100 outbound minutes every month",
       "Keep your existing number or choose a new one",
     ],
-    href: "/signup?plan=voip-100",
+    href: "/get-started?plan=voip-100",
   },
   {
     name: "CallPilot VoIP + Automation",
@@ -81,7 +81,7 @@ export const VOIP_PLANS = [
       "Automated workflows",
       "ATS & CRM sync",
     ],
-    href: "/signup?plan=voip-automation",
+    href: "/get-started?plan=voip-automation",
     recommended: true,
   },
 ];
@@ -147,11 +147,11 @@ export const FOOTER = {
     {
       title: "Products",
       links: [
-        { label: "VoIP Phone Lines", href: "/business-voip" },
-        { label: "AI Applicant Screening", href: "/ai-applicant-screening" },
+        { label: "VoIP Phone Lines", href: "/features#voip-phone-lines" },
+        { label: "AI Applicant Screening", href: "/features#ai-applicant-screening" },
         { label: "Automation", href: "/features#automation" },
         { label: "Pricing", href: "/pricing" },
-        { label: "100 Free Credits Trial", href: "/signup" },
+        { label: "100 Free Credits Trial", href: "/free-trial" },
       ],
     },
     {
@@ -178,9 +178,9 @@ export const FOOTER = {
       title: "Legal & trust",
       links: [
         { label: "Privacy Policy", href: "/privacy-policy" },
-        { label: "Terms of Service", href: "/terms" },
+        { label: "Terms of Service", href: "/terms-conditions" },
         { label: "Cookie Policy", href: "/cookie-policy" },
-        { label: "Policies & Compliance", href: "/compliance" },
+        { label: "Policies & Compliance", href: "/policy-compliance" },
       ],
     },
   ],
@@ -191,5 +191,5 @@ export const FOOTER = {
     "Ras Al Khaimah, UAE",
   ],
   whatsapp: { label: "WhatsApp +971 58 592 1525", href: "https://wa.me/971585921525" },
-  linkedin: "https://www.linkedin.com/company/callpilot",
+  linkedin: "https://www.linkedin.com/company/callpilot-ai-call/",
 };

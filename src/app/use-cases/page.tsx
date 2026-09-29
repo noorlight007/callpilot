@@ -1,284 +1,192 @@
-"use client";
-
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import { Button } from "@/components/ui/button";
-import {
-    Briefcase,
-    GraduationCap,
-    Truck,
-    Headphones,
-    Landmark,
-    ShoppingCart,
-    Building2,
-    HeartPulse,
-    Plane,
-    TrendingUp,
-    Car,
-    Wrench,
-    ArrowRight
-} from "lucide-react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
-const sectors = [
-    {
-        icon: Briefcase,
-        title: "Job Applications",
-        useCases: [
-            "Pre-screening candidates",
-            "Interview scheduling",
-            "Application status updates",
-            "Reference checks",
-        ],
-        whyItWorks: "Automates repetitive HR tasks while maintaining a personal touch, reducing time-to-hire by up to 60%.",
-    },
-    {
-        icon: GraduationCap,
-        title: "Education & Training",
-        useCases: [
-            "Enrollment reminders",
-            "Course feedback collection",
-            "Attendance follow-ups",
-            "Student support queries",
-        ],
-        whyItWorks: "Scales personalized communication across large student bodies without additional staff.",
-    },
-    {
-        icon: Truck,
-        title: "Logistics & Transportation",
-        useCases: [
-            "Delivery confirmations",
-            "Route updates",
-            "Driver check-ins",
-            "Customer ETAs",
-        ],
-        whyItWorks: "Provides real-time updates and handles high call volumes during peak delivery times.",
-    },
-    {
-        icon: Headphones,
-        title: "Customer Support & Call Centers",
-        useCases: [
-            "Tier-1 support queries",
-            "Ticket status updates",
-            "Callback scheduling",
-            "Satisfaction surveys",
-        ],
-        whyItWorks: "Handles 80% of routine inquiries, freeing agents for complex issues and reducing wait times.",
-    },
-    {
-        icon: Landmark,
-        title: "Banking, Finance & Insurance",
-        useCases: [
-            "Payment reminders",
-            "Fraud alerts",
-            "Policy renewals",
-            "Loan application updates",
-        ],
-        whyItWorks: "Ensures compliance while delivering secure, personalized financial communications at scale.",
-    },
-    {
-        icon: ShoppingCart,
-        title: "E-commerce & Retail",
-        useCases: [
-            "Order confirmations",
-            "Abandoned cart recovery",
-            "Loyalty program updates",
-            "Return processing",
-        ],
-        whyItWorks: "Increases conversions and customer retention through timely, personalized outreach.",
-    },
-    {
-        icon: Building2,
-        title: "Real Estate",
-        useCases: [
-            "Property inquiries",
-            "Showing scheduling",
-            "Lead qualification",
-            "Contract follow-ups",
-        ],
-        whyItWorks: "Captures leads 24/7 and ensures no opportunity slips through during busy periods.",
-    },
-    {
-        icon: HeartPulse,
-        title: "Healthcare",
-        useCases: [
-            "Appointment reminders",
-            "Prescription refills",
-            "Post-visit follow-ups",
-            "Health surveys",
-        ],
-        whyItWorks: "Reduces no-shows by up to 40% while maintaining HIPAA-compliant patient communication.",
-    },
-    {
-        icon: Plane,
-        title: "Hospitality & Travel",
-        useCases: [
-            "Booking confirmations",
-            "Check-in reminders",
-            "Concierge services",
-            "Feedback collection",
-        ],
-        whyItWorks: "Enhances guest experience with instant responses and personalized recommendations.",
-    },
-    {
-        icon: TrendingUp,
-        title: "Sales & Lead Generation",
-        useCases: [
-            "Cold outreach",
-            "Lead qualification",
-            "Demo scheduling",
-            "Follow-up sequences",
-        ],
-        whyItWorks: "Multiplies sales capacity by qualifying leads at scale before human handoff.",
-    },
-    {
-        icon: Car,
-        title: "Auto Repair Shops",
-        useCases: [
-            "Service reminders",
-            "Appointment booking",
-            "Repair status updates",
-            "Estimate approvals",
-        ],
-        whyItWorks: "Keeps customers informed and books appointments even during busy shop hours.",
-    },
-    {
-        icon: Wrench,
-        title: "Home Services",
-        useCases: [
-            "Appointment scheduling",
-            "Technician ETAs",
-            "Quote follow-ups",
-            "Maintenance reminders",
-        ],
-        whyItWorks: "Captures every lead and coordinates scheduling without tying up office staff.",
-    },
+import Header from "@/components/Header";
+import SiteFooter from "@/components/home/SiteFooter";
+import { FinalCta } from "@/components/home/Sections";
+import { fontClass, font } from "@/components/home/font";
+import s from "@/components/home/landing.module.css";
+import hs from "@/components/home/hero3.module.css";
+import {
+  ArrowRight, Building, Users, Bolt, Phone, Check
+} from "@/components/home/icons";
+
+interface UseCaseBlock {
+  id: string;
+  icon: React.ComponentType;
+  title: string;
+  problem: string;
+  benefits: string[];
+  linkText: string;
+  linkHref: string;
+}
+
+const USE_CASE_BLOCKS: UseCaseBlock[] = [
+  {
+    id: "staffing-agencies",
+    icon: Building,
+    title: "Staffing & recruitment agencies",
+    problem: "Applicants arrive across every client's roles, often out of hours, and the first agency to call wins the candidate.",
+    benefits: [
+      "Every applicant called 24/7, including evenings and weekends",
+      "Role-specific screening questions per client job",
+      "ID and work authorisation chased by WhatsApp, SMS and email",
+      "Results written back to JobAdder, Recruit CRM or Ashby",
+    ],
+    linkText: "Explore AI screening",
+    linkHref: "/features#ai-applicant-screening",
+  },
+  {
+    id: "in-house-talent",
+    icon: Users,
+    title: "In-house talent acquisition",
+    problem: "Hiring managers want a shortlist, not a spreadsheet of unscreened applicants.",
+    benefits: [
+      "Hand hiring managers qualified candidates without adding headcount",
+      "Same questions asked of every applicant, every time",
+      "Recruiter notified only when a candidate is ready to verify",
+    ],
+    linkText: "See integrations",
+    linkHref: "/integrations",
+  },
+  {
+    id: "high-volume-hiring",
+    icon: Bolt,
+    title: "High-volume hiring",
+    problem: "Warehouse, retail, hospitality and care roles can pull hundreds of applicants a week.",
+    benefits: [
+      "Every applicant screened in under 2 minutes",
+      "A “No” on any requirement ends the screen, so recruiters only see qualified people",
+      "Pay per screening: no call, no charge",
+    ],
+    linkText: "See screening plans",
+    linkHref: "/pricing#screening",
+  },
+  {
+    id: "business-phone-lines",
+    icon: Phone,
+    title: "Any business needing a phone line",
+    problem: "Separate apps for calls, WhatsApp, texts and email, and nothing connected.",
+    benefits: [
+      "One low-cost number for calls, WhatsApp, SMS and email",
+      "Forwarding, IVR menus and routing",
+      "Keep your existing number",
+      "From $5.99 per line per month",
+    ],
+    linkText: "See VoIP plans",
+    linkHref: "/pricing#voip",
+  },
 ];
 
-const UseCasesPage = () => {
-    const router = useRouter();
-    return (
-        <div className="min-h-screen bg-background">
-            <Header />
-            <main>
-                {/* Hero Section */}
-                <section className="pt-32 lg:pt-40 pb-16 lg:pb-24 bg-alt">
-                    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="max-w-4xl mx-auto text-center">
-                            <h1 className="text-3xl font-semibold text-headline leading-tight mb-6">
-                                AI Voice for{" "}
-                                <span className="accent-text">Every Industry</span>
-                            </h1>
-                            <p className="text-lg sm:text-xl text-body max-w-2xl mx-auto mb-8">
-                                Discover how CallPilot.pro transforms communication across sectors—from healthcare
-                                to real estate, sales to support.
-                            </p>
-                            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                                <Link href="/try-ai-call">
-                                    <Button variant="cta" size="xl" className="w-full sm:w-auto group" onClick={() => router.push("/try-ai-call")}>
-                                        Try a Free Call
-                                        <ArrowRight size={18} className="ml-1 transition-transform group-hover:translate-x-1" />
-                                    </Button>
-                                </Link>
-                            </div>
-                        </div>
+export default function UseCasesPage() {
+  return (
+    <div className={`${s.page} ${fontClass}`}>
+      <Header />
+
+      <main id="main">
+        {/* Hero Section */}
+        <section className={`${hs.hero} ${font.className}`} style={{ minHeight: "auto", paddingBottom: "60px" }}>
+          <div className={hs.bg} aria-hidden />
+          <div className={hs.container}>
+            <header className={hs.head} style={{ maxWidth: "860px", margin: "0 auto", textAlign: "center" }}>
+              <p className={hs.eyebrow} style={{ justifyContent: "center" }}>
+                <span className={hs.dot} /> Use cases
+              </p>
+              <h1 className={hs.h1}>
+                From one vacancy to thousands. <span className={hs.accent}>CallPilot handles every call.</span>
+              </h1>
+              <p className={hs.lead} style={{ maxWidth: "760px", margin: "18px auto 0" }}>
+                Built for recruitment first. Useful to any business that needs a phone line.
+              </p>
+            </header>
+          </div>
+        </section>
+
+        {/* Four Use Case Blocks */}
+        <section className={`${s.section} ${s.sectionWhite}`} style={{ paddingTop: "40px" }}>
+          <div className={s.container}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "60px", maxWidth: "960px", margin: "0 auto" }}>
+              {USE_CASE_BLOCKS.map((b, idx) => {
+                const Icon = b.icon;
+                const isEven = idx % 2 === 1;
+
+                return (
+                  <article
+                    key={b.id}
+                    id={b.id}
+                    className={s.card}
+                    style={{
+                      padding: "clamp(24px, 4vw, 48px)",
+                      background: isEven ? "var(--soft)" : "#ffffff",
+                      border: "1px solid var(--line)",
+                      borderRadius: "22px",
+                      boxShadow: "0 4px 20px rgba(0,0,0,0.03)",
+                    }}
+                  >
+                    <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "20px" }}>
+                      <span className={s.iconBoxDark} style={{ margin: 0 }}>
+                        <Icon />
+                      </span>
+                      <h2 className={s.h2} style={{ fontSize: "clamp(24px, 2.5vw, 34px)" }}>
+                        {b.title}
+                      </h2>
                     </div>
-                </section>
 
-                {/* Sectors Grid */}
-                <section className="py-16 lg:py-24">
-                    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="max-w-3xl mx-auto text-center mb-12 lg:mb-16">
-                            <h2 className="text-2xl font-semibold text-headline mb-4">
-                                Explore by Industry
-                            </h2>
-                            <p className="text-lg text-body">
-                                See how CallPilot.pro adapts to your specific business needs and use cases.
-                            </p>
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
-                            {sectors.map((sector) => (
-                                <div
-                                    key={sector.title}
-                                    className="group bg-card rounded-xl border border-border-card card-hover overflow-hidden"
-                                >
-                                    {/* Card Header */}
-                                    <div className="p-6 border-b border-border">
-                                        <div className="flex items-center gap-4 mb-3">
-                                            <div className="w-12 h-12 rounded-lg accent-tint-bg flex items-center justify-center group-hover:bg-accent/20 transition-colors">
-                                                <sector.icon className="w-6 h-6 accent-text" />
-                                            </div>
-                                            <h3 className="text-lg font-semibold text-headline">
-                                                {sector.title}
-                                            </h3>
-                                        </div>
-                                    </div>
-
-                                    {/* Card Body */}
-                                    <div className="p-6 space-y-4">
-                                        {/* Use Cases */}
-                                        <div>
-                                            <h4 className="text-sm font-semibold text-headline uppercase tracking-wide mb-2">
-                                                Use Cases
-                                            </h4>
-                                            <ul className="space-y-1.5">
-                                                {sector.useCases.map((useCase) => (
-                                                    <li key={useCase} className="flex items-start gap-2 text-sm text-body">
-                                                        <span className="accent-text mt-1">•</span>
-                                                        {useCase}
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-
-                                        {/* Why It Works */}
-                                        <div className="pt-3 border-t border-border">
-                                            <h4 className="text-sm font-semibold text-headline uppercase tracking-wide mb-2">
-                                                Why It Works
-                                            </h4>
-                                            <p className="text-sm text-body leading-relaxed">
-                                                {sector.whyItWorks}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
+                    <div style={{ marginBottom: "24px" }}>
+                      <h3
+                        style={{
+                          fontSize: "14px",
+                          fontWeight: 700,
+                          textTransform: "uppercase",
+                          letterSpacing: "0.05em",
+                          color: "#c2410c",
+                          marginBottom: "6px",
+                        }}
+                      >
+                        The Problem
+                      </h3>
+                      <p className={s.p} style={{ fontSize: "17px", color: "var(--ink)" }}>
+                        {b.problem}
+                      </p>
                     </div>
-                </section>
 
-                {/* CTA Section */}
-                <section className="py-16 lg:py-24 bg-alt">
-                    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="max-w-4xl mx-auto text-center">
-                            <h2 className="text-3xl font-semibold text-headline mb-4">
-                                Don't See Your Industry?
-                            </h2>
-                            <p className="text-lg text-body max-w-2xl mx-auto mb-8">
-                                CallPilot.pro is highly customizable. Contact us to discuss how we can tailor
-                                our solution for your specific business needs.
-                            </p>
-                            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                                <Link href="/get-started">
-                                    <Button variant="cta" size="xl" className="w-full sm:w-auto group">
-                                        Contact Sales
-                                        <ArrowRight size={18} className="ml-1 transition-transform group-hover:translate-x-1" />
-                                    </Button>
-                                </Link>
-                                <Link href="/pricing">
-                                    <Button variant="ctaSecondary" size="xl" className="w-full sm:w-auto">
-                                        View Pricing
-                                    </Button>
-                                </Link>
-                            </div>
-                        </div>
+                    <div>
+                      <h3
+                        style={{
+                          fontSize: "14px",
+                          fontWeight: 700,
+                          textTransform: "uppercase",
+                          letterSpacing: "0.05em",
+                          color: "#0f7a3d",
+                          marginBottom: "10px",
+                        }}
+                      >
+                        With CallPilot
+                      </h3>
+                      <ul className={s.planFeat} style={{ marginBottom: "28px" }}>
+                        {b.benefits.map((benefit) => (
+                          <li key={benefit} style={{ fontSize: "16px", padding: "6px 0" }}>
+                            <Check /> {benefit}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                </section>
-            </main>
-            <Footer />
-        </div>
-    );
-};
 
-export default UseCasesPage;
+                    <div>
+                      <Link href={b.linkHref} className={`${s.btn} ${s.btnDark}`}>
+                        {b.linkText} <ArrowRight className={s.btnIcon} />
+                      </Link>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Closing CTA */}
+        <FinalCta />
+      </main>
+
+      <SiteFooter />
+    </div>
+  );
+}

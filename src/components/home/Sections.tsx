@@ -264,7 +264,7 @@ export function FaqSection() {
         <div>
           <p className={s.kicker}>FAQ</p>
           <h2 id="faq-title" className={s.h2}>Questions, answered.</h2>
-          <p className={s.p}>Can&apos;t find what you need? <Link href="/contact-sales" className={s.inlineLink}>Talk to our team</Link>.</p>
+          <p className={s.p}>Can&apos;t find what you need? <Link href="/get-started?intent=sales" className={s.inlineLink}>Talk to our team</Link>.</p>
         </div>
         <div className={s.faqList}>
           {FAQS.map((f) => (
@@ -291,7 +291,7 @@ export function FinalCta() {
           </div>
           <div className={s.finalBtns}>
             <Link href={LINKS.bookDemo} className={`${s.btn} ${s.btnDark}`}>Book a Demo <ArrowRight className={s.btnIcon} /></Link>
-            <Link href="/contact-sales" className={`${s.btn} ${s.btnGhost}`}>Contact Sales</Link>
+            <Link href="/get-started?intent=sales" className={`${s.btn} ${s.btnGhost}`}>Contact Sales</Link>
           </div>
         </div>
       </div>

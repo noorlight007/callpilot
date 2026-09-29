@@ -26,10 +26,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const article = getArticleBySlug(slug);
   if (!article || article.type !== "news") return {};
 
-  const canonicalUrl = `https://callpilot.pro/news/${article.slug}/`;
+  const canonicalUrl = `https://callpilot.pro/news/${article.slug}`;
+  const cleanTitle = (article.seoTitle || article.title).replace(/\s*\|\s*CallPilot(\.pro)?$/i, "").trim();
 
   return {
-    title: article.seoTitle,
+    title: cleanTitle,
     description: article.metaDescription,
     robots: {
       index: true,
@@ -39,14 +40,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       canonical: canonicalUrl,
     },
     openGraph: {
-      title: article.seoTitle,
+      title: cleanTitle,
       description: article.metaDescription,
       url: canonicalUrl,
       siteName: "CallPilot",
       type: "article",
       publishedTime: article.isoDate,
       modifiedTime: article.modifiedDate || article.isoDate,
-      authors: [authors[article.authorSlug]?.name || "Marcus Vance"],
+      authors: [authors[article.authorSlug]?.name || "Steven Peddie"],
       images: [
         {
           url: article.featuredImage,
@@ -58,7 +59,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: article.seoTitle,
+      title: cleanTitle,
       description: article.metaDescription,
       images: [article.featuredImage],
     },

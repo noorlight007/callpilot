@@ -117,6 +117,18 @@ export default function BusinessVoipNewsPage() {
           <header className={styles.articleHeader}>
             <p className={styles.articleCategory}>Product News</p>
             <h1>{HEADLINE}</h1>
+            <div style={{
+              background: "#eff6ff",
+              border: "1px solid #bfdbfe",
+              borderRadius: "12px",
+              padding: "14px 18px",
+              margin: "20px 0",
+              color: "#1e3a8a",
+              fontWeight: 500,
+              fontSize: "15px"
+            }}>
+              <strong>Update:</strong> CallPilot VoIP is now live. <Link href="/pricing#voip" style={{ color: "#1d4ed8", fontWeight: 700, textDecoration: "underline" }}>See current plans →</Link>
+            </div>
             <p className={styles.articleIntro}>
               CallPilot is expanding with a new Business VoIP phone system, bringing business
               calls, WhatsApp, SMS and ATS/CRM integration together in one platform.

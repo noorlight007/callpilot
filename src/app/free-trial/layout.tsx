@@ -1,20 +1,20 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "100 Free Screening Credits | CallPilot Free Trial",
+  title: "100 Free AI Screening Calls",
   description: "Screen your live vacancy with 100 free AI applicant screening calls. Connects to Ashby, Recruit CRM, JobAdder, and more. No credit card required.",
   alternates: {
-    canonical: "https://callpilot.pro/free-trial/",
+    canonical: "https://callpilot.pro/free-trial",
   },
   openGraph: {
-    title: "100 Free Screening Credits | CallPilot Free Trial",
+    title: "100 Free AI Screening Calls | CallPilot",
     description: "Screen your live vacancy with 100 free AI applicant screening calls. Connects to Ashby, Recruit CRM, JobAdder, and more. No credit card required.",
-    url: "https://callpilot.pro/free-trial/",
+    url: "https://callpilot.pro/free-trial",
     siteName: "CallPilot",
     type: "website",
     images: [
       {
-        url: "https://callpilot.pro/og-image.png",
+        url: "https://callpilot.pro/images/og-callpilot.png",
         width: 1200,
         height: 630,
         alt: "CallPilot 100 Free Screening Credits",
@@ -23,9 +23,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "100 Free Screening Credits | CallPilot Free Trial",
+    title: "100 Free AI Screening Calls | CallPilot",
     description: "Screen your live vacancy with 100 free AI applicant screening calls. Connects to Ashby, Recruit CRM, JobAdder, and more. No credit card required.",
-    images: ["https://callpilot.pro/og-image.png"],
+    images: ["https://callpilot.pro/images/og-callpilot.png"],
   },
 };
 
