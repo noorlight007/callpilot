@@ -105,9 +105,10 @@ function CustomSelect({ id, value, options, onChange, placeholder, iconClass }: 
 
 interface FormInnerProps {
   isDemo?: boolean;
+  heading?: string;
 }
 
-function GetStartedFormInner({ isDemo = false }: FormInnerProps) {
+function GetStartedFormInner({ isDemo = false, heading = "Get Started with CallPilot" }: FormInnerProps) {
   const searchParams = useSearchParams();
   const planParam = searchParams.get("plan") || "";
   const intentParam = searchParams.get("intent") || "";
@@ -519,7 +520,7 @@ function GetStartedFormInner({ isDemo = false }: FormInnerProps) {
             </div>
 
             <div className="wordmark">
-              <h1>{isDemo ? <>Book a <span>CallPilot Demo</span></> : <>Get Started with <span>CallPilot</span></>}</h1>
+              <h1>{heading}</h1>
               <p>VoIP lines · AI screening calls · Automation</p>
             </div>
 
@@ -890,10 +891,10 @@ function GetStartedFormInner({ isDemo = false }: FormInnerProps) {
   );
 }
 
-export default function GetStartedForm({ isDemo = false }: FormInnerProps) {
+export default function GetStartedForm({ isDemo = false, heading = "Get Started with CallPilot" }: FormInnerProps) {
   return (
     <Suspense fallback={<div className="page-shell-wrapper"><div className="text-center p-8">Loading...</div></div>}>
-      <GetStartedFormInner isDemo={isDemo} />
+      <GetStartedFormInner isDemo={isDemo} heading={heading} />
     </Suspense>
   );
 }

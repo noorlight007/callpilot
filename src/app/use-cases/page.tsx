@@ -9,6 +9,13 @@ import {
   ArrowRight, Building, Users, Bolt, Phone, Check
 } from "@/components/home/icons";
 
+export const metadata = {
+  title: "Who CallPilot Is For: Agencies, TA Teams & Any Business",
+  description:
+    "How staffing agencies, in-house talent teams and high-volume employers use CallPilot's AI screening calls, and how any business uses CallPilot VoIP lines.",
+  alternates: { canonical: "https://callpilot.pro/use-cases" },
+};
+
 interface UseCaseBlock {
   id: string;
   icon: React.ComponentType;

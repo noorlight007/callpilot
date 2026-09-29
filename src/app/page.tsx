@@ -9,11 +9,14 @@ import {
 } from "@/components/home/Sections";
 import SiteFooter from "@/components/home/SiteFooter";
 import { FAQS } from "@/components/home/content";
+import CallPilotSchema from "@/components/seo/CallPilotSchema";
 
 const SITE = "https://callpilot.pro";
 const TITLE = "VoIP Phone Lines + AI Applicant Screening Calls | CallPilot";
 const DESCRIPTION =
   "Low-cost VoIP phone lines with WhatsApp, SMS and email automation, plus AI applicant screening calls that qualify every applicant 24/7 in under 2 minutes.";
+
+export const revalidate = 300; // rebuild at most every 5 minutes, never serve a stale build for days
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
@@ -39,42 +42,10 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large" } },
 };
 
-// Structured data: verified facts only.
-const jsonLd = {
-  "@context": "https://schema.org/",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": `${SITE}/#org`,
-      name: "CallPilot",
-      url: SITE,
-      logo: `${SITE}/images/callpilot-logo.png`,
-      sameAs: [
-        "https://www.linkedin.com/company/callpilot-ai-call/",
-        "https://www.instagram.com/callpilot.pro/",
-        "https://www.facebook.com/profile.php?id=61588398835586",
-      ],
-      parentOrganization: {
-        "@type": "Organization",
-        name: "Swiftwave FZ-LLC",
-      },
-    },
-    {
-      "@type": "WebSite",
-      "@id": `${SITE}/#website`,
-      url: SITE,
-      name: "CallPilot",
-      publisher: {
-        "@id": `${SITE}/#org`,
-      },
-    },
-  ],
-};
-
 export default function Page() {
   return (
     <div className={`${s.page} ${fontClass}`}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <CallPilotSchema />
       <Header />
       <main id="main">
         <HeroThree /> 
@@ -92,3 +63,4 @@ export default function Page() {
     </div>
   );
 }
+
