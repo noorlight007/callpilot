@@ -436,55 +436,6 @@ const RDUKDocumentUploader = () => {
         }
     };
 
-    if (isSubmitted) {
-        return (
-            <main className="mx-auto min-h-screen w-full max-w-[480px] bg-white px-5 pb-7 pt-5 text-[#0b0f17]">
-                <div className="border-b border-[#0b0f17] pb-4 text-center">
-                    <Image
-                        src="/images/rd-logo.png"
-                        alt="Recruitment Direct"
-                        width={96}
-                        height={96}
-                        priority
-                        className="mx-auto h-24 w-24 object-contain"
-                    />
-                </div>
-
-                <section className="py-8 text-center" aria-live="polite">
-                    <div className="mx-auto mb-6 flex h-[120px] w-[120px] items-center justify-center rounded-full bg-[#e3f4ea]">
-                        <CheckCircle2 className="h-16 w-16 text-[#15803d]" strokeWidth={2.6} />
-                    </div>
-                    <h1 className="text-[30px] font-extrabold leading-tight text-[#0b0f17]">
-                        Documents Submitted
-                    </h1>
-                    <p className="mx-auto mt-3 max-w-[420px] text-base leading-relaxed text-[#0b0f17]">
-                        Thank you. Your documents have been successfully uploaded. We will
-                        email you shortly.
-                    </p>
-
-                    {warnings.length > 0 && (
-                        <div className="mt-5 rounded-lg border border-amber-200 bg-amber-50 p-3 text-left text-sm text-amber-900">
-                            {warnings.map((warning) => (
-                                <p key={warning} className="text-amber-900">
-                                    {warning}
-                                </p>
-                            ))}
-                        </div>
-                    )}
-
-                    <a
-                        href="https://www.rd1.co.uk"
-                        className="mx-[17.5px] mt-6 flex h-[54px] w-[calc(100%-35px)] items-center justify-center rounded-xl border-2 border-black bg-gradient-to-b from-[#2fbf6a] via-[#15803d] to-[#0e5c2b] px-4 text-base font-extrabold tracking-normal text-white no-underline shadow-[inset_0_1px_0_rgba(255,255,255,.35),inset_0_-3px_0_rgba(0,0,0,.25),0_0_0_2.5px_#fff,0_0_0_4.5px_#000,0_10px_26px_rgba(21,128,61,.45)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-[#1f5fe0]"
-                    >
-                        Return to rd1.co.uk
-                    </a>
-                </section>
-
-                <FormFooter />
-            </main>
-        );
-    }
-
     return (
         <main className="mx-auto min-h-screen w-full max-w-[480px] bg-white px-5 pb-7 pt-5 text-[#0b0f17]">
             <div className="border-b border-[#0b0f17] pb-4 text-center">
@@ -669,6 +620,44 @@ const RDUKDocumentUploader = () => {
             </form>
 
             <FormFooter />
+
+            {isSubmitted && (
+                <div
+                    className="fixed inset-0 z-50 flex items-center justify-center bg-black/55 px-5"
+                    role="presentation"
+                >
+                    <section
+                        aria-labelledby="success-modal-title"
+                        aria-live="polite"
+                        className="w-full max-w-[420px] rounded-[10px] bg-white px-5 py-7 text-center shadow-2xl"
+                        role="dialog"
+                        aria-modal="true"
+                    >
+                        <div className="mx-auto mb-5 flex h-[92px] w-[92px] items-center justify-center rounded-full bg-[#e3f4ea]">
+                            <CheckCircle2 className="h-12 w-12 text-[#15803d]" strokeWidth={2.6} />
+                        </div>
+                        <h2
+                            id="success-modal-title"
+                            className="text-2xl font-extrabold leading-tight text-[#0b0f17]"
+                        >
+                            Documents Submitted
+                        </h2>
+                        <p className="mx-auto mt-3 max-w-[340px] text-base leading-relaxed text-[#0b0f17]">
+                            Thank you. Your documents have been successfully uploaded.
+                        </p>
+
+                        {warnings.length > 0 && (
+                            <div className="mt-5 rounded-lg border border-amber-200 bg-amber-50 p-3 text-left text-sm text-amber-900">
+                                {warnings.map((warning) => (
+                                    <p key={warning} className="text-amber-900">
+                                        {warning}
+                                    </p>
+                                ))}
+                            </div>
+                        )}
+                    </section>
+                </div>
+            )}
         </main>
     );
 };
