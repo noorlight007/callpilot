@@ -89,7 +89,7 @@ const uploadEndpoint = () => {
         process.env.NEXT_PUBLIC_BASE_URL || "https://api.callpilot.pro/api/v1"
     ).replace(/\/+$/, "");
 
-    return `${apiBaseUrl}/pre-application/rd-document-upload/`;
+    return `${apiBaseUrl}/core/pre-application/rd-document-upload/`;
 };
 
 type FileDropzoneProps = {
