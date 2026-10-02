@@ -95,8 +95,8 @@ const formSchema = z.object({
     mobileNumber: z.string().trim().min(1, "Mobile number is required."),
     email: z.string().trim().min(1, "Email address is required.").email("Enter a valid email address."),
     engagementType: z.enum(["PAYE", "CIS"], {
-        required_error: "Choose an engagement type.",
-        invalid_type_error: "Choose an engagement type.",
+        required_error: "Choose a payment method.",
+        invalid_type_error: "Choose a payment method.",
     }),
     identification: fileListSchema,
     positionDocuments: fileListSchema,
@@ -109,6 +109,10 @@ type QueryParams = {
     get: (name: string) => string | null;
 };
 
+const UID_PARAM_NAMES = ["uid", "candidate_uid", "candidateUid", "candidate_id", "candidateId"];
+const INTERVIEW_UID_PARAM_NAMES = ["interview_uid", "interviewUid", "interviewUID", "interview_id", "interviewId"];
+const PLATFORM_PARAM_NAMES = ["platform"];
+
 type SubmitState = {
     type: "success" | "error";
     message: string;
@@ -119,6 +123,32 @@ const getFirstValue = (data: Record<string, any> | null | undefined, keys: strin
         const value = data?.[key];
         if (typeof value === "string" && value.trim()) {
             return value.trim();
+        }
+    }
+
+    return "";
+};
+
+const cleanParamValue = (value: string | null | undefined) => {
+    const trimmed = value?.trim();
+    return trimmed ? trimmed.replace(/\\+$/, "") : "";
+};
+
+const getSearchParamValue = (searchParams: QueryParams, names: string[]) => {
+    for (const name of names) {
+        const value = cleanParamValue(searchParams.get(name));
+        if (value) {
+            return value;
+        }
+    }
+
+    if (typeof window !== "undefined") {
+        const runtimeSearchParams = new URLSearchParams(window.location.search);
+        for (const name of names) {
+            const value = cleanParamValue(runtimeSearchParams.get(name));
+            if (value) {
+                return value;
+            }
         }
     }
 
@@ -358,9 +388,9 @@ const EngagementOption = ({
 
 const DocumentUploader = () => {
     const searchParams = useSearchParams();
-    const uid = searchParams.get("uid");
-    const interviewUid = searchParams.get("interview_uid");
-    const platform = searchParams.get("platform");
+    const uid = getSearchParamValue(searchParams, UID_PARAM_NAMES);
+    const interviewUid = getSearchParamValue(searchParams, INTERVIEW_UID_PARAM_NAMES);
+    const platform = getSearchParamValue(searchParams, PLATFORM_PARAM_NAMES);
     const candidate = interviewUid ? use(getCandidatePromise(interviewUid, uid)) : null;
 
     const queryDefaults = useMemo(
@@ -382,6 +412,14 @@ const DocumentUploader = () => {
                 "",
             email: getFirstValue(candidate, ["email", "email_address", "emailAddress"]) || searchParams.get("email") || "",
             engagementType: getFirstValue(candidate, [
+                "payment_method",
+                "paymentMethod",
+                "engagement_type",
+                "engagementType",
+                "employment_type",
+            ]).toUpperCase() || getSearchParamValue(searchParams, [
+                "payment_method",
+                "paymentMethod",
                 "engagement_type",
                 "engagementType",
                 "employment_type",
@@ -420,11 +458,6 @@ const DocumentUploader = () => {
     const positionDocumentFiles = watch("positionDocuments") || [];
     const engagementType = watch("engagementType");
 
-    const uploadEndpoint = useMemo(
-        () => buildUploadEndpoint(uid, interviewUid, platform),
-        [uid, interviewUid, platform]
-    );
-
     const setFiles = useCallback(
         (fieldName: UploadFieldName, files: File[]) => {
             setValue(fieldName, files, {
@@ -438,8 +471,11 @@ const DocumentUploader = () => {
 
     const onSubmit = async (values: FormValues) => {
         setSubmitState(null);
+        const resolvedUid = uid || getSearchParamValue(searchParams, UID_PARAM_NAMES);
+        const resolvedInterviewUid = interviewUid || getSearchParamValue(searchParams, INTERVIEW_UID_PARAM_NAMES);
+        const resolvedPlatform = platform || getSearchParamValue(searchParams, PLATFORM_PARAM_NAMES);
 
-        if (!uid || !interviewUid) {
+        if (!resolvedUid || !resolvedInterviewUid) {
             setSubmitState({
                 type: "error",
                 message: "This upload link is missing required candidate details.",
@@ -451,16 +487,18 @@ const DocumentUploader = () => {
 
         try {
             const formData = new FormData();
-            formData.append("uid", uid);
-            formData.append("interview_uid", interviewUid);
+            formData.append("uid", resolvedUid);
+            formData.append("interview_uid", resolvedInterviewUid);
             formData.append("full_name", values.fullName);
             formData.append("mobile_number", values.mobileNumber);
             formData.append("email", values.email);
             formData.append("engagement_type", values.engagementType);
+            formData.append("payment_method", values.engagementType);
+            formData.append("paymentMethod", values.engagementType);
             appendFiles(formData, "identification", values.identification);
             appendFiles(formData, "documents_relevant_to_position", values.positionDocuments);
 
-            const response = await fetch(uploadEndpoint, {
+            const response = await fetch(buildUploadEndpoint(resolvedUid, resolvedInterviewUid, resolvedPlatform), {
                 method: "POST",
                 body: formData,
             });
@@ -585,7 +623,7 @@ const DocumentUploader = () => {
                         </div>
 
                         <fieldset className="space-y-3">
-                            <legend className="text-sm font-bold text-slate-950">Engagement Type *</legend>
+                            <legend className="text-sm font-bold text-slate-950">Payment Method *</legend>
                             <EngagementOption
                                 value="PAYE"
                                 selectedValue={engagementType}
