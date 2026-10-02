@@ -1,12 +1,17 @@
 "use client";
 
 import React from "react";
-import { MessageCircle } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 const WhatsAppWidget = () => {
+    const pathname = usePathname();
     const phoneNumber = "+971585921525"; // Placeholder: update with actual number if needed
     const message = "Hello! I have a question about CallPilot.";
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+    if (pathname?.startsWith("/rd/document-uploader")) {
+        return null;
+    }
 
     return (
         <a
