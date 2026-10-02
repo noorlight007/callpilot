@@ -1,639 +1,688 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import Image from "next/image";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import {
-    Upload,
-    Calendar as CalendarIcon,
-    CheckCircle2,
-    AlertCircle,
-    ArrowRight,
-    X,
-    FileUp
-} from "lucide-react";
-import { format } from "date-fns";
+import { AlertCircle, CheckCircle2, FileText, Loader2, Lock, Upload, X } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 
-import { Button } from "@/components/ui/button";
-import {
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { Calendar } from "@/components/ui/calendar";
-import { Badge } from "@/components/ui/badge";
-import {
-    AlertDialog,
-    AlertDialogAction,
-    AlertDialogContent,
-    AlertDialogDescription,
-    AlertDialogFooter,
-    AlertDialogHeader,
-    AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
 import { cn } from "@/lib/utils";
-import logo from "@/assets/call_pilot_logo.png";
 
-const documentLabels = [
-    "qualification_card_front", "qualification_card_back", "certificate_1", "certificate_2",
-    "passport", "visa", "birth_certificate", "p45_if_not_working",
-    "drivers_license_front", "drivers_license_back", "driver_digi_card_front",
-    "driver_digi_card_back", "driver_cpc_card_front", "driver_cpc_card_back", "disclosure"
-];
+const MAX_FILE_SIZE = 10 * 1024 * 1024;
+const ALLOWED_FILE_TYPES = ["application/pdf", "image/jpeg", "image/png"];
 
-const documentTypes = [
-    { id: "qualification_card_front", label: "Qualification Card (Front)", hasExpiry: true },
-    { id: "qualification_card_back", label: "Qualification Card (Back)", hasExpiry: true },
-    { id: "certificate_1", label: "Certificate 1", hasExpiry: true },
-    { id: "certificate_2", label: "Certificate 2", hasExpiry: true },
-    { id: "passport", label: "Passport", hasExpiry: true },
-    { id: "visa", label: "Visa", hasExpiry: true },
-    { id: "birth_certificate", label: "Birth Certificate", hasExpiry: true },
-    { id: "p45_if_not_working", label: "P45 (if not working)", hasExpiry: true },
-    { id: "drivers_license_front", label: "Drivers Licence (Front)", hasExpiry: true },
-    { id: "drivers_license_back", label: "Drivers Licence (Back)", hasExpiry: true },
-    { id: "driver_digi_card_front", label: "Driver Digi-Card (Front)", hasExpiry: true },
-    { id: "driver_digi_card_back", label: "Driver Digi-Card (Back)", hasExpiry: true },
-    { id: "driver_cpc_card_front", label: "Driver CPC Card (Front)", hasExpiry: true },
-    { id: "driver_cpc_card_back", label: "Driver CPC Card (Back)", hasExpiry: true },
-    { id: "disclosure", label: "Disclosure", hasExpiry: true, labelEx: "Disclosure Issue Date" },
-];
+const isFile = (file: unknown): file is File => {
+    return typeof File !== "undefined" && file instanceof File;
+};
 
-const formSchema = z.object({
-    firstName: z.string().trim().min(1, "First Name is required"),
-    lastName: z.string().trim().min(1, "Last Name is required"),
-    email: z.string().trim().min(1, "Email is required").email("Invalid email address"),
-    availableFromDate: z.date().optional(),
-
-    qualification_card_front: z.array(z.any()).optional(),
-    qualification_card_front_date: z.date().optional(),
-
-    qualification_card_back: z.array(z.any()).optional(),
-    qualification_card_back_date: z.date().optional(),
-
-    certificate_1: z.array(z.any()).optional(),
-    certificate_1_date: z.date().optional(),
-
-    certificate_2: z.array(z.any()).optional(),
-    certificate_2_date: z.date().optional(),
-
-    passport: z.array(z.any()).optional(),
-    passport_date: z.date().optional(),
-
-    visa: z.array(z.any()).optional(),
-    visa_date: z.date().optional(),
-
-    birth_certificate: z.array(z.any()).optional(),
-    birth_certificate_date: z.date().optional(),
-
-    p45_if_not_working: z.array(z.any()).optional(),
-    p45_if_not_working_date: z.date().optional(),
-
-    drivers_license_front: z.array(z.any()).optional(),
-    drivers_license_front_date: z.date().optional(),
-
-    drivers_license_back: z.array(z.any()).optional(),
-    drivers_license_back_date: z.date().optional(),
-
-    driver_digi_card_front: z.array(z.any()).optional(),
-    driver_digi_card_front_date: z.date().optional(),
-
-    driver_digi_card_back: z.array(z.any()).optional(),
-    driver_digi_card_back_date: z.date().optional(),
-
-    driver_cpc_card_front: z.array(z.any()).optional(),
-    driver_cpc_card_front_date: z.date().optional(),
-
-    driver_cpc_card_back: z.array(z.any()).optional(),
-    driver_cpc_card_back_date: z.date().optional(),
-
-    disclosure: z.array(z.any()).optional(),
-    disclosure_date: z.date().optional(),
-
-    skills: z.array(z.string()).optional(),
-    uid: z.string().optional(),
-    interview_uid: z.string().optional(),
-}).superRefine((data, ctx) => {
-    // Check if at least one document has a file uploaded
-    const hasAtLeastOneDoc = documentLabels.some((docId) => {
-        const fileValue = data[docId as keyof typeof data];
-        return fileValue && Array.isArray(fileValue) && fileValue.length > 0;
-    });
-
-    if (!hasAtLeastOneDoc) {
-        documentLabels.forEach((docId) => {
-            ctx.addIssue({
-                code: z.ZodIssueCode.custom,
-                message: "At least one document must be uploaded.",
-                path: [docId],
-            });
-            ctx.addIssue({
-                code: z.ZodIssueCode.custom,
-                message: "Date Required",
-                path: [`${docId}_date`],
-            });
-        });
-    } else {
-        // If at least one document is present, validate all fields pair-wise:
-        // if file is provided, date is required. if date is provided, file is required.
-        documentLabels.forEach((docId) => {
-            const fileValue = data[docId as keyof typeof data];
-            const dateValue = data[`${docId}_date` as keyof typeof data];
-
-            const hasFile = fileValue && Array.isArray(fileValue) && fileValue.length > 0;
-            const hasDate = !!dateValue;
-
-            if (hasFile && !hasDate) {
+const fileListSchema = z
+    .array(z.any())
+    .min(1, "Choose at least one file.")
+    .superRefine((files, ctx) => {
+        files.forEach((file, index) => {
+            if (!isFile(file)) {
                 ctx.addIssue({
                     code: z.ZodIssueCode.custom,
-                    message: "Expiration Date is required when a document is provided",
-                    path: [docId],
+                    message: "Invalid file selected.",
+                    path: [index],
                 });
+                return;
+            }
+
+            if (!ALLOWED_FILE_TYPES.includes(file.type)) {
                 ctx.addIssue({
                     code: z.ZodIssueCode.custom,
-                    message: "Expiration Date is required when a document is provided",
-                    path: [`${docId}_date`],
+                    message: "Only PDF, JPG or PNG files are allowed.",
+                    path: [index],
                 });
-            } else if (!hasFile && hasDate) {
+            }
+
+            if (file.size > MAX_FILE_SIZE) {
                 ctx.addIssue({
                     code: z.ZodIssueCode.custom,
-                    message: "Document file is required when a date is provided",
-                    path: [docId],
-                });
-                ctx.addIssue({
-                    code: z.ZodIssueCode.custom,
-                    message: "Document file is required when a date is provided",
-                    path: [`${docId}_date`],
+                    message: "Each file must be 10MB or less.",
+                    path: [index],
                 });
             }
         });
-    }
+    });
+
+const formSchema = z.object({
+    fullName: z.string().trim().min(1, "Full name is required."),
+    mobileNumber: z.string().trim().min(1, "Mobile number is required."),
+    email: z.string().trim().min(1, "Email address is required.").email("Enter a valid email address."),
+    engagementType: z.enum(["PAYE", "CIS"], {
+        required_error: "Choose an engagement type.",
+        invalid_type_error: "Choose an engagement type.",
+    }),
+    identification: fileListSchema,
+    positionDocuments: fileListSchema,
 });
 
 type FormValues = z.infer<typeof formSchema>;
+type EngagementType = FormValues["engagementType"];
+type UploadFieldName = "identification" | "positionDocuments";
 
-const Dropzone = React.forwardRef<HTMLInputElement, { label: string; id: string; value: any; onChange: (files: File[]) => void; onBlur?: () => void; name?: string; hasError?: boolean }>(
-    ({ label, id, value, onChange, onBlur, name, hasError }, ref) => {
-        const [dragActive, setDragActive] = useState(false);
-        const files = (value as File[]) || [];
+type SubmitState = {
+    type: "success" | "error";
+    message: string;
+} | null;
 
-        const handleDrag = (e: React.DragEvent) => {
-            e.preventDefault(); e.stopPropagation();
-            if (e.type === "dragenter" || e.type === "dragover") setDragActive(true);
-            else if (e.type === "dragleave") setDragActive(false);
-        };
+const getApiBaseUrl = () => {
+    return (process.env.NEXT_PUBLIC_BASE_URL || "https://api.callpilot.pro/api/v1").replace(/\/+$/, "");
+};
 
-        const handleDrop = (e: React.DragEvent) => {
-            e.preventDefault(); e.stopPropagation();
-            setDragActive(false);
-            if (e.dataTransfer.files) {
-                const newFiles = Array.from(e.dataTransfer.files);
-                onChange([...files, ...newFiles]);
+const appendFiles = (formData: FormData, key: string, files: File[]) => {
+    files.forEach((file) => {
+        formData.append(key, file);
+    });
+};
+
+const getFirstValue = (data: Record<string, any>, keys: string[]) => {
+    for (const key of keys) {
+        const value = data?.[key];
+        if (typeof value === "string" && value.trim()) {
+            return value.trim();
+        }
+    }
+
+    return "";
+};
+
+const parseResponseBody = async (response: Response) => {
+    const text = await response.text();
+
+    if (!text) {
+        return {};
+    }
+
+    try {
+        return JSON.parse(text);
+    } catch {
+        return { message: text };
+    }
+};
+
+const getPayloadMessage = (payload: any, fallback: string) => {
+    if (typeof payload?.message === "string") return payload.message;
+    if (typeof payload?.detail === "string") return payload.detail;
+    if (typeof payload?.error === "string") return payload.error;
+    if (Array.isArray(payload?.errors) && payload.errors.length > 0) return payload.errors.join(" ");
+    return fallback;
+};
+
+const getErrorMessage = (error: unknown): string | undefined => {
+    if (!error) {
+        return undefined;
+    }
+
+    if (typeof error === "object" && "message" in error) {
+        const message = (error as { message?: unknown }).message;
+        if (typeof message === "string") {
+            return message;
+        }
+    }
+
+    if (Array.isArray(error)) {
+        for (const item of error) {
+            const message = getErrorMessage(item);
+            if (message) {
+                return message;
             }
-        };
+        }
+    }
 
-        return (
-            <div className="space-y-3" id={id}>
+    if (typeof error === "object") {
+        for (const value of Object.values(error as Record<string, unknown>)) {
+            const message = getErrorMessage(value);
+            if (message) {
+                return message;
+            }
+        }
+    }
+
+    return undefined;
+};
+
+const buildUploadEndpoint = (uid: string | null, interviewUid: string | null, platform: string | null) => {
+    const baseUrl = getApiBaseUrl();
+    const path =
+        uid && interviewUid
+            ? `/core/rd-document-upload/${encodeURIComponent(uid)}/${encodeURIComponent(interviewUid)}/`
+            : "/core/rd-document-upload/";
+
+    if (platform) {
+        return `${baseUrl}${path}?${new URLSearchParams({ platform }).toString()}`;
+    }
+
+    return `${baseUrl}${path}`;
+};
+
+const SelectedFileList = ({ files, onRemove }: { files: File[]; onRemove: (index: number) => void }) => {
+    if (files.length === 0) {
+        return null;
+    }
+
+    return (
+        <div className="mt-4 flex flex-col gap-2">
+            {files.map((file, index) => (
                 <div
-                    className={cn(
-                        "relative border-2 border-dashed rounded-lg p-6 transition-all duration-200 flex flex-col items-center justify-center gap-2",
-                        dragActive ? "border-black bg-gray-50 scale-[1.01]" : "border-gray-200 hover:border-gray-400 bg-white",
-                        files.length > 0 ? "border-green-500 bg-green-50/10" : "",
-                        hasError ? "border-red-500 bg-red-50/10" : ""
-                    )}
-                    onDragEnter={handleDrag} onDragLeave={handleDrag} onDragOver={handleDrag} onDrop={handleDrop}
+                    key={`${file.name}-${file.lastModified}-${index}`}
+                    className="flex min-h-9 items-center justify-between gap-3 rounded-md border border-slate-200 bg-white px-3 py-2 text-left text-sm text-slate-700"
                 >
-                    <Upload className={cn("w-8 h-8", files.length > 0 ? "text-green-600" : (hasError ? "text-red-500" : "text-gray-400"))} />
-                    <p className={cn("text-sm font-medium", hasError ? "text-red-600" : "text-black")}>
-                        {files.length > 0 ? `${files.length} file(s) selected` : "Drag & drop files here or click to upload"}
-                    </p>
+                    <span className="min-w-0 flex-1 truncate">{file.name}</span>
+                    <button
+                        type="button"
+                        onClick={() => onRemove(index)}
+                        className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-slate-500 transition hover:bg-slate-100 hover:text-red-600"
+                        aria-label={`Remove ${file.name}`}
+                    >
+                        <X className="h-4 w-4" />
+                    </button>
+                </div>
+            ))}
+        </div>
+    );
+};
+
+const UploadBox = ({
+    id,
+    files,
+    error,
+    onFilesChange,
+}: {
+    id: UploadFieldName;
+    files: File[];
+    error?: string;
+    onFilesChange: (files: File[]) => void;
+}) => {
+    const [dragActive, setDragActive] = useState(false);
+
+    const addFiles = (incomingFiles: FileList | File[]) => {
+        const selectedFiles = Array.from(incomingFiles);
+        onFilesChange([...files, ...selectedFiles]);
+    };
+
+    const removeFile = (index: number) => {
+        onFilesChange(files.filter((_, fileIndex) => fileIndex !== index));
+    };
+
+    const handleDrag = (event: React.DragEvent<HTMLDivElement>) => {
+        event.preventDefault();
+        event.stopPropagation();
+        setDragActive(event.type === "dragenter" || event.type === "dragover");
+    };
+
+    const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
+        event.preventDefault();
+        event.stopPropagation();
+        setDragActive(false);
+
+        if (event.dataTransfer.files.length > 0) {
+            addFiles(event.dataTransfer.files);
+        }
+    };
+
+    return (
+        <div>
+            <div
+                className={cn(
+                    "rounded-lg border border-dashed px-3 py-5 transition",
+                    dragActive ? "border-slate-700 bg-slate-50" : "border-slate-300 bg-white",
+                    error && "border-red-400 bg-red-50/40"
+                )}
+                onDragEnter={handleDrag}
+                onDragLeave={handleDrag}
+                onDragOver={handleDrag}
+                onDrop={handleDrop}
+            >
+                <div className="flex flex-col items-center gap-4">
+                    <FileText className="h-10 w-10 text-slate-900" strokeWidth={1.9} />
+                    <label
+                        htmlFor={id}
+                        className="inline-flex min-h-12 w-full cursor-pointer items-center justify-center gap-2 rounded-[10px] border-2 border-black bg-slate-50 px-4 py-3 text-center text-base font-bold text-slate-950 shadow-[inset_0_0_0_2px_#fff,0_2px_4px_rgba(15,23,42,0.18)] outline outline-1 outline-offset-[3px] outline-black transition hover:bg-white"
+                    >
+                        <Upload className="h-4 w-4" />
+                        <span>Choose Files or Photos</span>
+                    </label>
                     <input
-                        type="file" multiple ref={ref} name={name} onBlur={onBlur}
-                        className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                        onChange={(e) => {
-                            if (e.target.files) {
-                                const newFiles = Array.from(e.target.files);
-                                onChange([...files, ...newFiles]);
-                                // Reset value to allow selecting the same file again
-                                e.target.value = "";
+                        id={id}
+                        type="file"
+                        multiple
+                        accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
+                        className="sr-only"
+                        onChange={(event) => {
+                            if (event.target.files) {
+                                addFiles(event.target.files);
+                                event.target.value = "";
                             }
                         }}
                     />
+                    <p className="text-center text-sm text-slate-500">PDF, JPG or PNG (max 10MB each)</p>
                 </div>
-                {files.length > 0 && (
-                    <div className="flex flex-col gap-3">
-                        <div className="flex flex-wrap gap-2">
-                            {files.map((file, idx) => (
-                                <Badge key={idx} variant="outline" className="flex items-center gap-2 py-1 px-2 border-gray-200 bg-white text-gray-700">
-                                    <FileUp className="w-3 h-3 text-gray-400" />
-                                    <span className="max-w-[150px] truncate">{file.name}</span>
-                                    <X className="w-3 h-3 cursor-pointer hover:text-red-500" onClick={() => {
-                                        const updated = [...files]; updated.splice(idx, 1); onChange(updated);
-                                    }} />
-                                </Badge>
-                            ))}
-                        </div>
-                        <Button type="button" variant="ghost" size="sm" onClick={() => onChange([])} className="text-red-500 hover:text-red-700 hover:bg-red-50 w-fit h-7 px-2 text-xs font-semibold">
-                            <X className="w-3 h-3 mr-1" /> Clear All Files
-                        </Button>
-                    </div>
-                )}
+                <SelectedFileList files={files} onRemove={removeFile} />
             </div>
-        );
-    }
-);
-Dropzone.displayName = "Dropzone";
+            {error && <p className="mt-2 text-sm font-medium text-red-600">{error}</p>}
+        </div>
+    );
+};
+
+const EngagementOption = ({
+    value,
+    selectedValue,
+    onChange,
+}: {
+    value: EngagementType;
+    selectedValue?: EngagementType;
+    onChange: (value: EngagementType) => void;
+}) => {
+    const selected = selectedValue === value;
+
+    return (
+        <label
+            className={cn(
+                "flex min-h-[58px] cursor-pointer items-center gap-3 rounded-[10px] border-2 border-black bg-slate-50 px-5 text-base font-bold text-slate-950 shadow-[inset_0_0_0_2px_#fff,0_2px_4px_rgba(15,23,42,0.18)] outline outline-1 outline-offset-[3px] outline-black transition hover:bg-white",
+                selected && "bg-white"
+            )}
+        >
+            <input
+                type="radio"
+                value={value}
+                checked={selected}
+                onChange={() => onChange(value)}
+                className="sr-only"
+            />
+            <span
+                className={cn(
+                    "flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 border-slate-950 bg-white",
+                    selected && "border-blue-700"
+                )}
+                aria-hidden="true"
+            >
+                {selected && <span className="h-3 w-3 rounded-full bg-blue-700" />}
+            </span>
+            <span>{value}</span>
+        </label>
+    );
+};
 
 const DocumentUploader = () => {
     const searchParams = useSearchParams();
     const uid = searchParams.get("uid");
-    const interview_uid = searchParams.get("interview_uid");
+    const interviewUid = searchParams.get("interview_uid");
     const platform = searchParams.get("platform");
 
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [isAvailableDateOpen, setIsAvailableDateOpen] = useState(false);
-    const [openPopovers, setOpenPopovers] = useState<Record<string, boolean>>({});
+    const queryDefaults = useMemo(
+        () => ({
+            fullName:
+                searchParams.get("full_name") ||
+                searchParams.get("fullName") ||
+                searchParams.get("name") ||
+                "",
+            mobileNumber:
+                searchParams.get("mobile_number") ||
+                searchParams.get("mobileNumber") ||
+                searchParams.get("mobile") ||
+                searchParams.get("phone") ||
+                "",
+            email: searchParams.get("email") || "",
+        }),
+        [searchParams]
+    );
 
-    const [alertConfig, setAlertConfig] = useState<{
-        open: boolean;
-        title: string;
-        description: React.ReactNode;
-        type: "success" | "error" | "warning";
-        warnings?: string[];
-    }>({
-        open: false,
-        title: "",
-        description: "",
-        type: "success",
-    });
-
-    const form = useForm<FormValues>({
+    const {
+        register,
+        handleSubmit,
+        setValue,
+        watch,
+        reset,
+        getValues,
+        formState: { errors },
+    } = useForm<FormValues>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            firstName: "",
-            lastName: "",
-            email: "",
-            skills: [],
-            uid: uid || "",
-            interview_uid: interview_uid || "",
-            // Initialize document fields to empty arrays
-            ...Object.fromEntries(documentLabels.map(id => [id, []])),
-            // Initialize date fields to undefined
-            ...Object.fromEntries(documentLabels.map(id => [`${id}_date`, undefined])),
+            fullName: queryDefaults.fullName,
+            mobileNumber: queryDefaults.mobileNumber,
+            email: queryDefaults.email,
+            engagementType: undefined as any,
+            identification: [],
+            positionDocuments: [],
         },
     });
 
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitState, setSubmitState] = useState<SubmitState>(null);
+
+    const identificationFiles = watch("identification") || [];
+    const positionDocumentFiles = watch("positionDocuments") || [];
+    const engagementType = watch("engagementType");
+
+    const uploadEndpoint = useMemo(
+        () => buildUploadEndpoint(uid, interviewUid, platform),
+        [uid, interviewUid, platform]
+    );
+
+    const setFiles = useCallback(
+        (fieldName: UploadFieldName, files: File[]) => {
+            setValue(fieldName, files, {
+                shouldDirty: true,
+                shouldTouch: true,
+                shouldValidate: true,
+            });
+        },
+        [setValue]
+    );
+
     useEffect(() => {
-        if (uid) {
-            form.setValue("uid", uid);
-        }
-        if (interview_uid) {
-            form.setValue("interview_uid", interview_uid);
-        }
-    }, [uid, interview_uid, form]);
+        let cancelled = false;
 
-    const allErrors = Array.from(new Set(Object.values(form.formState.errors).map(err => err?.message as string).filter(Boolean)));
+        const loadPrefillData = async () => {
+            if (!uid || !interviewUid) {
+                return;
+            }
 
-    const scrollToField = (id: string) => {
-        const element = document.getElementById(id);
-        if (element) {
-            element.scrollIntoView({ behavior: "smooth", block: "center" });
-        }
-    };
+            try {
+                const response = await fetch(uploadEndpoint, {
+                    method: "GET",
+                });
+
+                if (!response.ok) {
+                    return;
+                }
+
+                const payload = await parseResponseBody(response);
+                const data = payload?.data || payload?.candidate || payload?.applicant || payload;
+
+                if (cancelled || !data || typeof data !== "object") {
+                    return;
+                }
+
+                const fullName =
+                    getFirstValue(data, ["full_name", "fullName", "name"]) ||
+                    [data.first_name, data.last_name, data.firstName, data.lastName]
+                        .filter((value) => typeof value === "string" && value.trim())
+                        .join(" ")
+                        .trim();
+                const mobileNumber = getFirstValue(data, [
+                    "mobile_number",
+                    "mobileNumber",
+                    "mobile",
+                    "phone",
+                    "telephone",
+                ]);
+                const email = getFirstValue(data, ["email", "email_address", "emailAddress"]);
+                const dataEngagementType = getFirstValue(data, [
+                    "engagement_type",
+                    "engagementType",
+                    "employment_type",
+                ]).toUpperCase();
+
+                if (fullName && !getValues("fullName")) setValue("fullName", fullName);
+                if (mobileNumber && !getValues("mobileNumber")) setValue("mobileNumber", mobileNumber);
+                if (email && !getValues("email")) setValue("email", email);
+                if ((dataEngagementType === "PAYE" || dataEngagementType === "CIS") && !getValues("engagementType")) {
+                    setValue("engagementType", dataEngagementType);
+                }
+            } catch {
+                // Prefill is opportunistic; submission still works if this request is unavailable.
+            }
+        };
+
+        loadPrefillData();
+
+        return () => {
+            cancelled = true;
+        };
+    }, [getValues, interviewUid, setValue, uid, uploadEndpoint]);
 
     const onSubmit = async (values: FormValues) => {
+        setSubmitState(null);
+
+        if (!uid || !interviewUid) {
+            setSubmitState({
+                type: "error",
+                message: "This upload link is missing required candidate details.",
+            });
+            return;
+        }
+
         setIsSubmitting(true);
+
         try {
             const formData = new FormData();
-            formData.append("firstName", values.firstName || "");
-            formData.append("lastName", values.lastName || "");
-            formData.append("email", values.email || "");
+            formData.append("uid", uid);
+            formData.append("interview_uid", interviewUid);
+            formData.append("full_name", values.fullName);
+            formData.append("mobile_number", values.mobileNumber);
+            formData.append("email", values.email);
+            formData.append("engagement_type", values.engagementType);
+            appendFiles(formData, "identification", values.identification);
+            appendFiles(formData, "documents_relevant_to_position", values.positionDocuments);
 
-            if (values.availableFromDate) {
-                formData.append("availableFrom", format(values.availableFromDate, "yyyy-MM-dd"));
-            }
-
-            documentLabels.forEach(label => {
-                const files = values[label as keyof FormValues] as File[];
-                if (files && files.length > 0) {
-                    files.forEach(file => {
-                        formData.append(`file-${label}`, file);
-                    });
-                }
-
-                const dateKey = `${label}_date` as keyof FormValues;
-                const docDate = values[dateKey] as Date;
-                if (docDate) {
-                    formData.append(`date-${label}`, format(docDate, "yyyy-MM-dd"));
-                }
-            });
-
-            const API_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://api.callpilot.pro/api/v1";
-            const queryParams = new URLSearchParams();
-            if (platform) {
-                queryParams.set("platform", platform);
-            }
-            const queryString = queryParams.toString();
-            const fetchUrl = `${API_BASE_URL}/core/pre-application/${uid}/${interview_uid}/${queryString ? `?${queryString}` : ""}`;
-            const response = await fetch(fetchUrl, {
+            const response = await fetch(uploadEndpoint, {
                 method: "POST",
                 body: formData,
             });
+            const payload = await parseResponseBody(response);
 
-            const result = await response.json();
-
-            if (response.ok && result.success) {
-                setAlertConfig({
-                    open: true,
-                    title: "Application Submitted!",
-                    description: "Your application has been successfully submitted.",
-                    type: "success",
-                    warnings: result.upload_warnings || [],
-                });
-
-                form.reset({
-                    firstName: "",
-                    lastName: "",
-                    email: "",
-                    skills: [],
-                    availableFromDate: undefined,
-                    uid: uid || "",
-                    interview_uid: interview_uid || "",
-                    ...Object.fromEntries(documentLabels.map(id => [id, []])),
-                    ...Object.fromEntries(documentLabels.map(id => [`${id}_date`, undefined])),
-                });
-            } else {
-                if (result.error === "Organization platform not found.") {
-                    setAlertConfig({
-                        open: true,
-                        title: "Error",
-                        description: "Organization platform not found.",
-                        type: "error",
-                    });
-                }
-
-                if (result.errors && Array.isArray(result.errors)) {
-                    result.errors.forEach((err: string) => {
-                        const lower = err.toLowerCase();
-                        if (lower.includes("firstname")) form.setError("firstName", { message: err });
-                        if (lower.includes("lastname")) form.setError("lastName", { message: err });
-                        if (lower.includes("email")) form.setError("email", { message: err });
-                    });
-
-                    const firstMsg = result.errors[0].toLowerCase();
-                    if (firstMsg.includes("firstname")) scrollToField("firstName");
-                    else if (firstMsg.includes("lastname")) scrollToField("lastName");
-                    else if (firstMsg.includes("email")) scrollToField("email");
-                }
-
-                if (result.error === "At least one document must be uploaded.") {
-                    documentLabels.forEach(label => {
-                        form.setError(label as any, { message: result.error });
-                        form.setError(`${label}_date` as any, { message: "Date Required" });
-                    });
-                    scrollToField("qualification_card_front");
-                }
+            if (!response.ok || payload?.success === false) {
+                throw new Error(getPayloadMessage(payload, "We could not submit your documents. Please try again."));
             }
+
+            setSubmitState({
+                type: "success",
+                message: getPayloadMessage(payload, "Your documents have been submitted successfully."),
+            });
+            reset({
+                ...values,
+                identification: [],
+                positionDocuments: [],
+            });
         } catch (error) {
-            setAlertConfig({
-                open: true,
-                title: "Error",
-                description: "A network error occurred.",
+            setSubmitState({
                 type: "error",
+                message: error instanceof Error ? error.message : "A network error occurred.",
             });
         } finally {
             setIsSubmitting(false);
         }
     };
 
-    const onInvalidSubmit = (errors: any) => {
-        const errorKeys = Object.keys(errors);
-        if (errorKeys.length > 0) {
-            const elements = errorKeys
-                .map(key => document.getElementById(key))
-                .filter(Boolean) as HTMLElement[];
-            
-            if (elements.length > 0) {
-                elements.sort((a, b) => {
-                    const rectA = a.getBoundingClientRect();
-                    const rectB = b.getBoundingClientRect();
-                    return (rectA.top + window.scrollY) - (rectB.top + window.scrollY);
-                });
-                elements[0].scrollIntoView({ behavior: "smooth", block: "center" });
-            } else {
-                scrollToField(errorKeys[0]);
-            }
-        }
-    };
-
     return (
-        <div className="bg-white min-h-screen text-black font-['Inter'] py-12">
-            <div className="container mx-auto px-4 py-12 max-w-4xl border border-gray-200 rounded-2xl shadow-sm bg-white">
-                <div className="flex items-center justify-between mb-10">
-                    <h1 className="text-3xl font-bold text-black border-none">Documents Upload</h1>
-                    {/* {logo && <img src={logo.src} alt="Logo" className="h-16 w-auto" />} */}
-                </div>
+        <div className="min-h-screen bg-white px-4 py-6 text-slate-950 sm:py-8">
+            <div className="mx-auto w-full max-w-[460px]">
+                <header className="flex flex-col items-center">
+                    <Image
+                        src="/rd-logo.png"
+                        alt="Recruitment Direct"
+                        width={116}
+                        height={116}
+                        priority
+                        className="h-[116px] w-[116px] object-contain"
+                    />
+                    <div className="mt-5 h-px w-full bg-slate-950" />
+                </header>
 
-                {allErrors.length > 0 && (
-                    <div className="mb-10 p-4 bg-red-50 border border-red-200 rounded-xl space-y-2 animate-in fade-in slide-in-from-top-2 duration-300">
-                        {allErrors.map((err, idx) => (
-                            <div key={idx} className="flex items-center gap-3 text-red-600 font-semibold">
-                                <AlertCircle className="w-5 h-5 flex-shrink-0" />
-                                <p className="text-lg">{err}</p>
-                            </div>
-                        ))}
-                    </div>
-                )}
+                <main className="pt-6">
+                    <h1 className="text-[32px] font-extrabold leading-tight tracking-normal text-slate-950">
+                        Document Upload
+                    </h1>
 
-                <div className="bg-[#f0f9f1] border border-[#d1e9d2] rounded-xl p-6 mb-10">
-                    <h2 className="text-sm font-bold text-black uppercase tracking-wider mb-4 flex items-center gap-2">Important reminders</h2>
-                    <ul className="space-y-3">
-                        {["ID Renewal / ID Check", "Right to work check status", "Disclosure (if applicable)"].map((item, idx) => (
-                            <li key={idx} className="flex items-center gap-3 text-black font-medium">
-                                <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0" />
-                                {item}
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-
-                <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit, onInvalidSubmit)} className="space-y-12">
-                        <section>
-                            <h2 className="text-xl font-bold mb-6 pb-2 border-b border-gray-100 italic">Personal Information</h2>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <FormField control={form.control} name="firstName" render={({ field, fieldState }) => (
-                                    <FormItem>
-                                        <FormLabel className="text-black font-semibold">First Name <span className="text-red-500">*</span></FormLabel>
-                                        <FormControl>
-                                            <Input id="firstName" placeholder="Your first name" {...field} className={cn("bg-white border-gray-200 text-black h-12", fieldState.error && "border-red-500")} />
-                                        </FormControl>
-                                        <FormMessage className="text-red-500 font-medium" />
-                                    </FormItem>
-                                )} />
-                                <FormField control={form.control} name="lastName" render={({ field, fieldState }) => (
-                                    <FormItem>
-                                        <FormLabel className="text-black font-semibold">Last Name <span className="text-red-500">*</span></FormLabel>
-                                        <FormControl>
-                                            <Input id="lastName" placeholder="Your last name" {...field} className={cn("bg-white border-gray-200 text-black h-12", fieldState.error && "border-red-500")} />
-                                        </FormControl>
-                                        <FormMessage className="text-red-500 font-medium" />
-                                    </FormItem>
-                                )} />
-                                <div className="md:col-span-2">
-                                    <FormField control={form.control} name="email" render={({ field, fieldState }) => (
-                                        <FormItem>
-                                            <FormLabel className="text-black font-semibold">Email <span className="text-red-500">*</span></FormLabel>
-                                            <FormControl>
-                                                <Input id="email" placeholder="your@example.com" {...field} className={cn("bg-white border-gray-200 text-black h-12", fieldState.error && "border-red-500")} />
-                                            </FormControl>
-                                            <FormMessage className="text-red-500 font-medium" />
-                                        </FormItem>
-                                    )} />
-                                </div>
-                                <div className="md:col-span-2">
-                                    <FormField control={form.control} name="availableFromDate" render={({ field, fieldState }) => (
-                                        <FormItem className="flex flex-col" id="availableFromDate">
-                                            <FormLabel className="text-black font-semibold mb-1">Available from Date</FormLabel>
-                                            <div className="relative">
-                                                <Popover open={isAvailableDateOpen} onOpenChange={setIsAvailableDateOpen}>
-                                                    <PopoverTrigger asChild>
-                                                        <FormControl>
-                                                            <Button variant={"outline"} className={cn("w-full h-12 pl-3 text-left font-normal bg-white border-gray-200 text-black pr-20", !field.value && "text-gray-400", fieldState.error && "border-red-500")}>
-                                                                {field.value ? format(field.value, "PPP") : <span>mm/dd/yyyy</span>}
-                                                                {!field.value && <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />}
-                                                            </Button>
-                                                        </FormControl>
-                                                    </PopoverTrigger>
-                                                    <PopoverContent className="w-auto p-0" align="start">
-                                                        <Calendar
-                                                            mode="single"
-                                                            selected={field.value}
-                                                            onSelect={(date) => {
-                                                                field.onChange(date);
-                                                                setIsAvailableDateOpen(false);
-                                                            }}
-                                                            initialFocus
-                                                        />
-                                                    </PopoverContent>
-                                                </Popover>
-                                                {field.value && (
-                                                    <button
-                                                        type="button"
-                                                        onClick={(e) => {
-                                                            e.preventDefault();
-                                                            field.onChange(undefined);
-                                                        }}
-                                                        className="absolute right-12 top-1/2 -translate-y-1/2 text-gray-400 hover:text-red-500 transition-colors p-2 z-10"
-                                                    >
-                                                        <X className="w-4 h-4" />
-                                                    </button>
-                                                )}
-                                            </div>
-                                            <FormMessage className="text-red-500 font-medium" />
-                                        </FormItem>
-                                    )} />
-                                </div>
-                            </div>
-                        </section>
-
-                        <section>
-                            <h2 className="text-xl font-bold mb-8 pb-2 border-b border-gray-100 italic">Quick Document Upload</h2>
-                            <div className="space-y-10">
-                                {documentTypes.map((doc) => (
-                                    <div key={doc.id} className="space-y-4">
-                                        <FormLabel className="text-black font-semibold block mb-2">{doc.label}</FormLabel>
-                                        <FormField control={form.control} name={doc.id as any} render={({ field, fieldState }) => (
-                                            <FormItem>
-                                                <FormControl>
-                                                    <Dropzone {...field} label={doc.label} id={doc.id} hasError={!!fieldState.error} />
-                                                </FormControl>
-                                                <FormMessage className="text-red-500 font-medium" />
-                                            </FormItem>
-                                        )} />
-                                        {doc.hasExpiry && (
-                                            <FormField control={form.control} name={`${doc.id}_date` as any} render={({ field, fieldState }) => (
-                                                <FormItem className="flex flex-col" id={`${doc.id}_date`}>
-                                                    <FormLabel className="text-gray-600 text-xs font-semibold uppercase tracking-wider">{doc.labelEx || "Expiration Date"}</FormLabel>
-                                                    <div className="relative">
-                                                        <Popover
-                                                            open={openPopovers[doc.id] || false}
-                                                            onOpenChange={(open) => setOpenPopovers(prev => ({ ...prev, [doc.id]: open }))}
-                                                        >
-                                                            <PopoverTrigger asChild>
-                                                                <FormControl>
-                                                                    <Button variant={"outline"} className={cn("w-full h-12 pl-3 text-left font-normal bg-white border-gray-200 text-black uppercase pr-20", !field.value && "text-gray-400", fieldState.error && "border-red-500")}>
-                                                                        {field.value ? format(field.value as Date, "PPP") : <span>mm/dd/yyyy</span>}
-                                                                        {!field.value && <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />}
-                                                                    </Button>
-                                                                </FormControl>
-                                                            </PopoverTrigger>
-                                                            <PopoverContent className="w-auto p-0" align="start">
-                                                                <Calendar
-                                                                    mode="single"
-                                                                    selected={field.value as any}
-                                                                    onSelect={(date) => {
-                                                                        field.onChange(date);
-                                                                        setOpenPopovers(prev => ({ ...prev, [doc.id]: false }));
-                                                                    }}
-                                                                    initialFocus
-                                                                />
-                                                            </PopoverContent>
-                                                        </Popover>
-                                                        {field.value && (
-                                                            <button
-                                                                type="button"
-                                                                onClick={(e) => {
-                                                                    e.preventDefault();
-                                                                    field.onChange(undefined);
-                                                                }}
-                                                                className="absolute right-12 top-1/2 -translate-y-1/2 text-gray-400 hover:text-red-500 transition-colors p-2 z-10"
-                                                            >
-                                                                <X className="w-4 h-4" />
-                                                            </button>
-                                                        )}
-                                                    </div>
-                                                    <FormMessage className="text-red-500 font-medium" />
-                                                </FormItem>
-                                            )} />
-                                        )}
-                                    </div>
-                                ))}
-                            </div>
-                        </section>
-
-                        <div className="pt-2">
-                            <Button type="submit" disabled={isSubmitting} className="w-[50%] md:w-[40%] lg:w-[30%] h-12 bg-black text-white hover:bg-gray-800 transition-all font-bold rounded-lg group disabled:bg-gray-400">
-                                {isSubmitting ? "Submitting..." : "Submit My Application"}
-                                <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
-                            </Button>
+                    {submitState && (
+                        <div
+                            className={cn(
+                                "mt-5 flex items-start gap-3 rounded-lg border px-4 py-3 text-sm font-medium",
+                                submitState.type === "success"
+                                    ? "border-green-200 bg-green-50 text-green-800"
+                                    : "border-red-200 bg-red-50 text-red-700"
+                            )}
+                            role="status"
+                        >
+                            {submitState.type === "success" ? (
+                                <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0" />
+                            ) : (
+                                <AlertCircle className="mt-0.5 h-5 w-5 shrink-0" />
+                            )}
+                            <p className="text-inherit">{submitState.message}</p>
                         </div>
-                    </form>
-                </Form>
+                    )}
 
-                <AlertDialog open={alertConfig.open} onOpenChange={(open) => setAlertConfig(prev => ({ ...prev, open }))}>
-                    <AlertDialogContent className="bg-white max-w-md">
-                        <AlertDialogHeader>
-                            <AlertDialogTitle className={cn("text-xl font-bold flex items-center gap-2", alertConfig.type === "success" ? "text-black" : "text-red-600")}>
-                                {alertConfig.type === "success" ? <CheckCircle2 className="text-green-600 w-6 h-6" /> : <AlertCircle className="text-red-600 w-6 h-6" />}
-                                {alertConfig.title}
-                            </AlertDialogTitle>
-                            <AlertDialogDescription className="text-gray-600 text-base">{alertConfig.description}</AlertDialogDescription>
-                        </AlertDialogHeader>
-                        <AlertDialogFooter>
-                            <AlertDialogAction className="bg-black text-white hover:bg-gray-800" onClick={() => setAlertConfig(prev => ({ ...prev, open: false }))}>
-                                {alertConfig.type === "success" ? "Continue" : "Close"}
-                            </AlertDialogAction>
-                        </AlertDialogFooter>
-                    </AlertDialogContent>
-                </AlertDialog>
+                    <form onSubmit={handleSubmit(onSubmit)} className="mt-5 space-y-5">
+                        <div className="space-y-2">
+                            <label htmlFor="fullName" className="block text-sm font-bold text-slate-950">
+                                Full Name *
+                            </label>
+                            <input
+                                id="fullName"
+                                type="text"
+                                placeholder="John Smith"
+                                {...register("fullName")}
+                                className={cn(
+                                    "h-[47px] w-full rounded-lg border border-slate-300 bg-white px-4 text-base text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-slate-700 focus:ring-2 focus:ring-slate-200",
+                                    errors.fullName && "border-red-500 focus:border-red-500 focus:ring-red-100"
+                                )}
+                            />
+                            {errors.fullName && (
+                                <p className="text-sm font-medium text-red-600">{errors.fullName.message}</p>
+                            )}
+                        </div>
+
+                        <div className="space-y-2">
+                            <label htmlFor="mobileNumber" className="block text-sm font-bold text-slate-950">
+                                Mobile Number *
+                            </label>
+                            <input
+                                id="mobileNumber"
+                                type="tel"
+                                placeholder="07700 900123"
+                                {...register("mobileNumber")}
+                                className={cn(
+                                    "h-[47px] w-full rounded-lg border border-slate-300 bg-white px-4 text-base text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-slate-700 focus:ring-2 focus:ring-slate-200",
+                                    errors.mobileNumber && "border-red-500 focus:border-red-500 focus:ring-red-100"
+                                )}
+                            />
+                            {errors.mobileNumber && (
+                                <p className="text-sm font-medium text-red-600">{errors.mobileNumber.message}</p>
+                            )}
+                        </div>
+
+                        <div className="space-y-2">
+                            <label htmlFor="email" className="block text-sm font-bold text-slate-950">
+                                Email Address *
+                            </label>
+                            <input
+                                id="email"
+                                type="email"
+                                placeholder="john.smith@example.com"
+                                {...register("email")}
+                                className={cn(
+                                    "h-[47px] w-full rounded-lg border border-slate-300 bg-white px-4 text-base text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-slate-700 focus:ring-2 focus:ring-slate-200",
+                                    errors.email && "border-red-500 focus:border-red-500 focus:ring-red-100"
+                                )}
+                            />
+                            {errors.email && <p className="text-sm font-medium text-red-600">{errors.email.message}</p>}
+                        </div>
+
+                        <fieldset className="space-y-3">
+                            <legend className="text-sm font-bold text-slate-950">Engagement Type *</legend>
+                            <EngagementOption
+                                value="PAYE"
+                                selectedValue={engagementType}
+                                onChange={(value) =>
+                                    setValue("engagementType", value, {
+                                        shouldDirty: true,
+                                        shouldTouch: true,
+                                        shouldValidate: true,
+                                    })
+                                }
+                            />
+                            <EngagementOption
+                                value="CIS"
+                                selectedValue={engagementType}
+                                onChange={(value) =>
+                                    setValue("engagementType", value, {
+                                        shouldDirty: true,
+                                        shouldTouch: true,
+                                        shouldValidate: true,
+                                    })
+                                }
+                            />
+                            {errors.engagementType && (
+                                <p className="text-sm font-medium text-red-600">{errors.engagementType.message}</p>
+                            )}
+                        </fieldset>
+
+                        <section className="space-y-2 pt-1">
+                            <div>
+                                <h2 className="text-base font-bold leading-tight text-slate-950">Identification *</h2>
+                                <p className="text-sm leading-tight text-slate-500">
+                                    Passport or other identification document.
+                                </p>
+                            </div>
+                            <UploadBox
+                                id="identification"
+                                files={identificationFiles}
+                                error={getErrorMessage(errors.identification)}
+                                onFilesChange={(files) => setFiles("identification", files)}
+                            />
+                        </section>
+
+                        <section className="space-y-2 pt-1">
+                            <div>
+                                <h2 className="text-base font-bold leading-tight text-slate-950">
+                                    Documents Relevant to the Position *
+                                </h2>
+                                <p className="text-sm leading-tight text-slate-500">
+                                    Example: Driving Licence <span aria-hidden="true">{"\u2022"}</span> Qualifications{" "}
+                                    <span aria-hidden="true">{"\u2022"}</span> Cards (CPCS, Gold){" "}
+                                    <span aria-hidden="true">{"\u2022"}</span> DBS
+                                </p>
+                            </div>
+                            <UploadBox
+                                id="positionDocuments"
+                                files={positionDocumentFiles}
+                                error={getErrorMessage(errors.positionDocuments)}
+                                onFilesChange={(files) => setFiles("positionDocuments", files)}
+                            />
+                        </section>
+
+                        <div className="space-y-3 pt-1">
+                            <div className="flex min-h-[50px] items-center gap-4 rounded-lg bg-slate-100 px-5">
+                                <Lock className="h-6 w-6 shrink-0 text-slate-950" />
+                                <p className="text-sm font-bold text-slate-950">Your information is secure.</p>
+                            </div>
+                            <p className="text-sm leading-snug text-slate-500">
+                                We use your information to find you work, as explained in our{" "}
+                                <a href="/privacy-policy" className="text-slate-950 underline underline-offset-2">
+                                    Privacy Notice.
+                                </a>
+                            </p>
+                        </div>
+
+                        <button
+                            type="submit"
+                            disabled={isSubmitting}
+                            className="inline-flex min-h-[56px] w-full items-center justify-center rounded-[10px] border-2 border-black bg-[#2765dd] px-5 text-center text-lg font-extrabold text-white shadow-[inset_0_0_0_2px_#4283ff,0_10px_22px_rgba(37,99,235,0.28)] outline outline-1 outline-offset-[4px] outline-black transition hover:bg-[#1f58c9] disabled:cursor-not-allowed disabled:bg-slate-400 disabled:shadow-none"
+                        >
+                            {isSubmitting ? (
+                                <>
+                                    <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                                    Submitting...
+                                </>
+                            ) : (
+                                "Submit Documents"
+                            )}
+                        </button>
+                    </form>
+                </main>
+
+                <footer className="mt-6 border-t border-slate-950 pt-4 text-center text-sm font-bold leading-snug text-slate-950">
+                    <p>Recruitment Direct UK Ltd</p>
+                    <p>Linlithgow, EH49 7SF</p>
+                    <p>www.rd1.co.uk</p>
+                </footer>
             </div>
         </div>
     );
