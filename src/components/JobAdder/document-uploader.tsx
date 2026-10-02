@@ -66,10 +66,23 @@ const documentTypes = [
     { id: "disclosure", label: "Disclosure", hasExpiry: true, labelEx: "Disclosure Issue Date" },
 ];
 
+const paymentTypeOptions = ["PAYE", "CIS"] as const;
+
+const normalizePaymentType = (value: unknown) => {
+    const normalized = typeof value === "string" ? value.trim().toUpperCase() : "";
+    return paymentTypeOptions.includes(normalized as typeof paymentTypeOptions[number])
+        ? normalized as typeof paymentTypeOptions[number]
+        : undefined;
+};
+
 const formSchema = z.object({
     firstName: z.string().trim().min(1, "First Name is required"),
     lastName: z.string().trim().min(1, "Last Name is required"),
     email: z.string().trim().min(1, "Email is required").email("Invalid email address"),
+    paymentType: z.enum(paymentTypeOptions, {
+        required_error: "Payment Type is required",
+        invalid_type_error: "Payment Type is required",
+    }),
     availableFromDate: z.date().optional(),
 
     qualification_card_front: z.array(z.any()).optional(),
@@ -306,6 +319,7 @@ const DocumentUploader = () => {
             firstName: candidate?.firstName || "",
             lastName: candidate?.lastName || "",
             email: candidate?.email || "",
+            paymentType: normalizePaymentType(candidate?.paymentType || candidate?.payment_type || candidate?.engagementType || candidate?.engagement_type),
             skills: [],
             uid: uid || "",
             interview_uid: interview_uid || "",
@@ -326,6 +340,10 @@ const DocumentUploader = () => {
                 form.setValue("firstName", candidate.firstName || "");
                 form.setValue("lastName", candidate.lastName || "");
                 form.setValue("email", candidate.email || "");
+                const candidatePaymentType = normalizePaymentType(candidate.paymentType || candidate.payment_type || candidate.engagementType || candidate.engagement_type);
+                if (candidatePaymentType) {
+                    form.setValue("paymentType", candidatePaymentType);
+                }
             }
         }
     }, [uid, interview_uid, candidate, form]);
@@ -346,6 +364,7 @@ const DocumentUploader = () => {
             formData.append("firstName", values.firstName || "");
             formData.append("lastName", values.lastName || "");
             formData.append("email", values.email || "");
+            formData.append("paymentType", values.paymentType);
 
             if (values.availableFromDate) {
                 formData.append("availableFrom", format(values.availableFromDate, "yyyy-MM-dd"));
@@ -393,6 +412,7 @@ const DocumentUploader = () => {
                     firstName: candidate?.firstName || "",
                     lastName: candidate?.lastName || "",
                     email: candidate?.email || "",
+                    paymentType: normalizePaymentType(candidate?.paymentType || candidate?.payment_type || candidate?.engagementType || candidate?.engagement_type),
                     skills: [],
                     availableFromDate: undefined,
                     uid: uid || "",
@@ -524,6 +544,34 @@ const DocumentUploader = () => {
                                             <FormLabel className="text-black font-semibold">Email <span className="text-red-500">*</span></FormLabel>
                                             <FormControl>
                                                 <Input id="email" placeholder="your@example.com" {...field} disabled className={cn("bg-white border-gray-200 text-black h-12 disabled:text-black disabled:opacity-100", fieldState.error && "border-red-500")} />
+                                            </FormControl>
+                                            <FormMessage className="text-red-500 font-medium" />
+                                        </FormItem>
+                                    )} />
+                                </div>
+                                <div className="md:col-span-2">
+                                    <FormField control={form.control} name="paymentType" render={({ field, fieldState }) => (
+                                        <FormItem>
+                                            <FormLabel className="text-black font-semibold">Payment Type <span className="text-red-500">*</span></FormLabel>
+                                            <FormControl>
+                                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                                    {paymentTypeOptions.map((option) => (
+                                                        <button
+                                                            key={option}
+                                                            type="button"
+                                                            onClick={() => field.onChange(option)}
+                                                            className={cn(
+                                                                "h-12 rounded-lg border-2 px-4 text-left font-bold transition-all",
+                                                                field.value === option
+                                                                    ? "border-black bg-black text-white"
+                                                                    : "border-gray-200 bg-white text-black hover:border-gray-400",
+                                                                fieldState.error && "border-red-500"
+                                                            )}
+                                                        >
+                                                            {option}
+                                                        </button>
+                                                    ))}
+                                                </div>
                                             </FormControl>
                                             <FormMessage className="text-red-500 font-medium" />
                                         </FormItem>
