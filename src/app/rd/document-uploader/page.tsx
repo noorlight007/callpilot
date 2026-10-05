@@ -4,9 +4,34 @@ import { Suspense } from "react";
 import RDUKDocumentUploader from "@/components/RD/document-uploader";
 
 export const metadata: Metadata = {
-    title: "Document Upload | Recruitment Direct",
+    title: { absolute: "Upload Your Documents | Recruitment Direct" },
+    description:
+        "Securely upload your ID and certificates to Recruitment Direct. Your information is kept private and used only for your application.",
     alternates: {
         canonical: "/rd/document-uploader",
+    },
+    openGraph: {
+        title: "Recruitment Direct | Upload Your Documents",
+        description:
+            "Securely upload your ID and certificates to Recruitment Direct.",
+        siteName: "Recruitment Direct",
+        url: "/rd/document-uploader",
+        type: "website",
+        images: [
+            {
+                url: "/images/rd-logo.png",
+                width: 494,
+                height: 494,
+                alt: "Recruitment Direct",
+            },
+        ],
+    },
+    twitter: {
+        card: "summary",
+        title: "Recruitment Direct | Upload Your Documents",
+        description:
+            "Securely upload your ID and certificates to Recruitment Direct.",
+        images: ["/images/rd-logo.png"],
     },
     robots: {
         index: false,
