@@ -3,6 +3,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Pricing from "@/components/Pricing";
+import PricingFaq from "@/components/PricingFaq";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
@@ -23,6 +24,7 @@ const PricingPage = () => {
             <Header />
             <main className="py-16 md:py-24 lg:py-24"> 
                 <Pricing asH1={true} />
+                <PricingFaq />
                 {/* Custom Solutions */}
                 <section className="py-15 lg:py-18 my-10">
                     <div className="container mx-auto px-4 sm:px-6 lg:px-8">

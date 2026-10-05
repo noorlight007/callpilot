@@ -30,7 +30,7 @@ export default function SiteFooter() {
       </div>
       <div className={`${s.container} ${s.footerBottom}`}>
         <address>{FOOTER.company.join(" · ")}</address>
-        <p>© {new Date().getFullYear()} CallPilot. Operated by Swiftwave FZ-LLC. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} CallPilot. Operated by Swiftwave FZ-LLC (RAKEZ licence 47028798). All rights reserved.</p>
       </div>
     </footer>
   );

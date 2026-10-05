@@ -238,7 +238,7 @@ export default function SignInPage() {
                       <p className="text-sm text-muted-foreground">
                         No account registered?{" "}
                         <Link
-                          href="/get-started"
+                          href="/free-trial"
                           className="font-medium text-headline hover:underline underline-offset-4 transition-colors"
                         >
                           Get Started

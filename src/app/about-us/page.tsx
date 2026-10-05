@@ -156,7 +156,7 @@ export default function AboutUsPage() {
                         Get started with CallPilot.pro
                       </p>
                     </div>
-                    <Link href="/get-started" className="">
+                    <Link href="/free-trial" className="">
                         <Button variant="cta" size="lg" className="w-full">
                             Get Started
                         </Button>

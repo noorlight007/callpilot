@@ -97,7 +97,7 @@ export default function FeaturesPage() {
                 <span className={hs.dot} /> Features
               </p>
               <h1 className={hs.h1}>
-                One number. One AI call agent. <span className={hs.accent}>Every follow-up automated.</span>
+                AI Screening Calls, <span className={hs.accent}>VoIP Lines &amp; ATS Sync</span>
               </h1>
               <p className={hs.lead} style={{ maxWidth: "760px", margin: "18px auto 0" }}>
                 CallPilot puts your business line, WhatsApp, SMS and email on one platform, then adds AI applicant

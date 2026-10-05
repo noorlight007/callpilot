@@ -212,7 +212,7 @@ const Header = () => {
               </Button>
             </Link>
 
-            <Link href="/get-started">
+            <Link href="/free-trial">
               <Button variant="cta" size="default">
                 Get Started
               </Button>
@@ -254,7 +254,7 @@ const Header = () => {
                     Sign In
                   </Button>
                 </Link>
-                <Link href="/get-started" className="w-full">
+                <Link href="/free-trial" className="w-full">
                   <Button variant="cta" size="lg" className="w-full">
                     Get Started
                   </Button>
