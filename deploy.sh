@@ -11,8 +11,10 @@ SERVER_USER="root"
 REMOTE_DIR="/root/callpilot"
 BRANCH="production"
 
-# How the app is restarted on the server. Set after checking `pm2 ls` / `ps aux`.
-RESTART_CMD="${RESTART_CMD:-pm2 restart callpilot}"
+# The site runs as a plain `npm start` on port 3000 (no pm2). The dashboard on
+# port 5000 is a different app and is not touched.
+RESTART_CMD="${RESTART_CMD:-fuser -k 3000/tcp || true; sleep 2; setsid nohup npm start > app.log 2>&1 < /dev/null &
+sleep 6; curl -fsS -o /dev/null http://localhost:3000/}"
 
 cd "$(dirname "$0")"
 if [[ -f .deploy.env ]]; then
