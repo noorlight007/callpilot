@@ -144,14 +144,14 @@ const FileDropzone = ({
 
     return (
         <section className="mt-[22px]" id={id}>
-            <div className="text-[15px] font-bold leading-tight text-[#0b0f17]">
+            <div className="text-[15px] font-semibold leading-tight text-[#0b0f17]">
                 {title} <span aria-hidden="true">*</span>
             </div>
             <p className="mb-2 mt-1 text-sm leading-snug text-[#5b6474]">{hint}</p>
 
             <div
                 className={cn(
-                    "rounded-[10px] border-[1.5px] border-dashed border-[#b9c1cd] bg-white px-4 py-[18px] text-center transition-colors",
+                    "rounded-2xl border border-dashed border-[#c5cdd9] bg-[#fafbfd] px-4 py-5 text-center transition-colors",
                     isActive && "border-[#0f2140] bg-[#f4f6f9]",
                     error && "border-[#b42318] bg-red-50/40",
                 )}
@@ -161,7 +161,7 @@ const FileDropzone = ({
                 onDrop={handleDrop}
             >
                 <FileText
-                    className="mx-auto h-11 w-11 text-[#0b0f17]"
+                    className="mx-auto h-9 w-9 text-[#0b6bff]"
                     strokeWidth={2.4}
                     aria-hidden="true"
                 />
@@ -169,7 +169,7 @@ const FileDropzone = ({
                 <div className="my-3 grid gap-3">
                     <button
                         type="button"
-                        className="flex h-[54px] w-full items-center justify-center gap-2 rounded-[10px] border-2 border-black bg-gradient-to-b from-white to-[#eef1f6] px-4 text-base font-bold text-[#0b0f17] shadow-[inset_0_1px_0_#fff,inset_0_-2px_0_rgba(0,0,0,.06),0_0_0_2px_#fff,0_0_0_3.5px_#000,0_4px_10px_rgba(10,20,40,.12)] transition hover:-translate-y-0.5 hover:shadow-[inset_0_1px_0_#fff,inset_0_-2px_0_rgba(0,0,0,.06),0_0_0_2px_#fff,0_0_0_3.5px_#000,0_10px_22px_rgba(31,95,224,.28)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1f5fe0]"
+                        className="flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#e8f0fe] px-4 text-base font-semibold text-[#0b6bff] transition hover:bg-[#dbe8fd] active:scale-[.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0b6bff]"
                         onClick={() => inputRef.current?.click()}
                     >
                         <Upload className="h-[18px] w-[18px]" aria-hidden="true" />
@@ -439,7 +439,7 @@ const RDUKDocumentUploader = () => {
     if (isSubmitted) {
         return (
             <main className="mx-auto min-h-screen w-full max-w-[480px] bg-white px-5 pb-7 pt-5 text-[#0b0f17]">
-                <div className="border-b border-[#0b0f17] pb-4 text-center">
+                <div className="border-b border-[#e5e8ee] pb-4 text-center">
                     <Image
                         src="/images/rd-logo.png"
                         alt="Recruitment Direct"
@@ -474,7 +474,7 @@ const RDUKDocumentUploader = () => {
 
                     <a
                         href="https://www.rd1.co.uk"
-                        className="mx-[17.5px] mt-6 flex h-[54px] w-[calc(100%-35px)] items-center justify-center rounded-xl border-2 border-black bg-gradient-to-b from-[#2fbf6a] via-[#15803d] to-[#0e5c2b] px-4 text-base font-extrabold tracking-normal text-white no-underline shadow-[inset_0_1px_0_rgba(255,255,255,.35),inset_0_-3px_0_rgba(0,0,0,.25),0_0_0_2.5px_#fff,0_0_0_4.5px_#000,0_10px_26px_rgba(21,128,61,.45)] transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-[#1f5fe0]"
+                        className="mt-6 flex h-[52px] w-full items-center justify-center rounded-xl bg-[#15803d] px-4 text-base font-semibold text-white no-underline shadow-sm transition hover:bg-[#116c33] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0b6bff]"
                     >
                         Return to rd1.co.uk
                     </a>
@@ -487,7 +487,7 @@ const RDUKDocumentUploader = () => {
 
     return (
         <main className="mx-auto min-h-screen w-full max-w-[480px] bg-white px-5 pb-7 pt-5 text-[#0b0f17]">
-            <div className="border-b border-[#0b0f17] pb-4 text-center">
+            <div className="border-b border-[#e5e8ee] pb-4 text-center">
                 <Image
                     src="/images/rd-logo.png"
                     alt="Recruitment Direct"
@@ -499,7 +499,7 @@ const RDUKDocumentUploader = () => {
             </div>
 
             <form noValidate onSubmit={submitForm}>
-                <h1 className="mb-4 mt-5 text-[30px] font-extrabold leading-tight tracking-normal text-[#0b0f17]">
+                <h1 className="mb-4 mt-5 text-[26px] font-bold leading-tight tracking-tight text-[#0b0f17]">
                     Document Upload
                 </h1>
 
@@ -556,7 +556,7 @@ const RDUKDocumentUploader = () => {
                 </div>
 
                 <fieldset className="mt-[22px] border-0 p-0" id="engagementType">
-                    <legend className="mb-2 text-[15px] font-bold text-[#0b0f17]">
+                    <legend className="mb-2 text-[15px] font-semibold text-[#0b0f17]">
                         Engagement Type <span aria-hidden="true">*</span>
                     </legend>
                     <div className="grid gap-3">
@@ -570,9 +570,8 @@ const RDUKDocumentUploader = () => {
                                     role="radio"
                                     aria-checked={isSelected}
                                     className={cn(
-                                        "flex h-[54px] w-full items-center gap-3 rounded-[10px] border-2 border-black bg-gradient-to-b from-white to-[#f1f4f8] px-5 text-left text-base font-bold text-[#0b0f17] shadow-[inset_0_1px_0_#fff,0_0_0_2px_#fff,0_0_0_3.5px_#000,0_4px_10px_rgba(10,20,40,.10)] transition hover:-translate-y-0.5 hover:shadow-[inset_0_1px_0_#fff,0_0_0_2px_#fff,0_0_0_3.5px_#000,0_10px_22px_rgba(31,95,224,.28)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1f5fe0]",
-                                        isSelected &&
-                                        "shadow-[0_0_0_2px_#fff,0_0_0_4px_#1f5fe0,0_8px_18px_rgba(31,95,224,.25)]",
+                                        "flex h-[52px] w-full items-center gap-3 rounded-xl border border-[#d7dce4] bg-white px-4 text-left text-base font-semibold text-[#0b0f17] transition hover:border-[#9db8e8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0b6bff]",
+                                        isSelected && "border-[#0b6bff] bg-[#eef5ff] ring-1 ring-[#0b6bff]",
                                         errors.engagementType && "border-[#b42318]",
                                     )}
                                     onClick={() => {
@@ -585,9 +584,8 @@ const RDUKDocumentUploader = () => {
                                 >
                                     <span
                                         className={cn(
-                                            "h-6 w-6 rounded-full border-2 border-[#0b0f17] bg-white",
-                                            isSelected &&
-                                            "bg-[radial-gradient(circle,#1f5fe0_0_45%,#fff_50%)]",
+                                            "h-5 w-5 rounded-full border-2 border-[#9aa4b2] bg-white",
+                                            isSelected && "border-[#0b6bff] bg-[radial-gradient(circle,#0b6bff_0_45%,#fff_50%)]",
                                         )}
                                         aria-hidden="true"
                                     />
@@ -629,7 +627,7 @@ const RDUKDocumentUploader = () => {
                     onSetActiveDropzone={setActiveDropzone}
                 />
 
-                <div className="mt-[22px] flex items-center gap-3.5 rounded-lg bg-[#f4f6f9] px-4 py-3 text-sm font-semibold text-[#0b0f17]">
+                <div className="mt-[22px] flex items-center gap-3.5 rounded-xl bg-[#f4f6f9] px-4 py-3 text-sm font-medium text-[#0b0f17]">
                     <LockKeyhole className="h-[26px] w-[26px] shrink-0" aria-hidden="true" />
                     Your information is secure.
                 </div>
@@ -659,7 +657,7 @@ const RDUKDocumentUploader = () => {
                 <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="mx-[17.5px] mt-[18px] flex h-[54px] w-[calc(100%-35px)] items-center justify-center gap-2 rounded-xl border-2 border-black bg-gradient-to-b from-[#3b7bff] via-[#1f5fe0] to-[#123f9e] px-4 text-base font-extrabold tracking-normal text-white shadow-[inset_0_1px_0_rgba(255,255,255,.35),inset_0_-3px_0_rgba(0,0,0,.25),0_0_0_2.5px_#fff,0_0_0_4.5px_#000,0_6px_16px_rgba(18,63,158,.3)] transition hover:-translate-y-0.5 hover:shadow-[inset_0_1px_0_rgba(255,255,255,.4),inset_0_-3px_0_rgba(0,0,0,.25),0_0_0_2.5px_#fff,0_0_0_4.5px_#000,0_12px_28px_rgba(31,95,224,.5)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-[#1f5fe0] disabled:cursor-progress disabled:opacity-80 disabled:hover:translate-y-0"
+                    className="mt-5 flex h-[52px] w-full items-center justify-center gap-2 rounded-xl bg-[#0b6bff] px-4 text-base font-semibold text-white shadow-sm transition hover:bg-[#075ad6] active:scale-[.99] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0b6bff] disabled:cursor-progress disabled:opacity-80"
                 >
                     {isSubmitting && (
                         <span className="h-[18px] w-[18px] animate-spin rounded-full border-[2.5px] border-white/40 border-t-white" />
@@ -697,7 +695,7 @@ const TextField = ({
     onChange,
 }: TextFieldProps) => (
     <div className="grid gap-1.5" id={id}>
-        <label htmlFor={`${id}-input`} className="text-[15px] font-bold text-[#0b0f17]">
+        <label htmlFor={`${id}-input`} className="text-[15px] font-semibold text-[#0b0f17]">
             {label} <span aria-hidden="true">*</span>
         </label>
         <input
@@ -708,7 +706,7 @@ const TextField = ({
             inputMode={inputMode}
             placeholder={placeholder}
             className={cn(
-                "h-[54px] w-full rounded-lg border border-[#d7dce4] bg-white px-3.5 text-base text-[#0b0f17] outline-none transition placeholder:text-[#8b93a1] focus:border-[#1f5fe0] focus:outline focus:outline-2 focus:outline-offset-1 focus:outline-[#1f5fe0]",
+                "h-12 w-full rounded-xl border border-[#d7dce4] bg-white px-3.5 text-base text-[#0b0f17] outline-none transition placeholder:text-[#8b93a1] focus:border-[#0b6bff] focus:outline focus:outline-2 focus:outline-offset-1 focus:outline-[#0b6bff]/30",
                 error && "border-[#b42318]",
             )}
             onChange={(event) => onChange(event.target.value)}
@@ -724,7 +722,7 @@ const TextField = ({
 );
 
 const FormFooter = () => (
-    <footer className="mt-6 border-t border-[#0b0f17] pt-3.5 text-center text-[13px] font-semibold leading-snug text-[#0b0f17]">
+    <footer className="mt-8 border-t border-[#e5e8ee] pt-4 text-center text-[13px] font-semibold leading-snug text-[#0b0f17]">
         <span className="block">Recruitment Direct UK Ltd</span>
         <span className="block">Linlithgow, EH49 7SF</span>
         <span className="block">www.rd1.co.uk</span>
