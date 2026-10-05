@@ -41,7 +41,7 @@ set -euo pipefail
 cd "$REMOTE_DIR"
 git checkout -- yarn.lock
 git pull origin "$BRANCH"
-npm install
+npm install --legacy-peer-deps
 npm run build
 $RESTART_CMD
 EOF
