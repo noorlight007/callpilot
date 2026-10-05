@@ -4,9 +4,9 @@ import { Suspense } from "react";
 import RDUKDocumentUploader from "@/components/RD/document-uploader";
 
 export const metadata: Metadata = {
-    title: { absolute: "Upload Your Documents | Recruitment Direct" },
+    title: { absolute: "Upload Your Documents" },
     description:
-        "Securely upload your ID and certificates to Recruitment Direct. Your information is kept private and used only for your application.",
+        "Securely upload your ID and certificates.",
     alternates: {
         canonical: "/rd/document-uploader",
     },
@@ -14,7 +14,6 @@ export const metadata: Metadata = {
         title: "Upload Your Documents",
         description:
             "Securely upload your ID and certificates.",
-        siteName: "Recruitment Direct",
         url: "/rd/document-uploader",
         type: "website",
         images: [
