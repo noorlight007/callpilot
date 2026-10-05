@@ -11,9 +11,9 @@ export const metadata: Metadata = {
         canonical: "/rd/document-uploader",
     },
     openGraph: {
-        title: "Recruitment Direct | Upload Your Documents",
+        title: "Upload Your Documents",
         description:
-            "Securely upload your ID and certificates to Recruitment Direct.",
+            "Securely upload your ID and certificates.",
         siteName: "Recruitment Direct",
         url: "/rd/document-uploader",
         type: "website",
@@ -28,9 +28,9 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: "summary",
-        title: "Recruitment Direct | Upload Your Documents",
+        title: "Upload Your Documents",
         description:
-            "Securely upload your ID and certificates to Recruitment Direct.",
+            "Securely upload your ID and certificates.",
         images: ["/images/rd-logo.png"],
     },
     robots: {
