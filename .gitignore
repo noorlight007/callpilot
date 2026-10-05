@@ -51,3 +51,5 @@ Thumbs.db
 .cache/
 .eslintcache
 .turbo/
+
+.deploy.env

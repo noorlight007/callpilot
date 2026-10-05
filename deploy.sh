@@ -14,6 +14,11 @@ BRANCH="production"
 # How the app is restarted on the server. Set after checking `pm2 ls` / `ps aux`.
 RESTART_CMD="${RESTART_CMD:-pm2 restart callpilot}"
 
+cd "$(dirname "$0")"
+if [[ -f .deploy.env ]]; then
+  set -a; source .deploy.env; set +a   # provides SSHPASS (gitignored)
+fi
+
 SSH_OPTS=(-p "$SERVER_PORT" -o StrictHostKeyChecking=accept-new)
 if [[ -n "${SSHPASS:-}" ]]; then
   SSH=(sshpass -e ssh "${SSH_OPTS[@]}")
