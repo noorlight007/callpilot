@@ -22,7 +22,7 @@ const pages: { path: string; updated: string; priority: number; freq: "daily" | 
   { path: "/about-us", updated: "2026-09-27", priority: 0.5, freq: "monthly" },
   { path: "/setup-help-guide", updated: "2026-09-27", priority: 0.5, freq: "monthly" },
   { path: "/privacy-policy", updated: "2026-09-27", priority: 0.3, freq: "monthly" },
-  { path: "/terms-conditions", updated: "2026-09-27", priority: 0.3, freq: "monthly" },
+  { path: "/terms-conditions", updated: "2026-10-13", priority: 0.3, freq: "monthly" },
   { path: "/cookie-policy", updated: "2026-09-27", priority: 0.3, freq: "monthly" },
   { path: "/policy-compliance", updated: "2026-09-27", priority: 0.3, freq: "monthly" },
 ];
@@ -32,7 +32,7 @@ const posts: { path: string; date: string }[] = [
   { path: "/news/callpilot-ashby-integration", date: "2026-09-14" },
   { path: "/news/callpilot-recruit-crm-integration", date: "2026-09-18" },
   { path: "/news/callpilot-jobadder-integration", date: "2026-09-21" },
-  { path: "/news/business-voip-whatsapp-sms-ats-integration", date: "2026-09-22" },
+  { path: "/news/voip-whatsapp-sms-ats-integration", date: "2026-09-22" },
   { path: "/news/callpilot-launches-ai-call-agent-business-voip-lines-automation", date: "2026-09-24" },
   { path: "/blog/how-fast-can-ai-qualify-an-applicant", date: "2026-09-16" },
   { path: "/blog/speed-up-recruitment-without-hiring-more-recruiters", date: "2026-09-23" },

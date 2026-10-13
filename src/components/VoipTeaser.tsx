@@ -1,22 +1,22 @@
 // components/VoipTeaser.tsx
-// Reusable internal link into the Business VoIP news article.
+// Reusable internal link into the VoIP news article.
 // Drop this on the homepage, integrations hub and each ATS page so the new
 // article picks up internal links from existing indexed pages.
 
 import Link from 'next/link';
 
 export const VOIP_ARTICLE_PATH =
-  '/news/business-voip-whatsapp-sms-ats-integration';
+  '/news/voip-whatsapp-sms-ats-integration';
 
 type Variant = 'home' | 'integrations' | 'ats';
 
 const COPY: Record<Variant, { lead?: string; anchor: string }> = {
   home: {
-    anchor: 'Business VoIP with WhatsApp, SMS & ATS Integration – Coming Soon',
+    anchor: 'VoIP with WhatsApp, SMS & ATS Integration – Coming Soon',
   },
   integrations: {
     lead: 'Looking for integrated business calling?',
-    anchor: 'Discover CallPilot Business VoIP + Automation',
+    anchor: 'Discover CallPilot VoIP + Automation',
   },
   ats: {
     anchor: 'Learn about CallPilot VoIP Lines',

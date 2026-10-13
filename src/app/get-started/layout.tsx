@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Get Started",
-  description: "Tell us about your business and we'll set up your CallPilot phone lines, AI screening calls or both. Or start with 100 free AI screening calls.",
+  description: "Get started with CallPilot: VoIP phone lines with WhatsApp, SMS and email, plus AI applicant screening calls synced to your ATS.",
   alternates: {
     canonical: "https://callpilot.pro/get-started",
   },
   openGraph: {
     title: "Get Started | CallPilot",
-    description: "Tell us about your business and we'll set up your CallPilot phone lines, AI screening calls or both. Or start with 100 free AI screening calls.",
+    description: "Get started with CallPilot: VoIP phone lines with WhatsApp, SMS and email, plus AI applicant screening calls synced to your ATS.",
     url: "https://callpilot.pro/get-started",
     siteName: "CallPilot",
     type: "website",
@@ -20,6 +20,11 @@ export const metadata: Metadata = {
         alt: "Get Started with CallPilot",
       },
     ],
+  },
+  twitter: {
+    title: "Get Started | CallPilot",
+    description: "Get started with CallPilot: VoIP phone lines with WhatsApp, SMS and email, plus AI applicant screening calls synced to your ATS.",
+    images: ["/images/og-callpilot.png"],
   },
 };
 

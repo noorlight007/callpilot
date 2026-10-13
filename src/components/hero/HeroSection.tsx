@@ -50,9 +50,9 @@ export default function HeroSection() {
     <section className={`${styles.hero} ${font.className}`}>
       <div className={styles.inner}>
         <div className={styles.copy}>
-          <p className={styles.eyebrow}>Business VoIP Lines + AI Call Agent + Automation</p>
+          <p className={styles.eyebrow}>VoIP Lines + AI Call Agent + Automation</p>
           <h1 className={styles.h1}>
-            <span className={styles.h1Line}>Business VoIP Lines +</span>{" "}
+            <span className={styles.h1Line}>VoIP Lines +</span>{" "}
             <span className={styles.h1Line}>AI Call Agent + Automation</span>
           </h1>
           <p className={styles.lead}>

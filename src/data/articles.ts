@@ -32,10 +32,10 @@ export const allArticles: ArticleData[] = [
     id: "news-callpilot-launches-ai-call-agent-business-voip-lines-automation",
     slug: "callpilot-launches-ai-call-agent-business-voip-lines-automation",
     type: "news",
-    title: "CallPilot Launches One Platform for Business VoIP Lines, an AI Call Agent and Automation",
+    title: "CallPilot Launches One Platform for VoIP Lines, an AI Call Agent and Automation",
     seoTitle: "CallPilot Launches AI Call Agent, VoIP Lines & Automation",
-    metaDescription: "CallPilot's AI applicant screening calls qualify candidates 24/7 and sync to your ATS. Business VoIP lines with automation launch soon.",
-    h1: "CallPilot Launches One Platform for Business VoIP Lines, an AI Call Agent and Automation",
+    metaDescription: "CallPilot's AI applicant screening calls qualify candidates 24/7 and sync to your ATS. VoIP lines with automation launch soon.",
+    h1: "CallPilot Launches One Platform for VoIP Lines, an AI Call Agent and Automation",
     publishDate: "24 September 2026",
     isoDate: "2026-09-24T09:00:00Z",
     modifiedDate: "2026-09-24T09:00:00Z",
@@ -44,12 +44,12 @@ export const allArticles: ArticleData[] = [
     category: "Product & Company News",
     readingTime: "3 min read",
     featuredImage: "/images/hero-dashboard-laptop.webp",
-    excerpt: "AI applicant screening calls qualify job applicants 24/7, chase documents by WhatsApp, SMS and email, and update the ATS automatically. Business VoIP lines are launching soon.",
+    excerpt: "AI applicant screening calls qualify job applicants 24/7, chase documents by WhatsApp, SMS and email, and update the ATS automatically. VoIP lines are launching soon.",
     canonicalUrl: "https://callpilot.pro/news/callpilot-launches-ai-call-agent-business-voip-lines-automation/",
     contentHtml: `
-<p class="lead text-xl text-gray-700 font-medium mb-6">AI applicant screening calls qualify job applicants 24/7, chase documents by WhatsApp, SMS and email, and update the ATS automatically. Business VoIP lines are launching soon.</p>
+<p class="lead text-xl text-gray-700 font-medium mb-6">AI applicant screening calls qualify job applicants 24/7, chase documents by WhatsApp, SMS and email, and update the ATS automatically. VoIP lines are launching soon.</p>
 
-<p class="mb-4"><strong>RAS AL KHAIMAH, UAE, 24 September 2026:</strong> <a href="https://www.callpilot.pro" class="text-blue-600 font-semibold underline hover:text-blue-800">CallPilot</a>, the AI phone calls platform from Swiftwave.ai, today announced one platform that brings together business VoIP lines, an AI call agent and workflow automation. The launch is led by CallPilot's <a href="/ai-applicant-screening" class="text-blue-600 font-semibold underline hover:text-blue-800">AI applicant screening calls</a>, which are live now for staffing agencies, recruitment firms and high-volume employers. Low-cost <a href="/business-voip" class="text-blue-600 font-semibold underline hover:text-blue-800">business VoIP lines</a> with built-in automation will follow soon.</p>
+<p class="mb-4"><strong>RAS AL KHAIMAH, UAE, 24 September 2026:</strong> <a href="https://www.callpilot.pro" class="text-blue-600 font-semibold underline hover:text-blue-800">CallPilot</a>, the AI phone calls platform from Swiftwave.ai, today announced one platform that brings together VoIP lines, an AI call agent and workflow automation. The launch is led by CallPilot's <a href="/ai-applicant-screening" class="text-blue-600 font-semibold underline hover:text-blue-800">AI applicant screening calls</a>, which are live now for staffing agencies, recruitment firms and high-volume employers. Low-cost <a href="/business-voip" class="text-blue-600 font-semibold underline hover:text-blue-800">VoIP lines</a> with built-in automation will follow soon.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">The problem: applicants go cold while recruiters are busy or asleep</h2>
 <p class="mb-4">High-volume hiring runs on speed. Applicants apply at all hours, often to several jobs at once, and the first recruiter to reach them usually wins. But recruiters can only make so many calls in a day. They spend hours phoning applicants who don't meet basic requirements, and hours more chasing ID and work authorisation documents.</p>
@@ -66,8 +66,8 @@ export const allArticles: ArticleData[] = [
 
 <p class="mb-6">CallPilot integrates with <strong>Recruit CRM, Ashby, Greenhouse and JobAdder</strong>, with <strong>iCIMS</strong> coming soon.</p>
 
-<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Business VoIP lines with automation: launching soon</h2>
-<p class="mb-4">Alongside AI calling, CallPilot is launching <strong>business VoIP lines</strong> for recruitment agencies and businesses of all sizes. One low-cost number will handle:</p>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">VoIP lines with automation: launching soon</h2>
+<p class="mb-4">Alongside AI calling, CallPilot is launching <strong>VoIP lines</strong> for recruitment agencies and businesses of all sizes. One low-cost number will handle:</p>
 <ul class="list-disc pl-6 space-y-2 mb-6 text-gray-700">
   <li>Calls, WhatsApp, SMS and email on the same line</li>
   <li>Call forwarding, IVR menus and call routing</li>
@@ -80,7 +80,7 @@ export const allArticles: ArticleData[] = [
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Pricing and availability</h2>
 <ul class="list-disc pl-6 space-y-2 mb-6 text-gray-700">
   <li><strong>AI applicant screening calls:</strong> available now. <a href="/pricing" class="text-blue-600 font-semibold underline hover:text-blue-800">See pricing</a>.</li>
-  <li><strong>Business VoIP lines + automation:</strong> launching soon. <a href="/business-voip" class="text-blue-600 font-semibold underline hover:text-blue-800">Register interest</a>.</li>
+  <li><strong>VoIP lines + automation:</strong> launching soon. <a href="/business-voip" class="text-blue-600 font-semibold underline hover:text-blue-800">Register interest</a>.</li>
 </ul>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Who CallPilot is for</h2>
@@ -91,7 +91,7 @@ export const allArticles: ArticleData[] = [
 </ul>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">About CallPilot</h2>
-<p class="mb-4">CallPilot is an AI phone calls platform that combines an AI call agent, business VoIP lines and automation. Its AI applicant screening calls qualify job applicants 24/7, request documents by WhatsApp, SMS and email, and sync results to leading applicant tracking systems. CallPilot is a brand of Swiftwave.ai, operated by Swiftwave FZ-LLC, Ras Al Khaimah, United Arab Emirates.</p>
+<p class="mb-4">CallPilot is an AI phone calls platform that combines an AI call agent, VoIP lines and automation. Its AI applicant screening calls qualify job applicants 24/7, request documents by WhatsApp, SMS and email, and sync results to leading applicant tracking systems. CallPilot is a brand of Swiftwave.ai, operated by Swiftwave FZ-LLC, Ras Al Khaimah, United Arab Emirates.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Media contact</h2>
 <p class="text-gray-700 leading-relaxed">
@@ -100,7 +100,7 @@ export const allArticles: ArticleData[] = [
   <a href="https://www.callpilot.pro" class="text-blue-600 font-semibold underline hover:text-blue-800">https://www.callpilot.pro</a>
 </p>
 `,
-    relatedSlugs: ["callpilot-ashby-integration", "business-voip-whatsapp-sms-ats-integration", "how-fast-can-ai-qualify-an-applicant"]
+    relatedSlugs: ["callpilot-ashby-integration", "voip-whatsapp-sms-ats-integration", "how-fast-can-ai-qualify-an-applicant"]
   },
 
   // 1. Post 1 — Mon 14 Sep (News)

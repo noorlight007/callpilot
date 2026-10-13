@@ -23,9 +23,9 @@ const LINKS = {
   pricing: "/pricing#ai-screening",
 };
 
-const TITLE = "CallPilot Launches One Platform for Business VoIP Lines, an AI Call Agent and Automation";
+const TITLE = "CallPilot Launches One Platform for VoIP Lines, an AI Call Agent and Automation";
 const DESCRIPTION =
-  "CallPilot's AI applicant screening calls qualify candidates 24/7 and sync to your ATS. Business VoIP lines with automation are live.";
+  "CallPilot's AI applicant screening calls qualify candidates 24/7 and sync to your ATS. VoIP lines with automation are live.";
 const IMAGE = "/images/hero-dashboard-laptop.webp";
 
 export const metadata: Metadata = {
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   keywords: [
     "AI applicant screening calls",
     "AI call agent",
-    "business VoIP lines",
+    "VoIP lines",
     "recruitment automation",
     "AI phone screening",
     "ATS integration",
@@ -88,7 +88,7 @@ export default function NewsPost() {
           <h1 className={styles.h1}>{TITLE}</h1>
           <p className={styles.standfirst}>
             AI applicant screening calls qualify job applicants 24/7, chase documents by WhatsApp,
-            SMS and email, and update the ATS automatically. Business VoIP lines with automation are live now.
+            SMS and email, and update the ATS automatically. VoIP lines with automation are live now.
           </p>
           <p className={styles.meta}>
             <time dateTime={PUBLISHED_ISO}>{PUBLISHED_DISPLAY}</time> · Ras Al Khaimah, UAE
@@ -108,10 +108,10 @@ export default function NewsPost() {
         <div className={styles.body}>
           <p>
             <strong>RAS AL KHAIMAH, UAE, {PUBLISHED_DISPLAY}:</strong> CallPilot, the AI phone calls platform from
-            Swiftwave.ai, today announced one platform that brings together business VoIP lines, an AI call agent and
+            Swiftwave.ai, today announced one platform that brings together VoIP lines, an AI call agent and
             workflow automation. The launch is led by CallPilot&apos;s{" "}
             <Link href={LINKS.screening}>AI applicant screening calls</Link>, which are live now for staffing agencies,
-            recruitment firms and high-volume employers. Low-cost <Link href={LINKS.voip}>business VoIP lines</Link> with
+            recruitment firms and high-volume employers. Low-cost <Link href={LINKS.voip}>VoIP lines</Link> with
             built-in automation are live now too.
           </p>
 
@@ -154,9 +154,9 @@ export default function NewsPost() {
             <strong>Greenhouse and iCIMS</strong> coming soon.
           </p>
 
-          <h2>Business VoIP lines with automation: live now</h2>
+          <h2>VoIP lines with automation: live now</h2>
           <p>
-            Alongside AI calling, CallPilot now provides business VoIP lines for recruitment agencies and businesses of
+            Alongside AI calling, CallPilot now provides VoIP lines for recruitment agencies and businesses of
             all sizes. One low-cost number handles:
           </p>
           <ul>
@@ -177,7 +177,7 @@ export default function NewsPost() {
               <Link href={LINKS.pricing}>See pricing</Link>.
             </li>
             <li>
-              <strong>Business VoIP lines + automation:</strong> available now.{" "}
+              <strong>VoIP lines + automation:</strong> available now.{" "}
               <Link href={LINKS.voip}>Get a quote</Link>.
             </li>
           </ul>
@@ -198,7 +198,7 @@ export default function NewsPost() {
 
           <h2>About CallPilot</h2>
           <p>
-            CallPilot is an AI phone calls platform that combines an AI call agent, business VoIP lines and automation.
+            CallPilot is an AI phone calls platform that combines an AI call agent, VoIP lines and automation.
             Its AI applicant screening calls qualify job applicants 24/7, request documents by
             WhatsApp, SMS and email, and sync results to leading applicant tracking systems. CallPilot is a brand of
             Swiftwave.ai, operated by Swiftwave FZ-LLC, Ras Al Khaimah, United Arab Emirates.

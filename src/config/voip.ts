@@ -1,5 +1,5 @@
 // config/voip.ts
-// Single source of truth for CallPilot Business VoIP public pricing and copy.
+// Single source of truth for CallPilot VoIP public pricing and copy.
 //
 // PUBLIC VALUES ONLY.
 // Never add supplier, carrier or wholesale line costs to this file. It is
@@ -28,9 +28,9 @@ export const VOIP_PLANS: VoipPlan[] = [
     unit: '/user/month',
     featured: false,
     summary:
-      'Affordable cloud-based business VoIP for companies that need a modern business phone system.',
+      'Affordable cloud-based VoIP for companies that need a modern business phone system.',
     features: [
-      'Business VoIP line',
+      'VoIP line',
       'Inbound and outbound calling',
       'Keep or port an existing business number where supported',
       'CallPilot web platform',
@@ -45,7 +45,7 @@ export const VOIP_PLANS: VoipPlan[] = [
     unit: '/user/month',
     featured: true,
     summary:
-      'Business VoIP plus WhatsApp, SMS, ATS/CRM integration, click-to-call, automatic call logging and communication automation.',
+      'VoIP plus WhatsApp, SMS, ATS/CRM integration, click-to-call, automatic call logging and communication automation.',
     features: [
       'Everything included with VoIP Line',
       'WhatsApp integration',

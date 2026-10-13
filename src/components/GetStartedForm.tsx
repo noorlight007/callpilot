@@ -236,8 +236,8 @@ function GetStartedFormInner({ isDemo = false, heading = DEFAULT_HEADING, intro 
     }
   };
 
-  const currentPhoneCountry = countries.find((c) => c.code === countryIso) || { flag: "🇺🇸", dial_code: "+1" };
-  const currentMobileCountry = countries.find((c) => c.code === mobileCountryIso) || { flag: "🇬🇧", dial_code: "+44" };
+  const currentPhoneCountry = countries.find((c) => c.code === countryIso) || { flag: "", dial_code: "+1" };
+  const currentMobileCountry = countries.find((c) => c.code === mobileCountryIso) || { flag: "", dial_code: "+44" };
 
   return (
     <div className="page-shell-wrapper">
@@ -688,7 +688,7 @@ function GetStartedFormInner({ isDemo = false, heading = DEFAULT_HEADING, intro 
                   <Popover open={openPhoneCombobox} onOpenChange={setOpenPhoneCombobox}>
                     <PopoverTrigger asChild>
                       <div className="code" role="button" style={{ cursor: "pointer" }}>
-                        <span className="flag">{currentPhoneCountry.flag}</span>
+                        <span>{countryIso}</span>
                         <strong>{currentPhoneCountry.dial_code}</strong>
                         <i className="fa-solid fa-chevron-down"></i>
                       </div>
@@ -750,7 +750,7 @@ function GetStartedFormInner({ isDemo = false, heading = DEFAULT_HEADING, intro 
                   <Popover open={openMobileCombobox} onOpenChange={setOpenMobileCombobox}>
                     <PopoverTrigger asChild>
                       <div className="code" role="button" style={{ cursor: "pointer" }}>
-                        <span className="flag">{currentMobileCountry.flag}</span>
+                        <span>{mobileCountryIso}</span>
                         <strong>{currentMobileCountry.dial_code}</strong>
                         <i className="fa-solid fa-chevron-down"></i>
                       </div>
@@ -819,19 +819,19 @@ function GetStartedFormInner({ isDemo = false, heading = DEFAULT_HEADING, intro 
               </div>
 
               <div className="field">
-                <label htmlFor="dailyCallVolume">Estimated Daily Call Volume</label>
+                <label htmlFor="dailyCallVolume">Monthly calls or applicants (approx.)</label>
                 <CustomSelect
                   id="dailyCallVolume"
                   value={formData.dailyCallVolume}
                   options={callVolumeOptions}
                   onChange={(val) => handleInputChange("dailyCallVolume", val)}
-                  placeholder="Select daily call volume"
+                  placeholder="Select approximate volume"
                   iconClass="fa-solid fa-chart-simple"
                 />
               </div>
 
               <div className="field span-2">
-                <label htmlFor="businessCategory">Which area of your business will CallPilot support?</label>
+                <label htmlFor="businessCategory">What do you need?</label>
                 <CustomSelect
                   id="businessCategory"
                   value={formData.businessCategory}

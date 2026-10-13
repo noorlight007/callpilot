@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   },
   description: DESCRIPTION,
   keywords: [
-    "VoIP phone lines", "business VoIP", "WhatsApp calling", "SMS automation", "email automation",
+    "VoIP phone lines", "WhatsApp calling", "SMS automation", "email automation",
     "AI applicant screening", "AI screening calls", "AI call agent", "recruitment automation", "ATS integration",
   ],
   alternates: { canonical: "/" },

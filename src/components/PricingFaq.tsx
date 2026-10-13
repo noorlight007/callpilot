@@ -1,5 +1,4 @@
 import JsonLd from "@/components/JsonLd";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const PRICING_FAQ = [
   {
@@ -8,7 +7,7 @@ const PRICING_FAQ = [
   },
   {
     question: "Am I charged if the applicant doesn't answer?",
-    answer: "No. If the applicant is not reached, there is no charge.",
+    answer: "No. No call, no charge. You only pay for completed screenings.",
   },
   {
     question: "Is there a free trial?",
@@ -46,16 +45,18 @@ export default function PricingFaq() {
           <h2 id="pricing-faq" className="text-3xl font-semibold text-headline text-center mb-8">
             Pricing questions
           </h2>
-          <Accordion type="single" collapsible className="rounded-xl border border-border bg-card px-6">
-            {PRICING_FAQ.map((f, i) => (
-              <AccordionItem key={f.question} value={`faq-${i}`} className="last:border-b-0">
-                <AccordionTrigger className="text-left text-base text-headline hover:no-underline">
-                  {f.question}
-                </AccordionTrigger>
-                <AccordionContent className="text-body leading-relaxed">{f.answer}</AccordionContent>
-              </AccordionItem>
+          <div className="rounded-xl border border-border bg-card px-6 divide-y divide-border">
+            {PRICING_FAQ.map((f) => (
+              <details key={f.question} className="group py-4">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-base font-medium text-headline">
+                  <h3 className="text-base font-medium">{f.question}</h3>
+                  <span aria-hidden className="text-xl leading-none group-open:hidden">+</span>
+                  <span aria-hidden className="hidden text-xl leading-none group-open:inline">−</span>
+                </summary>
+                <p className="mt-3 text-body leading-relaxed">{f.answer}</p>
+              </details>
             ))}
-          </Accordion>
+          </div>
         </div>
       </div>
       <JsonLd data={faqSchema} />

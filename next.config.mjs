@@ -35,18 +35,24 @@ const nextConfig = {
         destination: "/policy-compliance",
         permanent: true,
       },
-      // Homepage plan buttons: /signup?plan=... (query string is kept automatically)
-      // VoIP plans -> sales form; screening plans + footer trial link -> free-trial form
+      // Renamed news URL (dropped "business")
+      {
+        source: "/news/business-voip-whatsapp-sms-ats-integration",
+        destination: "/news/voip-whatsapp-sms-ats-integration",
+        permanent: true,
+      },
+      // Old /signup links: screening plans -> free trial, everything else -> get-started.
+      // The screening rule must stay above the general one. Query strings are kept automatically.
       {
         source: "/signup",
-        has: [{ type: "query", key: "plan", value: "voip(.*)" }],
-        destination: "/get-started",
-        permanent: false,
+        has: [{ type: "query", key: "plan", value: "(starter|growth|pro)" }],
+        destination: "/free-trial",
+        permanent: true,
       },
       {
         source: "/signup",
-        destination: "/free-trial",
-        permanent: false,
+        destination: "/get-started",
+        permanent: true,
       },
       // "Contact Sales" buttons (x3 on homepage)
       {

@@ -158,7 +158,7 @@ const Pricing = ({ asH1 = true }: PricingProps) => {
           )}
           <div className="w-14 h-1 bg-[#0a0a0a] rounded-full mx-auto my-1" />
           <p className="m-0 text-base sm:text-[18px] text-[#6b6b68] font-medium max-w-xl">
-            Choose between business VoIP phone lines or 24/7 AI applicant screening calls.
+            Choose between VoIP phone lines or 24/7 AI applicant screening calls.
           </p>
         </div>
 
