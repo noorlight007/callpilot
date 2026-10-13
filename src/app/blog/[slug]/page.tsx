@@ -244,7 +244,7 @@ export default async function BlogSlugPage({ params }: Props) {
               Ready to Accelerate Your Applicant Screening?
             </h2>
             <p className="text-white/75 text-sm sm:text-base mb-6 max-w-xl mx-auto">
-              Screen every applicant in under 2 minutes, gather ID via WhatsApp, and sync results straight to your ATS.
+              Screen every applicant automatically, gather ID via WhatsApp, and sync results straight to your ATS.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link

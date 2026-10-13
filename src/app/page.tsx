@@ -14,7 +14,7 @@ import CallPilotSchema from "@/components/seo/CallPilotSchema";
 const SITE = "https://callpilot.pro";
 const TITLE = "VoIP Phone Lines + AI Applicant Screening Calls | CallPilot";
 const DESCRIPTION =
-  "Low-cost VoIP phone lines with WhatsApp, SMS and email automation, plus AI applicant screening calls that qualify every applicant 24/7 in under 2 minutes.";
+  "VoIP phone lines with WhatsApp, SMS and email automation, plus AI applicant screening calls that qualify every applicant 24/7 and sync results to your ATS.";
 
 export const revalidate = 300; // rebuild at most every 5 minutes, never serve a stale build for days
 

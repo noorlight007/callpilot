@@ -10,13 +10,13 @@ export const metadata: Metadata = {
         default: "CallPilot | VoIP Phone Lines + AI Applicant Screening",
         template: "%s | CallPilot",
     },
-    description: "Low-cost VoIP phone lines with WhatsApp, SMS and email automation, plus AI applicant screening calls that qualify every applicant 24/7 in under 2 minutes.",
+    description: "VoIP phone lines with WhatsApp, SMS and email automation, plus AI applicant screening calls that qualify every applicant 24/7 and sync results to your ATS.",
     alternates: {
         canonical: "/",
     },
     openGraph: {
         title: "CallPilot | VoIP Phone Lines + AI Applicant Screening",
-        description: "Low-cost VoIP phone lines with WhatsApp, SMS and email automation, plus AI applicant screening calls that qualify every applicant 24/7 in under 2 minutes.",
+        description: "VoIP phone lines with WhatsApp, SMS and email automation, plus AI applicant screening calls that qualify every applicant 24/7 and sync results to your ATS.",
         url: "https://callpilot.pro/",
         siteName: "CallPilot",
         type: "website",

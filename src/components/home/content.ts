@@ -116,7 +116,7 @@ export const FAQS = [
   },
   {
     q: "How do AI applicant screening calls work?",
-    a: "CallPilot calls each applicant, asks your role-specific screening questions and completes the screen in under 2 minutes. Qualified applicants are asked for documents by WhatsApp, SMS and email, results are written back to your ATS, and your recruiter is notified to verify.",
+    a: "CallPilot calls each applicant, asks your role-specific screening questions and completes the screen. Qualified applicants are asked for documents by WhatsApp, SMS and email, results are written back to your ATS, and your recruiter is notified to verify.",
   },
   {
     q: "What do the traffic-light results mean?",
@@ -142,7 +142,7 @@ export const FAQS = [
 
 export const FOOTER = {
   about:
-    "VoIP phone lines, AI applicant screening calls and automation in one platform. Qualify applicants in under 2 minutes, collect documents via WhatsApp and sync into your ATS.",
+    "VoIP phone lines, AI applicant screening calls and automation in one platform. Qualify applicants 24/7, collect documents via WhatsApp or SMS and sync into your ATS.",
   columns: [
     {
       title: "Products",

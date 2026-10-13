@@ -163,7 +163,7 @@ export default function FeaturesPage() {
                 <p className={s.kicker}>02</p>
                 <h2 id="screen-title" className={s.h2}>AI Applicant Screening Calls</h2>
                 <p className={s.subLeft}>
-                  Every applicant called and qualified, 24/7, in under 2 minutes.
+                  Every applicant called and qualified, 24/7.
                 </p>
                 <ol className={s.vSteps} style={{ marginTop: "32px" }}>
                   {screeningSteps.map(({ icon: Icon, title, text }, i) => (

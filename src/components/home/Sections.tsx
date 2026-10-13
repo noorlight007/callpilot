@@ -67,7 +67,7 @@ export function VoipSection() {
 export function ScreeningSection() {
   const steps = [
     { icon: Headset, title: "AI calls every applicant", text: "Day or night, 24/7, including evenings and weekends." },
-    { icon: Clock, title: "Screened in under 2 minutes", text: "Your role-specific questions. A “No” on any requirement ends the screen." },
+    { icon: Clock, title: "Screened and scored automatically", text: "Your role-specific questions. A “No” on any requirement ends the screen." },
     { icon: Doc, title: "Documents chased for you", text: "ID and work authorisation requested by WhatsApp, SMS and email." },
     { icon: Sync, title: "ATS updated automatically", text: "Every result, answer and document written back to the candidate record." },
     { icon: UserCheck, title: "Recruiter notified to verify", text: "CallPilot stops at verification. Your recruiter takes it from there." },

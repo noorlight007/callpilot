@@ -34,7 +34,7 @@ export const allArticles: ArticleData[] = [
     type: "news",
     title: "CallPilot Launches One Platform for Business VoIP Lines, an AI Call Agent and Automation",
     seoTitle: "CallPilot Launches AI Call Agent, VoIP Lines & Automation",
-    metaDescription: "CallPilot's AI applicant screening calls qualify candidates 24/7 in under 2 minutes and sync to your ATS. Business VoIP lines with automation launch soon.",
+    metaDescription: "CallPilot's AI applicant screening calls qualify candidates 24/7 and sync to your ATS. Business VoIP lines with automation launch soon.",
     h1: "CallPilot Launches One Platform for Business VoIP Lines, an AI Call Agent and Automation",
     publishDate: "24 September 2026",
     isoDate: "2026-09-24T09:00:00Z",
@@ -44,10 +44,10 @@ export const allArticles: ArticleData[] = [
     category: "Product & Company News",
     readingTime: "3 min read",
     featuredImage: "/images/hero-dashboard-laptop.webp",
-    excerpt: "AI applicant screening calls qualify job applicants 24/7 in under 2 minutes, chase documents by WhatsApp, SMS and email, and update the ATS automatically. Business VoIP lines are launching soon.",
+    excerpt: "AI applicant screening calls qualify job applicants 24/7, chase documents by WhatsApp, SMS and email, and update the ATS automatically. Business VoIP lines are launching soon.",
     canonicalUrl: "https://callpilot.pro/news/callpilot-launches-ai-call-agent-business-voip-lines-automation/",
     contentHtml: `
-<p class="lead text-xl text-gray-700 font-medium mb-6">AI applicant screening calls qualify job applicants 24/7 in under 2 minutes, chase documents by WhatsApp, SMS and email, and update the ATS automatically. Business VoIP lines are launching soon.</p>
+<p class="lead text-xl text-gray-700 font-medium mb-6">AI applicant screening calls qualify job applicants 24/7, chase documents by WhatsApp, SMS and email, and update the ATS automatically. Business VoIP lines are launching soon.</p>
 
 <p class="mb-4"><strong>RAS AL KHAIMAH, UAE, 24 September 2026:</strong> <a href="https://www.callpilot.pro" class="text-blue-600 font-semibold underline hover:text-blue-800">CallPilot</a>, the AI phone calls platform from Swiftwave.ai, today announced one platform that brings together business VoIP lines, an AI call agent and workflow automation. The launch is led by CallPilot's <a href="/ai-applicant-screening" class="text-blue-600 font-semibold underline hover:text-blue-800">AI applicant screening calls</a>, which are live now for staffing agencies, recruitment firms and high-volume employers. Low-cost <a href="/business-voip" class="text-blue-600 font-semibold underline hover:text-blue-800">business VoIP lines</a> with built-in automation will follow soon.</p>
 
@@ -58,7 +58,7 @@ export const allArticles: ArticleData[] = [
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">How CallPilot AI applicant screening calls work</h2>
 <ol class="list-decimal pl-6 space-y-2 mb-6 text-gray-700">
   <li><strong>The AI call agent phones every applicant, 24/7.</strong> CallPilot calls applicants day or night, including evenings and weekends.</li>
-  <li><strong>Role-specific screening in under 2 minutes.</strong> The AI asks the questions set for each role. A "No" on any requirement ends the screen immediately as Unsuccessful. It is not a scoring system, so results are clear-cut.</li>
+  <li><strong>Role-specific screening.</strong> The AI asks the questions set for each role. A "No" on any requirement ends the screen immediately as Unsuccessful. It is not a scoring system, so results are clear-cut.</li>
   <li><strong>Documents requested automatically.</strong> Qualified applicants are asked for their documents by WhatsApp, SMS and email, and follow-ups continue until the documents arrive.</li>
   <li><strong>Traffic-light results in the ATS.</strong> Every outcome is written back to the recruiter's applicant tracking system: Qualified, Awaiting Docs or Unsuccessful.</li>
   <li><strong>The recruiter is notified to verify.</strong> CallPilot deliberately stops at verification. The recruiter's judgement starts where the automation ends.</li>
@@ -91,7 +91,7 @@ export const allArticles: ArticleData[] = [
 </ul>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">About CallPilot</h2>
-<p class="mb-4">CallPilot is an AI phone calls platform that combines an AI call agent, business VoIP lines and automation. Its AI applicant screening calls qualify job applicants 24/7 in under 2 minutes, request documents by WhatsApp, SMS and email, and sync results to leading applicant tracking systems. CallPilot is a brand of Swiftwave.ai, operated by Swiftwave FZ-LLC, Ras Al Khaimah, United Arab Emirates.</p>
+<p class="mb-4">CallPilot is an AI phone calls platform that combines an AI call agent, business VoIP lines and automation. Its AI applicant screening calls qualify job applicants 24/7, request documents by WhatsApp, SMS and email, and sync results to leading applicant tracking systems. CallPilot is a brand of Swiftwave.ai, operated by Swiftwave FZ-LLC, Ras Al Khaimah, United Arab Emirates.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Media contact</h2>
 <p class="text-gray-700 leading-relaxed">
@@ -135,7 +135,7 @@ export const allArticles: ArticleData[] = [
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">What happens now</h2>
 <p class="mb-4">An applicant applies to your Ashby job posting. CallPilot polls Ashby on a schedule and picks up the new application within the hour, then calls the applicant with a human-like AI voice.</p>
-<p class="mb-4">The call runs your screening questions as a natural conversation in a human-like AI voice — availability, right to work, experience, location, salary expectation, whatever you've configured for that role. It doesn't sound like a phone tree and it isn't a list of recorded prompts. Most calls complete in under two minutes.</p>
+<p class="mb-4">The call runs your screening questions as a natural conversation in a human-like AI voice — availability, right to work, experience, location, salary expectation, whatever you've configured for that role. It doesn't sound like a phone tree and it isn't a list of recorded prompts.</p>
 <p class="mb-4">If the applicant qualifies, CallPilot immediately sends a WhatsApp or SMS message requesting their ID and any documents the role requires. That message goes out seconds after the call ends, while the applicant is still thinking about your job rather than three days later when they've moved on.</p>
 <p class="mb-4">When the documents come back, they attach to the applicant's Ashby profile. The screening outcome, the call transcript and the status all write straight into Ashby.</p>
 <p class="mb-6">No re-keying. No separate dashboard. No export. The whole sequence is fully automated — nobody has to trigger it, chase it or type it up.</p>
@@ -145,15 +145,15 @@ export const allArticles: ArticleData[] = [
 
 <div class="space-y-4 my-6">
   <div class="p-5 bg-emerald-50 border border-emerald-200 rounded-xl">
-    <h3 class="font-bold text-emerald-900 text-lg mb-1">🟢 Qualified – Documents Received</h3>
+    <h3 class="font-bold text-emerald-900 text-lg mb-1">Green: Qualified – Documents Received</h3>
     <p class="text-emerald-800 text-sm">Passed screening, ID and documents in and attached to the record. Ready for your recruiter to verify and progress.<br/><em>Worth being precise: received is not verified. CallPilot collects the documents and puts them on the record. Checking them is a recruiter's job and stays one.</em></p>
   </div>
   <div class="p-5 bg-amber-50 border border-amber-200 rounded-xl">
-    <h3 class="font-bold text-amber-900 text-lg mb-1">🟠 Qualified – Awaiting Documents</h3>
+    <h3 class="font-bold text-amber-900 text-lg mb-1">Amber: Qualified – Awaiting Documents</h3>
     <p class="text-amber-800 text-sm">Passed screening. The automated WhatsApp/SMS chase is running.</p>
   </div>
   <div class="p-5 bg-red-50 border border-red-200 rounded-xl">
-    <h3 class="font-bold text-red-900 text-lg mb-1">🔴 Unsuccessful</h3>
+    <h3 class="font-bold text-red-900 text-lg mb-1">Red: Unsuccessful</h3>
     <p class="text-red-800 text-sm">Did not meet the criteria for the role.</p>
   </div>
 </div>
@@ -322,7 +322,7 @@ export const allArticles: ArticleData[] = [
     type: "news",
     title: "CallPilot Is Now Live With Recruit CRM | AI Screening",
     seoTitle: "CallPilot Is Now Live With Recruit CRM | AI Screening",
-    metaDescription: "CallPilot's AI applicant screening call now connects to Recruit CRM. Every applicant qualified and documented in under 2 minutes, 24/7.",
+    metaDescription: "CallPilot's AI applicant screening call now connects to Recruit CRM. Every applicant qualified and documented, 24/7.",
     h1: "CallPilot Is Now Live With Recruit CRM",
     publishDate: "18 September 2026",
     isoDate: "2026-09-18T09:00:00Z",
@@ -345,15 +345,15 @@ export const allArticles: ArticleData[] = [
 <p class="mb-6">That's not a sales skill problem. It's a timing problem, and it's decided within hours of the application landing.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">What changes with CallPilot</h2>
-<p class="mb-4">An applicant applies to your Recruit CRM job. CallPilot polls Recruit CRM, picks the application up within the hour, and calls with a human-like AI voice to run your screening questions — availability, right to work, rate expectation, experience, location or shift pattern. The call completes in under two minutes.</p>
+<p class="mb-4">An applicant applies to your Recruit CRM job. CallPilot polls Recruit CRM, picks the application up within the hour, and calls with a human-like AI voice to run your screening questions — availability, right to work, rate expectation, experience, location or shift pattern.</p>
 <p class="mb-4">Qualified applicants receive an immediate WhatsApp or SMS requesting their ID and compliance documents. Documents come back and attach to the candidate record in Recruit CRM, along with the screening outcome and the call transcript.</p>
 <p class="mb-6">Your consultants don't spend the morning dialling. They spend it working a list of candidates who have already been qualified and documented.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">The three outcomes in Recruit CRM</h2>
 <div class="space-y-4 my-6">
-  <div class="p-4 bg-emerald-50 border border-emerald-200 rounded-lg"><strong>🟢 Qualified – Documents Received</strong> — screened, documented, ready to submit</div>
-  <div class="p-4 bg-amber-50 border border-amber-200 rounded-lg"><strong>🟠 Qualified – Awaiting Documents</strong> — screened, automated chase running</div>
-  <div class="p-4 bg-red-50 border border-red-200 rounded-lg"><strong>🔴 Unsuccessful</strong> — did not meet the criteria</div>
+  <div class="p-4 bg-emerald-50 border border-emerald-200 rounded-lg"><strong>Green: Qualified – Documents Received</strong> — screened, documented, ready to submit</div>
+  <div class="p-4 bg-amber-50 border border-amber-200 rounded-lg"><strong>Amber: Qualified – Awaiting Documents</strong> — screened, automated chase running</div>
+  <div class="p-4 bg-red-50 border border-red-200 rounded-lg"><strong>Red: Unsuccessful</strong> — did not meet the criteria</div>
 </div>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Where this shows up commercially</h2>
@@ -599,7 +599,7 @@ export const allArticles: ArticleData[] = [
 <p class="p-4 bg-gray-100 rounded-lg font-bold text-gray-900 mb-6">Voice call → SMS → web form → one-way video</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Voice removes every barrier</h2>
-<p class="mb-4">Think about what an AI voice call requires from an applicant. A phone that rings, and two minutes. No app. No download. No account creation. No password. No camera. No lighting.</p>
+<p class="mb-4">Think about what an AI voice call requires from an applicant. A phone that rings. No app. No download. No account creation. No password. No camera. No lighting.</p>
 <p class="mb-6">Compare that to forms or one-way video interviews, which demand apps, logins, and quiet environments. For shift workers, care staff, and logistics workers, friction equals drop-off.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">A conversation adapts. A form doesn't.</h2>
@@ -756,7 +756,7 @@ export const allArticles: ArticleData[] = [
     type: "blog",
     title: "What Happens After the AI Screening Call? | CallPilot",
     seoTitle: "What Happens After the AI Screening Call? | CallPilot",
-    metaDescription: "The document request, collection and ATS update explained step by step — what screening automation does after the call, and what your recruiter still verifies.",
+    metaDescription: "After the AI screening call, CallPilot scores each applicant, requests ID and documents by WhatsApp or SMS, and updates your ATS automatically. Step by step.",
     h1: "What Happens After the AI Screening Call?",
     publishDate: "9 October 2026",
     isoDate: "2026-10-09T09:00:00Z",
@@ -767,12 +767,12 @@ export const allArticles: ArticleData[] = [
     readingTime: "5 min read",
     featuredImage: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&auto=format&fit=crop&q=80",
     excerpt: "Every AI recruitment vendor will show you the call. Very few will tell you what happens next. Here is the whole sequence, step by step.",
-    canonicalUrl: "https://callpilot.pro/blog/what-happens-after-the-ai-screening-call/",
+    canonicalUrl: "https://callpilot.pro/blog/what-happens-after-the-ai-screening-call",
     contentHtml: `
-<p class="lead text-xl text-gray-700 font-medium mb-6">Every AI recruitment vendor will show you the call. Very few will tell you what happens next. That's a problem, because the call is the easy part. It takes two minutes. Everything that actually goes wrong in recruitment goes wrong afterwards — in the document chase, the handover, and the gap between "qualified" and "started".</p>
+<p class="lead text-xl text-gray-700 font-medium mb-6">Every AI recruitment vendor will show you the call. Very few will tell you what happens next. That's a problem, because the call is the easy part. Everything that actually goes wrong in recruitment goes wrong afterwards — in the document chase, the handover, and the gap between "qualified" and "started".</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Step 1 — The document request goes out immediately</h2>
-<p class="mb-4">Seconds after the call ends, the qualified applicant receives a WhatsApp or SMS asking for their ID and whatever documents the role requires. Not that afternoon. Seconds.</p>
+<p class="mb-4">When the call ends, the qualified applicant receives a WhatsApp or SMS asking for their ID and whatever documents the role requires.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Step 2 — Documents come back without a portal</h2>
 <p class="mb-4">The applicant replies to the message with photos of their documents. No app download, no forgotten passwords, no expired upload links.</p>
@@ -784,10 +784,10 @@ export const allArticles: ArticleData[] = [
 <p class="mb-4">Everything lands directly on the candidate record in your ATS: screening outcome, status, full call transcript, and document attachments.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Step 5 — The automated chase sequence</h2>
-<p class="mb-4">Applicants who haven't sent documents sit at 🟠 <strong>Qualified – Awaiting Documents</strong> while automated polite follow-ups run.</p>
+<p class="mb-4">Applicants who haven't sent documents sit at <strong>Amber: Qualified – Awaiting Documents</strong> while automated polite follow-ups run.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Step 6 — The recruiter handover</h2>
-<p class="mb-6">Recruiters open their ATS to three clear buckets: 🟢 Qualified – Documents Received, 🟠 Qualified – Awaiting Documents, and 🔴 Unsuccessful. See how this connects with <a href="/integrations/ashby/" class="text-blue-600 font-semibold underline hover:text-blue-800">Ashby</a> and <a href="/integrations/jobadder/" class="text-blue-600 font-semibold underline hover:text-blue-800">JobAdder</a>.</p>
+<p class="mb-6">Recruiters open their ATS to three clear buckets: Green: Qualified – Documents Received, Amber: Qualified – Awaiting Documents, and Red: Unsuccessful. See how this connects with <a href="/integrations/ashby/" class="text-blue-600 font-semibold underline hover:text-blue-800">Ashby</a> and <a href="/integrations/jobadder/" class="text-blue-600 font-semibold underline hover:text-blue-800">JobAdder</a>.</p>
 `,
     faqs: [
       {

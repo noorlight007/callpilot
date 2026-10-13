@@ -89,11 +89,11 @@ export const integrationsData: Record<string, ATSIntegration> = {
     panelType: "live-board",
     seo: {
       title: "Ashby AI Applicant Screening | CallPilot Integration",
-      description: "Screen every Ashby applicant with an AI call in under 2 minutes. Documents and ID collected via WhatsApp, Ashby updated automatically. 100 free credits.",
+      description: "Screen every Ashby applicant with an AI call. Documents and ID collected via WhatsApp, Ashby updated automatically. 100 free credits.",
       ogTitle: "Ashby AI Applicant Screening | CallPilot Integration",
-      ogDescription: "Screen every Ashby applicant with an AI call in under 2 minutes. Documents and ID collected via WhatsApp, Ashby updated automatically. 100 free credits.",
+      ogDescription: "Screen every Ashby applicant with an AI call. Documents and ID collected via WhatsApp, Ashby updated automatically. 100 free credits.",
       twitterTitle: "Ashby AI Applicant Screening | CallPilot Integration",
-      twitterDescription: "Screen every Ashby applicant with an AI call in under 2 minutes. Documents and ID collected via WhatsApp, Ashby updated automatically. 100 free credits.",
+      twitterDescription: "Screen every Ashby applicant with an AI call. Documents and ID collected via WhatsApp, Ashby updated automatically. 100 free credits.",
       schemaDescription: "AI applicant screening calls integrated with Ashby. Every applicant screened, documents collected, and candidate record updated automatically.",
       targetKeyword: "Ashby AI applicant screening",
     },
@@ -101,7 +101,7 @@ export const integrationsData: Record<string, ATSIntegration> = {
       eyebrowText: "Ashby Integration: LIVE",
       overline: "AI Applicant Screening Calls + WhatsApp/SMS Automation",
       h1: "AI Applicant Screening for Ashby",
-      lead: "Screen every Ashby applicant with a human-like AI call in under 2 minutes. Documents and ID collected via WhatsApp, Ashby updated automatically without a recruiter picking up the phone.",
+      lead: "Screen every Ashby applicant with a human-like AI call. Documents and ID collected via WhatsApp, Ashby updated automatically without a recruiter picking up the phone.",
       flowNodes: ["Ashby Job Ad", "Applicant Applies", "AI Screening Call", "Pre-Qualifies", "WhatsApp Request", "ID & Documents Attached", "Ashby Status Synced"],
       primaryCtaText: "Claim 100 Free Credits",
       primaryCtaLink: "/free-trial/",
@@ -137,9 +137,9 @@ export const integrationsData: Record<string, ATSIntegration> = {
     },
     trafficLights: {
       lead: "Your recruiters open Ashby on Monday to a pipeline that has already been screened and organized into three clean statuses:",
-      qualified: "🟠 Qualified – Awaiting Documents: Passed the AI screening call against your role criteria. The automated WhatsApp/SMS chase sequence is actively running.",
-      received: "🟢 Qualified – Documents Received: Passed screening with ID and required right-to-work documents collected and attached. Ready for recruiter verification.",
-      unsuccessful: "🔴 Unsuccessful: Did not meet the minimum role requirements. Call transcript and recorded responses are logged on the Ashby record for full auditability.",
+      qualified: "Amber: Qualified – Awaiting Documents: Passed the AI screening call against your role criteria. The automated WhatsApp/SMS chase sequence is actively running.",
+      received: "Green: Qualified – Documents Received: Passed screening with ID and required right-to-work documents collected and attached. Ready for recruiter verification.",
+      unsuccessful: "Red: Unsuccessful: Did not meet the minimum role requirements. Call transcript and recorded responses are logged on the Ashby record for full auditability.",
     },
     callout: {
       title: "Built Natively for Ashby Hiring Teams",
@@ -154,7 +154,7 @@ export const integrationsData: Record<string, ATSIntegration> = {
       },
       {
         question: "What are the three screening status outcomes in Ashby?",
-        answer: "The three pipeline statuses are: 🟢 Qualified – Documents Received (passed and files attached), 🟠 Qualified – Awaiting Documents (passed, automated reminder active), and 🔴 Unsuccessful (did not meet role criteria).",
+        answer: "The three pipeline statuses are: Green: Qualified – Documents Received (passed and files attached), Amber: Qualified – Awaiting Documents (passed, automated reminder active), and Red: Unsuccessful (did not meet role criteria).",
       },
       {
         question: "Are candidates informed that they are speaking to an AI?",
@@ -223,7 +223,7 @@ export const integrationsData: Record<string, ATSIntegration> = {
         },
         {
           title: "2. Human-Like AI Qualifying Screen",
-          desc: "CallPilot conducts a natural phone screen covering availability, right to work, salary/rate expectations, and key role qualifications in under two minutes.",
+          desc: "CallPilot conducts a natural phone screen covering availability, right to work, salary/rate expectations, and key role qualifications.",
         },
         {
           title: "3. WhatsApp / SMS Document Request",
@@ -237,9 +237,9 @@ export const integrationsData: Record<string, ATSIntegration> = {
     },
     trafficLights: {
       lead: "Three clear outcomes update automatically on your Recruit CRM candidate pipeline:",
-      qualified: "🟠 Qualified – Awaiting Documents: Passed the AI phone screen. The automated chasing engine handles follow-ups.",
-      received: "🟢 Qualified – Documents Received: Compliant, documented, and ready for recruiter verification and client submission.",
-      unsuccessful: "🔴 Unsuccessful: Did not meet essential requirements. Saved recruiter hours from dialling mismatches.",
+      qualified: "Amber: Qualified – Awaiting Documents: Passed the AI phone screen. The automated chasing engine handles follow-ups.",
+      received: "Green: Qualified – Documents Received: Compliant, documented, and ready for recruiter verification and client submission.",
+      unsuccessful: "Red: Unsuccessful: Did not meet essential requirements. Saved recruiter hours from dialling mismatches.",
     },
     callout: {
       title: "Built for Fast-Moving Recruitment Agencies",
@@ -337,9 +337,9 @@ export const integrationsData: Record<string, ATSIntegration> = {
     },
     trafficLights: {
       lead: "Keep your temp and contract pipeline structured with three real-time statuses:",
-      qualified: "🟠 Qualified – Awaiting Documents: Passed qualification. Chasing sequence active.",
-      received: "🟢 Qualified – Documents Received: Compliant and ready to place on shift.",
-      unsuccessful: "🔴 Unsuccessful: Screened out, eliminating wasted callbacks.",
+      qualified: "Amber: Qualified – Awaiting Documents: Passed qualification. Chasing sequence active.",
+      received: "Green: Qualified – Documents Received: Compliant and ready to place on shift.",
+      unsuccessful: "Red: Unsuccessful: Screened out, eliminating wasted callbacks.",
     },
     callout: {
       title: "JobAdder Two-Way Realtime Sync",
@@ -384,16 +384,16 @@ export const integrationsData: Record<string, ATSIntegration> = {
   greenhouse: {
     slug: "greenhouse",
     name: "Greenhouse",
-    status: "Live Soon",
+    status: "Coming Soon",
     statusBadgeClass: "badge-soon",
     panelType: "hitech-metrics",
     seo: {
-      title: "Greenhouse AI Applicant Screening | CallPilot",
-      description: "CallPilot's AI screening call integration for Greenhouse is coming soon. Join the waitlist for early access and 100 free screening credits.",
-      ogTitle: "Greenhouse AI Applicant Screening | CallPilot",
-      ogDescription: "CallPilot's AI screening call integration for Greenhouse is coming soon. Join the waitlist for early access and 100 free screening credits.",
-      twitterTitle: "Greenhouse AI Applicant Screening | CallPilot",
-      twitterDescription: "CallPilot's AI screening call integration for Greenhouse is coming soon. Join the waitlist for early access and 100 free screening credits.",
+      title: "Greenhouse AI Applicant Screening Integration | CallPilot",
+      description: "CallPilot's AI Applicant Screening Call for Greenhouse is coming soon. Screen applicants 24/7 and collect documents by WhatsApp or SMS. Join the waitlist.",
+      ogTitle: "Greenhouse AI Applicant Screening Integration | CallPilot",
+      ogDescription: "CallPilot's AI Applicant Screening Call for Greenhouse is coming soon. Screen applicants 24/7 and collect documents by WhatsApp or SMS. Join the waitlist.",
+      twitterTitle: "Greenhouse AI Applicant Screening Integration | CallPilot",
+      twitterDescription: "CallPilot's AI Applicant Screening Call for Greenhouse is coming soon. Screen applicants 24/7 and collect documents by WhatsApp or SMS. Join the waitlist.",
       schemaDescription: "AI voice screening calls with instant traffic-light scoring for Greenhouse. Early access waitlist is open with 100 free credits.",
       targetKeyword: "Greenhouse AI applicant screening",
     },
@@ -436,7 +436,7 @@ export const integrationsData: Record<string, ATSIntegration> = {
         },
         {
           title: "2. AI Screening Call",
-          desc: "CallPilot calls the candidate and runs your screening questions as a natural voice conversation — availability, right to work, experience, location, compensation expectation, configured per job. Most calls complete in under two minutes.",
+          desc: "CallPilot calls the candidate and runs your screening questions as a natural voice conversation — availability, right to work, experience, location, compensation expectation, configured per job.",
         },
         {
           title: "3. Document and ID Request",
@@ -454,9 +454,9 @@ export const integrationsData: Record<string, ATSIntegration> = {
     },
     trafficLights: {
       lead: "What your talent acquisition team will see in Greenhouse:",
-      qualified: "🟢 Qualified – Documents Received: Passed screening, compliance files attached, ready for recruiter interview progression.",
-      received: "🟠 Qualified – Awaiting Documents: Passed initial screen, automated WhatsApp/SMS chase sequence running.",
-      unsuccessful: "🔴 Unsuccessful: Did not meet role criteria, with transcript and timestamp logged on the record.",
+      qualified: "Amber: Qualified – Awaiting Documents: Passed initial screen, automated WhatsApp/SMS chase sequence running.",
+      received: "Green: Qualified – Documents Received: Passed screening, compliance files attached, ready for recruiter interview progression.",
+      unsuccessful: "Red: Unsuccessful: Did not meet role criteria, with transcript and timestamp logged on the record.",
     },
     callout: {
       title: "Why Greenhouse Teams Are Asking for CallPilot",
@@ -467,7 +467,7 @@ export const integrationsData: Record<string, ATSIntegration> = {
     faqs: [
       {
         question: "When will the Greenhouse integration be available?",
-        answer: "Early access is opening now, with general release following shortly. Teams on the waitlist receive priority onboarding and setup support.",
+        answer: "The Greenhouse integration is coming soon. Teams on the waitlist receive priority onboarding and setup support when it launches.",
       },
       {
         question: "Will it work with our existing Greenhouse workflows and scorecards?",
@@ -553,7 +553,7 @@ export const integrationsData: Record<string, ATSIntegration> = {
         },
         {
           title: "2. Consistent AI Voice Screening",
-          desc: "Your configured screening questions run as a natural voice conversation. Most calls complete in under two minutes with identical criteria applied.",
+          desc: "Your configured screening questions run as a natural voice conversation. Identical criteria are applied to every applicant.",
         },
         {
           title: "3. WhatsApp / SMS Document Request",
@@ -571,9 +571,9 @@ export const integrationsData: Record<string, ATSIntegration> = {
     },
     trafficLights: {
       lead: "Structured pipeline visibility inside iCIMS:",
-      qualified: "🟢 Qualified – Documents Received: Criteria met, documents in, ready for recruiter review.",
-      received: "🟠 Qualified – Awaiting Documents: Criteria met, automated chase running.",
-      unsuccessful: "🔴 Unsuccessful: Below criteria threshold, full transcript logged.",
+      qualified: "Amber: Qualified – Awaiting Documents: Criteria met, automated chase running.",
+      received: "Green: Qualified – Documents Received: Criteria met, documents in, ready for recruiter review.",
+      unsuccessful: "Red: Unsuccessful: Below criteria threshold, full transcript logged.",
     },
     callout: {
       title: "Enterprise Governance & Audit Trail",

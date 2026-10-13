@@ -25,7 +25,7 @@ const LINKS = {
 
 const TITLE = "CallPilot Launches One Platform for Business VoIP Lines, an AI Call Agent and Automation";
 const DESCRIPTION =
-  "CallPilot's AI applicant screening calls qualify candidates 24/7 in under 2 minutes and sync to your ATS. Business VoIP lines with automation are live.";
+  "CallPilot's AI applicant screening calls qualify candidates 24/7 and sync to your ATS. Business VoIP lines with automation are live.";
 const IMAGE = "/images/hero-dashboard-laptop.webp";
 
 export const metadata: Metadata = {
@@ -87,7 +87,7 @@ export default function NewsPost() {
           <p className={styles.kicker}>Press release</p>
           <h1 className={styles.h1}>{TITLE}</h1>
           <p className={styles.standfirst}>
-            AI applicant screening calls qualify job applicants 24/7 in under 2 minutes, chase documents by WhatsApp,
+            AI applicant screening calls qualify job applicants 24/7, chase documents by WhatsApp,
             SMS and email, and update the ATS automatically. Business VoIP lines with automation are live now.
           </p>
           <p className={styles.meta}>
@@ -131,7 +131,7 @@ export default function NewsPost() {
               including evenings and weekends.
             </li>
             <li>
-              <strong>Role-specific screening in under 2 minutes.</strong> The AI asks the questions set for each role. A
+              <strong>Role-specific screening.</strong> The AI asks the questions set for each role. A
               &quot;No&quot; on any requirement ends the screen immediately as Unsuccessful. It is not a scoring system,
               so results are clear-cut.
             </li>
@@ -199,7 +199,7 @@ export default function NewsPost() {
           <h2>About CallPilot</h2>
           <p>
             CallPilot is an AI phone calls platform that combines an AI call agent, business VoIP lines and automation.
-            Its AI applicant screening calls qualify job applicants 24/7 in under 2 minutes, request documents by
+            Its AI applicant screening calls qualify job applicants 24/7, request documents by
             WhatsApp, SMS and email, and sync results to leading applicant tracking systems. CallPilot is a brand of
             Swiftwave.ai, operated by Swiftwave FZ-LLC, Ras Al Khaimah, United Arab Emirates.
           </p>

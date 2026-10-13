@@ -45,7 +45,7 @@ export default function HeroThree() {
           </h1>
           <p className={s.lead}>
             Business calls, WhatsApp, SMS and email on one low-cost number, plus an AI call agent that screens every
-            applicant 24/7 in under 2 minutes.
+            applicant 24/7.
           </p>
           <div className={s.ctas}>
             <Link href={LINKS.bookDemo} className={`${s.btn} ${s.btnPrimary}`}>
@@ -138,7 +138,7 @@ export default function HeroThree() {
               <p className={s.text}>Every applicant called and qualified while you&apos;re off the clock.</p>
               <ul className={s.list}>
                 <li><Headset /> AI calls every applicant 24/7</li>
-                <li><Check /> Screened in under 2 minutes</li>
+                <li><Check /> Screened and scored automatically</li>
                 <li><Doc /> ID &amp; work authorisation chased</li>
                 <li><Sync /> ATS updated, recruiter notified to verify</li>
               </ul>

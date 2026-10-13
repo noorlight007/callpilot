@@ -103,12 +103,17 @@ function CustomSelect({ id, value, options, onChange, placeholder, iconClass }: 
   );
 }
 
+const DEFAULT_HEADING = "Get Started with CallPilot";
+const DEFAULT_INTRO =
+  "Tell us your team size and ATS and we will set up your VoIP lines or AI Applicant Screening Call.";
+
 interface FormInnerProps {
   isDemo?: boolean;
   heading?: string;
+  intro?: string;
 }
 
-function GetStartedFormInner({ isDemo = false, heading = "Get Started with CallPilot" }: FormInnerProps) {
+function GetStartedFormInner({ isDemo = false, heading = DEFAULT_HEADING, intro = DEFAULT_INTRO }: FormInnerProps) {
   const searchParams = useSearchParams();
   const planParam = searchParams.get("plan") || "";
   const intentParam = searchParams.get("intent") || "";
@@ -521,7 +526,7 @@ function GetStartedFormInner({ isDemo = false, heading = "Get Started with CallP
 
             <div className="wordmark">
               <h1>{heading}</h1>
-              <p>VoIP lines · AI screening calls · Automation</p>
+              <p>{intro}</p>
             </div>
 
             <div className="tagline">
@@ -891,10 +896,21 @@ function GetStartedFormInner({ isDemo = false, heading = "Get Started with CallP
   );
 }
 
-export default function GetStartedForm({ isDemo = false, heading = "Get Started with CallPilot" }: FormInnerProps) {
+export default function GetStartedForm({ isDemo = false, heading = DEFAULT_HEADING, intro = DEFAULT_INTRO }: FormInnerProps) {
+  // The form reads search params, so it renders client-side only. The fallback is
+  // server-rendered, which gives crawlers an H1 and a line of copy.
   return (
-    <Suspense fallback={<div className="page-shell-wrapper"><div className="text-center p-8">Loading...</div></div>}>
-      <GetStartedFormInner isDemo={isDemo} heading={heading} />
+    <Suspense
+      fallback={
+        <div className="page-shell-wrapper">
+          <div className="text-center p-8">
+            <h1>{heading}</h1>
+            <p>{intro}</p>
+          </div>
+        </div>
+      }
+    >
+      <GetStartedFormInner isDemo={isDemo} heading={heading} intro={intro} />
     </Suspense>
   );
 }

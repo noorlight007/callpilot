@@ -19,8 +19,7 @@ const COPY: Record<Variant, { lead?: string; anchor: string }> = {
     anchor: 'Discover CallPilot Business VoIP + Automation',
   },
   ats: {
-    lead: 'Coming soon: make and receive business calls through CallPilot, click to call directly from your ATS and automatically record call activity.',
-    anchor: 'Learn about CallPilot Business VoIP',
+    anchor: 'Learn about CallPilot VoIP Lines',
   },
 };
 

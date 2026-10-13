@@ -60,7 +60,7 @@ const USE_CASE_BLOCKS: UseCaseBlock[] = [
     title: "High-volume hiring",
     problem: "Warehouse, retail, hospitality and care roles can pull hundreds of applicants a week.",
     benefits: [
-      "Every applicant screened in under 2 minutes",
+      "Every applicant screened automatically",
       "A “No” on any requirement ends the screen, so recruiters only see qualified people",
       "Pay per screening: no call, no charge",
     ],
