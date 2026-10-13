@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 
 export const metadata: Metadata = {
-  title: "Features: VoIP Lines, AI Screening Calls & Automation",
+  title: "Features: VoIP Lines, AI Screening & Automation",
   description: "Everything in CallPilot: VoIP phone lines with WhatsApp, SMS and email, AI applicant screening calls, automated follow-up and ATS sync.",
   alternates: { canonical: "https://callpilot.pro/features" },
   openGraph: {
-    title: "Features: VoIP Lines, AI Screening Calls & Automation | CallPilot",
+    title: "Features: VoIP Lines, AI Screening & Automation | CallPilot",
     description: "Everything in CallPilot: VoIP phone lines with WhatsApp, SMS and email, AI applicant screening calls, automated follow-up and ATS sync.",
     url: "https://callpilot.pro/features",
     siteName: "CallPilot",
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
     images: ["https://callpilot.pro/images/og-callpilot.png"],
   },
   twitter: {
-    title: "Features: VoIP Lines, AI Screening Calls & Automation | CallPilot",
+    title: "Features: VoIP Lines, AI Screening & Automation | CallPilot",
     description: "Everything in CallPilot: VoIP phone lines with WhatsApp, SMS and email, AI applicant screening calls, automated follow-up and ATS sync.",
     images: ["https://callpilot.pro/images/og-callpilot.png"],
   },
@@ -24,5 +25,10 @@ export default function FeaturesLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return (
+    <>
+      <BreadcrumbSchema name="Features" path="/features" />
+      {children}
+    </>
+  );
 }

@@ -3,7 +3,7 @@ export const LINKS = {
   bookDemo: "/book-a-demo",
   pricing: "/pricing",
   screeningPricing: "/pricing#screening",
-  screening: "/features#ai-applicant-screening",
+  screening: "/ai-applicant-screening",
   voip: "/features#voip-phone-lines",
   integrations: "/integrations",
 };

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
@@ -28,5 +29,10 @@ export default function TermsConditionsLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return (
+    <>
+      <BreadcrumbSchema name="Terms of Service" path="/terms-conditions" />
+      {children}
+    </>
+  );
 }

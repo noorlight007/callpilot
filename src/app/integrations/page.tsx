@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import VoipTeaser from "@/components/VoipTeaser";
+import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 import { allIntegrations } from "@/data/integrations";
 import { CheckCircle2, ArrowRight, PhoneCall, Zap, Shield, Sparkles } from "lucide-react";
 
@@ -35,6 +36,7 @@ export default function IntegrationsHubPage() {
     <div className="min-h-screen bg-white">
       <Header />
 
+      <BreadcrumbSchema name="Integrations" path="/integrations" />
       <main className="pt-28 md:pt-36">
         {/* Hero */}
         <section className="bg-black text-white py-20 px-6 text-center">

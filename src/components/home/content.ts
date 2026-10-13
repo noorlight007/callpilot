@@ -148,7 +148,7 @@ export const FOOTER = {
       title: "Products",
       links: [
         { label: "VoIP Phone Lines", href: "/features#voip-phone-lines" },
-        { label: "AI Applicant Screening", href: "/features#ai-applicant-screening" },
+        { label: "AI Applicant Screening", href: "/ai-applicant-screening" },
         { label: "Automation", href: "/features#automation" },
         { label: "Pricing", href: "/pricing" },
         { label: "100 Free Credits Trial", href: "/free-trial" },

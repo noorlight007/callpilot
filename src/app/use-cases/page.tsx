@@ -32,7 +32,7 @@ const USE_CASE_BLOCKS: UseCaseBlock[] = [
       "Results written back to JobAdder, Recruit CRM or Ashby",
     ],
     linkText: "Explore AI screening",
-    linkHref: "/features#ai-applicant-screening",
+    linkHref: "/ai-applicant-screening",
   },
   {
     id: "in-house-talent",

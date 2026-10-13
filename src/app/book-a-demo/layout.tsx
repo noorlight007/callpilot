@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
+import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 
 export const metadata: Metadata = {
-  title: "Book a Demo",
+  title: "Book a Demo: AI Screening & VoIP Lines",
   description: "See CallPilot on your own numbers, roles and ATS. Book a live demo with our team.",
   alternates: {
     canonical: "https://callpilot.pro/book-a-demo",
   },
   openGraph: {
-    title: "Book a Demo | CallPilot",
+    title: "Book a Demo: AI Screening & VoIP Lines | CallPilot",
     description: "See CallPilot on your own numbers, roles and ATS. Book a live demo with our team.",
     url: "https://callpilot.pro/book-a-demo",
     siteName: "CallPilot",
@@ -28,5 +29,10 @@ export default function BookADemoLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return (
+    <>
+      <BreadcrumbSchema name="Book a Demo" path="/book-a-demo" />
+      {children}
+    </>
+  );
 }

@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
+import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 
 export const metadata: Metadata = {
-  title: "About Us",
+  title: "About CallPilot: AI Screening & VoIP Lines",
   description: "Meet the team behind CallPilot. We build practical AI calling automations that help businesses scale without enterprise-level complexity.",
   alternates: {
     canonical: "https://callpilot.pro/about-us",
   },
   openGraph: {
-    title: "About Us | CallPilot",
+    title: "About CallPilot: AI Screening & VoIP Lines | CallPilot",
     description: "Meet the team behind CallPilot. We build practical AI calling automations that help businesses scale without enterprise-level complexity.",
     url: "https://callpilot.pro/about-us",
     siteName: "CallPilot",
@@ -28,5 +29,10 @@ export default function AboutUsLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return (
+    <>
+      <BreadcrumbSchema name="About Us" path="/about-us" />
+      {children}
+    </>
+  );
 }

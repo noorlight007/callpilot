@@ -9,13 +9,13 @@ import { authors } from "@/data/authors";
 import { Calendar, Clock, ArrowRight, BookOpen } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Recruitment Automation Guides & AI Screening Insights",
+  title: "AI Screening & Recruitment Automation Guides",
   description: "Practical guides, benchmarks, and tactical playbooks on AI applicant screening calls, high-volume recruitment, and automated document collection.",
   alternates: {
     canonical: "https://callpilot.pro/blog",
   },
   openGraph: {
-    title: "Recruitment Automation Guides & AI Screening Insights",
+    title: "AI Screening & Recruitment Automation Guides",
     description: "Practical guides, benchmarks, and tactical playbooks on AI applicant screening calls, high-volume recruitment, and automated document collection.",
     url: "https://callpilot.pro/blog",
     siteName: "CallPilot",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Recruitment Automation Guides & AI Screening Insights",
+    title: "AI Screening & Recruitment Automation Guides",
     description: "Practical guides, benchmarks, and tactical playbooks on AI applicant screening calls, high-volume recruitment, and automated document collection.",
     images: ["https://callpilot.pro/images/og-callpilot.png"],
   },

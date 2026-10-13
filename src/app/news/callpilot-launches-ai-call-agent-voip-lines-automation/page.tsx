@@ -30,7 +30,7 @@ const IMAGE = "/images/hero-dashboard-laptop.webp";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
-  title: "CallPilot Launches AI Call Agent, VoIP Lines & Automation",
+  title: "CallPilot Launches AI Call Agent & VoIP Lines",
   description: DESCRIPTION,
   keywords: [
     "AI applicant screening calls",

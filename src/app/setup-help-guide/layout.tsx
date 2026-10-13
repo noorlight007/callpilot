@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Setup & Help Guide",
-  description: "Step-by-step instructions for setting up your CallPilot account: provisioning AI numbers, configuring AI calls, connecting ATS integrations, and reading analytics reports.",
+  description: "Set up your CallPilot account step by step: AI numbers, AI calls, ATS integrations and analytics reports.",
   alternates: {
     canonical: "https://callpilot.pro/setup-help-guide",
   },
   openGraph: {
     title: "Setup & Help Guide | CallPilot",
-    description: "Step-by-step instructions for setting up your CallPilot account: provisioning AI numbers, configuring AI calls, connecting ATS integrations, and reading analytics reports.",
+    description: "Set up your CallPilot account step by step: AI numbers, AI calls, ATS integrations and analytics reports.",
     url: "https://callpilot.pro/setup-help-guide",
     siteName: "CallPilot",
     type: "website",

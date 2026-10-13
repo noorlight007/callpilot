@@ -6,6 +6,7 @@ const BASE = "https://callpilot.pro";
 const pages: { path: string; updated: string; priority: number; freq: "daily" | "weekly" | "monthly" }[] = [
   { path: "", updated: "2026-09-29", priority: 1.0, freq: "weekly" },
   { path: "/pricing", updated: "2026-09-29", priority: 0.9, freq: "weekly" },
+  { path: "/ai-applicant-screening", updated: "2026-10-13", priority: 0.9, freq: "monthly" },
   { path: "/features", updated: "2026-09-29", priority: 0.9, freq: "monthly" },
   { path: "/use-cases", updated: "2026-09-29", priority: 0.8, freq: "monthly" },
   { path: "/integrations", updated: "2026-09-27", priority: 0.9, freq: "weekly" },

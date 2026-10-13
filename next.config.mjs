@@ -67,11 +67,6 @@ const nextConfig = {
       },
       // Product links: send to the matching section of the rewritten /features page (section 6)
       {
-        source: "/ai-applicant-screening",
-        destination: "/features#ai-applicant-screening",
-        permanent: false,
-      },
-      {
         source: "/business-voip",
         destination: "/features#voip-phone-lines",
         permanent: false,
