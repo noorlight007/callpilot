@@ -33,7 +33,7 @@ const posts: { path: string; date: string }[] = [
   { path: "/news/callpilot-recruit-crm-integration", date: "2026-09-18" },
   { path: "/news/callpilot-jobadder-integration", date: "2026-09-21" },
   { path: "/news/voip-whatsapp-sms-ats-integration", date: "2026-09-22" },
-  { path: "/news/callpilot-launches-ai-call-agent-business-voip-lines-automation", date: "2026-09-24" },
+  { path: "/news/callpilot-launches-ai-call-agent-voip-lines-automation", date: "2026-09-24" },
   { path: "/blog/how-fast-can-ai-qualify-an-applicant", date: "2026-09-16" },
   { path: "/blog/speed-up-recruitment-without-hiring-more-recruiters", date: "2026-09-23" },
   { path: "/blog/ai-screening-call-vs-ai-video-interview", date: "2026-09-28" },

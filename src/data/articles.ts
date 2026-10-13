@@ -29,8 +29,8 @@ export interface ArticleData {
 export const allArticles: ArticleData[] = [
   // 0. News Release — Thu 24 Sep (News)
   {
-    id: "news-callpilot-launches-ai-call-agent-business-voip-lines-automation",
-    slug: "callpilot-launches-ai-call-agent-business-voip-lines-automation",
+    id: "news-callpilot-launches-ai-call-agent-voip-lines-automation",
+    slug: "callpilot-launches-ai-call-agent-voip-lines-automation",
     type: "news",
     title: "CallPilot Launches One Platform for VoIP Lines, an AI Call Agent and Automation",
     seoTitle: "CallPilot Launches AI Call Agent, VoIP Lines & Automation",
@@ -45,11 +45,11 @@ export const allArticles: ArticleData[] = [
     readingTime: "3 min read",
     featuredImage: "/images/hero-dashboard-laptop.webp",
     excerpt: "AI applicant screening calls qualify job applicants 24/7, chase documents by WhatsApp, SMS and email, and update the ATS automatically. VoIP lines are launching soon.",
-    canonicalUrl: "https://callpilot.pro/news/callpilot-launches-ai-call-agent-business-voip-lines-automation/",
+    canonicalUrl: "https://callpilot.pro/news/callpilot-launches-ai-call-agent-voip-lines-automation/",
     contentHtml: `
 <p class="lead text-xl text-gray-700 font-medium mb-6">AI applicant screening calls qualify job applicants 24/7, chase documents by WhatsApp, SMS and email, and update the ATS automatically. VoIP lines are launching soon.</p>
 
-<p class="mb-4"><strong>RAS AL KHAIMAH, UAE, 24 September 2026:</strong> <a href="https://www.callpilot.pro" class="text-blue-600 font-semibold underline hover:text-blue-800">CallPilot</a>, the AI phone calls platform from Swiftwave.ai, today announced one platform that brings together VoIP lines, an AI call agent and workflow automation. The launch is led by CallPilot's <a href="/ai-applicant-screening" class="text-blue-600 font-semibold underline hover:text-blue-800">AI applicant screening calls</a>, which are live now for staffing agencies, recruitment firms and high-volume employers. Low-cost <a href="/business-voip" class="text-blue-600 font-semibold underline hover:text-blue-800">VoIP lines</a> with built-in automation will follow soon.</p>
+<p class="mb-4"><strong>RAS AL KHAIMAH, UAE, 24 September 2026:</strong> <a href="https://www.callpilot.pro" class="text-blue-600 font-semibold underline hover:text-blue-800">CallPilot</a>, the AI phone calls platform from Swiftwave.ai, today announced one platform that brings together VoIP lines, an AI call agent and workflow automation. The launch is led by CallPilot's <a href="/ai-applicant-screening" class="text-blue-600 font-semibold underline hover:text-blue-800">AI applicant screening calls</a>, which are live now for staffing agencies, recruitment firms and high-volume employers. Low-cost <a href="/features#voip-phone-lines" class="text-blue-600 font-semibold underline hover:text-blue-800">VoIP lines</a> with built-in automation will follow soon.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">The problem: applicants go cold while recruiters are busy or asleep</h2>
 <p class="mb-4">High-volume hiring runs on speed. Applicants apply at all hours, often to several jobs at once, and the first recruiter to reach them usually wins. But recruiters can only make so many calls in a day. They spend hours phoning applicants who don't meet basic requirements, and hours more chasing ID and work authorisation documents.</p>
@@ -80,7 +80,7 @@ export const allArticles: ArticleData[] = [
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Pricing and availability</h2>
 <ul class="list-disc pl-6 space-y-2 mb-6 text-gray-700">
   <li><strong>AI applicant screening calls:</strong> available now. <a href="/pricing" class="text-blue-600 font-semibold underline hover:text-blue-800">See pricing</a>.</li>
-  <li><strong>VoIP lines + automation:</strong> launching soon. <a href="/business-voip" class="text-blue-600 font-semibold underline hover:text-blue-800">Register interest</a>.</li>
+  <li><strong>VoIP lines + automation:</strong> launching soon. <a href="/features#voip-phone-lines" class="text-blue-600 font-semibold underline hover:text-blue-800">Register interest</a>.</li>
 </ul>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Who CallPilot is for</h2>

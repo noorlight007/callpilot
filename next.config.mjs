@@ -37,6 +37,11 @@ const nextConfig = {
       },
       // Renamed news URL (dropped "business")
       {
+        source: "/news/callpilot-launches-ai-call-agent-business-voip-lines-automation",
+        destination: "/news/callpilot-launches-ai-call-agent-voip-lines-automation",
+        permanent: true,
+      },
+      {
         source: "/news/business-voip-whatsapp-sms-ats-integration",
         destination: "/news/voip-whatsapp-sms-ats-integration",
         permanent: true,

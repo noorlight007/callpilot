@@ -1,4 +1,4 @@
-// News post: https://callpilot.pro/news/callpilot-launches-ai-call-agent-business-voip-lines-automation
+// News post: https://callpilot.pro/news/callpilot-launches-ai-call-agent-voip-lines-automation
 // This is the page the press release and LinkedIn posts link back to.
 
 import type { Metadata } from "next";
@@ -11,14 +11,14 @@ import styles from "@/components/news/NewsPost.module.css";
 
 /* ---------- CONFIG: fill before publishing ---------- */
 const SITE = "https://callpilot.pro";
-const SLUG = "/news/callpilot-launches-ai-call-agent-business-voip-lines-automation";
+const SLUG = "/news/callpilot-launches-ai-call-agent-voip-lines-automation";
 const PUBLISHED_ISO = "2026-09-24";
 const PUBLISHED_DISPLAY = "24 September 2026";
 const MEDIA_CONTACT = { name: "CallPilot Media Relations", email: "support@callpilot.pro", phone: "Available via website" };
 
 const LINKS = {
   screening: "/ai-applicant-screening",
-  voip: "/business-voip",
+  voip: "/features#voip-phone-lines",
   demo: "/book-a-demo",
   pricing: "/pricing#ai-screening",
 };
