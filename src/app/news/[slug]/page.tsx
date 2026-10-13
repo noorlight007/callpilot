@@ -92,7 +92,7 @@ export default async function NewsSlugPage({ params }: Props) {
       "@type": "Person",
       name: author.name,
       jobTitle: author.role,
-      url: `https://callpilot.pro/authors/${author.slug}/`,
+      url: `https://callpilot.pro/blog`,
       sameAs: author.linkedin,
     },
     publisher: {
@@ -137,7 +137,7 @@ export default async function NewsSlugPage({ params }: Props) {
             {/* Author and Date metadata bar */}
             <div className="flex flex-wrap items-center justify-between gap-4 py-4 border-y border-gray-200 text-sm text-gray-600">
               <div className="flex items-center gap-3">
-                <Link href={`/authors/${author.slug}/`} className="group flex items-center gap-3">
+                <Link href="/blog" className="group flex items-center gap-3">
                   <img
                     src={author.avatar}
                     alt={author.name}
@@ -213,13 +213,13 @@ export default async function NewsSlugPage({ params }: Props) {
             />
             <div className="text-center sm:text-left">
               <div className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-1">Written by</div>
-              <Link href={`/authors/${author.slug}/`} className="text-lg font-bold text-gray-900 hover:text-emerald-600 transition-colors">
+              <Link href="/blog" className="text-lg font-bold text-gray-900 hover:text-emerald-600 transition-colors">
                 {author.name}
               </Link>
               <div className="text-xs text-gray-600 mb-2">{author.role}</div>
               <p className="text-sm text-gray-600 leading-relaxed mb-3">{author.bio}</p>
               <Link
-                href={`/authors/${author.slug}/`}
+                href="/blog"
                 className="text-xs font-semibold text-black underline hover:text-emerald-600"
               >
                 View full author profile &amp; articles →

@@ -254,6 +254,12 @@ export default async function BlogSlugPage({ params }: Props) {
                 Get 100 Free Screening Credits
               </Link>
               <Link
+                href="/ai-applicant-screening"
+                className="border border-white/40 text-white font-bold text-sm px-8 py-3.5 rounded-full hover:border-white transition-colors"
+              >
+                How AI Screening Calls Work
+              </Link>
+              <Link
                 href="/integrations"
                 className="border border-white/40 text-white font-bold text-sm px-8 py-3.5 rounded-full hover:border-white transition-colors"
               >
