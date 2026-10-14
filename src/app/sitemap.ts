@@ -42,6 +42,8 @@ const posts: { path: string; date: string }[] = [
   { path: "/blog/24-7-applicant-screening", date: "2026-10-05" },
   { path: "/blog/high-volume-applicant-screening", date: "2026-10-07" },
   { path: "/blog/what-happens-after-the-ai-screening-call", date: "2026-10-09" },
+  { path: "/blog/ai-phone-screening-for-recruitment-agencies", date: "2026-10-14" },
+  { path: "/blog/ai-screening-call-questions-to-ask", date: "2026-10-14" },
 ];
 
 export const revalidate = 3600; // rebuild hourly so scheduled posts appear on their date

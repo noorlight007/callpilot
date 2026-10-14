@@ -804,7 +804,140 @@ export const allArticles: ArticleData[] = [
       }
     ],
     relatedSlugs: ["how-fast-can-ai-qualify-an-applicant", "speed-up-recruitment-without-hiring-more-recruiters", "why-ai-voice-calls-screen-applicants-better"]
-  }
+  },
+  // Post — 14 October 2026 (Blog)
+  {
+    id: "post-13-ai-phone-screening-agencies",
+    slug: "ai-phone-screening-for-recruitment-agencies",
+    type: "blog",
+    title: "AI Phone Screening for Recruitment Agencies | CallPilot",
+    seoTitle: "AI Phone Screening for Recruitment Agencies",
+    metaDescription: "How AI phone screening works for recruitment agencies: what the AI call does, what stays with recruiters, how to roll it out, and what it costs.",
+    h1: "AI Phone Screening for Recruitment Agencies: A Practical Guide",
+    publishDate: "14 October 2026",
+    isoDate: "2026-10-14T09:00:00Z",
+    modifiedDate: "2026-10-14T09:00:00Z",
+    authorSlug: "steven-peddie",
+    targetKeyword: "AI phone screening for recruitment agencies",
+    category: "Agency Playbook",
+    readingTime: "5 min read",
+    featuredImage: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1200&auto=format&fit=crop&q=80",
+    excerpt: "How AI phone screening works for agencies: what the call does, what stays with recruiters, and how to roll it out.",
+    canonicalUrl: "https://callpilot.pro/blog/ai-phone-screening-for-recruitment-agencies",
+    contentHtml: `
+<p class="lead text-xl text-gray-700 font-medium mb-6">AI phone screening means an AI call agent makes the first phone screen to every applicant, asks your role-specific questions, and passes qualified applicants to a recruiter with documents already requested. For a recruitment agency, it replaces the hours spent ringing through a stack of applicants.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Why agencies feel the screening bottleneck first</h2>
+<p class="mb-4">An agency's recruiters are paid to fill roles, not to repeat the same five questions. Yet the first phone screen still has to happen before anyone can be submitted to a client. When applications arrive in the evening or at the weekend, they wait until the next working day, and the best applicants may have taken another offer by then.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">What an AI screening call does for an agency</h2>
+<ul class="list-disc pl-6 mb-6 space-y-2">
+  <li>Calls every applicant, day or night, including evenings and weekends.</li>
+  <li>Asks the same role-specific questions every time: availability, right to work, experience, location and pay expectations.</li>
+  <li>Ends the screen on a "No" to any hard requirement, so recruiters only see applicants who qualify.</li>
+  <li>Requests ID and documents by WhatsApp or SMS, and chases them automatically.</li>
+  <li>Writes the outcome, transcript and documents back to the ATS record.</li>
+</ul>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">What stays with the recruiter</h2>
+<p class="mb-4">CallPilot stops at verification. Recruiters still check documents and right to work, build the relationship, sell the role and make the submission. The AI handles the repetitive first call and the document chase; it does not make hiring decisions.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">How to roll it out in an agency</h2>
+<ol class="list-decimal pl-6 mb-6 space-y-2">
+  <li><strong>Start with one high-volume desk.</strong> Warehouse, retail, hospitality and care roles generate the most repetitive screens.</li>
+  <li><strong>Write the screening questions per role.</strong> Keep hard requirements separate from nice-to-haves.</li>
+  <li><strong>Connect your ATS.</strong> CallPilot works with <a href="/integrations/jobadder" class="text-blue-600 font-semibold underline hover:text-blue-800">JobAdder</a>, <a href="/integrations/recruit-crm" class="text-blue-600 font-semibold underline hover:text-blue-800">Recruit CRM</a> and <a href="/integrations/ashby" class="text-blue-600 font-semibold underline hover:text-blue-800">Ashby</a>.</li>
+  <li><strong>Check the first batch yourself.</strong> Read a handful of transcripts and adjust the questions.</li>
+  <li><strong>Roll out desk by desk.</strong></li>
+</ol>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">What it costs</h2>
+<p class="mb-4">You pay only for completed screenings. New clients get their first 100 screening calls free; plans then start at $395 a month. See <a href="/pricing" class="text-blue-600 font-semibold underline hover:text-blue-800">pricing</a> for the full table, or read how an <a href="/ai-applicant-screening" class="text-blue-600 font-semibold underline hover:text-blue-800">AI applicant screening call</a> works step by step.</p>
+`,
+    faqs: [
+      {
+        question: "What is AI phone screening?",
+        answer: "AI phone screening is a call made by an AI call agent to a job applicant. It asks your screening questions, checks the answers against your requirements and passes qualified applicants on.",
+      },
+      {
+        question: "Does AI phone screening replace recruiters?",
+        answer: "No. It handles the first call and the document chase. Recruiters verify documents, build relationships and make the hiring decisions.",
+      },
+      {
+        question: "Which ATS platforms work with it?",
+        answer: "CallPilot connects to JobAdder, Recruit CRM and Ashby. Greenhouse and iCIMS are coming soon.",
+      },
+      {
+        question: "How much does it cost?",
+        answer: "New clients get their first 100 screening calls free. Plans then start at $395 a month, and you only pay for completed screenings.",
+      }
+    ],
+    relatedSlugs: ["ai-screening-call-vs-ai-video-interview", "high-volume-applicant-screening", "what-happens-after-the-ai-screening-call"]
+  },
+  // Post — 14 October 2026 (Blog)
+  {
+    id: "post-14-screening-call-questions",
+    slug: "ai-screening-call-questions-to-ask",
+    type: "blog",
+    title: "AI Screening Call Questions to Ask Applicants | CallPilot",
+    seoTitle: "AI Screening Call Questions to Ask Applicants",
+    metaDescription: "The questions an AI applicant screening call should ask, how to separate hard requirements from preferences, and what to keep lawful and fair.",
+    h1: "AI Screening Call Questions: What to Ask Applicants",
+    publishDate: "14 October 2026",
+    isoDate: "2026-10-14T12:00:00Z",
+    modifiedDate: "2026-10-14T12:00:00Z",
+    authorSlug: "steven-peddie",
+    targetKeyword: "AI screening call questions",
+    category: "Screening Guide",
+    readingTime: "4 min read",
+    featuredImage: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1200&auto=format&fit=crop&q=80",
+    excerpt: "The core questions for an AI applicant screening call, how to order them and what to keep out.",
+    canonicalUrl: "https://callpilot.pro/blog/ai-screening-call-questions-to-ask",
+    contentHtml: `
+<p class="lead text-xl text-gray-700 font-medium mb-6">A good AI screening call asks a short, fixed set of questions that decide whether an applicant meets the hard requirements of the role, then moves qualified applicants on. Here are the questions worth including, how to order them, and what to leave out.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Start with a clear opening</h2>
+<p class="mb-4">The call should say who is calling, that it is an AI, why it is calling and roughly how long it will take. CallPilot discloses at the start of every call that the caller is an AI. Applicants who know what to expect are more likely to finish the call.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">The core screening questions</h2>
+<ul class="list-disc pl-6 mb-6 space-y-2">
+  <li><strong>Availability:</strong> when can you start, and which days and shifts can you work?</li>
+  <li><strong>Right to work:</strong> do you have the right to work in the country where the role is based?</li>
+  <li><strong>Experience:</strong> have you done this type of work, and for how long?</li>
+  <li><strong>Location and travel:</strong> can you reach the site, and do you have transport if the role needs it?</li>
+  <li><strong>Pay expectations:</strong> does the rate on offer work for you?</li>
+  <li><strong>Role-specific requirements:</strong> licences, certificates or equipment the job cannot be done without.</li>
+</ul>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Separate hard requirements from preferences</h2>
+<p class="mb-4">With CallPilot, a "No" on a hard requirement ends the screen and marks the applicant Unsuccessful. That only works if the requirement really is non-negotiable. Anything that is merely preferred belongs in the notes for the recruiter, not in a knockout question.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Keep the questions lawful and fair</h2>
+<p class="mb-4">Ask only about things that relate to the job. Avoid questions about age, health, family plans or other protected characteristics. The employer stays responsible for the screening criteria, and recruiters make the final decision.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">What happens after the last question</h2>
+<p class="mb-4">Qualified applicants get a WhatsApp or SMS asking for ID and documents, and the result is written to the ATS. Read <a href="/blog/what-happens-after-the-ai-screening-call" class="text-blue-600 font-semibold underline hover:text-blue-800">what happens after the AI screening call</a>, or see the full <a href="/ai-applicant-screening" class="text-blue-600 font-semibold underline hover:text-blue-800">AI applicant screening call</a> process.</p>
+`,
+    faqs: [
+      {
+        question: "What questions should an AI screening call ask?",
+        answer: "Availability, right to work, relevant experience, location and travel, pay expectations and any role-specific requirements such as licences or certificates.",
+      },
+      {
+        question: "What happens if an applicant answers No?",
+        answer: "A No on a hard requirement ends the screen and marks the applicant Unsuccessful. Preferences should go in recruiter notes instead.",
+      },
+      {
+        question: "Does the AI say it is an AI?",
+        answer: "Yes. CallPilot discloses that the caller is an AI at the start of every screening call.",
+      },
+      {
+        question: "How long should a screening call be?",
+        answer: "Short and focused. One screening credit covers a completed call of up to two minutes.",
+      }
+    ],
+    relatedSlugs: ["ai-phone-screening-for-recruitment-agencies", "what-happens-after-the-ai-screening-call", "why-ai-voice-calls-screen-applicants-better"]
+  },
 ];
 
 export const newsArticles = allArticles.filter((a) => a.type === "news");
