@@ -938,6 +938,78 @@ export const allArticles: ArticleData[] = [
     ],
     relatedSlugs: ["ai-phone-screening-for-recruitment-agencies", "what-happens-after-the-ai-screening-call", "why-ai-voice-calls-screen-applicants-better"]
   },
+
+  // Post — 14 October 2026 (Blog)
+  {
+    id: "post-15-automated-phone-screening-ats",
+    slug: "automated-phone-screening-for-recruiters",
+    type: "blog",
+    title: "Automated Phone Screening for Recruiters | CallPilot",
+    seoTitle: "Automated Phone Screening for Recruiters",
+    metaDescription: "How automated phone screening works with your ATS: the AI call, WhatsApp and SMS document requests, and what recruiters see afterwards.",
+    h1: "Automated Phone Screening for Recruiters: How It Works With Your ATS",
+    publishDate: "14 October 2026",
+    isoDate: "2026-10-14T08:00:00Z",
+    modifiedDate: "2026-10-14T08:00:00Z",
+    authorSlug: "steven-peddie",
+    targetKeyword: "automated phone screening",
+    category: "Screening Guide",
+    readingTime: "4 min read",
+    featuredImage: "https://images.unsplash.com/photo-1556745757-8d76bdb6984b?w=1200&auto=format&fit=crop&q=80",
+    excerpt: "How automated phone screening works with an ATS, where WhatsApp and SMS fit, and what recruiters see afterwards.",
+    canonicalUrl: "https://callpilot.pro/blog/automated-phone-screening-for-recruiters",
+    contentHtml: `
+<p class="lead text-xl text-gray-700 font-medium mb-6">Automated phone screening means software makes the first screening call to each applicant, records the answers and updates your ATS, so recruiters only spend time on applicants who already qualify. Here is how it works with an ATS, and where WhatsApp fits in.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">How automated phone screening works with your ATS</h2>
+<ol class="list-decimal pl-6 mb-6 space-y-2">
+  <li><strong>The ATS shows a new applicant.</strong> CallPilot picks the application up from your ATS.</li>
+  <li><strong>The AI calls the applicant.</strong> It asks the screening questions you set for that role and records the answers.</li>
+  <li><strong>The result is classified.</strong> Applicants who meet every hard requirement are Qualified. A "No" on a requirement ends the screen as Unsuccessful.</li>
+  <li><strong>The ATS is updated.</strong> The outcome, call transcript and status are written to the candidate record.</li>
+</ol>
+<p class="mb-4">CallPilot works with <a href="/integrations/jobadder" class="text-blue-600 font-semibold underline hover:text-blue-800">JobAdder</a>, <a href="/integrations/recruit-crm" class="text-blue-600 font-semibold underline hover:text-blue-800">Recruit CRM</a> and <a href="/integrations/ashby" class="text-blue-600 font-semibold underline hover:text-blue-800">Ashby</a>. Greenhouse and iCIMS are coming soon.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Where WhatsApp and SMS fit</h2>
+<p class="mb-4">Once an applicant qualifies, the document request goes out by WhatsApp or SMS. The applicant replies with photos of their ID and any documents the role needs. There is no app to install and no portal to log into, which is why it suits mobile-first applicants.</p>
+<p class="mb-4">Automated reminders chase anything outstanding, and the documents are attached to the ATS record. Your recruiter then verifies them: CallPilot collects documents but does not verify them.</p>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">What the recruiter sees in the ATS</h2>
+<ul class="list-disc pl-6 mb-6 space-y-2">
+  <li><strong>Green:</strong> Qualified, documents received.</li>
+  <li><strong>Amber:</strong> Qualified, awaiting documents.</li>
+  <li><strong>Red:</strong> Unsuccessful.</li>
+</ul>
+
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">What to check before you automate</h2>
+<ul class="list-disc pl-6 mb-6 space-y-2">
+  <li>Which ATS you use and how new applicants are picked up.</li>
+  <li>Which requirements are truly non-negotiable.</li>
+  <li>That applicants are told the call is automated. CallPilot discloses this on every call.</li>
+  <li>That your recruiters still own verification and final decisions.</li>
+</ul>
+<p class="mb-4">See the full <a href="/ai-applicant-screening" class="text-blue-600 font-semibold underline hover:text-blue-800">AI applicant screening call</a> process, or <a href="/pricing" class="text-blue-600 font-semibold underline hover:text-blue-800">pricing</a>: new clients get their first 100 screening calls free.</p>
+`,
+    faqs: [
+      {
+        question: "What is automated phone screening?",
+        answer: "It is a first-round screening call made by software instead of a recruiter. The AI asks your questions, records the answers and updates the ATS with the outcome.",
+      },
+      {
+        question: "Does it work with WhatsApp?",
+        answer: "CallPilot uses WhatsApp or SMS after the call to request ID and documents from qualified applicants. Applicants reply with photos of their documents.",
+      },
+      {
+        question: "Which ATS systems does it connect to?",
+        answer: "JobAdder, Recruit CRM and Ashby today. Greenhouse and iCIMS are coming soon.",
+      },
+      {
+        question: "Who verifies the documents?",
+        answer: "Your recruiters do. CallPilot collects the documents and attaches them to the ATS record, but verification stays with a person.",
+      }
+    ],
+    relatedSlugs: ["ai-phone-screening-for-recruitment-agencies", "ai-screening-call-questions-to-ask", "what-happens-after-the-ai-screening-call"]
+  },
 ];
 
 export const newsArticles = allArticles.filter((a) => a.type === "news");
