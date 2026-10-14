@@ -15,7 +15,7 @@ interface Props {
   }>;
 }
 
-export const revalidate = 3600;
+export const revalidate = 300; // short, so a scheduled post is not stuck on a "not found" page cached before its publish time
 
 export function generateStaticParams() {
   const now = new Date();

@@ -46,7 +46,7 @@ const posts: { path: string; date: string }[] = [
   { path: "/blog/ai-screening-call-questions-to-ask", date: "2026-10-14" },
 ];
 
-export const revalidate = 3600; // rebuild hourly so scheduled posts appear on their date
+export const revalidate = 600; // rebuild hourly so scheduled posts appear on their date
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
