@@ -158,14 +158,14 @@ export default function BlogIndexPage() {
               Put Your Applicant Screening on Autopilot
             </h2>
             <p className="text-white/75 text-sm sm:text-base mb-8 max-w-xl mx-auto">
-              Screen every applicant automatically and gather ID documents via WhatsApp. Claim your 100 free screening credits.
+              Screen every applicant automatically and gather ID documents via WhatsApp. Claim your 10 free screening credits.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href="/free-trial"
                 className="bg-white text-black font-bold text-sm px-8 py-3.5 rounded-full hover:bg-gray-200 transition-colors"
               >
-                Claim 100 Free Credits
+                Claim 10 Free Credits
               </Link>
               <Link
                 href="/integrations"

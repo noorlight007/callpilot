@@ -11,7 +11,7 @@ const PRICING_FAQ = [
   },
   {
     question: "Is there a free trial?",
-    answer: "Yes. New clients get their first 100 screening calls free, with no credit card required.",
+    answer: "Yes. New clients get their first 10 screening calls free, with no credit card required.",
   },
   {
     question: "Do I need a new phone number?",
@@ -22,8 +22,8 @@ const PRICING_FAQ = [
     answer: "JobAdder, Recruit CRM, Ashby and Greenhouse. iCIMS is coming soon.",
   },
   {
-    question: "What if I need more than 1,000 screenings a month?",
-    answer: "Enterprise plans cover 2,000+ screenings a month with custom pricing. Top-ups are also available on every plan.",
+    question: "What if I need more than 300 screenings a month?",
+    answer: "Enterprise plans cover over 300 screenings a month with custom pricing. Top-ups are also available on every plan.",
   },
 ];
 

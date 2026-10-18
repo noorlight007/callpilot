@@ -251,7 +251,7 @@ export default async function BlogSlugPage({ params }: Props) {
                 href="/free-trial"
                 className="bg-white text-black font-bold text-sm px-8 py-3.5 rounded-full hover:bg-gray-200 transition-colors"
               >
-                Get 100 Free Screening Credits
+                Get 10 Free Screening Credits
               </Link>
               <Link
                 href="/ai-applicant-screening"

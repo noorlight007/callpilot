@@ -63,7 +63,7 @@ export default function HeroSection() {
               Book a Demo <ArrowRightIcon className={styles.btnIcon} />
             </Link>
             <Link href={FREE_TRIAL_HREF} className={styles.btnSecondary}>
-              Claim 100 Free Credits
+              Claim 10 Free Credits
             </Link>
           </div>
           <ul className={styles.features}>

@@ -856,7 +856,7 @@ function GetStartedFormInner({ isDemo = false, heading = DEFAULT_HEADING, intro 
 
               <div className="trial-cta-link">
                 Recruiting? Skip the call:
-                <Link href="/free-trial">get 100 free AI screening calls →</Link>
+                <Link href="/free-trial">get 10 free AI screening calls →</Link>
               </div>
 
               <div className="privacy">

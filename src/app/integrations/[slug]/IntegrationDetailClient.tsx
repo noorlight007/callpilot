@@ -1,5 +1,6 @@
 "use client";
 
+import ScreeningPlans from "@/components/ScreeningPlans";
 import React, { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import { ATSIntegration, allIntegrations } from "@/data/integrations";
@@ -766,96 +767,10 @@ export default function IntegrationDetailClient({ data }: Props) {
         </div>
       </section>
 
-      {/* Pricing Grid */}
-      <section className="py-20 px-6 bg-white border-t border-gray-100" id="pricing">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center max-w-xl mx-auto mb-10">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">AI Applicant Call Plans</h2>
-            <p className="text-gray-500 font-medium">No Call. No Charge.</p>
-          </div>
-
-          <div className="bg-emerald-50 border border-emerald-200 text-emerald-800 font-bold text-center py-3 px-6 rounded-2xl mb-10 max-w-2xl mx-auto text-sm sm:text-base">
-            New clients: your first 100 AI screening calls are free.
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Starter */}
-            <div className="border border-gray-200 rounded-2xl p-6 flex flex-col bg-white">
-              <div className="font-extrabold text-lg text-gray-900">Starter</div>
-              <div className="text-3xl font-extrabold text-gray-900 my-2">$395<span className="text-sm font-normal text-gray-500">/mo</span></div>
-              <div className="text-xs text-gray-500 mb-6">100 screening calls included</div>
-              <ul className="text-xs sm:text-sm text-gray-700 divide-y divide-gray-100 mb-8 flex-1">
-                <li className="py-2.5">$3.95 per screening</li>
-                <li className="py-2.5">$4.45 per top-up screening</li>
-                {data.pricingFeatures.map((f, i) => (
-                  <li key={i} className="py-2.5">{f}</li>
-                ))}
-              </ul>
-              <a href="#book-a-demo" className="border border-black text-black text-center py-2.5 rounded-full font-bold text-sm hover:bg-black hover:text-white transition-colors">
-                Get Started
-              </a>
-            </div>
-
-            {/* Growth */}
-            <div className="border-2 border-black rounded-2xl p-6 flex flex-col bg-white relative shadow-md">
-              <span className="absolute -top-3 left-6 bg-black text-white text-[0.68rem] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">
-                RECOMMENDED
-              </span>
-              <div className="font-extrabold text-lg text-gray-900">Growth</div>
-              <div className="text-3xl font-extrabold text-gray-900 my-2">$1,400<span className="text-sm font-normal text-gray-500">/mo</span></div>
-              <div className="text-xs text-gray-500 mb-6">400 screening calls included</div>
-              <ul className="text-xs sm:text-sm text-gray-700 divide-y divide-gray-100 mb-8 flex-1">
-                <li className="py-2.5">$3.50 per screening</li>
-                <li className="py-2.5">$3.90 per top-up screening</li>
-                {data.pricingFeatures.map((f, i) => (
-                  <li key={i} className="py-2.5">{f}</li>
-                ))}
-              </ul>
-              <a href="#book-a-demo" className="bg-black text-white text-center py-2.5 rounded-full font-bold text-sm hover:bg-gray-800 transition-colors">
-                Get Started
-              </a>
-            </div>
-
-            {/* Pro */}
-            <div className="border border-gray-200 rounded-2xl p-6 flex flex-col bg-white">
-              <div className="font-extrabold text-lg text-gray-900">Pro</div>
-              <div className="text-3xl font-extrabold text-gray-900 my-2">$2,950<span className="text-sm font-normal text-gray-500">/mo</span></div>
-              <div className="text-xs text-gray-500 mb-6">1,000 screening calls included</div>
-              <ul className="text-xs sm:text-sm text-gray-700 divide-y divide-gray-100 mb-8 flex-1">
-                <li className="py-2.5">$2.95 per screening</li>
-                <li className="py-2.5">$2.95 per top-up screening</li>
-                {data.pricingFeatures.map((f, i) => (
-                  <li key={i} className="py-2.5">{f}</li>
-                ))}
-              </ul>
-              <a href="#book-a-demo" className="border border-black text-black text-center py-2.5 rounded-full font-bold text-sm hover:bg-black hover:text-white transition-colors">
-                Get Started
-              </a>
-            </div>
-
-            {/* Enterprise */}
-            <div className="border border-gray-200 rounded-2xl p-6 flex flex-col bg-white">
-              <div className="font-extrabold text-lg text-gray-900">Enterprise</div>
-              <div className="text-3xl font-extrabold text-gray-900 my-2">Custom</div>
-              <div className="text-xs text-gray-500 mb-6">2,000+ screening calls</div>
-              <ul className="text-xs sm:text-sm text-gray-700 divide-y divide-gray-100 mb-8 flex-1">
-                <li className="py-2.5">Volume pricing</li>
-                <li className="py-2.5">Tailored terms</li>
-                {data.pricingFeatures.map((f, i) => (
-                  <li key={i} className="py-2.5">{f}</li>
-                ))}
-              </ul>
-              <a href="#book-a-demo" className="border border-black text-black text-center py-2.5 rounded-full font-bold text-sm hover:bg-black hover:text-white transition-colors">
-                Talk to Us
-              </a>
-            </div>
-          </div>
-
-          <p className="text-xs sm:text-sm text-gray-500 text-center mt-8 max-w-3xl mx-auto">
-            Plus $10/month for an AI phone number (or connect your own compatible number). Unused screenings carry over for one month, then expire. Billed monthly in advance.
-          </p>
-        </div>
-      </section>
+      {/* Pricing */}
+      <div id="pricing">
+        <ScreeningPlans />
+      </div>
 
       {/* FAQ */}
       <section className="py-20 px-6 bg-white border-t border-gray-100" id="faq">

@@ -1,47 +1,33 @@
+import { SCREENING_PLANS, COPY, FREE_TRIAL_CALLS, AI_NUMBER_MONTHLY, ENTERPRISE_THRESHOLD, SALES_MAILTO, money } from "@/lib/pricing";
+
 // All landing-page copy and data in one place. Prices are copied from the live
 // callpilot.pro pricing section (Sept 2026). Update here if they change.
 
 export const PLANS = [
-  {
-    name: "Starter",
-    price: "$395",
+  ...SCREENING_PLANS.map((p) => ({
+    name: p.name,
+    price: money(p.monthly),
     period: "/month",
-    includes: "100 screenings · $3.95 each",
-    topUp: "Top-up: $4.45 per screening",
-    bestFor: "Getting started with AI screening.",
+    includes: `${p.calls} screenings · ${money(p.perCall)} each`,
+    topUp: `Top-up: ${money(p.topUp)} per screening`,
+    bestFor:
+      p.id === "starter" ? "Getting started with AI screening."
+      : p.id === "growth" ? "Active hiring: more volume at a lower rate per screening."
+      : "High-volume hiring: the lowest cost per screening.",
     cta: "Get Started",
-    href: "/free-trial?plan=starter",
-  },
-  {
-    name: "Growth",
-    price: "$1,400",
-    period: "/month",
-    includes: "400 screenings · $3.50 each",
-    topUp: "Top-up: $3.90 per screening",
-    bestFor: "Active hiring: 4x the volume at a lower rate per screening.",
-    cta: "Get Started",
-    href: "/free-trial?plan=growth",
-    recommended: true,
-  },
-  {
-    name: "Pro",
-    price: "$2,950",
-    period: "/month",
-    includes: "1,000 screenings · $2.95 each",
-    topUp: "Top-up: $2.95 per screening",
-    bestFor: "High-volume hiring: the lowest cost per screening.",
-    cta: "Get Started",
-    href: "/free-trial?plan=pro",
-  },
+    href: `/free-trial?plan=${p.id}`,
+    recommended: !!p.recommended,
+  })),
   {
     name: "Enterprise",
     price: "Custom",
     period: "",
-    includes: "2,000+ screenings",
+    includes: `Over ${ENTERPRISE_THRESHOLD} screenings`,
     topUp: "Volume pricing and terms scoped to you",
     bestFor: "Large teams: integrations, volume and terms scoped to you.",
     cta: "Contact Sales",
-    href: "/get-started?intent=sales",
+    href: SALES_MAILTO,
+    recommended: false,
   },
 ];
 
@@ -90,9 +76,9 @@ export const VOIP_NOTE =
   "Prices per VoIP line. Incoming calls included (fair use). Extra minutes and WhatsApp/SMS messages at low pay-as-you-go rates.";
 
 export const PLAN_NOTES = [
-  "1 credit covers a call of up to 2 minutes",
+  COPY.credit.replace(/\.$/, ""),
   "Automatic top-ups and plan upgrades",
-  "AI number $10/month, or connect a compatible number",
+  `AI number ${money(AI_NUMBER_MONTHLY)}/month, or connect a compatible number`,
 ];
 
 export const FEATURES = [
@@ -136,7 +122,7 @@ export const FAQS = [
   },
   {
     q: "Is there a free trial?",
-    a: "New clients get their first 100 AI screening calls free.",
+    a: `New clients get their first ${FREE_TRIAL_CALLS} AI screening calls free.`,
   },
 ];
 
@@ -151,7 +137,7 @@ export const FOOTER = {
         { label: "AI Applicant Screening", href: "/ai-applicant-screening" },
         { label: "Automation", href: "/features#automation" },
         { label: "Pricing", href: "/pricing" },
-        { label: "100 Free Credits Trial", href: "/free-trial" },
+        { label: COPY.trialFooterLink, href: "/free-trial" },
       ],
     },
     {

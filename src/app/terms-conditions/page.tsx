@@ -24,9 +24,9 @@ export const metadata: Metadata = {
 const EFFECTIVE_DATE = "13 October 2026";
 
 const SCREENING_PLANS = [
-  { name: "Starter", price: "$395", included: "100", each: "$3.95", topUp: "$4.45" },
-  { name: "Growth", price: "$1,400", included: "400", each: "$3.50", topUp: "$3.90" },
-  { name: "Pro", price: "$2,950", included: "1,000", each: "$2.95", topUp: "$2.95" },
+  { name: "Starter", price: "$49", included: "10", each: "$4.90", topUp: "$4.90" },
+  { name: "Growth", price: "$299", included: "75", each: "$3.99", topUp: "$3.99" },
+  { name: "Pro", price: "$999", included: "300", each: "$3.33", topUp: "$3.33" },
 ];
 
 type Section = { id: string; title: string; body: ReactNode };
@@ -88,7 +88,7 @@ const SECTIONS: Section[] = [
                 <td>{p.name}</td><td>{p.price}/month</td><td>{p.included}</td><td>{p.each}</td><td>{p.topUp}</td>
               </tr>
             ))}
-            <tr><td>Enterprise</td><td>Custom</td><td>2,000+</td><td>Custom</td><td>Custom</td></tr>
+            <tr><td>Enterprise</td><td>Custom</td><td>Over 300</td><td>Custom</td><td>Custom</td></tr>
           </tbody>
         </table>
         <p>All prices are in USD and exclude applicable taxes unless otherwise stated.</p>
@@ -162,7 +162,7 @@ const SECTIONS: Section[] = [
     title: "Free Trial and Promotional Offers",
     body: (
       <>
-        <p>New clients receive their first 100 AI applicant screening calls free. This is a one-time offer per new client, is not tied to a specific plan, and has no cash value.</p>
+        <p>New clients receive their first 10 AI applicant screening calls free. This is a one-time offer per new client, is not tied to a specific plan, and has no cash value.</p>
         <p>Other promotional offers may be restricted to eligible Customers, may have an expiry date, are non-transferable, have no cash value and may be subject to additional promotional terms.</p>
         <p>Promotional offers do not create an entitlement to continued free usage.</p>
       </>

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { COPY } from "@/lib/pricing";
 import { VOIP_PLANS, VOIP_NOTE, PLANS, PLAN_NOTES } from "@/components/home/content";
 
 interface PricingProps {
@@ -230,7 +231,7 @@ const Pricing = ({ asH1 = true }: PricingProps) => {
             <p className="text-xs font-bold uppercase tracking-widest text-[#005bff] mb-2">02 · Recruitment Automation</p>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0a0a0a] mb-3">AI Applicant Screening Call + Automation</h2>
             <p className="text-[#6b6b68] text-base sm:text-lg max-w-2xl mx-auto">
-              No call, no charge. New clients get their first 100 AI screening calls free.
+              {COPY.noCall} {COPY.trialLine}
             </p>
             <p className="text-xs sm:text-sm text-[#8a8883] mt-2">
               WhatsApp and SMS document requests, automatic ATS sync and recruiter alerts included on every plan.

@@ -9,6 +9,7 @@ import {
   LifeBuoy, Mail, Megaphone, Phone, Plus, Route, Shield, Sms, Swap, Sync, UserCheck, Users,
 } from "./icons";
 import { LINKS } from "./config";
+import { COPY } from "@/lib/pricing";
 import { FAQS, FEATURES, PLANS, PLAN_NOTES, USE_CASES, VOIP_NOTE, VOIP_PLANS } from "./content";
 import DemoForm from "./DemoForm";
 
@@ -206,7 +207,7 @@ export function PricingSection() {
         {/* ---- AI Applicant Screening Call + Automation pricing ---- */}
         <div id="screening-pricing" className={`${s.priceBlockHead} ${s.priceBlockGap}`}>
           <h3 className={s.priceBlockTitle}>AI Applicant Screening Call + Automation</h3>
-          <p className={s.p}>No call. No charge. New clients get their first 100 AI screening calls free.</p>
+          <p className={s.p}>{COPY.noCall} {COPY.trialLine}</p>
         </div>
         <p className={s.planIncl}>WhatsApp and SMS document requests, automatic ATS sync and recruiter alerts included on every plan.</p>
         <div className={s.plans}>

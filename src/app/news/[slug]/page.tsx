@@ -186,14 +186,14 @@ export default async function NewsSlugPage({ params }: Props) {
               Experience AI Screening for Your Team
             </h2>
             <p className="text-white/75 text-sm sm:text-base mb-6 max-w-xl mx-auto">
-              Screen your live vacancy with 100 free applicant credits. No card required, connects in minutes.
+              Screen your live vacancy with 10 free applicant credits. No card required, connects in minutes.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href="/free-trial/"
                 className="bg-white text-black font-bold text-sm px-8 py-3.5 rounded-full hover:bg-gray-200 transition-colors"
               >
-                Claim 100 Free Credits
+                Claim 10 Free Credits
               </Link>
               <Link
                 href="/integrations/"
