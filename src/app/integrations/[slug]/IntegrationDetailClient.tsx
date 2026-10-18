@@ -168,11 +168,11 @@ export default function IntegrationDetailClient({ data }: Props) {
     setModalError(false);
 
     const isLive = data.status === "Live";
-    const isWaitlist = data.status === "Waitlist";
+    const isWaitlist = data.status === "Coming Soon";
     const subject = isLive
       ? `New CallPilot Activation Request – ${data.name}`
       : isWaitlist
-      ? `New Waitlist Signup – ${data.name}`
+      ? `New Launch Notification Request – ${data.name}`
       : `New Early Access Request – ${data.name}`;
 
     const formData = new FormData();
@@ -212,10 +212,10 @@ export default function IntegrationDetailClient({ data }: Props) {
     setWaitlistError(false);
 
     const formData = new FormData();
-    formData.append("_subject", `New Waitlist Signup (quick capture) – ${data.name}`);
+    formData.append("_subject", `New Launch Notification Request (quick capture) – ${data.name}`);
     formData.append("_template", "table");
     formData.append("_captcha", "false");
-    formData.append("Source", `${data.name} integration page – inline waitlist card`);
+    formData.append("Source", `${data.name} integration page – inline notify card`);
     formData.append("Email Address", waitlistEmail);
 
     try {
@@ -239,17 +239,17 @@ export default function IntegrationDetailClient({ data }: Props) {
   const navCtaText =
     data.status === "Live"
       ? "Get Connected"
-      : data.status === "Waitlist"
-      ? "Join the Waitlist"
+      : data.status === "Coming Soon"
+      ? "Get Notified"
       : "Get Early Access";
 
   const isLive = data.status === "Live";
-  const isWaitlist = data.status === "Waitlist";
+  const isWaitlist = data.status === "Coming Soon";
 
   const modalTitle = isLive
     ? "Get Connected — Activate AI Call"
     : isWaitlist
-    ? `Join the ${data.name} Waitlist`
+    ? `Get Notified About ${data.name}`
     : `Get Early Access to ${data.name} Sync`;
 
   const modalSubtitle = isLive
@@ -261,7 +261,7 @@ export default function IntegrationDetailClient({ data }: Props) {
   const modalSubmitText = isLive
     ? "Request My Login"
     : isWaitlist
-    ? "Join the Waitlist"
+    ? "Get Notified"
     : "Get Early Access";
 
   return (
@@ -370,7 +370,7 @@ export default function IntegrationDetailClient({ data }: Props) {
               }}
             />
             <span className="text-white">{data.name} Integration</span>:{" "}
-            {isLive ? "LIVE" : "WAITLIST"}
+            {isLive ? "LIVE" : "COMING SOON"}
           </div>
 
           <div className="text-xs md:text-sm font-bold tracking-widest text-white/60 uppercase mb-4">
@@ -611,8 +611,8 @@ export default function IntegrationDetailClient({ data }: Props) {
             </div>
           </section>
 
-          {/* Waitlist Section */}
-          <section className="bg-white py-16 px-6">
+          {/* Launch notification section */}
+          <section id="notify-form" className="bg-white py-16 px-6">
             <div className="max-w-2xl mx-auto">
               <div className="text-center mb-6">
                 <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">{data.waitlist?.h2}</h2>

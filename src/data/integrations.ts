@@ -1,7 +1,7 @@
 export interface ATSIntegration {
   slug: string;
   name: string;
-  status: "Live" | "Waitlist";
+  status: "Live" | "Coming Soon";
   statusBadgeClass: "badge-live" | "badge-soon" | "badge-later";
   panelType: "live-board" | "hitech-metrics";
   seo: {
@@ -169,7 +169,7 @@ export const integrationsData: Record<string, ATSIntegration> = {
       { title: "Recruit CRM", slug: "recruit-crm" },
       { title: "JobAdder", slug: "jobadder" },
       { title: "Greenhouse (Live)", slug: "greenhouse" },
-      { title: "iCIMS (Waitlist)", slug: "icims" },
+      { title: "iCIMS (Coming Soon)", slug: "icims" },
     ],
     finalCta: {
       h2: "Ready to Put Ashby Applicant Screening on Autopilot?",
@@ -269,7 +269,7 @@ export const integrationsData: Record<string, ATSIntegration> = {
       { title: "Ashby", slug: "ashby" },
       { title: "JobAdder", slug: "jobadder" },
       { title: "Greenhouse (Live)", slug: "greenhouse" },
-      { title: "iCIMS (Waitlist)", slug: "icims" },
+      { title: "iCIMS (Coming Soon)", slug: "icims" },
     ],
     finalCta: {
       h2: "Ready to Put Recruit CRM Screening on Autopilot?",
@@ -369,7 +369,7 @@ export const integrationsData: Record<string, ATSIntegration> = {
       { title: "Ashby", slug: "ashby" },
       { title: "Recruit CRM", slug: "recruit-crm" },
       { title: "Greenhouse (Live)", slug: "greenhouse" },
-      { title: "iCIMS (Waitlist)", slug: "icims" },
+      { title: "iCIMS (Coming Soon)", slug: "icims" },
     ],
     finalCta: {
       h2: "Ready to Put JobAdder Screening on Autopilot?",
@@ -477,7 +477,7 @@ export const integrationsData: Record<string, ATSIntegration> = {
       { title: "Ashby (Live)", slug: "ashby" },
       { title: "Recruit CRM (Live)", slug: "recruit-crm" },
       { title: "JobAdder (Live)", slug: "jobadder" },
-      { title: "iCIMS (Waitlist)", slug: "icims" },
+      { title: "iCIMS (Coming Soon)", slug: "icims" },
     ],
     finalCta: {
       h2: "Ready to Put Greenhouse Applicant Screening on Autopilot?",
@@ -492,27 +492,27 @@ export const integrationsData: Record<string, ATSIntegration> = {
   icims: {
     slug: "icims",
     name: "iCIMS",
-    status: "Waitlist",
+    status: "Coming Soon",
     statusBadgeClass: "badge-later",
     panelType: "hitech-metrics",
     seo: {
-      title: "iCIMS AI Applicant Screening Waitlist | CallPilot",
-      description: "CallPilot's AI screening call integration for iCIMS is open to the waitlist. Join for early access and 100 free screening credits.",
-      ogTitle: "iCIMS AI Applicant Screening Waitlist | CallPilot",
-      ogDescription: "CallPilot's AI screening call integration for iCIMS is open to the waitlist. Join for early access and 100 free screening credits.",
-      twitterTitle: "iCIMS AI Applicant Screening Waitlist | CallPilot",
-      twitterDescription: "CallPilot's AI screening call integration for iCIMS is open to the waitlist. Join for early access and 100 free screening credits.",
-      schemaDescription: "Enterprise AI voice screening calls integrated with iCIMS. Join the waitlist for early access and 100 free credits.",
+      title: "iCIMS AI Applicant Screening | CallPilot",
+      description: "CallPilot's AI screening call integration for iCIMS is coming soon. Get notified at launch and claim 100 free screening credits.",
+      ogTitle: "iCIMS AI Applicant Screening | CallPilot",
+      ogDescription: "CallPilot's AI screening call integration for iCIMS is coming soon. Get notified at launch and claim 100 free screening credits.",
+      twitterTitle: "iCIMS AI Applicant Screening | CallPilot",
+      twitterDescription: "CallPilot's AI screening call integration for iCIMS is coming soon. Get notified at launch and claim 100 free screening credits.",
+      schemaDescription: "Enterprise AI voice screening calls for iCIMS, coming soon. Get notified at launch and claim 100 free credits.",
       targetKeyword: "iCIMS AI applicant screening",
     },
     hero: {
-      eyebrowText: "iCIMS Integration: EARLY ACCESS WAITLIST",
+      eyebrowText: "iCIMS Integration: COMING SOON",
       overline: "Enterprise High-Volume Qualification Engine",
-      h1: "AI Applicant Screening for iCIMS: Join the Waitlist",
-      lead: "CallPilot's AI applicant screening call for iCIMS is open to the waitlist. Every applicant screened against the same criteria, every call transcribed to the record, every document collected and attached automatically. Built for the volumes enterprise talent teams actually run.",
+      h1: "AI Applicant Screening for iCIMS: Coming Soon",
+      lead: "CallPilot's AI applicant screening call for iCIMS is coming soon. Every applicant screened against the same criteria, every call transcribed to the record, every document collected and attached automatically. Built for the volumes enterprise talent teams actually run.",
       flowNodes: ["iCIMS Career Portal", "Volume Applications", "AI Screening Calls", "Automated Criteria", "WhatsApp / SMS", "ID & Docs Captured", "iCIMS Audit Trail"],
-      primaryCtaText: "Join iCIMS Waitlist",
-      primaryCtaLink: "#waitlist-form",
+      primaryCtaText: "Get Notified",
+      primaryCtaLink: "#notify-form",
       secondaryCtaText: "Explore Architecture",
       secondaryCtaLink: "#how-it-works",
     },
@@ -523,11 +523,11 @@ export const integrationsData: Record<string, ATSIntegration> = {
       accentColor: "#4fa8f0",
     },
     waitlist: {
-      h2: "Join the iCIMS Early Access Waitlist",
-      note: "Early access is opening to enterprise talent acquisition teams. Receive 100 free screening credits and dedicated solution architecture support.",
-      cardTitle: "Reserve Enterprise Early Access",
-      cardDesc: "Enter your business email to receive integration updates, SOC 2 compliance documentation, and early access onboarding.",
-      buttonText: "Join Waitlist",
+      h2: "Get Notified When iCIMS Launches",
+      note: "Be first to know when the iCIMS integration launches. Includes 100 free screening credits and dedicated solution architecture support.",
+      cardTitle: "Get Launch Updates",
+      cardDesc: "Enter your business email to receive integration updates and onboarding details at launch.",
+      buttonText: "Notify Me",
     },
     stats: [
       { value: "50,000+", label: "Monthly Applicant Capacity" },
@@ -569,13 +569,13 @@ export const integrationsData: Record<string, ATSIntegration> = {
     callout: {
       title: "Enterprise Governance & Audit Trail",
       desc: "Every CallPilot screening produces a timestamped transcript attached to the iCIMS candidate record. Screening criteria are applied identically to every applicant, eliminating bias and variance.",
-      badgeText: "iCIMS: WAITLIST",
+      badgeText: "iCIMS: COMING SOON",
     },
     pricingFeatures: ["iCIMS enterprise sync in rollout", "100 free screening credits", "Enterprise SLA & dedicated support"],
     faqs: [
       {
         question: "When will the iCIMS integration be available?",
-        answer: "Early access is opening now with general rollout following. Teams on the waitlist receive early access and architectural support.",
+        answer: "The iCIMS integration is coming soon. Leave your email and we will tell you as soon as it launches.",
       },
       {
         question: "How does CallPilot handle enterprise data compliance and security?",
@@ -597,10 +597,10 @@ export const integrationsData: Record<string, ATSIntegration> = {
       { title: "Greenhouse (Live)", slug: "greenhouse" },
     ],
     finalCta: {
-      h2: "Get Early Access for iCIMS",
-      lead: "Join the waitlist now to secure 100 free screening credits and early onboarding for your enterprise talent acquisition team.",
-      primaryText: "Join Waitlist",
-      primaryUrl: "#waitlist-form",
+      h2: "Get Notified When iCIMS Launches",
+      lead: "Leave your email to be told at launch and to secure 100 free screening credits for your enterprise talent acquisition team.",
+      primaryText: "Get Notified",
+      primaryUrl: "#notify-form",
       secondaryText: "Read Volume Screening Guide",
       secondaryUrl: "/blog/high-volume-applicant-screening/",
     },

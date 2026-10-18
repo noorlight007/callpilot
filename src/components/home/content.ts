@@ -124,7 +124,7 @@ export const FAQS = [
   },
   {
     q: "Which ATS does CallPilot integrate with?",
-    a: "JobAdder, Recruit CRM, Ashby and Greenhouse. iCIMS is on the waitlist.",
+    a: "JobAdder, Recruit CRM, Ashby and Greenhouse. iCIMS is coming soon.",
   },
   {
     q: "What does one screening credit cover?",
@@ -161,7 +161,7 @@ export const FOOTER = {
         { label: "Recruit CRM", href: "/integrations/recruit-crm" },
         { label: "Ashby", href: "/integrations/ashby" },
         { label: "Greenhouse", href: "/integrations/greenhouse" },
-        { label: "iCIMS (waitlist)", href: "/integrations/icims" },
+        { label: "iCIMS (coming soon)", href: "/integrations/icims" },
         { label: "All integrations", href: "/integrations" },
       ],
     },
