@@ -150,8 +150,7 @@ export default function NewsPost() {
             </li>
           </ol>
           <p>
-            CallPilot integrates with <strong>JobAdder, Recruit CRM and Ashby</strong>, with{" "}
-            <strong>Greenhouse and iCIMS</strong> coming soon.
+            CallPilot integrates with <strong>JobAdder, Recruit CRM, Ashby, Greenhouse and iCIMS</strong>.
           </p>
 
           <h2>VoIP lines with automation: live now</h2>

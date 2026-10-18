@@ -96,7 +96,7 @@ export default function FreeTrialPage() {
                   <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
                   <div>
                     <strong className="text-gray-900 text-sm sm:text-base block">Seamless ATS Integration</strong>
-                    <span className="text-xs sm:text-sm text-gray-600">Native two-way sync for Ashby, Recruit CRM, JobAdder, and early access for Greenhouse &amp; iCIMS.</span>
+                    <span className="text-xs sm:text-sm text-gray-600">Native two-way sync for Ashby, Recruit CRM, JobAdder, Greenhouse &amp; iCIMS.</span>
                   </div>
                 </div>
 
@@ -227,8 +227,8 @@ export default function FreeTrialPage() {
                           <option value="Ashby">Ashby (Live Integration)</option>
                           <option value="Recruit CRM">Recruit CRM (Live Integration)</option>
                           <option value="JobAdder">JobAdder (Live Integration)</option>
-                          <option value="Greenhouse">Greenhouse (Waitlist / Early Access)</option>
-                          <option value="iCIMS">iCIMS (Waitlist / Early Access)</option>
+                          <option value="Greenhouse">Greenhouse</option>
+                          <option value="iCIMS">iCIMS</option>
                           <option value="Other">Other / Standalone Webhook</option>
                         </select>
                       </div>

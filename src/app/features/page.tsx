@@ -239,7 +239,7 @@ export default function FeaturesPage() {
               <p className={s.kicker}>ATS Connections</p>
               <h2 id="integrations-title" className={s.h2}>Works with your ATS</h2>
               <p className={s.sub} style={{ margin: "16px auto 0" }}>
-                JobAdder, Recruit CRM and Ashby. Greenhouse and iCIMS coming soon.
+                JobAdder, Recruit CRM, Ashby, Greenhouse and iCIMS.
               </p>
             </div>
 

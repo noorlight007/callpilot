@@ -34,7 +34,7 @@ export const allArticles: ArticleData[] = [
     type: "news",
     title: "CallPilot Launches One Platform for VoIP Lines, an AI Call Agent and Automation",
     seoTitle: "CallPilot Launches AI Call Agent, VoIP Lines & Automation",
-    metaDescription: "CallPilot's AI applicant screening calls qualify candidates 24/7 and sync to your ATS. VoIP lines with automation launch soon.",
+    metaDescription: "CallPilot's AI applicant screening calls qualify candidates 24/7 and sync to your ATS. VoIP lines with automation are live now.",
     h1: "CallPilot Launches One Platform for VoIP Lines, an AI Call Agent and Automation",
     publishDate: "24 September 2026",
     isoDate: "2026-09-24T09:00:00Z",
@@ -44,10 +44,10 @@ export const allArticles: ArticleData[] = [
     category: "Product & Company News",
     readingTime: "3 min read",
     featuredImage: "/images/hero-dashboard-laptop.webp",
-    excerpt: "AI applicant screening calls qualify job applicants 24/7, chase documents by WhatsApp, SMS and email, and update the ATS automatically. VoIP lines are launching soon.",
+    excerpt: "AI applicant screening calls qualify job applicants 24/7, chase documents by WhatsApp, SMS and email, and update the ATS automatically. VoIP lines are live now.",
     canonicalUrl: "https://callpilot.pro/news/callpilot-launches-ai-call-agent-voip-lines-automation/",
     contentHtml: `
-<p class="lead text-xl text-gray-700 font-medium mb-6">AI applicant screening calls qualify job applicants 24/7, chase documents by WhatsApp, SMS and email, and update the ATS automatically. VoIP lines are launching soon.</p>
+<p class="lead text-xl text-gray-700 font-medium mb-6">AI applicant screening calls qualify job applicants 24/7, chase documents by WhatsApp, SMS and email, and update the ATS automatically. VoIP lines are live now.</p>
 
 <p class="mb-4"><strong>RAS AL KHAIMAH, UAE, 24 September 2026:</strong> <a href="https://www.callpilot.pro" class="text-blue-600 font-semibold underline hover:text-blue-800">CallPilot</a>, the AI phone calls platform from Swiftwave.ai, today announced one platform that brings together VoIP lines, an AI call agent and workflow automation. The launch is led by CallPilot's <a href="/ai-applicant-screening" class="text-blue-600 font-semibold underline hover:text-blue-800">AI applicant screening calls</a>, which are live now for staffing agencies, recruitment firms and high-volume employers. Low-cost <a href="/features#voip-phone-lines" class="text-blue-600 font-semibold underline hover:text-blue-800">VoIP lines</a> with built-in automation will follow soon.</p>
 
@@ -64,10 +64,10 @@ export const allArticles: ArticleData[] = [
   <li><strong>The recruiter is notified to verify.</strong> CallPilot deliberately stops at verification. The recruiter's judgement starts where the automation ends.</li>
 </ol>
 
-<p class="mb-6">CallPilot integrates with <strong>Recruit CRM, Ashby, Greenhouse and JobAdder</strong>, with <strong>iCIMS</strong> coming soon.</p>
+<p class="mb-6">CallPilot integrates with <strong>Recruit CRM, Ashby, Greenhouse, JobAdder and iCIMS</strong>.</p>
 
-<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">VoIP lines with automation: launching soon</h2>
-<p class="mb-4">Alongside AI calling, CallPilot is launching <strong>VoIP lines</strong> for recruitment agencies and businesses of all sizes. One low-cost number will handle:</p>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">VoIP lines with automation: live now</h2>
+<p class="mb-4">Alongside AI calling, CallPilot now provides <strong>VoIP lines</strong> for recruitment agencies and businesses of all sizes. One low-cost number handles:</p>
 <ul class="list-disc pl-6 space-y-2 mb-6 text-gray-700">
   <li>Calls, WhatsApp, SMS and email on the same line</li>
   <li>Call forwarding, IVR menus and call routing</li>
@@ -75,12 +75,12 @@ export const allArticles: ArticleData[] = [
   <li>ATS integration, so every call and message is logged in one place</li>
 </ul>
 
-<p class="mb-6">Businesses will be able to start with a VoIP line and add the AI call agent and automation when they are ready. All of it is managed from one platform.</p>
+<p class="mb-6">Businesses can start with a VoIP line and add the AI call agent and automation when they are ready. All of it is managed from one platform.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Pricing and availability</h2>
 <ul class="list-disc pl-6 space-y-2 mb-6 text-gray-700">
   <li><strong>AI applicant screening calls:</strong> available now. <a href="/pricing" class="text-blue-600 font-semibold underline hover:text-blue-800">See pricing</a>.</li>
-  <li><strong>VoIP lines + automation:</strong> launching soon. <a href="/features#voip-phone-lines" class="text-blue-600 font-semibold underline hover:text-blue-800">Register interest</a>.</li>
+  <li><strong>VoIP lines + automation:</strong> available now. <a href="/features#voip-phone-lines" class="text-blue-600 font-semibold underline hover:text-blue-800">See VoIP lines</a>.</li>
 </ul>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Who CallPilot is for</h2>
@@ -865,7 +865,7 @@ export const allArticles: ArticleData[] = [
       },
       {
         question: "Which ATS platforms work with it?",
-        answer: "CallPilot connects to JobAdder, Recruit CRM and Ashby. Greenhouse and iCIMS are coming soon.",
+        answer: "CallPilot connects to JobAdder, Recruit CRM, Ashby, Greenhouse and iCIMS.",
       },
       {
         question: "How much does it cost?",
@@ -968,7 +968,7 @@ export const allArticles: ArticleData[] = [
   <li><strong>The result is classified.</strong> Applicants who meet every hard requirement are Qualified. A "No" on a requirement ends the screen as Unsuccessful.</li>
   <li><strong>The ATS is updated.</strong> The outcome, call transcript and status are written to the candidate record.</li>
 </ol>
-<p class="mb-4">CallPilot works with <a href="/integrations/jobadder" class="text-blue-600 font-semibold underline hover:text-blue-800">JobAdder</a>, <a href="/integrations/recruit-crm" class="text-blue-600 font-semibold underline hover:text-blue-800">Recruit CRM</a> and <a href="/integrations/ashby" class="text-blue-600 font-semibold underline hover:text-blue-800">Ashby</a>. Greenhouse and iCIMS are coming soon.</p>
+<p class="mb-4">CallPilot works with <a href="/integrations/jobadder" class="text-blue-600 font-semibold underline hover:text-blue-800">JobAdder</a>, <a href="/integrations/recruit-crm" class="text-blue-600 font-semibold underline hover:text-blue-800">Recruit CRM</a> and <a href="/integrations/ashby" class="text-blue-600 font-semibold underline hover:text-blue-800">Ashby</a>, Greenhouse and iCIMS.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Where WhatsApp and SMS fit</h2>
 <p class="mb-4">Once an applicant qualifies, the document request goes out by WhatsApp or SMS. The applicant replies with photos of their ID and any documents the role needs. There is no app to install and no portal to log into, which is why it suits mobile-first applicants.</p>
@@ -1001,7 +1001,7 @@ export const allArticles: ArticleData[] = [
       },
       {
         question: "Which ATS systems does it connect to?",
-        answer: "JobAdder, Recruit CRM and Ashby today. Greenhouse and iCIMS are coming soon.",
+        answer: "JobAdder, Recruit CRM, Ashby, Greenhouse and iCIMS.",
       },
       {
         question: "Who verifies the documents?",

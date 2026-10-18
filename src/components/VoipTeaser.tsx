@@ -12,7 +12,7 @@ type Variant = 'home' | 'integrations' | 'ats';
 
 const COPY: Record<Variant, { lead?: string; anchor: string }> = {
   home: {
-    anchor: 'VoIP with WhatsApp, SMS & ATS Integration – Coming Soon',
+    anchor: 'VoIP with WhatsApp, SMS & ATS Integration',
   },
   integrations: {
     lead: 'Looking for integrated business calling?',

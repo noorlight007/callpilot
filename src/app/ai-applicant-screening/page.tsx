@@ -56,7 +56,7 @@ const FAQ = [
   { q: "What is an AI applicant screening call?", a: "It is a phone call made by an AI call agent to a job applicant. The AI asks the screening questions you have set for the role, records the answers, and decides whether the applicant meets your requirements. Qualified applicants are then asked for documents, and the result is written to your ATS." },
   { q: "Does the AI tell applicants it is an AI?", a: "Yes. CallPilot discloses that the caller is an AI at the start of every screening call." },
   { q: "Does CallPilot make hiring decisions?", a: "No. It screens against the criteria you configure and collects documents. Verification, right-to-work checks and final hiring decisions stay with your recruiters." },
-  { q: "Which ATS platforms does it connect to?", a: "JobAdder, Recruit CRM and Ashby today. Greenhouse and iCIMS are coming soon." },
+  { q: "Which ATS platforms does it connect to?", a: "JobAdder, Recruit CRM, Ashby, Greenhouse and iCIMS." },
   { q: "How much does it cost?", a: "Plans start at $395 a month for 100 completed screenings, with Growth at $1,400 and Pro at $2,950. New clients get their first 100 screening calls free. You only pay for completed screenings, so no call means no charge." },
   { q: "What happens if an applicant does not answer?", a: "Nothing is charged. A screening only counts once the applicant completes it." },
   { q: "How do applicants send their documents?", a: "They reply to a WhatsApp or SMS message with photos of their documents. There is no app to install and no portal login." },
@@ -224,9 +224,9 @@ export default function AiApplicantScreeningPage() {
             <p className={s.p} style={{ marginTop: "20px" }}>
               Connects to <Link href="/integrations/jobadder" className={s.inlineLink}>JobAdder</Link>,{" "}
               <Link href="/integrations/recruit-crm" className={s.inlineLink}>Recruit CRM</Link> and{" "}
-              <Link href="/integrations/ashby" className={s.inlineLink}>Ashby</Link>, with{" "}
+              <Link href="/integrations/ashby" className={s.inlineLink}>Ashby</Link>,{" "}
               <Link href="/integrations/greenhouse" className={s.inlineLink}>Greenhouse</Link> and{" "}
-              <Link href="/integrations/icims" className={s.inlineLink}>iCIMS</Link> coming soon. See{" "}
+              <Link href="/integrations/icims" className={s.inlineLink}>iCIMS</Link>. See{" "}
               <Link href="/pricing" className={s.inlineLink}>pricing</Link> or read{" "}
               <Link href="/blog/ai-screening-call-vs-ai-video-interview" className={s.inlineLink}>AI screening call vs AI video interview</Link>.
             </p>

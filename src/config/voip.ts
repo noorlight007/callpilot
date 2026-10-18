@@ -6,7 +6,7 @@
 // imported by server components and its values are rendered into page HTML
 // and structured data.
 
-export const VOIP_STATUS = 'coming-soon' as const;
+export const VOIP_STATUS = 'live' as const;
 
 export const VOIP_CURRENCY = 'USD' as const;
 

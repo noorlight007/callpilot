@@ -14,7 +14,7 @@ export default function GetStartedPage() {
         ]}
         faqs={[
           { q: "What can I get started with?", a: "CallPilot offers VoIP phone lines with WhatsApp, SMS and email automation, and AI applicant screening calls that qualify every applicant 24/7 and sync results to your ATS." },
-          { q: "Which ATS platforms are supported?", a: "JobAdder, Recruit CRM and Ashby today. Greenhouse and iCIMS are coming soon." },
+          { q: "Which ATS platforms are supported?", a: "JobAdder, Recruit CRM, Ashby, Greenhouse and iCIMS." },
           { q: "Do I need a new phone number?", a: "No. You can use a CallPilot number or connect a compatible number you already have." },
           { q: "Is there a free trial?", a: "Yes. New clients get their first 100 AI screening calls free." },
         ]}

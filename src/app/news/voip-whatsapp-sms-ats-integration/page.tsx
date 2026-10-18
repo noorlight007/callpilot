@@ -23,9 +23,9 @@ const HERO_ALT =
 const TITLE =
   'VoIP with WhatsApp, SMS & ATS Integration | CallPilot';
 const HEADLINE =
-  'VoIP Phone System with WhatsApp, SMS & ATS Integration – Coming Soon';
+  'VoIP Phone System with WhatsApp, SMS & ATS Integration';
 const DESCRIPTION =
-  'CallPilot VoIP is coming soon from $5.99/user/month. Get VoIP, WhatsApp, SMS and ATS/CRM integration from $9.99/user/month.';
+  'CallPilot VoIP is available from $5.99/user/month. Get VoIP, WhatsApp, SMS and ATS/CRM integration from $9.99/user/month.';
 
 const PUBLISHED = '2026-09-22';
 const MODIFIED = '2026-09-22';
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     type: 'article',
     title: TITLE,
     description:
-      'CallPilot VoIP is coming soon from $5.99/user/month. Add WhatsApp, SMS and ATS/CRM integration from $9.99/user/month.',
+      'CallPilot VoIP is available from $5.99/user/month. Add WhatsApp, SMS and ATS/CRM integration from $9.99/user/month.',
     url: URL,
     siteName: SITE_NAME,
     images: [{ url: `${SITE_URL}${HERO}`, width: 1600, height: 900, alt: HERO_ALT }],
@@ -63,7 +63,7 @@ const newsArticleSchema = {
   '@type': 'NewsArticle',
   headline: HEADLINE,
   description:
-    'CallPilot VoIP is coming soon from $5.99 per user/month, with WhatsApp, SMS and ATS/CRM integration available from $9.99 per user/month.',
+    'CallPilot VoIP is available from $5.99 per user/month, with WhatsApp, SMS and ATS/CRM integration from $9.99 per user/month.',
   image: [`${SITE_URL}${HERO}`],
   datePublished: PUBLISHED,
   dateModified: MODIFIED,
@@ -163,11 +163,11 @@ export default function BusinessVoipNewsPage() {
             </p>
             <p>
               Starting from just <strong>{formatPrice(line.price)} per user/month</strong>,
-              CallPilot VoIP is being built to give businesses a simple, modern and
+              CallPilot VoIP gives businesses a simple, modern and
               affordable alternative to traditional business phone systems.
             </p>
             <p>
-              Businesses looking for deeper integration and automation will be able to choose{' '}
+              Businesses looking for deeper integration and automation can choose{' '}
               <strong>
                 VoIP + Automation for {formatPrice(automation.price)} per user/month
               </strong>
@@ -215,7 +215,7 @@ export default function BusinessVoipNewsPage() {
             </div>
             <p>
               Instead of operating a separate business phone system, WhatsApp account, SMS
-              platform and ATS or CRM, CallPilot is being designed to connect those
+              platform and ATS or CRM, CallPilot connects those
               communication channels into one workflow.
             </p>
           </section>
@@ -223,11 +223,11 @@ export default function BusinessVoipNewsPage() {
           <section>
             <h2>VoIP Built for Recruitment Agencies</h2>
             <p>
-              CallPilot VoIP will provide additional functionality for recruitment
+              CallPilot VoIP provides additional functionality for recruitment
               companies using supported Applicant Tracking Systems.
             </p>
             <p>
-              Recruiters will be able to use <strong>click-to-call</strong> directly from
+              Recruiters can use <strong>click-to-call</strong> directly from
               supported ATS and CRM platforms.
             </p>
             <p>
@@ -286,7 +286,7 @@ export default function BusinessVoipNewsPage() {
           <section>
             <h2>Business Calls, Messages and AI Automation in One Platform</h2>
             <p>
-              VoIP is being developed as part of the wider CallPilot AI and
+              VoIP is part of the wider CallPilot AI and
               communications platform.
             </p>
             <p>
@@ -320,14 +320,14 @@ export default function BusinessVoipNewsPage() {
           </section>
 
           <section className={styles.ctaSection}>
-            <h2>CallPilot VoIP – Coming Soon</h2>
+            <h2>CallPilot VoIP – Available Now</h2>
             <p>
-              CallPilot VoIP is currently being developed. Businesses interested in
-              being among the first to use the new service can register for early access.
+              CallPilot VoIP is live. Choose a plan, or talk to our team about numbers,
+              WhatsApp, SMS and ATS integration.
             </p>
             <div className={styles.ctaRow}>
               <Link href={ROUTES.contact} className={styles.primaryCta}>
-                Register for Early Access
+                Contact Sales
               </Link>
               <Link href={ROUTES.integrations} className={styles.secondaryCta}>
                 Explore CallPilot Integrations
