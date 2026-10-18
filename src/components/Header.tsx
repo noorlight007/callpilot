@@ -220,9 +220,14 @@ const Header = () => {
           </div>
 
           {/* Mobile right side: social icons + hamburger */}
-          <div className="md:hidden flex items-center gap-4">
-            {/* Social icons (mobile) - before collapse icon */}
-            <SocialIcons className="transform translate-x-[20%]" />
+          <div className="md:hidden flex items-center gap-2">
+            {/* Free credits CTA stays visible in the mobile top bar (LinkedIn traffic is mostly phones) */}
+            <Link
+              href="/free-credits"
+              className="bg-black text-white text-xs font-bold px-3.5 py-2.5 rounded-full whitespace-nowrap"
+            >
+              Get free credits
+            </Link>
 
             <button
               className="p-3 text-headline flex items-center justify-center inline-flex"
@@ -254,6 +259,7 @@ const Header = () => {
                     Sign In
                   </Button>
                 </Link>
+                <SocialIcons className="justify-center" />
                 <Link href="/free-credits" className="w-full">
                   <Button variant="cta" size="lg" className="w-full">
                     Get free credits
