@@ -1,7 +1,7 @@
 export interface ATSIntegration {
   slug: string;
   name: string;
-  status: "Live" | "Live Soon" | "Coming Soon";
+  status: "Live" | "Waitlist";
   statusBadgeClass: "badge-live" | "badge-soon" | "badge-later";
   panelType: "live-board" | "hitech-metrics";
   seo: {
@@ -169,7 +169,7 @@ export const integrationsData: Record<string, ATSIntegration> = {
       { title: "Recruit CRM", slug: "recruit-crm" },
       { title: "JobAdder", slug: "jobadder" },
       { title: "Greenhouse (Live)", slug: "greenhouse" },
-      { title: "iCIMS (Live)", slug: "icims" },
+      { title: "iCIMS (Waitlist)", slug: "icims" },
     ],
     finalCta: {
       h2: "Ready to Put Ashby Applicant Screening on Autopilot?",
@@ -269,7 +269,7 @@ export const integrationsData: Record<string, ATSIntegration> = {
       { title: "Ashby", slug: "ashby" },
       { title: "JobAdder", slug: "jobadder" },
       { title: "Greenhouse (Live)", slug: "greenhouse" },
-      { title: "iCIMS (Live)", slug: "icims" },
+      { title: "iCIMS (Waitlist)", slug: "icims" },
     ],
     finalCta: {
       h2: "Ready to Put Recruit CRM Screening on Autopilot?",
@@ -369,7 +369,7 @@ export const integrationsData: Record<string, ATSIntegration> = {
       { title: "Ashby", slug: "ashby" },
       { title: "Recruit CRM", slug: "recruit-crm" },
       { title: "Greenhouse (Live)", slug: "greenhouse" },
-      { title: "iCIMS (Live)", slug: "icims" },
+      { title: "iCIMS (Waitlist)", slug: "icims" },
     ],
     finalCta: {
       h2: "Ready to Put JobAdder Screening on Autopilot?",
@@ -477,7 +477,7 @@ export const integrationsData: Record<string, ATSIntegration> = {
       { title: "Ashby (Live)", slug: "ashby" },
       { title: "Recruit CRM (Live)", slug: "recruit-crm" },
       { title: "JobAdder (Live)", slug: "jobadder" },
-      { title: "iCIMS (Live)", slug: "icims" },
+      { title: "iCIMS (Waitlist)", slug: "icims" },
     ],
     finalCta: {
       h2: "Ready to Put Greenhouse Applicant Screening on Autopilot?",
@@ -492,97 +492,102 @@ export const integrationsData: Record<string, ATSIntegration> = {
   icims: {
     slug: "icims",
     name: "iCIMS",
-    status: "Live",
-    statusBadgeClass: "badge-live",
-    panelType: "live-board",
+    status: "Waitlist",
+    statusBadgeClass: "badge-later",
+    panelType: "hitech-metrics",
     seo: {
-      title: "iCIMS AI Applicant Screening Integration | CallPilot",
-      description: "CallPilot's AI Applicant Screening Call for iCIMS screens applicants 24/7, collects documents by WhatsApp or SMS and logs every transcript. Claim 100 free credits.",
-      ogTitle: "iCIMS AI Applicant Screening Integration | CallPilot",
-      ogDescription: "CallPilot's AI Applicant Screening Call for iCIMS screens applicants 24/7, collects documents by WhatsApp or SMS and logs every transcript. Claim 100 free credits.",
-      twitterTitle: "iCIMS AI Applicant Screening Integration | CallPilot",
-      twitterDescription: "CallPilot's AI Applicant Screening Call for iCIMS screens applicants 24/7, collects documents by WhatsApp or SMS and logs every transcript. Claim 100 free credits.",
-      schemaDescription: "Enterprise AI voice screening calls integrated with iCIMS. Every applicant screened against the same criteria, with transcripts and documents on the candidate record.",
+      title: "iCIMS AI Applicant Screening Waitlist | CallPilot",
+      description: "CallPilot's AI screening call integration for iCIMS is open to the waitlist. Join for early access and 100 free screening credits.",
+      ogTitle: "iCIMS AI Applicant Screening Waitlist | CallPilot",
+      ogDescription: "CallPilot's AI screening call integration for iCIMS is open to the waitlist. Join for early access and 100 free screening credits.",
+      twitterTitle: "iCIMS AI Applicant Screening Waitlist | CallPilot",
+      twitterDescription: "CallPilot's AI screening call integration for iCIMS is open to the waitlist. Join for early access and 100 free screening credits.",
+      schemaDescription: "Enterprise AI voice screening calls integrated with iCIMS. Join the waitlist for early access and 100 free credits.",
       targetKeyword: "iCIMS AI applicant screening",
     },
     hero: {
-      eyebrowText: "iCIMS Integration: LIVE",
-      overline: "Enterprise High-Volume Qualification",
-      h1: "AI Applicant Screening for iCIMS",
-      lead: "Screen every iCIMS applicant against the same criteria. Every call is transcribed to the record, and ID and documents are collected and attached automatically. Built for the volumes enterprise talent teams run.",
+      eyebrowText: "iCIMS Integration: EARLY ACCESS WAITLIST",
+      overline: "Enterprise High-Volume Qualification Engine",
+      h1: "AI Applicant Screening for iCIMS: Join the Waitlist",
+      lead: "CallPilot's AI applicant screening call for iCIMS is open to the waitlist. Every applicant screened against the same criteria, every call transcribed to the record, every document collected and attached automatically. Built for the volumes enterprise talent teams actually run.",
       flowNodes: ["iCIMS Career Portal", "Volume Applications", "AI Screening Calls", "Automated Criteria", "WhatsApp / SMS", "ID & Docs Captured", "iCIMS Audit Trail"],
-      primaryCtaText: "Claim 100 Free Credits",
-      primaryCtaLink: "/free-trial",
-      secondaryCtaText: "See How It Works",
+      primaryCtaText: "Join iCIMS Waitlist",
+      primaryCtaLink: "#waitlist-form",
+      secondaryCtaText: "Explore Architecture",
       secondaryCtaLink: "#how-it-works",
     },
+    hitech: {
+      tag: "ENTERPRISE RESILIENCE",
+      h2: "Consistent Qualification at 50 or 50,000 Applicants",
+      description: "Manual screening at enterprise scale creates unavoidable human variance. CallPilot ensures the 500th applicant on Sunday night receives the exact same rigorous evaluation as the first on Monday morning.",
+      accentColor: "#4fa8f0",
+    },
+    waitlist: {
+      h2: "Join the iCIMS Early Access Waitlist",
+      note: "Early access is opening to enterprise talent acquisition teams. Receive 100 free screening credits and dedicated solution architecture support.",
+      cardTitle: "Reserve Enterprise Early Access",
+      cardDesc: "Enter your business email to receive integration updates, SOC 2 compliance documentation, and early access onboarding.",
+      buttonText: "Join Waitlist",
+    },
     stats: [
-      { value: "24/7", label: "Applicant Coverage" },
-      { value: "100%", label: "Consistent Questioning" },
-      { value: "100 Free", label: "Screening Credits on Signup" },
+      { value: "50,000+", label: "Monthly Applicant Capacity" },
+      { value: "100%", label: "Verifiable Audit Trail" },
+      { value: "100 Free", label: "Screening Credits on Trial" },
     ],
     howItWorks: {
-      h2: "How the CallPilot iCIMS Integration Works",
-      lead: "Automate top-of-funnel screening end to end. Here is what happens from application to a fully updated candidate record in iCIMS:",
+      h2: "What the iCIMS Integration Will Do",
+      lead: "A structured, defensible qualification workflow designed for enterprise governance and high applicant volume:",
       steps: [
         {
-          title: "1. Picks Up the Application",
+          title: "1. Trigger on Application",
           desc: "A candidate applies through your iCIMS careers portal. CallPilot polls iCIMS on a schedule and picks the application up within the hour.",
         },
         {
           title: "2. Consistent AI Voice Screening",
-          desc: "Your configured screening questions run as a natural voice conversation, with identical criteria applied to every applicant.",
+          desc: "Your configured screening questions run as a natural voice conversation. Identical criteria are applied to every applicant.",
         },
         {
           title: "3. WhatsApp / SMS Document Request",
-          desc: "Qualified candidates receive a message requesting ID and the documents the role requires.",
+          desc: "Qualified candidates receive an immediate message requesting ID and required compliance files within the same interaction.",
         },
         {
-          title: "4. Documents Attached to the iCIMS Profile",
-          desc: "Uploads attach directly to the candidate profile, ready for recruiter review.",
+          title: "4. Documents Attached to iCIMS Profile",
+          desc: "Uploads attach directly to the candidate profile, accessible to recruiter review.",
         },
         {
-          title: "5. Status and Transcript Write-Back",
-          desc: "The outcome, status and call transcript are written to iCIMS, giving a complete audit log.",
+          title: "5. Complete Governance & Status Write-Back",
+          desc: "Status, outcome, and verbatim call transcripts write straight into iCIMS for a complete, defensible audit log.",
         },
       ],
     },
     trafficLights: {
-      lead: "Your recruiters open iCIMS to a pipeline that has already been screened and sorted into three clean statuses:",
-      qualified: "Amber: Qualified – Awaiting Documents: Passed the AI screening call against your role criteria. The automated WhatsApp/SMS chase sequence is running.",
-      received: "Green: Qualified – Documents Received: Passed screening with ID and required documents collected and attached. Ready for recruiter verification.",
-      unsuccessful: "Red: Unsuccessful: Did not meet the minimum role requirements. The call transcript is logged on the iCIMS record.",
+      lead: "Structured pipeline visibility inside iCIMS:",
+      qualified: "Amber: Qualified – Awaiting Documents: Criteria met, automated chase running.",
+      received: "Green: Qualified – Documents Received: Criteria met, documents in, ready for recruiter review.",
+      unsuccessful: "Red: Unsuccessful: Below criteria threshold, full transcript logged.",
     },
     callout: {
-      title: "Enterprise Governance and Audit Trail",
-      desc: "Every CallPilot screening produces a timestamped transcript attached to the iCIMS candidate record. Criteria are applied identically to every applicant, which reduces variance between screens.",
-      badgeText: "iCIMS: LIVE",
+      title: "Enterprise Governance & Audit Trail",
+      desc: "Every CallPilot screening produces a timestamped transcript attached to the iCIMS candidate record. Screening criteria are applied identically to every applicant, eliminating bias and variance.",
+      badgeText: "iCIMS: WAITLIST",
     },
-    pricingFeatures: ["iCIMS sync included", "100 free screening credits on trial", "Priority setup and onboarding support"],
+    pricingFeatures: ["iCIMS enterprise sync in rollout", "100 free screening credits", "Enterprise SLA & dedicated support"],
     faqs: [
       {
-        question: "How does the CallPilot integration with iCIMS work?",
-        answer: "CallPilot detects new applicants in iCIMS and calls them automatically for an AI phone screen. Qualified applicants are asked for documents by WhatsApp or SMS, and the outcome, transcript and files are written to the iCIMS candidate record.",
+        question: "When will the iCIMS integration be available?",
+        answer: "Early access is opening now with general rollout following. Teams on the waitlist receive early access and architectural support.",
       },
       {
-        question: "What are the three screening statuses in iCIMS?",
-        answer: "Green: Qualified – Documents Received (passed and files attached). Amber: Qualified – Awaiting Documents (passed, automated reminder running). Red: Unsuccessful (did not meet role criteria).",
+        question: "How does CallPilot handle enterprise data compliance and security?",
+        answer: "CallPilot enforces strict data isolation, encrypted transit (TLS 1.3), encrypted storage (AES-256), and GDPR-compliant candidate data retention policies.",
       },
       {
-        question: "Are candidates told they are speaking to an AI?",
-        answer: "Yes. CallPilot discloses that it is an AI assistant at the start of every screening call.",
+        question: "Does CallPilot make hiring decisions automatically?",
+        answer: "No. CallPilot qualifies applicants against your configured baseline criteria and logs transcripts. Final selection and hiring decisions remain 100% with your human recruiters.",
       },
       {
-        question: "Does CallPilot make hiring decisions?",
-        answer: "No. CallPilot screens against the criteria you configure and collects documents. Verification and final hiring decisions stay with your recruiters.",
-      },
-      {
-        question: "How do I claim 100 free screening credits for iCIMS?",
-        answer: "Sign up on the free trial page. No credit card is required.",
-      },
-      {
-        question: "How does CallPilot handle data security?",
-        answer: "CallPilot uses encrypted transit and storage and applies data retention policies. See the Privacy Policy for details.",
+        question: "Can CallPilot support multilingual screening for global operations?",
+        answer: "Yes, CallPilot's voice engine supports multiple languages and accents across North America, the UK, Europe, and APAC.",
       },
     ],
     crossLinks: [
@@ -592,12 +597,12 @@ export const integrationsData: Record<string, ATSIntegration> = {
       { title: "Greenhouse (Live)", slug: "greenhouse" },
     ],
     finalCta: {
-      h2: "Ready to Put iCIMS Applicant Screening on Autopilot?",
-      lead: "Screen every applicant 24/7, collect documents by WhatsApp or SMS, and give recruiters a pre-qualified pipeline.",
-      primaryText: "Claim 100 Free Credits",
-      primaryUrl: "/free-trial",
-      secondaryText: "Read the Volume Screening Guide",
-      secondaryUrl: "/blog/high-volume-applicant-screening",
+      h2: "Get Early Access for iCIMS",
+      lead: "Join the waitlist now to secure 100 free screening credits and early onboarding for your enterprise talent acquisition team.",
+      primaryText: "Join Waitlist",
+      primaryUrl: "#waitlist-form",
+      secondaryText: "Read Volume Screening Guide",
+      secondaryUrl: "/blog/high-volume-applicant-screening/",
     },
   },
 };

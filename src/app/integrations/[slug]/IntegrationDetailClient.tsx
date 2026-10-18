@@ -168,7 +168,7 @@ export default function IntegrationDetailClient({ data }: Props) {
     setModalError(false);
 
     const isLive = data.status === "Live";
-    const isWaitlist = data.status === "Coming Soon";
+    const isWaitlist = data.status === "Waitlist";
     const subject = isLive
       ? `New CallPilot Activation Request – ${data.name}`
       : isWaitlist
@@ -239,12 +239,12 @@ export default function IntegrationDetailClient({ data }: Props) {
   const navCtaText =
     data.status === "Live"
       ? "Get Connected"
-      : data.status === "Coming Soon"
+      : data.status === "Waitlist"
       ? "Join the Waitlist"
       : "Get Early Access";
 
   const isLive = data.status === "Live";
-  const isWaitlist = data.status === "Coming Soon";
+  const isWaitlist = data.status === "Waitlist";
 
   const modalTitle = isLive
     ? "Get Connected — Activate AI Call"
@@ -299,8 +299,6 @@ export default function IntegrationDetailClient({ data }: Props) {
                       className={`text-[0.68rem] font-bold px-2 py-0.5 rounded-full whitespace-nowrap ${
                         item.status === "Live"
                           ? "bg-emerald-100 text-emerald-700"
-                          : item.status === "Live Soon"
-                          ? "bg-amber-100 text-amber-800"
                           : "bg-gray-100 text-gray-600"
                       }`}
                     >
@@ -372,7 +370,7 @@ export default function IntegrationDetailClient({ data }: Props) {
               }}
             />
             <span className="text-white">{data.name} Integration</span>:{" "}
-            {isLive ? "LIVE" : isWaitlist ? "COMING SOON" : "LIVE SOON"}
+            {isLive ? "LIVE" : "WAITLIST"}
           </div>
 
           <div className="text-xs md:text-sm font-bold tracking-widest text-white/60 uppercase mb-4">

@@ -64,7 +64,7 @@ export const allArticles: ArticleData[] = [
   <li><strong>The recruiter is notified to verify.</strong> CallPilot deliberately stops at verification. The recruiter's judgement starts where the automation ends.</li>
 </ol>
 
-<p class="mb-6">CallPilot integrates with <strong>Recruit CRM, Ashby, Greenhouse, JobAdder and iCIMS</strong>.</p>
+<p class="mb-6">CallPilot integrates with <strong>Recruit CRM, Ashby, Greenhouse and JobAdder</strong>, with an iCIMS waitlist open.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">VoIP lines with automation: live now</h2>
 <p class="mb-4">Alongside AI calling, CallPilot now provides <strong>VoIP lines</strong> for recruitment agencies and businesses of all sizes. One low-cost number handles:</p>
@@ -865,7 +865,7 @@ export const allArticles: ArticleData[] = [
       },
       {
         question: "Which ATS platforms work with it?",
-        answer: "CallPilot connects to JobAdder, Recruit CRM, Ashby, Greenhouse and iCIMS.",
+        answer: "CallPilot connects to JobAdder, Recruit CRM, Ashby and Greenhouse. iCIMS is on the waitlist.",
       },
       {
         question: "How much does it cost?",
@@ -968,7 +968,7 @@ export const allArticles: ArticleData[] = [
   <li><strong>The result is classified.</strong> Applicants who meet every hard requirement are Qualified. A "No" on a requirement ends the screen as Unsuccessful.</li>
   <li><strong>The ATS is updated.</strong> The outcome, call transcript and status are written to the candidate record.</li>
 </ol>
-<p class="mb-4">CallPilot works with <a href="/integrations/jobadder" class="text-blue-600 font-semibold underline hover:text-blue-800">JobAdder</a>, <a href="/integrations/recruit-crm" class="text-blue-600 font-semibold underline hover:text-blue-800">Recruit CRM</a> and <a href="/integrations/ashby" class="text-blue-600 font-semibold underline hover:text-blue-800">Ashby</a>, Greenhouse and iCIMS.</p>
+<p class="mb-4">CallPilot works with <a href="/integrations/jobadder" class="text-blue-600 font-semibold underline hover:text-blue-800">JobAdder</a>, <a href="/integrations/recruit-crm" class="text-blue-600 font-semibold underline hover:text-blue-800">Recruit CRM</a> and <a href="/integrations/ashby" class="text-blue-600 font-semibold underline hover:text-blue-800">Ashby</a> and Greenhouse. iCIMS is on the waitlist.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Where WhatsApp and SMS fit</h2>
 <p class="mb-4">Once an applicant qualifies, the document request goes out by WhatsApp or SMS. The applicant replies with photos of their ID and any documents the role needs. There is no app to install and no portal to log into, which is why it suits mobile-first applicants.</p>
@@ -1001,7 +1001,7 @@ export const allArticles: ArticleData[] = [
       },
       {
         question: "Which ATS systems does it connect to?",
-        answer: "JobAdder, Recruit CRM, Ashby, Greenhouse and iCIMS.",
+        answer: "JobAdder, Recruit CRM, Ashby and Greenhouse. iCIMS is on the waitlist.",
       },
       {
         question: "Who verifies the documents?",

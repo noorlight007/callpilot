@@ -19,7 +19,7 @@ const PRICING_FAQ = [
   },
   {
     question: "Which ATS platforms does CallPilot connect to?",
-    answer: "JobAdder, Recruit CRM, Ashby, Greenhouse and iCIMS.",
+    answer: "JobAdder, Recruit CRM, Ashby and Greenhouse. iCIMS is on the waitlist.",
   },
   {
     question: "What if I need more than 1,000 screenings a month?",

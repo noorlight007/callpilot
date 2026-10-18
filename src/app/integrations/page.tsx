@@ -10,13 +10,13 @@ import { CheckCircle2, ArrowRight, PhoneCall, Zap, Shield, Sparkles } from "luci
 
 export const metadata: Metadata = {
   title: "ATS Integrations: JobAdder, Recruit CRM, Ashby & More",
-  description: "Connect CallPilot's AI screening call engine to your ATS. Explore native integrations for JobAdder, Recruit CRM, Greenhouse, Ashby, and iCIMS.",
+  description: "Connect CallPilot's AI screening call engine to your ATS. Explore native integrations for JobAdder, Recruit CRM, Greenhouse and Ashby, plus the iCIMS waitlist.",
   alternates: {
     canonical: "https://callpilot.pro/integrations",
   },
   openGraph: {
     title: "ATS Integrations | CallPilot",
-    description: "Connect CallPilot's AI screening call engine to your ATS. Explore native integrations for JobAdder, Recruit CRM, Greenhouse, Ashby, and iCIMS.",
+    description: "Connect CallPilot's AI screening call engine to your ATS. Explore native integrations for JobAdder, Recruit CRM, Greenhouse and Ashby, plus the iCIMS waitlist.",
     url: "https://callpilot.pro/integrations",
     siteName: "CallPilot",
     type: "website",
@@ -98,8 +98,6 @@ export default function IntegrationsHubPage() {
                       className={`text-xs font-bold px-3 py-1 rounded-full ${
                         item.status === "Live"
                           ? "bg-emerald-100 text-emerald-800"
-                          : item.status === "Live Soon"
-                          ? "bg-amber-100 text-amber-800"
                           : "bg-gray-100 text-gray-700"
                       }`}
                     >
