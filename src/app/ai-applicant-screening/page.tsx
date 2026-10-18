@@ -114,7 +114,7 @@ export default function AiApplicantScreeningPage() {
                 WhatsApp or SMS, and writes the result straight to your ATS. 24/7. First 10 calls free.
               </p>
               <div className={hs.ctas} style={{ justifyContent: "center", marginTop: "32px" }}>
-                <Link href="/free-trial" className={`${hs.btn} ${hs.btnPrimary}`}>
+                <Link href="/free-credits" className={`${hs.btn} ${hs.btnPrimary}`}>
                   Get 10 Free Screening Calls <ArrowRight className={hs.btnIcon} />
                 </Link>
                 <Link href="/book-a-demo" className={`${hs.btn} ${hs.btnGhost}`}>Book a Demo</Link>

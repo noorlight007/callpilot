@@ -320,13 +320,22 @@ export default function IntegrationDetailClient({ data }: Props) {
             <a href="#pricing" className="hover:text-emerald-600 transition-colors">Pricing</a>
             <a href="#faq" className="hover:text-emerald-600 transition-colors">FAQ</a>
           </div>
-          <button
-            type="button"
-            onClick={openModal}
-            className="bg-black text-white px-5 py-2.5 rounded-full font-semibold text-sm hover:bg-gray-800 transition-colors"
-          >
-            {navCtaText}
-          </button>
+          <div className="flex items-center gap-2 sm:gap-3">
+            <Link
+              href="/free-credits"
+              className="border border-black text-black px-3 sm:px-5 py-2.5 rounded-full font-semibold text-xs sm:text-sm hover:bg-black hover:text-white transition-colors whitespace-nowrap"
+            >
+              <span className="sm:hidden">Free credits</span>
+              <span className="hidden sm:inline">Get free credits</span>
+            </Link>
+            <button
+              type="button"
+              onClick={openModal}
+              className="bg-black text-white px-3 sm:px-5 py-2.5 rounded-full font-semibold text-xs sm:text-sm hover:bg-gray-800 transition-colors whitespace-nowrap"
+            >
+              {navCtaText}
+            </button>
+          </div>
         </nav>
       </header>
 

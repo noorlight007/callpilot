@@ -236,6 +236,12 @@ const Pricing = ({ asH1 = true }: PricingProps) => {
             <p className="text-xs sm:text-sm text-[#8a8883] mt-2">
               WhatsApp and SMS document requests, automatic ATS sync and recruiter alerts included on every plan.
             </p>
+            <Link
+              href="/free-credits"
+              className="inline-block mt-5 bg-[#0a0a0a] text-white font-bold text-sm px-8 py-3.5 rounded-full hover:bg-[#2a2a28] transition-colors"
+            >
+              Get free credits
+            </Link>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 items-stretch mb-10">

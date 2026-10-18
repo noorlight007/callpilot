@@ -248,10 +248,10 @@ export default async function BlogSlugPage({ params }: Props) {
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link
-                href="/free-trial"
+                href="/free-credits"
                 className="bg-white text-black font-bold text-sm px-8 py-3.5 rounded-full hover:bg-gray-200 transition-colors"
               >
-                Get 10 Free Screening Credits
+                Get free credits
               </Link>
               <Link
                 href="/ai-applicant-screening"

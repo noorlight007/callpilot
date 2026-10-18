@@ -163,7 +163,7 @@ export default function NewsIndexPage() {
                 Browse All Integrations
               </Link>
               <Link
-                href="/free-trial"
+                href="/free-credits"
                 className="border border-gray-300 text-gray-900 px-7 py-3 rounded-full font-bold text-sm hover:border-black transition-colors"
               >
                 Claim 10 Free Credits

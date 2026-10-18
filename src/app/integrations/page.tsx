@@ -62,7 +62,7 @@ export default function IntegrationsHubPage() {
                 Browse Integrations
               </a>
               <Link
-                href="/free-trial"
+                href="/free-credits"
                 className="border border-white/40 text-white font-bold text-sm px-8 py-3.5 rounded-full hover:border-white transition-colors"
               >
                 Get Started
@@ -183,7 +183,7 @@ export default function IntegrationsHubPage() {
             </p>
             <div className="flex justify-center gap-4">
               <Link
-                href="/free-trial"
+                href="/free-credits"
                 className="bg-white text-black font-bold text-sm px-8 py-3.5 rounded-full hover:bg-gray-200 transition-colors"
               >
                 Claim 10 Free Calls

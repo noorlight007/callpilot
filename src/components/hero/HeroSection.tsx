@@ -11,7 +11,7 @@ import styles from "./HeroSection.module.css";
 const font = Plus_Jakarta_Sans({ subsets: ["latin"], weight: ["400", "500", "700", "800"], display: "swap" });
 
 const BOOK_DEMO_HREF = "/get-started";
-const FREE_TRIAL_HREF = "/free-trial";
+const FREE_TRIAL_HREF = "/free-credits";
 
 /* ---------- icons ---------- */
 type P = SVGProps<SVGSVGElement>;

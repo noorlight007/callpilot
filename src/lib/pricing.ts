@@ -78,7 +78,7 @@ export const STARTING_PRICE = SCREENING_PLANS[0].monthly;
 export const COPY = {
   trialLine: `New clients: your first ${FREE_TRIAL_CALLS} AI screening calls are free.`,
   trialCta: `Claim ${FREE_TRIAL_CALLS} Free Credits`,
-  trialFooterLink: `${FREE_TRIAL_CALLS} Free Credits Trial`,
+  trialFooterLink: "Get Free Credits",
   noCall: "No Call. No Charge.",
   enterpriseLead: `Over ${ENTERPRISE_THRESHOLD} calls a month?`,
   enterpriseLink: "Talk to us.",

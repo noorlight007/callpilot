@@ -3,6 +3,7 @@ import "./globals.css";
 import { Providers } from "./providers";
 import WhatsAppWidget from "@/components/WhatsAppWidget";
 import Script from "next/script";
+import UtmCapture from "@/components/UtmCapture";
 
 export const metadata: Metadata = {
     metadataBase: new URL("https://callpilot.pro"),
@@ -52,6 +53,7 @@ export default function RootLayout({
                 <Providers>
                     {children}
                     <WhatsAppWidget />
+                    <UtmCapture />
                 </Providers>
                 {/* Google Tag Manager */}
                 <Script

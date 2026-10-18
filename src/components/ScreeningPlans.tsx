@@ -3,7 +3,7 @@ import styles from "./ScreeningPlans.module.css";
 
 type Props = { showTerms?: boolean; ctaHref?: string };
 
-export default function ScreeningPlans({ showTerms = true, ctaHref = "/free-trial" }: Props) {
+export default function ScreeningPlans({ showTerms = true, ctaHref = "/free-credits" }: Props) {
   return (
     <section className={styles.wrap} aria-labelledby="screening-plans">
       <h2 id="screening-plans" className={styles.heading}>AI Applicant Call Plans</h2>

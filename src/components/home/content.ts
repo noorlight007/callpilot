@@ -15,7 +15,7 @@ export const PLANS = [
       : p.id === "growth" ? "Active hiring: more volume at a lower rate per screening."
       : "High-volume hiring: the lowest cost per screening.",
     cta: "Get Started",
-    href: `/free-trial?plan=${p.id}`,
+    href: `/free-credits?plan=${p.id}`,
     recommended: !!p.recommended,
   })),
   {
@@ -137,7 +137,7 @@ export const FOOTER = {
         { label: "AI Applicant Screening", href: "/ai-applicant-screening" },
         { label: "Automation", href: "/features#automation" },
         { label: "Pricing", href: "/pricing" },
-        { label: COPY.trialFooterLink, href: "/free-trial" },
+        { label: COPY.trialFooterLink, href: "/free-credits" },
       ],
     },
     {
