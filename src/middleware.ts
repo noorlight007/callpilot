@@ -1,9 +1,9 @@
 // www -> apex, strip trailing slash (fixes /free-trial/ vs /free-trial split),
-// strip tracking params. All 301.
+// All 301. Tracking params (utm_*, gclid, fbclid) are deliberately kept so campaign
+// attribution survives; canonical tags handle duplicate-URL SEO.
 import { NextResponse, type NextRequest } from "next/server";
 
 const CANONICAL_HOST = "callpilot.pro";
-const TRACKING = /^(utm_|fbclid$|gclid$)/;
 
 export function middleware(req: NextRequest) {
   const url = req.nextUrl.clone();
@@ -18,12 +18,6 @@ export function middleware(req: NextRequest) {
   if (url.pathname.length > 1 && url.pathname.endsWith("/")) {
     url.pathname = url.pathname.replace(/\/+$/, "");
     changed = true;
-  }
-  for (const k of [...url.searchParams.keys()]) {
-    if (TRACKING.test(k)) {
-      url.searchParams.delete(k);
-      changed = true;
-    }
   }
   return changed ? NextResponse.redirect(url, 301) : NextResponse.next();
 }
