@@ -232,9 +232,9 @@ export default function FreeCreditsForm({ source = "Free Trial Page (/free-trial
                           onChange={(e) => setAts(e.target.value)}
                           className="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm bg-white focus:outline-none focus:border-black"
                         >
-                          <option value="Ashby">Ashby (Live Integration)</option>
-                          <option value="Recruit CRM">Recruit CRM (Live Integration)</option>
-                          <option value="JobAdder">JobAdder (Live Integration)</option>
+                          <option value="Ashby">Ashby</option>
+                          <option value="Recruit CRM">Recruit CRM</option>
+                          <option value="JobAdder">JobAdder</option>
                           <option value="Greenhouse">Greenhouse</option>
                           <option value="iCIMS">iCIMS (Coming Soon)</option>
                           <option value="Other">Other / Standalone Webhook</option>
