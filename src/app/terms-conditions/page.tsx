@@ -162,7 +162,7 @@ const SECTIONS: Section[] = [
     title: "Free Trial and Promotional Offers",
     body: (
       <>
-        <p>New clients receive their first 10 AI applicant screening calls free. This is a one-time offer per new client, is not tied to a specific plan, and has no cash value.</p>
+        <p>New clients receive their first 100 AI applicant screening calls free. This is a one-time offer per new client, is not tied to a specific plan, and has no cash value.</p>
         <p>Other promotional offers may be restricted to eligible Customers, may have an expiry date, are non-transferable, have no cash value and may be subject to additional promotional terms.</p>
         <p>Promotional offers do not create an entitlement to continued free usage.</p>
       </>

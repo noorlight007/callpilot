@@ -11,7 +11,7 @@ const PRICING_FAQ = [
   },
   {
     question: "Is there a free trial?",
-    answer: "Yes. New clients get their first 10 screening calls free, with no credit card required.",
+    answer: "Yes. New clients get their first 100 screening calls free, with no credit card required.",
   },
   {
     question: "Do I need a new phone number?",

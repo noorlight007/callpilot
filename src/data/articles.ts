@@ -125,7 +125,7 @@ export const allArticles: ArticleData[] = [
     contentHtml: `
 <p class="lead text-xl text-gray-700 font-medium mb-6">CallPilot's AI applicant screening call is now live with Ashby. Ashby clients can screen every applicant, collect ID and documents, and have the candidate record updated automatically — without a recruiter picking up the phone.</p>
 
-<p>You can also check out our permanent <a href="/integrations/ashby/" class="text-blue-600 font-semibold underline hover:text-blue-800">Ashby AI applicant screening integration page</a> to explore the complete technical flow or claim your <a href="/free-trial/" class="text-blue-600 font-semibold underline hover:text-blue-800">10 free screening credits</a>.</p>
+<p>You can also check out our permanent <a href="/integrations/ashby/" class="text-blue-600 font-semibold underline hover:text-blue-800">Ashby AI applicant screening integration page</a> to explore the complete technical flow or claim your <a href="/free-trial/" class="text-blue-600 font-semibold underline hover:text-blue-800">100 free screening credits</a>.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">The bottleneck this removes</h2>
 <p class="mb-4">High-volume recruitment fails in the same place almost everywhere: applications arrive faster than recruiters can call them.</p>
@@ -165,8 +165,8 @@ export const allArticles: ArticleData[] = [
 <p class="mb-4">A 9-to-5, Monday-to-Friday recruitment team covers 40 hours out of 168. The applications arriving in the other 128 sit and wait — and on Monday morning they queue behind Monday's applications for the same finite recruiter time.</p>
 <p class="mb-6">CallPilot picks up the Friday 11pm applicant within the hour and screens them before midnight. Documents requested in the same interaction, and often back before your team is awake.</p>
 
-<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">10 free screening credits for Ashby clients</h2>
-<p class="mb-6">Ashby clients can trial CallPilot with 10 free applicant screening credits on a live role. No card required.</p>
+<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">100 free screening credits for Ashby clients</h2>
+<p class="mb-6">Ashby clients can trial CallPilot with 100 free applicant screening credits on a live role. No card required.</p>
 <p class="mb-6">Pick your highest-volume vacancy, run it through CallPilot for a week, and compare the pipeline against the same role screened manually.</p>
 `,
     relatedSlugs: ["recruit-crm", "jobadder", "how-fast-can-ai-qualify-an-applicant"]
@@ -337,7 +337,7 @@ export const allArticles: ArticleData[] = [
     contentHtml: `
 <p class="lead text-xl text-gray-700 font-medium mb-6">CallPilot's AI applicant screening call is now live with Recruit CRM. Agencies running Recruit CRM can screen every applicant within the hour of application, collect ID and documents by WhatsApp, and have the candidate record synced automatically.</p>
 
-<p>Explore our permanent <a href="/integrations/recruit-crm/" class="text-blue-600 font-semibold underline hover:text-blue-800">Recruit CRM AI applicant screening integration page</a> or claim your <a href="/free-trial/" class="text-blue-600 font-semibold underline hover:text-blue-800">10 free screening credits</a>.</p>
+<p>Explore our permanent <a href="/integrations/recruit-crm/" class="text-blue-600 font-semibold underline hover:text-blue-800">Recruit CRM AI applicant screening integration page</a> or claim your <a href="/free-trial/" class="text-blue-600 font-semibold underline hover:text-blue-800">100 free screening credits</a>.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">Agency recruitment is a race, and the clock starts at application</h2>
 <p class="mb-4">In-house teams compete with other employers. Agencies compete with other agencies — for the same candidates, sourced from the same job boards, often on the same day.</p>
@@ -387,7 +387,7 @@ export const allArticles: ArticleData[] = [
     contentHtml: `
 <p class="lead text-xl text-gray-700 font-medium mb-6">CallPilot's AI applicant screening call is now live with JobAdder. High-volume temp, contract and shift-based recruiters can screen every applicant and collect compliance documents automatically, with JobAdder updated in real time.</p>
 
-<p>See our full <a href="/integrations/jobadder/" class="text-blue-600 font-semibold underline hover:text-blue-800">JobAdder AI applicant screening page</a> or claim <a href="/free-trial/" class="text-blue-600 font-semibold underline hover:text-blue-800">10 free screening credits</a>.</p>
+<p>See our full <a href="/integrations/jobadder/" class="text-blue-600 font-semibold underline hover:text-blue-800">JobAdder AI applicant screening page</a> or claim <a href="/free-trial/" class="text-blue-600 font-semibold underline hover:text-blue-800">100 free screening credits</a>.</p>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">High-volume recruitment doesn't fail at screening. It fails at the document chase.</h2>
 <p class="mb-4">Most people assume the bottleneck in volume recruitment is talking to everyone. It isn't — screening is at least a solvable staffing problem.</p>
@@ -852,7 +852,7 @@ export const allArticles: ArticleData[] = [
 </ol>
 
 <h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">What it costs</h2>
-<p class="mb-4">You pay only for completed screenings. New clients get their first 10 screening calls free; plans then start at $49 a month. See <a href="/pricing" class="text-blue-600 font-semibold underline hover:text-blue-800">pricing</a> for the full table, or read how an <a href="/ai-applicant-screening" class="text-blue-600 font-semibold underline hover:text-blue-800">AI applicant screening call</a> works step by step.</p>
+<p class="mb-4">You pay only for completed screenings. New clients get their first 100 screening calls free; plans then start at $49 a month. See <a href="/pricing" class="text-blue-600 font-semibold underline hover:text-blue-800">pricing</a> for the full table, or read how an <a href="/ai-applicant-screening" class="text-blue-600 font-semibold underline hover:text-blue-800">AI applicant screening call</a> works step by step.</p>
 `,
     faqs: [
       {
@@ -869,7 +869,7 @@ export const allArticles: ArticleData[] = [
       },
       {
         question: "How much does it cost?",
-        answer: "New clients get their first 10 screening calls free. Plans then start at $49 a month, and you only pay for completed screenings.",
+        answer: "New clients get their first 100 screening calls free. Plans then start at $49 a month, and you only pay for completed screenings.",
       }
     ],
     relatedSlugs: ["ai-screening-call-vs-ai-video-interview", "high-volume-applicant-screening", "what-happens-after-the-ai-screening-call"]
@@ -988,7 +988,7 @@ export const allArticles: ArticleData[] = [
   <li>That applicants are told the call is automated. CallPilot discloses this on every call.</li>
   <li>That your recruiters still own verification and final decisions.</li>
 </ul>
-<p class="mb-4">See the full <a href="/ai-applicant-screening" class="text-blue-600 font-semibold underline hover:text-blue-800">AI applicant screening call</a> process, or <a href="/pricing" class="text-blue-600 font-semibold underline hover:text-blue-800">pricing</a>: new clients get their first 10 screening calls free.</p>
+<p class="mb-4">See the full <a href="/ai-applicant-screening" class="text-blue-600 font-semibold underline hover:text-blue-800">AI applicant screening call</a> process, or <a href="/pricing" class="text-blue-600 font-semibold underline hover:text-blue-800">pricing</a>: new clients get their first 100 screening calls free.</p>
 `,
     faqs: [
       {

@@ -153,7 +153,7 @@ export default function NewsIndexPage() {
               Explore Our ATS Integration Hub
             </h2>
             <p className="text-gray-600 text-sm sm:text-base mb-8 max-w-xl mx-auto">
-              Looking for dedicated product workflows? Explore live integrations and claim 10 free screening credits.
+              Looking for dedicated product workflows? Explore live integrations and claim 100 free screening credits.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link
@@ -166,7 +166,7 @@ export default function NewsIndexPage() {
                 href="/free-credits"
                 className="border border-gray-300 text-gray-900 px-7 py-3 rounded-full font-bold text-sm hover:border-black transition-colors"
               >
-                Claim 10 Free Credits
+                Claim 100 Free Credits
               </Link>
             </div>
           </div>

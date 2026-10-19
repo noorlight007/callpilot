@@ -13,7 +13,7 @@ import { ArrowRight, Check, Doc, Headset, Plus, Sync, UserCheck } from "@/compon
 const URL = "https://callpilot.pro/ai-applicant-screening";
 const TITLE = "AI Applicant Screening Calls for Recruiters";
 const DESCRIPTION =
-  "CallPilot calls every applicant 24/7, asks your role-specific questions, collects ID by WhatsApp or SMS and writes results to your ATS. First 10 calls free.";
+  "CallPilot calls every applicant 24/7, asks your role-specific questions, collects ID by WhatsApp or SMS and writes results to your ATS. First 100 calls free.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -57,7 +57,7 @@ const FAQ = [
   { q: "Does the AI tell applicants it is an AI?", a: "Yes. CallPilot discloses that the caller is an AI at the start of every screening call." },
   { q: "Does CallPilot make hiring decisions?", a: "No. It screens against the criteria you configure and collects documents. Verification, right-to-work checks and final hiring decisions stay with your recruiters." },
   { q: "Which ATS platforms does it connect to?", a: "JobAdder, Recruit CRM, Ashby and Greenhouse. iCIMS is coming soon." },
-  { q: "How much does it cost?", a: "Plans start at $49 a month for 10 completed screenings, with Growth at $299 for 75 and Pro at $999 for 300. New clients get their first 10 screening calls free. You only pay for completed screenings, so no call means no charge." },
+  { q: "How much does it cost?", a: "Plans start at $49 a month for 10 completed screenings, with Growth at $299 for 75 and Pro at $999 for 300. New clients get their first 100 screening calls free. You only pay for completed screenings, so no call means no charge." },
   { q: "What happens if an applicant does not answer?", a: "Nothing is charged. A screening only counts once the applicant completes it." },
   { q: "How do applicants send their documents?", a: "They reply to a WhatsApp or SMS message with photos of their documents. There is no app to install and no portal login." },
   { q: "Can I use it without an ATS?", a: "Yes. CallPilot can run standalone screening workflows. Book a demo and we will set it up around how you work today." },
@@ -111,11 +111,11 @@ export default function AiApplicantScreeningPage() {
               </h1>
               <p className={hs.lead} style={{ maxWidth: "760px", margin: "18px auto 0" }}>
                 An AI call agent phones every applicant, asks your role-specific questions, collects ID and documents by
-                WhatsApp or SMS, and writes the result straight to your ATS. 24/7. First 10 calls free.
+                WhatsApp or SMS, and writes the result straight to your ATS. 24/7. First 100 calls free.
               </p>
               <div className={hs.ctas} style={{ justifyContent: "center", marginTop: "32px" }}>
                 <Link href="/free-credits" className={`${hs.btn} ${hs.btnPrimary}`}>
-                  Get 10 Free Screening Calls <ArrowRight className={hs.btnIcon} />
+                  Get 100 Free Screening Calls <ArrowRight className={hs.btnIcon} />
                 </Link>
                 <Link href="/book-a-demo" className={`${hs.btn} ${hs.btnGhost}`}>Book a Demo</Link>
               </div>

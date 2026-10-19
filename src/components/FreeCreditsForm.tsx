@@ -24,7 +24,7 @@ export default function FreeCreditsForm({ source = "Free Trial Page (/free-trial
     setError(false);
 
     const formData = new FormData();
-    formData.append("_subject", `New 10 Free Credits Trial Request – ${company}`);
+    formData.append("_subject", `New 100 Free Credits Trial Request – ${company}`);
     formData.append("_template", "table");
     formData.append("_captcha", "false");
     formData.append("Source", source);
@@ -72,11 +72,11 @@ export default function FreeCreditsForm({ source = "Free Trial Page (/free-trial
             <div className="lg:col-span-7">
               <span className="inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase bg-emerald-50 text-emerald-800 border border-emerald-200 px-3.5 py-1.5 rounded-full mb-6">
                 <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
-                10 FREE SCREENING CREDITS • NO CREDIT CARD REQUIRED
+                100 FREE SCREENING CREDITS • NO CREDIT CARD REQUIRED
               </span>
 
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight leading-[1.12] mb-6">
-                Screen Your First 10 Applicants on CallPilot Free
+                Screen Your First 100 Applicants on CallPilot Free
               </h1>
 
               <p className="text-base sm:text-lg text-gray-700 leading-relaxed mb-8">
@@ -87,7 +87,7 @@ export default function FreeCreditsForm({ source = "Free Trial Page (/free-trial
                 <div className="flex items-start gap-3">
                   <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
                   <div>
-                    <strong className="text-gray-900 text-sm sm:text-base block">10 Full AI Screening Calls Included</strong>
+                    <strong className="text-gray-900 text-sm sm:text-base block">100 Full AI Screening Calls Included</strong>
                     <span className="text-xs sm:text-sm text-gray-600">Run actual live phone qualification with natural conversation flow and custom role criteria.</span>
                   </div>
                 </div>
@@ -148,7 +148,7 @@ export default function FreeCreditsForm({ source = "Free Trial Page (/free-trial
                       Trial Request Received!
                     </h2>
                     <p className="text-sm text-gray-600 mb-6 leading-relaxed">
-                      Thank you. We are preparing your workspace with 10 free screening credits and will email your credentials shortly.
+                      Thank you. We are preparing your workspace with 100 free screening credits and will email your credentials shortly.
                     </p>
                     <Link
                       href="/integrations"
@@ -160,7 +160,7 @@ export default function FreeCreditsForm({ source = "Free Trial Page (/free-trial
                 ) : (
                   <>
                     <h2 className="text-2xl font-extrabold text-gray-900 mb-2">
-                      Claim Your 10 Free Credits
+                      Claim Your 100 Free Credits
                     </h2>
                     <p className="text-xs text-gray-500 mb-6">
                       Complete the form below to receive immediate access to your screening sandbox.
@@ -252,7 +252,7 @@ export default function FreeCreditsForm({ source = "Free Trial Page (/free-trial
                         disabled={loading}
                         className="w-full py-3.5 px-6 bg-black text-white font-bold text-sm rounded-xl hover:bg-gray-800 transition-colors shadow-md flex items-center justify-center gap-2 mt-4"
                       >
-                        {loading ? "Activating Trial..." : "Activate 10 Free Credits →"}
+                        {loading ? "Activating Trial..." : "Activate 100 Free Credits →"}
                       </button>
 
                       <p className="text-[11px] text-gray-400 text-center mt-3">

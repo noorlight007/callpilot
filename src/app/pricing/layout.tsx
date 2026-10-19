@@ -3,13 +3,13 @@ import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 
 export const metadata: Metadata = {
   title: "Pricing: VoIP Lines & AI Applicant Screening",
-  description: "CallPilot VoIP lines from $5.99 a month with WhatsApp, SMS and email. AI applicant screening from $49 a month. First 10 screening calls free.",
+  description: "CallPilot VoIP lines from $5.99 a month with WhatsApp, SMS and email. AI applicant screening from $49 a month. First 100 screening calls free.",
   alternates: {
     canonical: "https://callpilot.pro/pricing",
   },
   openGraph: {
     title: "Pricing: VoIP Lines & AI Applicant Screening | CallPilot",
-    description: "CallPilot VoIP lines from $5.99 a month with WhatsApp, SMS and email. AI applicant screening from $49 a month. First 10 screening calls free.",
+    description: "CallPilot VoIP lines from $5.99 a month with WhatsApp, SMS and email. AI applicant screening from $49 a month. First 100 screening calls free.",
     url: "https://callpilot.pro/pricing",
     siteName: "CallPilot",
     type: "website",

@@ -90,11 +90,11 @@ export const integrationsData: Record<string, ATSIntegration> = {
     panelType: "live-board",
     seo: {
       title: "Ashby AI Applicant Screening | CallPilot Integration",
-      description: "Screen every Ashby applicant with an AI call. Documents and ID collected via WhatsApp, Ashby updated automatically. 10 free credits.",
+      description: "Screen every Ashby applicant with an AI call. Documents and ID collected via WhatsApp, Ashby updated automatically. 100 free credits.",
       ogTitle: "Ashby AI Applicant Screening | CallPilot Integration",
-      ogDescription: "Screen every Ashby applicant with an AI call. Documents and ID collected via WhatsApp, Ashby updated automatically. 10 free credits.",
+      ogDescription: "Screen every Ashby applicant with an AI call. Documents and ID collected via WhatsApp, Ashby updated automatically. 100 free credits.",
       twitterTitle: "Ashby AI Applicant Screening | CallPilot Integration",
-      twitterDescription: "Screen every Ashby applicant with an AI call. Documents and ID collected via WhatsApp, Ashby updated automatically. 10 free credits.",
+      twitterDescription: "Screen every Ashby applicant with an AI call. Documents and ID collected via WhatsApp, Ashby updated automatically. 100 free credits.",
       schemaDescription: "AI applicant screening calls integrated with Ashby. Every applicant screened, documents collected, and candidate record updated automatically.",
       targetKeyword: "Ashby AI applicant screening",
     },
@@ -104,7 +104,7 @@ export const integrationsData: Record<string, ATSIntegration> = {
       h1: "AI Applicant Screening for Ashby",
       lead: "Screen every Ashby applicant with a human-like AI call. Documents and ID collected via WhatsApp, Ashby updated automatically without a recruiter picking up the phone.",
       flowNodes: ["Ashby Job Ad", "Applicant Applies", "AI Screening Call", "Pre-Qualifies", "WhatsApp Request", "ID & Documents Attached", "Ashby Status Synced"],
-      primaryCtaText: "Claim 10 Free Credits",
+      primaryCtaText: "Claim 100 Free Credits",
       primaryCtaLink: "/free-credits",
       secondaryCtaText: "See How It Works",
       secondaryCtaLink: "#how-it-works",
@@ -112,7 +112,7 @@ export const integrationsData: Record<string, ATSIntegration> = {
     stats: [
       { value: "< 2 Mins", label: "Average Call Duration" },
       { value: "100%", label: "Applicant Coverage 24/7" },
-      { value: "10 Free", label: "Screening Credits on Signup" },
+      { value: "100 Free", label: "Screening Credits on Signup" },
     ],
     howItWorks: {
       h2: "How the CallPilot Ashby Integration Works",
@@ -147,7 +147,7 @@ export const integrationsData: Record<string, ATSIntegration> = {
       desc: "Two-way integration keeps candidate stage, screening transcript, and uploaded documents in sync in real time. Never let high-intent applicants go cold over weekends or evenings.",
       badgeText: "Ashby: LIVE",
     },
-    pricingFeatures: ["Ashby native sync included", "10 free screening credits on trial", "Zero per-seat software fees"],
+    pricingFeatures: ["Ashby native sync included", "100 free screening credits on trial", "Zero per-seat software fees"],
     faqs: [
       {
         question: "How does the CallPilot integration with Ashby work?",
@@ -162,7 +162,7 @@ export const integrationsData: Record<string, ATSIntegration> = {
         answer: "Yes, CallPilot transparently discloses that it is an AI assistant at the very start of every screening call, ensuring full regulatory compliance and candidate comfort.",
       },
       {
-        question: "How do I claim 10 free screening credits for Ashby?",
+        question: "How do I claim 100 free screening credits for Ashby?",
         answer: "You can sign up on our free trial page with no credit card required. Connect your high-volume vacancy and test the pipeline live.",
       },
     ],
@@ -175,7 +175,7 @@ export const integrationsData: Record<string, ATSIntegration> = {
     finalCta: {
       h2: "Ready to Put Ashby Applicant Screening on Autopilot?",
       lead: "Screen every applicant 24/7, gather compliance documents instantly, and start your week with pre-qualified talent.",
-      primaryText: "Claim 10 Free Credits",
+      primaryText: "Claim 100 Free Credits",
       primaryUrl: "/free-credits",
       secondaryText: "Read Ashby Launch News",
       secondaryUrl: "/news/callpilot-ashby-integration",
@@ -190,11 +190,11 @@ export const integrationsData: Record<string, ATSIntegration> = {
     panelType: "live-board",
     seo: {
       title: "Recruit CRM AI Applicant Screening | CallPilot",
-      description: "CallPilot screens every Recruit CRM applicant by AI call, collects ID and documents, and updates your CRM automatically. Try 10 free credits.",
+      description: "CallPilot screens every Recruit CRM applicant by AI call, collects ID and documents, and updates your CRM automatically. Try 100 free credits.",
       ogTitle: "Recruit CRM AI Applicant Screening | CallPilot",
-      ogDescription: "CallPilot screens every Recruit CRM applicant by AI call, collects ID and documents, and updates your CRM automatically. Try 10 free credits.",
+      ogDescription: "CallPilot screens every Recruit CRM applicant by AI call, collects ID and documents, and updates your CRM automatically. Try 100 free credits.",
       twitterTitle: "Recruit CRM AI Applicant Screening | CallPilot",
-      twitterDescription: "CallPilot screens every Recruit CRM applicant by AI call, collects ID and documents, and updates your CRM automatically. Try 10 free credits.",
+      twitterDescription: "CallPilot screens every Recruit CRM applicant by AI call, collects ID and documents, and updates your CRM automatically. Try 100 free credits.",
       schemaDescription: "AI applicant screening calls with automatic traffic-light scoring, integrated directly with Recruit CRM.",
       targetKeyword: "Recruit CRM AI applicant screening",
     },
@@ -204,7 +204,7 @@ export const integrationsData: Record<string, ATSIntegration> = {
       h1: "AI Applicant Screening for Recruit CRM",
       lead: "CallPilot screens every Recruit CRM applicant by AI call, collects ID and documents via WhatsApp, and updates your CRM automatically. Beat competing agencies to high-intent candidates.",
       flowNodes: ["Job Board Ad", "Candidate Applies", "AI Voice Call", "Qualifies", "WhatsApp / SMS", "ID & Docs Collected", "Recruit CRM Synced"],
-      primaryCtaText: "Claim 10 Free Credits",
+      primaryCtaText: "Claim 100 Free Credits",
       primaryCtaLink: "/free-credits",
       secondaryCtaText: "See How It Works",
       secondaryCtaLink: "#how-it-works",
@@ -212,7 +212,7 @@ export const integrationsData: Record<string, ATSIntegration> = {
     stats: [
       { value: "100% Faster", label: "Candidate first contact" },
       { value: "70% Less", label: "Consultant admin time" },
-      { value: "10 Free", label: "Screening calls on trial" },
+      { value: "100 Free", label: "Screening calls on trial" },
     ],
     howItWorks: {
       h2: "Automate Screening & Stop the Document Chase",
@@ -247,7 +247,7 @@ export const integrationsData: Record<string, ATSIntegration> = {
       desc: "Two-way sync keeps applicant status and submitted documents up to date on Recruit CRM automatically, with nothing to export or re-key.",
       badgeText: "Recruit CRM: LIVE",
     },
-    pricingFeatures: ["Recruit CRM sync included", "10 free trial credits", "No card required"],
+    pricingFeatures: ["Recruit CRM sync included", "100 free trial credits", "No card required"],
     faqs: [
       {
         question: "Does CallPilot integrate directly with Recruit CRM?",
@@ -275,7 +275,7 @@ export const integrationsData: Record<string, ATSIntegration> = {
     finalCta: {
       h2: "Ready to Put Recruit CRM Screening on Autopilot?",
       lead: "Every applicant called, scored, and actioned automatically, the moment they apply. No manual chasing. Never miss a good applicant again.",
-      primaryText: "Claim 10 Free Credits",
+      primaryText: "Claim 100 Free Credits",
       primaryUrl: "/free-credits",
       secondaryText: "Read Announcement",
       secondaryUrl: "/news/callpilot-recruit-crm-integration",
@@ -290,11 +290,11 @@ export const integrationsData: Record<string, ATSIntegration> = {
     panelType: "live-board",
     seo: {
       title: "JobAdder AI Applicant Screening | CallPilot",
-      description: "Screen JobAdder applicants 24/7 with AI calls. Documents and ID requested by WhatsApp, JobAdder updated automatically. 10 free screening credits.",
+      description: "Screen JobAdder applicants 24/7 with AI calls. Documents and ID requested by WhatsApp, JobAdder updated automatically. 100 free screening credits.",
       ogTitle: "JobAdder AI Applicant Screening | CallPilot",
-      ogDescription: "Screen JobAdder applicants 24/7 with AI calls. Documents and ID requested by WhatsApp, JobAdder updated automatically. 10 free screening credits.",
+      ogDescription: "Screen JobAdder applicants 24/7 with AI calls. Documents and ID requested by WhatsApp, JobAdder updated automatically. 100 free screening credits.",
       twitterTitle: "JobAdder AI Applicant Screening | CallPilot",
-      twitterDescription: "Screen JobAdder applicants 24/7 with AI calls. Documents and ID requested by WhatsApp, JobAdder updated automatically. 10 free screening credits.",
+      twitterDescription: "Screen JobAdder applicants 24/7 with AI calls. Documents and ID requested by WhatsApp, JobAdder updated automatically. 100 free screening credits.",
       schemaDescription: "AI voice screening calls with instant traffic-light scoring, integrated directly with JobAdder for high-volume recruitment agencies.",
       targetKeyword: "JobAdder AI applicant screening",
     },
@@ -304,7 +304,7 @@ export const integrationsData: Record<string, ATSIntegration> = {
       h1: "AI Applicant Screening for JobAdder",
       lead: "Screen JobAdder applicants 24/7 with human-like AI calls. Compliance documents and ID requested by WhatsApp, JobAdder updated automatically with zero recruiter dial time.",
       flowNodes: ["JobAdder Vacancy", "Application Received", "AI Voice Screen", "Candidate Qualifies", "WhatsApp Request", "Tickets & ID Returned", "JobAdder Updated"],
-      primaryCtaText: "Claim 10 Free Credits",
+      primaryCtaText: "Claim 100 Free Credits",
       primaryCtaLink: "/free-credits",
       secondaryCtaText: "Explore Workflow",
       secondaryCtaLink: "#how-it-works",
@@ -312,7 +312,7 @@ export const integrationsData: Record<string, ATSIntegration> = {
     stats: [
       { value: "100% Faster", label: "Applicant follow-up" },
       { value: "70% Less", label: "Time spent chasing paperwork" },
-      { value: "10 Free", label: "Screening credits on trial" },
+      { value: "100 Free", label: "Screening credits on trial" },
     ],
     howItWorks: {
       h2: "From Application to Compliant Placement in One Flow",
@@ -347,7 +347,7 @@ export const integrationsData: Record<string, ATSIntegration> = {
       desc: "Every call outcome, document, and status change writes straight to the JobAdder record the moment it happens. No exports, no re-keying.",
       badgeText: "JobAdder: LIVE",
     },
-    pricingFeatures: ["JobAdder sync included", "10 free credits on trial"],
+    pricingFeatures: ["JobAdder sync included", "100 free credits on trial"],
     faqs: [
       {
         question: "Is the JobAdder integration live?",
@@ -375,7 +375,7 @@ export const integrationsData: Record<string, ATSIntegration> = {
     finalCta: {
       h2: "Ready to Put JobAdder Screening on Autopilot?",
       lead: "Screen every applicant over the weekend without five recruiters working overtime. Start your free trial today.",
-      primaryText: "Claim 10 Free Credits",
+      primaryText: "Claim 100 Free Credits",
       primaryUrl: "/free-credits",
       secondaryText: "Read JobAdder Announcement",
       secondaryUrl: "/news/callpilot-jobadder-integration",
@@ -390,11 +390,11 @@ export const integrationsData: Record<string, ATSIntegration> = {
     panelType: "live-board",
     seo: {
       title: "Greenhouse AI Applicant Screening Integration | CallPilot",
-      description: "CallPilot's AI Applicant Screening Call for Greenhouse screens applicants 24/7 and collects documents by WhatsApp or SMS. Claim 10 free credits.",
+      description: "CallPilot's AI Applicant Screening Call for Greenhouse screens applicants 24/7 and collects documents by WhatsApp or SMS. Claim 100 free credits.",
       ogTitle: "Greenhouse AI Applicant Screening Integration | CallPilot",
-      ogDescription: "CallPilot's AI Applicant Screening Call for Greenhouse screens applicants 24/7 and collects documents by WhatsApp or SMS. Claim 10 free credits.",
+      ogDescription: "CallPilot's AI Applicant Screening Call for Greenhouse screens applicants 24/7 and collects documents by WhatsApp or SMS. Claim 100 free credits.",
       twitterTitle: "Greenhouse AI Applicant Screening Integration | CallPilot",
-      twitterDescription: "CallPilot's AI Applicant Screening Call for Greenhouse screens applicants 24/7 and collects documents by WhatsApp or SMS. Claim 10 free credits.",
+      twitterDescription: "CallPilot's AI Applicant Screening Call for Greenhouse screens applicants 24/7 and collects documents by WhatsApp or SMS. Claim 100 free credits.",
       schemaDescription: "AI applicant screening calls integrated with Greenhouse. Every applicant screened, documents collected and the candidate record updated automatically.",
       targetKeyword: "Greenhouse AI applicant screening",
     },
@@ -404,7 +404,7 @@ export const integrationsData: Record<string, ATSIntegration> = {
       h1: "AI Applicant Screening for Greenhouse",
       lead: "Screen every Greenhouse applicant with a human-like AI call. ID and documents are collected by WhatsApp or SMS, and the Greenhouse candidate record is updated automatically without a recruiter picking up the phone.",
       flowNodes: ["Greenhouse Job", "Application", "AI Screening Call", "Evaluation", "WhatsApp / SMS", "Docs Uploaded", "Greenhouse Updated"],
-      primaryCtaText: "Claim 10 Free Credits",
+      primaryCtaText: "Claim 100 Free Credits",
       primaryCtaLink: "/free-credits",
       secondaryCtaText: "See How It Works",
       secondaryCtaLink: "#how-it-works",
@@ -412,7 +412,7 @@ export const integrationsData: Record<string, ATSIntegration> = {
     stats: [
       { value: "24/7", label: "Applicant Coverage" },
       { value: "100%", label: "Consistent Questioning" },
-      { value: "10 Free", label: "Screening Credits on Signup" },
+      { value: "100 Free", label: "Screening Credits on Signup" },
     ],
     howItWorks: {
       h2: "How the CallPilot Greenhouse Integration Works",
@@ -451,7 +451,7 @@ export const integrationsData: Record<string, ATSIntegration> = {
       desc: "Greenhouse brings structure to interview scorecards. CallPilot brings the same consistency to top-of-funnel screening before human interviews begin, so applicants are not left waiting over evenings and weekends.",
       badgeText: "Greenhouse: LIVE",
     },
-    pricingFeatures: ["Greenhouse sync included", "10 free screening credits on trial", "Priority setup and onboarding support"],
+    pricingFeatures: ["Greenhouse sync included", "100 free screening credits on trial", "Priority setup and onboarding support"],
     faqs: [
       {
         question: "How does the CallPilot integration with Greenhouse work?",
@@ -470,7 +470,7 @@ export const integrationsData: Record<string, ATSIntegration> = {
         answer: "No. CallPilot screens against the criteria you configure and collects documents. Verification and final hiring decisions stay with your recruiters.",
       },
       {
-        question: "How do I claim 10 free screening credits for Greenhouse?",
+        question: "How do I claim 100 free screening credits for Greenhouse?",
         answer: "Sign up on the free trial page. No credit card is required.",
       },
     ],
@@ -483,7 +483,7 @@ export const integrationsData: Record<string, ATSIntegration> = {
     finalCta: {
       h2: "Ready to Put Greenhouse Applicant Screening on Autopilot?",
       lead: "Screen every applicant 24/7, collect documents by WhatsApp or SMS, and start your week with pre-qualified talent.",
-      primaryText: "Claim 10 Free Credits",
+      primaryText: "Claim 100 Free Credits",
       primaryUrl: "/free-credits",
       secondaryText: "Compare Voice vs Video",
       secondaryUrl: "/blog/ai-screening-call-vs-ai-video-interview",
@@ -498,12 +498,12 @@ export const integrationsData: Record<string, ATSIntegration> = {
     panelType: "hitech-metrics",
     seo: {
       title: "iCIMS AI Applicant Screening | CallPilot",
-      description: "CallPilot's AI screening call integration for iCIMS is coming soon. Get notified at launch and claim 10 free screening credits.",
+      description: "CallPilot's AI screening call integration for iCIMS is coming soon. Get notified at launch and claim 100 free screening credits.",
       ogTitle: "iCIMS AI Applicant Screening | CallPilot",
-      ogDescription: "CallPilot's AI screening call integration for iCIMS is coming soon. Get notified at launch and claim 10 free screening credits.",
+      ogDescription: "CallPilot's AI screening call integration for iCIMS is coming soon. Get notified at launch and claim 100 free screening credits.",
       twitterTitle: "iCIMS AI Applicant Screening | CallPilot",
-      twitterDescription: "CallPilot's AI screening call integration for iCIMS is coming soon. Get notified at launch and claim 10 free screening credits.",
-      schemaDescription: "Enterprise AI voice screening calls for iCIMS, coming soon. Get notified at launch and claim 10 free credits.",
+      twitterDescription: "CallPilot's AI screening call integration for iCIMS is coming soon. Get notified at launch and claim 100 free screening credits.",
+      schemaDescription: "Enterprise AI voice screening calls for iCIMS, coming soon. Get notified at launch and claim 100 free credits.",
       targetKeyword: "iCIMS AI applicant screening",
     },
     hero: {
@@ -525,7 +525,7 @@ export const integrationsData: Record<string, ATSIntegration> = {
     },
     waitlist: {
       h2: "Get Notified When iCIMS Launches",
-      note: "Be first to know when the iCIMS integration launches. Includes 10 free screening credits and dedicated solution architecture support.",
+      note: "Be first to know when the iCIMS integration launches. Includes 100 free screening credits and dedicated solution architecture support.",
       cardTitle: "Get Launch Updates",
       cardDesc: "Enter your business email to receive integration updates and onboarding details at launch.",
       buttonText: "Notify Me",
@@ -533,7 +533,7 @@ export const integrationsData: Record<string, ATSIntegration> = {
     stats: [
       { value: "50,000+", label: "Monthly Applicant Capacity" },
       { value: "100%", label: "Verifiable Audit Trail" },
-      { value: "10 Free", label: "Screening Credits on Trial" },
+      { value: "100 Free", label: "Screening Credits on Trial" },
     ],
     howItWorks: {
       h2: "What the iCIMS Integration Will Do",
@@ -572,7 +572,7 @@ export const integrationsData: Record<string, ATSIntegration> = {
       desc: "Every CallPilot screening produces a timestamped transcript attached to the iCIMS candidate record. Screening criteria are applied identically to every applicant, eliminating bias and variance.",
       badgeText: "iCIMS: COMING SOON",
     },
-    pricingFeatures: ["iCIMS enterprise sync in rollout", "10 free screening credits", "Enterprise SLA & dedicated support"],
+    pricingFeatures: ["iCIMS enterprise sync in rollout", "100 free screening credits", "Enterprise SLA & dedicated support"],
     faqs: [
       {
         question: "When will the iCIMS integration be available?",
@@ -599,7 +599,7 @@ export const integrationsData: Record<string, ATSIntegration> = {
     ],
     finalCta: {
       h2: "Get Notified When iCIMS Launches",
-      lead: "Leave your email to be told at launch and to secure 10 free screening credits for your enterprise talent acquisition team.",
+      lead: "Leave your email to be told at launch and to secure 100 free screening credits for your enterprise talent acquisition team.",
       primaryText: "Get Notified",
       primaryUrl: "#notify-form",
       secondaryText: "Read Volume Screening Guide",

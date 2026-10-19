@@ -179,14 +179,14 @@ export default function IntegrationsHubPage() {
               Ready to automate applicant qualification?
             </h2>
             <p className="text-white/75 text-base sm:text-lg mb-8">
-              New clients get their first 10 AI screening calls free. No setup fees, no contracts.
+              New clients get their first 100 AI screening calls free. No setup fees, no contracts.
             </p>
             <div className="flex justify-center gap-4">
               <Link
                 href="/free-credits"
                 className="bg-white text-black font-bold text-sm px-8 py-3.5 rounded-full hover:bg-gray-200 transition-colors"
               >
-                Claim 10 Free Calls
+                Claim 100 Free Calls
               </Link>
             </div>
           </div>

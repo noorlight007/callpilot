@@ -20,7 +20,7 @@ export default function BookADemoPage() {
           { q: "How long is the walkthrough?", a: "We tailor it to your team. Tell us your ATS and volumes in the form and we will focus on what matters to you." },
           { q: "Can I try an AI screening call myself?", a: "Yes. The homepage lets you request a demo AI call to your own phone." },
           { q: "Can I see VoIP phone lines too?", a: "Yes. We can cover VoIP lines with WhatsApp, SMS and email automation in the same session." },
-          { q: "What does it cost?", a: "VoIP lines start from $5.99 per line per month and AI screening plans from $49 a month. New clients get their first 10 screening calls free." },
+          { q: "What does it cost?", a: "VoIP lines start from $5.99 per line per month and AI screening plans from $49 a month. New clients get their first 100 screening calls free." },
         ]}
       />
     </>

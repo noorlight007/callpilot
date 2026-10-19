@@ -2,7 +2,7 @@
 // Every page, component, FAQ and meta description must read from here.
 
 export const CURRENCY = "USD";
-export const FREE_TRIAL_CALLS = 10;
+export const FREE_TRIAL_CALLS = 100;
 export const AI_NUMBER_MONTHLY = 10;
 export const CREDIT_MAX_MINUTES = 2;
 export const ENTERPRISE_THRESHOLD = 300;
