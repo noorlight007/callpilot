@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { COPY } from "@/lib/pricing";
+import { COPY, money } from "@/lib/pricing";
+import { useTopUpRates } from "@/lib/useTopUpRates";
 import { VOIP_PLANS, VOIP_NOTE, PLANS, PLAN_NOTES } from "@/components/home/content";
 
 interface PricingProps {
@@ -30,6 +31,7 @@ const CheckIcon = () => (
 
 const Pricing = ({ asH1 = true }: PricingProps) => {
   const [activeTab, setActiveTab] = useState<"voip" | "screening">("voip");
+  const topUpRates = useTopUpRates();
 
   const scrollToSection = (tab: "voip" | "screening") => {
     setActiveTab(tab);
@@ -279,7 +281,9 @@ const Pricing = ({ asH1 = true }: PricingProps) => {
                   </p>
 
                   <p className="text-center text-[13px] text-[#8a8883] pt-1.5 m-0">
-                    {plan.topUp}
+                    {topUpRates[plan.name.toLowerCase()] !== undefined
+                      ? `Top-up: ${money(topUpRates[plan.name.toLowerCase()])} per screening`
+                      : plan.topUp}
                   </p>
 
                   <p className="text-[11px] font-bold tracking-[0.06em] text-[#8a8883] pt-6 pb-2 m-0 uppercase">
