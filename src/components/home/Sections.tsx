@@ -12,6 +12,7 @@ import { LINKS } from "./config";
 import { COPY } from "@/lib/pricing";
 import { FAQS, FEATURES, PLANS, PLAN_NOTES, USE_CASES, VOIP_NOTE, VOIP_PLANS } from "./content";
 import DemoForm from "./DemoForm";
+import TopUpLine from "./TopUpLine";
 
 /* ============ 1. VoIP ============ */
 export function VoipSection() {
@@ -217,7 +218,7 @@ export function PricingSection() {
               <h3 className={s.planName}>{p.name}</h3>
               <p className={s.planPrice}>{p.price}<span>{p.period}</span></p>
               <p className={s.planIncludes}>{p.includes}</p>
-              <p className={s.planTop}>{p.topUp}</p>
+              <TopUpLine plan={p.name} fallback={p.topUp} className={s.planTop} />
               <p className={s.planBest}>{p.bestFor}</p>
               <Link href={p.href} className={`${s.btn} ${s.btnDark} ${s.btnBlock}`}>
                 {p.cta}

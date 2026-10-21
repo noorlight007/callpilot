@@ -23,7 +23,9 @@ export default function ScreeningPlans({ showTerms = true, ctaHref = "/free-cred
             </p>
             <p className={styles.calls}>{p.calls} screening calls included</p>
             <p className={styles.small}>{money(p.perCall)} per screening</p>
-            <p className={styles.small}>{money(topUpRates[p.id] ?? p.topUp)} per top-up screening</p>
+            {topUpRates[p.id] !== undefined && (
+              <p className={styles.small}>{money(topUpRates[p.id])} per top-up screening</p>
+            )}
             <hr className={styles.rule} />
             <ul className={styles.list}>
               {p.features.map((f) => <li key={f}>{f}</li>)}

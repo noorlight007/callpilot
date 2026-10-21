@@ -9,7 +9,7 @@ export const PLANS = [
     price: money(p.monthly),
     period: "/month",
     includes: `${p.calls} screenings · ${money(p.perCall)} each`,
-    topUp: `Top-up: ${money(p.topUp)} per screening`,
+    topUp: "", // live from plans API (TopUpLine)
     bestFor:
       p.id === "starter" ? "Getting started with AI screening."
       : p.id === "growth" ? "Active hiring: more volume at a lower rate per screening."
