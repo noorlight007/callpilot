@@ -1,6 +1,6 @@
 import Link from "next/link";
 import s from "./landing.module.css";
-import { Chat, Linkedin, Mark } from "./icons";
+import { Chat, Linkedin } from "./icons";
 import { FOOTER } from "./content";
 
 export default function SiteFooter() {
@@ -8,12 +8,10 @@ export default function SiteFooter() {
     <footer className={s.footer}>
       <div className={`${s.container} ${s.footerGrid}`}>
         <div className={s.footerAbout}>
-          <Link href="/" className={s.brand} aria-label="CallPilot home">
-            <Mark className={s.brandMarkLight} />
-            <span className={s.brandText}>
-              <span className={s.brandName}>CallPilot</span>
-              <span className={s.brandTagLight}>AI Phone Calls</span>
-            </span>
+          <Link href="/" className={s.flogo} aria-label="CallPilot home">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/images/callpilot-icon.png" alt="" width={42} height={42} />
+            <span>CallPilot</span>
           </Link>
           <p>{FOOTER.about}</p>
           <div className={s.footerSocial}>

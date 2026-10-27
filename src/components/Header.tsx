@@ -212,21 +212,21 @@ const Header = () => {
               </Button>
             </Link>
 
-            <Link href="/free-credits">
+            <Link href="/book-a-demo">
               <Button variant="cta" size="default">
-                Get free credits
+                Book a Demo
               </Button>
             </Link>
           </div>
 
           {/* Mobile right side: social icons + hamburger */}
           <div className="md:hidden flex items-center gap-2">
-            {/* Free credits CTA stays visible in the mobile top bar (LinkedIn traffic is mostly phones) */}
+            {/* Book a Demo CTA stays visible in the mobile top bar (LinkedIn traffic is mostly phones) */}
             <Link
-              href="/free-credits"
+              href="/book-a-demo"
               className="bg-black text-white text-xs font-bold px-3.5 py-2.5 rounded-full whitespace-nowrap"
             >
-              Get free credits
+              Book a Demo
             </Link>
 
             <button
@@ -260,9 +260,9 @@ const Header = () => {
                   </Button>
                 </Link>
                 <SocialIcons className="justify-center" />
-                <Link href="/free-credits" className="w-full">
+                <Link href="/book-a-demo" className="w-full">
                   <Button variant="cta" size="lg" className="w-full">
-                    Get free credits
+                    Book a Demo
                   </Button>
                 </Link>
               </div>

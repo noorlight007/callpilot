@@ -2,19 +2,18 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import { fontClass } from "@/components/home/font";
 import s from "@/components/home/landing.module.css";
-import HeroThree from "@/components/home/HeroThree";
+import HomeHero from "@/components/home/HomeHero";
 import {
-  VoipSection, ScreeningSection, FeaturesSection, UseCasesSection,
+  StorySection, GettingStartedSection, IntegrationsSection, UseCasesSection,
   PricingSection, DemoSection, FaqSection, FinalCta,
 } from "@/components/home/Sections";
 import SiteFooter from "@/components/home/SiteFooter";
-import { FAQS } from "@/components/home/content";
 import CallPilotSchema from "@/components/seo/CallPilotSchema";
 
 const SITE = "https://callpilot.pro";
-const TITLE = "VoIP Phone Lines + AI Applicant Screening Calls | CallPilot";
+const TITLE = "AI Applicant Screening Calls + Automation | CallPilot";
 const DESCRIPTION =
-  "VoIP phone lines with WhatsApp, SMS and email automation, plus AI applicant screening calls that qualify every applicant 24/7 and sync results to your ATS.";
+  "CallPilot pre-qualifies applicants by phone 24/7, collects ID and documents by SMS or WhatsApp, and records every outcome in your ATS. First 100 calls free.";
 
 export const revalidate = 300; // rebuild at most every 5 minutes, never serve a stale build for days
 
@@ -25,8 +24,8 @@ export const metadata: Metadata = {
   },
   description: DESCRIPTION,
   keywords: [
-    "VoIP phone lines", "WhatsApp calling", "SMS automation", "email automation",
-    "AI applicant screening", "AI screening calls", "AI call agent", "recruitment automation", "ATS integration",
+    "AI applicant screening", "AI screening calls", "applicant pre-qualification", "recruitment automation",
+    "document collection", "ATS integration", "JobAdder", "Recruit CRM", "Ashby", "Greenhouse",
   ],
   alternates: { canonical: "/" },
   openGraph: {
@@ -36,7 +35,7 @@ export const metadata: Metadata = {
     title: TITLE,
     description: DESCRIPTION,
     locale: "en_GB",
-    images: [{ url: "/images/og-callpilot.png", width: 1200, height: 630, alt: "CallPilot: VoIP Phone Lines + AI Applicant Screening" }],
+    images: [{ url: "/images/og-callpilot.png", width: 1200, height: 630, alt: "CallPilot: AI Applicant Screening Calls + Automation" }],
   },
   twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION, images: ["/images/og-callpilot.png"] },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large" } },
@@ -48,11 +47,10 @@ export default function Page() {
       <CallPilotSchema />
       <Header />
       <main id="main">
-        <HeroThree /> 
-        {/* the LIVE hero: keep your existing components/home/HeroThree.tsx exactly as it is */}
-        <VoipSection />
-        <ScreeningSection />
-        <FeaturesSection />
+        <HomeHero />
+        <StorySection />
+        <GettingStartedSection />
+        <IntegrationsSection />
         <UseCasesSection />
         <PricingSection />
         <DemoSection />
@@ -63,4 +61,3 @@ export default function Page() {
     </div>
   );
 }
-

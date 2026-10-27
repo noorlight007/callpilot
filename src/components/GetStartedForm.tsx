@@ -35,7 +35,6 @@ const callVolumeOptions = [
 ];
 
 const businessCategoryOptions = [
-  { value: "VoIP_Phone_Lines", label: "VoIP Phone Lines & Business Messaging" },
   { value: "Lead_and_Applicant_5_Qualification", label: "Lead & Applicant Qualification (Recruitment)" },
   { value: "Appointment_and_Booking_Automation", label: "Appointment and Booking Automation" },
   { value: "Customer_Service_Automation", label: "Customer Service Automation" },
@@ -105,7 +104,7 @@ function CustomSelect({ id, value, options, onChange, placeholder, iconClass }: 
 
 const DEFAULT_HEADING = "Get Started with CallPilot";
 const DEFAULT_INTRO =
-  "Tell us your team size and ATS and we will set up your VoIP lines or AI Applicant Screening Call.";
+  "Tell us your team size and ATS and we will set up your AI Applicant Screening Call.";
 
 interface FormInnerProps {
   isDemo?: boolean;
@@ -117,8 +116,6 @@ function GetStartedFormInner({ isDemo = false, heading = DEFAULT_HEADING, intro 
   const searchParams = useSearchParams();
   const planParam = searchParams.get("plan") || "";
   const intentParam = searchParams.get("intent") || "";
-
-  const isVoipPlan = planParam.toLowerCase().startsWith("voip");
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -132,14 +129,8 @@ function GetStartedFormInner({ isDemo = false, heading = DEFAULT_HEADING, intro 
     companyWebsite: "",
     numberOfStaff: "",
     dailyCallVolume: "",
-    businessCategory: isVoipPlan ? "VoIP_Phone_Lines" : "Lead_and_Applicant_5_Qualification",
+    businessCategory: "Lead_and_Applicant_5_Qualification",
   });
-
-  useEffect(() => {
-    if (isVoipPlan) {
-      setFormData((prev) => ({ ...prev, businessCategory: "VoIP_Phone_Lines" }));
-    }
-  }, [isVoipPlan]);
 
   const [countryIso, setCountryIso] = useState("US");
   const [mobileCountryIso, setMobileCountryIso] = useState("US");
@@ -538,8 +529,8 @@ function GetStartedFormInner({ isDemo = false, heading = DEFAULT_HEADING, intro 
               <div className="feature">
                 <div className="bubble"><i className="fa-solid fa-phone-volume"></i></div>
                 <div>
-                  <h3>VoIP phone lines</h3>
-                  <p>Calls, WhatsApp, SMS and email on one number.</p>
+                  <h3>Document collection</h3>
+                  <p>ID and documents by SMS or WhatsApp.</p>
                 </div>
               </div>
               <div className="feature">
@@ -553,7 +544,7 @@ function GetStartedFormInner({ isDemo = false, heading = DEFAULT_HEADING, intro 
                 <div className="bubble"><i className="fa-solid fa-arrows-rotate"></i></div>
                 <div>
                   <h3>ATS sync</h3>
-                  <p>JobAdder, Recruit CRM and Ashby.</p>
+                  <p>JobAdder, Recruit CRM, Ashby and Greenhouse.</p>
                 </div>
               </div>
             </div>

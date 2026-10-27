@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 
 export const metadata: Metadata = {
-  title: "Book a Demo: AI Screening & VoIP Lines",
-  description: "See CallPilot on your own numbers, roles and ATS. Book a live demo with our team.",
+  title: "Book a Demo: AI Applicant Screening Calls",
+  description: "See the AI Applicant Screening Call, document collection and ATS sync on your own roles. Book a walkthrough with our team.",
   alternates: {
     canonical: "https://callpilot.pro/book-a-demo",
   },
   openGraph: {
-    title: "Book a Demo: AI Screening & VoIP Lines | CallPilot",
-    description: "See CallPilot on your own numbers, roles and ATS. Book a live demo with our team.",
+    title: "Book a Demo: AI Applicant Screening Calls | CallPilot",
+    description: "See the AI Applicant Screening Call, document collection and ATS sync on your own roles. Book a walkthrough with our team.",
     url: "https://callpilot.pro/book-a-demo",
     siteName: "CallPilot",
     type: "website",

@@ -1,10 +1,9 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import { COPY, money } from "@/lib/pricing";
 import { useTopUpRates } from "@/lib/useTopUpRates";
-import { VOIP_PLANS, VOIP_NOTE, PLANS, PLAN_NOTES } from "@/components/home/content";
+import { PLANS, PLAN_NOTES } from "@/components/home/content";
 
 interface PricingProps {
   asH1?: boolean;
@@ -30,16 +29,7 @@ const CheckIcon = () => (
 );
 
 const Pricing = ({ asH1 = true }: PricingProps) => {
-  const [activeTab, setActiveTab] = useState<"voip" | "screening">("voip");
   const topUpRates = useTopUpRates();
-
-  const scrollToSection = (tab: "voip" | "screening") => {
-    setActiveTab(tab);
-    const element = document.getElementById(tab);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   return (
     <div className="bg-[#f8f7f4] text-[#0a0a0a] py-10 sm:py-14 lg:py-20 border-b border-[#e6e4de] font-sans selection:bg-[#0a0a0a] selection:text-white">
@@ -120,34 +110,6 @@ const Pricing = ({ asH1 = true }: PricingProps) => {
       }} />
 
       <div className="callpilot-pricing-wrap">
-        {/* Header with Switcher / Tab Button */}
-        <div className="flex items-center justify-center sm:justify-end pt-4 sm:pt-0 mb-8">
-          <div className="inline-flex border border-[#0a0a0a] rounded-full overflow-hidden bg-white shadow-xs p-1">
-            <button
-              type="button"
-              onClick={() => scrollToSection("voip")}
-              className={`px-6 py-2.5 text-[14px] font-bold rounded-full transition-colors duration-150 cursor-pointer select-none ${
-                activeTab === "voip"
-                  ? "bg-[#0a0a0a] text-white"
-                  : "bg-white text-[#0a0a0a] hover:bg-black/5"
-              }`}
-            >
-              VoIP lines
-            </button>
-            <button
-              type="button"
-              onClick={() => scrollToSection("screening")}
-              className={`px-6 py-2.5 text-[14px] font-bold rounded-full transition-colors duration-150 cursor-pointer select-none ${
-                activeTab === "screening"
-                  ? "bg-[#0a0a0a] text-white"
-                  : "bg-white text-[#0a0a0a] hover:bg-black/5"
-              }`}
-            >
-              AI screening
-            </button>
-          </div>
-        </div>
-
         {/* Hero Headline */}
         <div className="flex flex-col items-center gap-3 text-center mb-16">
           {asH1 ? (
@@ -161,76 +123,14 @@ const Pricing = ({ asH1 = true }: PricingProps) => {
           )}
           <div className="w-14 h-1 bg-[#0a0a0a] rounded-full mx-auto my-1" />
           <p className="m-0 text-base sm:text-[18px] text-[#6b6b68] font-medium max-w-xl">
-            Choose between VoIP phone lines or 24/7 AI applicant screening calls.
+            24/7 AI applicant screening calls with SMS and WhatsApp document collection and ATS sync.
           </p>
         </div>
-
-        {/* Section 1: id="voip" */}
-        <section id="voip" className="mb-20 scroll-mt-28">
-          <div className="text-center mb-10">
-            <p className="text-xs font-bold uppercase tracking-widest text-[#005bff] mb-2">01 · Business Phone Lines</p>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0a0a0a] mb-3">CallPilot VoIP</h2>
-            <p className="text-[#6b6b68] text-base sm:text-lg max-w-2xl mx-auto">
-              Business phone lines with calls, WhatsApp, SMS and email. Prices per line, per month.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto items-stretch mb-8">
-            {VOIP_PLANS.map((plan) => {
-              const isPopular = !!plan.recommended;
-
-              return (
-                <article key={plan.name} className={`plan-card h-full ${isPopular ? "popular" : ""}`}>
-                  {isPopular && <div className="ribbon-recommended">BEST VALUE</div>}
-
-                  <div className="text-center pb-[18px] border-b border-[#ece9e2]">
-                    <span className="text-[20px] font-bold text-[#0a0a0a]">{plan.name}</span>
-                    <p className="text-[13px] text-[#8a8883] font-medium mt-1 mb-0">{plan.headline}</p>
-                  </div>
-
-                  <div className="self-center mt-[22px] px-6 py-3 bg-[#f2f1ec] rounded-[16px] flex items-baseline justify-center gap-1">
-                    <span className="text-[44px] font-extrabold text-[#0a0a0a] tracking-tight leading-none">
-                      {plan.price}
-                    </span>
-                    <span className="text-[14px] text-[#8a8883] font-medium">
-                      /month
-                    </span>
-                  </div>
-
-                  <p className="text-[11.5px] font-bold tracking-[0.06em] text-[#8a8883] pt-[20px] pb-[10px] m-0 uppercase">
-                    INCLUDES
-                  </p>
-
-                  <ul className="flex flex-col gap-3 list-none m-0 p-0 mb-6">
-                    {plan.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start gap-2.5 text-[14px] text-[#2a2a28] leading-[1.4]">
-                        <CheckIcon />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="flex-grow" />
-
-                  <Link href={plan.href} className="w-full">
-                    <button type="button" className="plan-cta-btn">
-                      Get CallPilot VoIP
-                    </button>
-                  </Link>
-                </article>
-              );
-            })}
-          </div>
-
-          <p className="text-center text-sm text-[#8a8883] max-w-2xl mx-auto">
-            {VOIP_NOTE}
-          </p>
-        </section>
 
         {/* Section 2: id="screening" */}
         <section id="screening" className="scroll-mt-28">
           <div className="text-center mb-10">
-            <p className="text-xs font-bold uppercase tracking-widest text-[#005bff] mb-2">02 · Recruitment Automation</p>
+            <p className="text-xs font-bold uppercase tracking-widest text-[#005bff] mb-2">Recruitment Automation</p>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0a0a0a] mb-3">AI Applicant Screening Call + Automation</h2>
             <p className="text-[#6b6b68] text-base sm:text-lg max-w-2xl mx-auto">
               {COPY.noCall} {COPY.trialLine}
@@ -279,19 +179,19 @@ const Pricing = ({ asH1 = true }: PricingProps) => {
                   <p className="text-center text-[14px] font-semibold text-[#6b6b68] pt-3 m-0">
                     {plan.includes}
                   </p>
+                  <ul className="flex flex-col gap-2 list-none m-0 p-0 pt-4">
+                    {plan.features.map((feature) => (
+                      <li key={feature} className="flex items-start gap-2.5 text-[14px] text-[#2a2a28] leading-[1.4]">
+                        <CheckIcon />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
 
                   <p className="text-center text-[13px] text-[#8a8883] pt-1.5 m-0">
                     {topUpRates[plan.name.toLowerCase()] !== undefined
                       ? `Top-up: ${money(topUpRates[plan.name.toLowerCase()])} per screening`
                       : plan.topUp}
-                  </p>
-
-                  <p className="text-[11px] font-bold tracking-[0.06em] text-[#8a8883] pt-6 pb-2 m-0 uppercase">
-                    BEST FOR
-                  </p>
-
-                  <p className="text-[13.5px] text-[#2a2a28] leading-[1.5] m-0">
-                    {plan.bestFor}
                   </p>
 
                   <div className="flex-grow min-h-6" />

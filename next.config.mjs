@@ -35,17 +35,6 @@ const nextConfig = {
         destination: "/policy-compliance",
         permanent: true,
       },
-      // Renamed news URL (dropped "business")
-      {
-        source: "/news/callpilot-launches-ai-call-agent-business-voip-lines-automation",
-        destination: "/news/callpilot-launches-ai-call-agent-voip-lines-automation",
-        permanent: true,
-      },
-      {
-        source: "/news/business-voip-whatsapp-sms-ats-integration",
-        destination: "/news/voip-whatsapp-sms-ats-integration",
-        permanent: true,
-      },
       // Old /signup links: screening plans -> free trial, everything else -> get-started.
       // The screening rule must stay above the general one. Query strings are kept automatically.
       {
@@ -65,10 +54,17 @@ const nextConfig = {
         destination: "/get-started?intent=sales",
         permanent: false,
       },
-      // Product links: send to the matching section of the rewritten /features page (section 6)
+      // VoIP is not sold yet: every old VoIP page goes to the coming-soon page (no prices).
+      { source: "/business-voip", destination: "/voip", permanent: false },
+      { source: "/voip-lines", destination: "/voip", permanent: false },
+      { source: "/news/voip-whatsapp-sms-ats-integration", destination: "/voip", permanent: false },
+      { source: "/news/business-voip-whatsapp-sms-ats-integration", destination: "/voip", permanent: false },
+      { source: "/news/callpilot-launches-ai-call-agent-voip-lines-automation", destination: "/voip", permanent: false },
+      { source: "/news/callpilot-launches-ai-call-agent-business-voip-lines-automation", destination: "/voip", permanent: false },
       {
-        source: "/business-voip",
-        destination: "/features#voip-phone-lines",
+        source: "/get-started",
+        has: [{ type: "query", key: "plan", value: "voip(.*)" }],
+        destination: "/voip",
         permanent: false,
       },
       // Author redirects (section 10)

@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ATSIntegration, allIntegrations } from "@/data/integrations";
 import logo from "@/assets/call_pilot_logo.png";
 import VoipTeaser from "@/components/VoipTeaser";
+import Pic from "@/components/Pic";
 
 interface Props {
   data: ATSIntegration;
@@ -688,29 +689,60 @@ export default function IntegrationDetailClient({ data }: Props) {
 
       {/* How It Works */}
       <section className="py-20 px-6 bg-white" id="how-it-works">
-        <div className="max-w-4xl mx-auto">
+        <div className={data.howItWorks.image ? "max-w-6xl mx-auto cp-steps" : "max-w-4xl mx-auto"}>
           <div className="text-center max-w-2xl mx-auto mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">{data.howItWorks.h2}</h2>
             <p className="text-gray-600 text-sm sm:text-base">{data.howItWorks.lead}</p>
           </div>
 
-          <div className="grid gap-4">
-            {data.howItWorks.steps.map((step, i) => (
-              <div
-                key={i}
-                className="flex items-start gap-4 p-5 rounded-2xl border border-gray-200 bg-white hover:border-gray-300 transition-colors"
-              >
-                <div className="w-10 h-10 rounded-full bg-black text-white font-extrabold flex items-center justify-center shrink-0 text-sm">
-                  {i + 1}
+          {data.howItWorks.image && (
+            <Pic base={data.howItWorks.image.base} alt={data.howItWorks.image.alt} className="block mb-12" sizes="(max-width: 1152px) 100vw, 1152px" />
+          )}
+
+          <div className={data.howItWorks.image ? "grid gap-2" : "grid gap-4"}>
+            {data.howItWorks.steps.map((step, i) =>
+              step.image ? (
+                <div
+                  key={i}
+                  className={`grid grid-cols-1 md:grid-cols-[1.6fr_1fr] gap-4 md:gap-10 items-center py-6 md:py-8 ${
+                    i % 2 === 1 ? "cp-step-flip" : ""
+                  }`}
+                >
+                  <Pic base={step.image.base} alt={step.image.alt} className="block" sizes="(max-width: 768px) 100vw, 690px" />
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-full bg-black text-white font-extrabold flex items-center justify-center shrink-0 text-sm">
+                      {i + 1}
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-gray-900 text-base mb-1">{step.title}</h3>
+                      <p className="text-sm text-gray-600 leading-relaxed">{step.desc}</p>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-bold text-gray-900 text-base mb-1">{step.title}</h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">{step.desc}</p>
+              ) : (
+                <div
+                  key={i}
+                  className="flex items-start gap-4 p-5 rounded-2xl border border-gray-200 bg-white hover:border-gray-300 transition-colors"
+                >
+                  <div className="w-10 h-10 rounded-full bg-black text-white font-extrabold flex items-center justify-center shrink-0 text-sm">
+                    {i + 1}
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-gray-900 text-base mb-1">{step.title}</h3>
+                    <p className="text-sm text-gray-600 leading-relaxed">{step.desc}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              )
+            )}
           </div>
         </div>
+        {data.howItWorks.image && (
+          /* Scoped to .cp-steps so nothing else on the site is affected. */
+          <style>{`
+            .cp-steps img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;border-radius:12px;border:1px solid #DCE3EE;background:#fff}
+            @media (min-width:768px){.cp-steps .cp-step-flip picture{order:2}}
+          `}</style>
+        )}
       </section>
 
       {/* Traffic-Light Scoring */}

@@ -46,9 +46,13 @@ export interface ATSIntegration {
   howItWorks: {
     h2: string;
     lead: string;
+    /** Optional full-width workflow image under the heading. `base` = path without extension (.webp + .png). */
+    image?: { base: string; alt: string };
     steps: {
       title: string;
       desc: string;
+      /** Optional 16:9 image beside the step (alternates left/right on desktop, stacks on mobile). */
+      image?: { base: string; alt: string };
     }[];
   };
   trafficLights: {
@@ -417,26 +421,35 @@ export const integrationsData: Record<string, ATSIntegration> = {
     howItWorks: {
       h2: "How the CallPilot Greenhouse Integration Works",
       lead: "Automate top-of-funnel screening end to end. Here is what happens from application to a fully updated candidate record in Greenhouse:",
+      image: {
+        base: "/images/integrations/greenhouse/gh-workflow",
+        alt: "CallPilot Greenhouse integration workflow, from job advert to Talent Team notification",
+      },
       steps: [
         {
           title: "1. Picks Up the Application",
           desc: "A candidate applies to your Greenhouse job post. CallPilot polls Greenhouse on a schedule and picks the application up within the hour.",
+          image: { base: "/images/integrations/greenhouse/gh-step-1-questions", alt: "CallPilot Greenhouse integration, step 1: Picks Up the Application" },
         },
         {
           title: "2. AI Screening Call",
           desc: "CallPilot calls the candidate and runs your screening questions as a natural voice conversation: availability, right to work, experience, location and compensation expectation, configured per job.",
+          image: { base: "/images/integrations/greenhouse/gh-step-2-ai-call", alt: "CallPilot Greenhouse integration, step 2: AI Screening Call" },
         },
         {
           title: "3. Document and ID Request",
           desc: "Qualified candidates receive a WhatsApp or SMS requesting their ID and any documents the role requires.",
+          image: { base: "/images/integrations/greenhouse/gh-step-3-candidate", alt: "CallPilot Greenhouse integration, step 3: Document and ID Request" },
         },
         {
           title: "4. Documents Attached",
           desc: "Candidate uploads return and attach to their Greenhouse profile without an external portal login.",
+          image: { base: "/images/integrations/greenhouse/gh-step-4-greenhouse-sync", alt: "CallPilot Greenhouse integration, step 4: Documents Attached" },
         },
         {
           title: "5. Greenhouse Updated Automatically",
           desc: "The screening outcome, call transcript and stage status are written to the candidate record. No re-keying and no second dashboard.",
+          image: { base: "/images/integrations/greenhouse/gh-step-5-verify", alt: "CallPilot Greenhouse integration, step 5: Greenhouse Updated Automatically" },
         },
       ],
     },

@@ -10,7 +10,7 @@ export default function CallPilotSchema() {
         logo: "https://callpilot.pro/adjusted_callPilot_logo.png",
         image: "https://callpilot.pro/images/og-callpilot.png",
         description:
-          "VoIP phone lines with WhatsApp, SMS and email automation, plus AI applicant screening calls that qualify every applicant 24/7.",
+          "AI applicant screening calls that qualify every applicant 24/7, collect documents by SMS or WhatsApp and record every outcome in your ATS.",
         address: {
           "@type": "PostalAddress",
           streetAddress: "Compass Building, Al Shohada Road, Al Hamra Industrial Zone-FZ",
@@ -46,9 +46,6 @@ export default function CallPilotSchema() {
         url: "https://callpilot.pro",
         publisher: { "@id": "https://callpilot.pro/#org" },
         offers: [
-          { "@type": "Offer", name: "CallPilot VoIP", price: "5.99", priceCurrency: "USD" },
-          { "@type": "Offer", name: "CallPilot VoIP + 100 minutes", price: "9.99", priceCurrency: "USD" },
-          { "@type": "Offer", name: "CallPilot VoIP + Automation", price: "14.99", priceCurrency: "USD" },
           { "@type": "Offer", name: "AI Screening Starter", price: "49", priceCurrency: "USD" },
           { "@type": "Offer", name: "AI Screening Growth", price: "299", priceCurrency: "USD" },
           { "@type": "Offer", name: "AI Screening Pro", price: "999", priceCurrency: "USD" },

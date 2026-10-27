@@ -8,16 +8,16 @@ import UtmCapture from "@/components/UtmCapture";
 export const metadata: Metadata = {
     metadataBase: new URL("https://callpilot.pro"),
     title: {
-        default: "CallPilot | VoIP Phone Lines + AI Applicant Screening",
+        default: "CallPilot | AI Applicant Screening Calls + Automation",
         template: "%s | CallPilot",
     },
-    description: "VoIP phone lines with WhatsApp, SMS and email automation, plus AI applicant screening calls that qualify every applicant 24/7 and sync results to your ATS.",
+    description: "AI applicant screening calls that qualify every applicant 24/7, collect documents by SMS or WhatsApp and record every outcome in your ATS.",
     alternates: {
         canonical: "/",
     },
     openGraph: {
-        title: "CallPilot | VoIP Phone Lines + AI Applicant Screening",
-        description: "VoIP phone lines with WhatsApp, SMS and email automation, plus AI applicant screening calls that qualify every applicant 24/7 and sync results to your ATS.",
+        title: "CallPilot | AI Applicant Screening Calls + Automation",
+        description: "AI applicant screening calls that qualify every applicant 24/7, collect documents by SMS or WhatsApp and record every outcome in your ATS.",
         url: "https://callpilot.pro/",
         siteName: "CallPilot",
         type: "website",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
                 url: "/images/og-callpilot.png",
                 width: 1200,
                 height: 630,
-                alt: "CallPilot: VoIP Phone Lines + AI Applicant Screening",
+                alt: "CallPilot: AI Applicant Screening Calls + Automation",
             },
         ],
     },

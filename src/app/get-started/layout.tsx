@@ -3,13 +3,13 @@ import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 
 export const metadata: Metadata = {
   title: "Get Started",
-  description: "Get started with CallPilot: VoIP phone lines with WhatsApp, SMS and email, plus AI applicant screening calls synced to your ATS.",
+  description: "Get started with CallPilot: AI applicant screening calls with SMS and WhatsApp document collection, synced to your ATS.",
   alternates: {
     canonical: "https://callpilot.pro/get-started",
   },
   openGraph: {
     title: "Get Started | CallPilot",
-    description: "Get started with CallPilot: VoIP phone lines with WhatsApp, SMS and email, plus AI applicant screening calls synced to your ATS.",
+    description: "Get started with CallPilot: AI applicant screening calls with SMS and WhatsApp document collection, synced to your ATS.",
     url: "https://callpilot.pro/get-started",
     siteName: "CallPilot",
     type: "website",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     title: "Get Started | CallPilot",
-    description: "Get started with CallPilot: VoIP phone lines with WhatsApp, SMS and email, plus AI applicant screening calls synced to your ATS.",
+    description: "Get started with CallPilot: AI applicant screening calls with SMS and WhatsApp document collection, synced to your ATS.",
     images: ["/images/og-callpilot.png"],
   },
 };

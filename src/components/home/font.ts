@@ -1,4 +1,4 @@
-// Plus Jakarta Sans: the same font and settings as the live hero (HeroThree.tsx),
+// Plus Jakarta Sans: the site typeface (homepage, book-a-demo, voip, inner pages),
 // so the whole homepage uses one typeface. next/font self-hosts it, so there's no layout shift.
 import { Plus_Jakarta_Sans } from "next/font/google";
 

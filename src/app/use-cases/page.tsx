@@ -6,7 +6,7 @@ import { fontClass, font } from "@/components/home/font";
 import s from "@/components/home/landing.module.css";
 import hs from "@/components/home/hero3.module.css";
 import {
-  ArrowRight, Building, Users, Bolt, Phone, Check
+  ArrowRight, Building, Users, Bolt, Check
 } from "@/components/home/icons";
 
 interface UseCaseBlock {
@@ -59,20 +59,6 @@ const USE_CASE_BLOCKS: UseCaseBlock[] = [
     ],
     linkText: "See screening plans",
     linkHref: "/pricing#screening",
-  },
-  {
-    id: "business-phone-lines",
-    icon: Phone,
-    title: "Any business needing a phone line",
-    problem: "Separate apps for calls, WhatsApp, texts and email, and nothing connected.",
-    benefits: [
-      "One low-cost number for calls, WhatsApp, SMS and email",
-      "Forwarding, IVR menus and routing",
-      "Keep your existing number",
-      "From $5.99 per line per month",
-    ],
-    linkText: "See VoIP plans",
-    linkHref: "/pricing#voip",
   },
 ];
 
