@@ -406,7 +406,7 @@ export const integrationsData: Record<string, ATSIntegration> = {
       eyebrowText: "Greenhouse Integration: LIVE",
       overline: "AI Applicant Screening Calls + WhatsApp/SMS Automation",
       h1: "AI Applicant Screening for Greenhouse",
-      lead: "Screen every Greenhouse applicant with a human-like AI call. ID and documents are collected by WhatsApp or SMS, and the Greenhouse candidate record is updated automatically without a recruiter picking up the phone.",
+      lead: "Screen every Greenhouse applicant with a human-like AI call. ID and documents are collected by WhatsApp or SMS, and the Greenhouse candidate record is updated automatically without your Talent Team picking up the phone.",
       flowNodes: ["Greenhouse Job", "Application", "AI Screening Call", "Evaluation", "WhatsApp / SMS", "Docs Uploaded", "Greenhouse Updated"],
       primaryCtaText: "Claim 100 Free Credits",
       primaryCtaLink: "/free-credits",
@@ -454,9 +454,9 @@ export const integrationsData: Record<string, ATSIntegration> = {
       ],
     },
     trafficLights: {
-      lead: "Your recruiters open Greenhouse to a pipeline that has already been screened and sorted into three clean statuses:",
+      lead: "Your Talent Team opens Greenhouse to a pipeline that has already been screened and sorted into three clean statuses:",
       qualified: "Amber: Qualified – Awaiting Documents: Passed the AI screening call against your role criteria. The automated WhatsApp/SMS chase sequence is running.",
-      received: "Green: Qualified – Documents Received: Passed screening with ID and required documents collected and attached. Ready for recruiter verification.",
+      received: "Green: Qualified – Documents Received: Passed screening with ID and required documents collected and attached. Ready for Talent Team verification.",
       unsuccessful: "Red: Unsuccessful: Did not meet the minimum role requirements. The call transcript is logged on the Greenhouse record.",
     },
     callout: {
@@ -480,7 +480,7 @@ export const integrationsData: Record<string, ATSIntegration> = {
       },
       {
         question: "Does CallPilot make hiring decisions?",
-        answer: "No. CallPilot screens against the criteria you configure and collects documents. Verification and final hiring decisions stay with your recruiters.",
+        answer: "No. CallPilot screens against the criteria you configure and collects documents. Verification and final hiring decisions stay with your Talent Team.",
       },
       {
         question: "How do I claim 100 free screening credits for Greenhouse?",
