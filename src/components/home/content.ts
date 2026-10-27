@@ -8,9 +8,9 @@ export const PLANS = [
     name: p.name,
     price: money(p.monthly),
     period: "per month",
-    includes: `${p.calls} calls · ${money(p.perCall)} each`,
+    includes: `${p.calls} credits · ${money(p.perCall)} each`,
     features: p.features,
-    topUp: "", // live from plans API (TopUpLine)
+    topUp: `Top-up: ${money(p.topUp)} per credit`,
     cta: "Get Started",
     href: `/free-credits?plan=${p.id}`,
     recommended: !!p.recommended,
@@ -19,7 +19,7 @@ export const PLANS = [
     name: "Enterprise",
     price: "Custom",
     period: "",
-    includes: `${ENTERPRISE_THRESHOLD}+ calls a month`,
+    includes: `${ENTERPRISE_THRESHOLD}+ credits a month`,
     features: ["Volume pricing", "Tailored setup"],
     topUp: "",
     cta: "Contact Sales",
@@ -30,7 +30,6 @@ export const PLANS = [
 
 export const PLAN_NOTES = [
   COPY.billing,
-  COPY.credit.replace(/\.$/, ""),
   `AI number ${money(AI_NUMBER_MONTHLY)}/month, or connect a compatible number`,
 ];
 
@@ -154,7 +153,7 @@ export const FAQS = [
   },
   {
     q: "What does one screening credit cover?",
-    a: "One credit covers a call of up to 2 minutes. No call, no charge: if the applicant isn't reached, you don't pay.",
+    a: COPY.credit,
   },
   {
     q: "Do unused screenings carry over?",

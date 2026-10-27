@@ -450,14 +450,14 @@ const HelpBlockComponent = ({
                 <td className="px-4 py-2.5 font-semibold text-gray-950 dark:text-white">
                   STARTER
                   <div className="text-[11px] text-gray-500 font-normal mt-0.5">
-                    $199 / month
+                    $49 / month
                   </div>
                 </td>
                 <td className="px-4 py-2.5 text-gray-600 dark:text-gray-400">
-                  100 applicant screenings
+                  25 screening credits
                 </td>
                 <td className="px-4 py-2.5 text-gray-600 dark:text-gray-400">
-                  $1.99 per screening
+                  $2.49 per credit
                 </td>
               </tr>
               <tr className="hover:bg-gray-50/50 dark:hover:bg-gray-800/10 bg-blue-50/20 dark:bg-blue-950/10">
@@ -469,28 +469,28 @@ const HelpBlockComponent = ({
                     </span>
                   </div>
                   <div className="text-[11px] text-gray-500 font-normal mt-0.5">
-                    $795 / month
+                    $299 / month
                   </div>
                 </td>
                 <td className="px-4 py-2.5 text-gray-600 dark:text-gray-400 font-medium">
-                  500 applicant screenings
+                  200 screening credits
                 </td>
                 <td className="px-4 py-2.5 text-gray-600 dark:text-gray-400">
-                  $1.59 per screening
+                  $1.99 per credit
                 </td>
               </tr>
               <tr className="hover:bg-gray-50/50 dark:hover:bg-gray-800/10">
                 <td className="px-4 py-2.5 font-semibold text-gray-950 dark:text-white">
                   PRO
                   <div className="text-[11px] text-gray-500 font-normal mt-0.5">
-                    $1,995 / month
+                    $999 / month
                   </div>
                 </td>
                 <td className="px-4 py-2.5 text-gray-600 dark:text-gray-400">
-                  1,500 applicant screenings
+                  800 screening credits
                 </td>
                 <td className="px-4 py-2.5 text-gray-600 dark:text-gray-400">
-                  $1.33 per screening
+                  $1.49 per credit
                 </td>
               </tr>
             </tbody>

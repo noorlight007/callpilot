@@ -1,8 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { COPY, money } from "@/lib/pricing";
-import { useTopUpRates } from "@/lib/useTopUpRates";
+import { COPY } from "@/lib/pricing";
 import { PLANS, PLAN_NOTES } from "@/components/home/content";
 
 interface PricingProps {
@@ -29,8 +28,6 @@ const CheckIcon = () => (
 );
 
 const Pricing = ({ asH1 = true }: PricingProps) => {
-  const topUpRates = useTopUpRates();
-
   return (
     <div className="bg-[#f8f7f4] text-[#0a0a0a] py-10 sm:py-14 lg:py-20 border-b border-[#e6e4de] font-sans selection:bg-[#0a0a0a] selection:text-white">
       {/* Scoped CSS for the exact pixel-perfect design */}
@@ -188,11 +185,9 @@ const Pricing = ({ asH1 = true }: PricingProps) => {
                     ))}
                   </ul>
 
-                  <p className="text-center text-[13px] text-[#8a8883] pt-1.5 m-0">
-                    {topUpRates[plan.name.toLowerCase()] !== undefined
-                      ? `Top-up: ${money(topUpRates[plan.name.toLowerCase()])} per screening`
-                      : plan.topUp}
-                  </p>
+                  {plan.topUp && (
+                    <p className="text-center text-[13px] text-[#8a8883] pt-1.5 m-0">{plan.topUp}</p>
+                  )}
 
                   <div className="flex-grow min-h-6" />
 
@@ -206,6 +201,7 @@ const Pricing = ({ asH1 = true }: PricingProps) => {
             })}
           </div>
 
+          <p className="text-center text-[15px] font-semibold text-[#0a0a0a] max-w-3xl mx-auto mb-4 leading-relaxed">{COPY.credit}</p>
           <ul className="flex items-center justify-center gap-x-4 gap-y-2 text-[13px] text-[#8a8883] font-medium flex-wrap text-center m-0 list-none p-0">
             {PLAN_NOTES.map((note, idx) => (
               <li key={idx} className="flex items-center gap-1.5">

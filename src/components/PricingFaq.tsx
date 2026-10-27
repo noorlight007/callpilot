@@ -1,9 +1,10 @@
 import JsonLd from "@/components/JsonLd";
+import { COPY, ENTERPRISE_THRESHOLD } from "@/lib/pricing";
 
 const PRICING_FAQ = [
   {
     question: "What counts as one screening credit?",
-    answer: "One credit covers one AI screening call of up to 2 minutes.",
+    answer: COPY.credit,
   },
   {
     question: "Am I charged if the applicant doesn't answer?",
@@ -22,8 +23,8 @@ const PRICING_FAQ = [
     answer: "JobAdder, Recruit CRM, Ashby and Greenhouse. iCIMS is coming soon.",
   },
   {
-    question: "What if I need more than 300 screenings a month?",
-    answer: "Enterprise plans cover over 300 screenings a month with custom pricing. Top-ups are also available on every plan.",
+    question: `What if I need more than ${ENTERPRISE_THRESHOLD} credits a month?`,
+    answer: `Enterprise plans cover ${ENTERPRISE_THRESHOLD}+ credits a month with volume pricing and a tailored setup. Top-ups are also available on every plan.`,
   },
 ];
 

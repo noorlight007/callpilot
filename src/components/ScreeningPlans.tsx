@@ -1,13 +1,11 @@
 "use client";
 
 import { SCREENING_PLANS, COPY, SALES_MAILTO, SALES_EMAIL, money } from "@/lib/pricing";
-import { useTopUpRates } from "@/lib/useTopUpRates";
 import styles from "./ScreeningPlans.module.css";
 
 type Props = { showTerms?: boolean; ctaHref?: string };
 
 export default function ScreeningPlans({ showTerms = true, ctaHref = "/free-credits" }: Props) {
-  const topUpRates = useTopUpRates();
   return (
     <section className={styles.wrap} aria-labelledby="screening-plans">
       <h2 id="screening-plans" className={styles.heading}>AI Applicant Call Plans</h2>
@@ -21,11 +19,8 @@ export default function ScreeningPlans({ showTerms = true, ctaHref = "/free-cred
             <p className={styles.price}>
               {money(p.monthly)}<span>/month</span>
             </p>
-            <p className={styles.calls}>{p.calls} screening calls included</p>
-            <p className={styles.small}>{money(p.perCall)} per screening</p>
-            {topUpRates[p.id] !== undefined && (
-              <p className={styles.small}>{money(topUpRates[p.id])} per top-up screening</p>
-            )}
+            <p className={styles.calls}>{p.calls} credits included · {money(p.perCall)} each</p>
+            <p className={styles.small}>Top-up: {money(p.topUp)} per credit</p>
             <hr className={styles.rule} />
             <ul className={styles.list}>
               {p.features.map((f) => <li key={f}>{f}</li>)}
@@ -34,6 +29,8 @@ export default function ScreeningPlans({ showTerms = true, ctaHref = "/free-cred
           </article>
         ))}
       </div>
+
+      <p className={styles.note}>{COPY.credit}</p>
 
       <p className={styles.enterprise}>
         {COPY.enterpriseLead}{" "}
@@ -45,7 +42,6 @@ export default function ScreeningPlans({ showTerms = true, ctaHref = "/free-cred
       {showTerms && (
         <ul className={styles.terms}>
           <li>{COPY.aiNumber}</li>
-          <li>{COPY.credit}</li>
           <li>{COPY.carryOver}</li>
           <li>{COPY.billing}</li>
         </ul>

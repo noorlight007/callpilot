@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { SCREENING_PLANS as PLANS, ENTERPRISE_THRESHOLD, money } from "@/lib/pricing";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
@@ -23,11 +24,13 @@ export const metadata: Metadata = {
 
 const EFFECTIVE_DATE = "13 October 2026";
 
-const SCREENING_PLANS = [
-  { name: "Starter", price: "$49", included: "10", each: "$4.90", topUp: "$4.90" },
-  { name: "Growth", price: "$299", included: "75", each: "$3.99", topUp: "$3.99" },
-  { name: "Pro", price: "$999", included: "300", each: "$3.33", topUp: "$3.33" },
-];
+const SCREENING_PLANS = PLANS.map((p) => ({
+  name: p.name,
+  price: money(p.monthly),
+  included: String(p.calls),
+  each: money(p.perCall),
+  topUp: money(p.topUp),
+}));
 
 type Section = { id: string; title: string; body: ReactNode };
 
@@ -80,7 +83,7 @@ const SECTIONS: Section[] = [
         <p>Unless otherwise agreed in writing, the following standard monthly plans apply:</p>
         <table>
           <thead>
-            <tr><th>Plan</th><th>Monthly price</th><th>Included completed screenings</th><th>Per screening</th><th>Top-up per screening</th></tr>
+            <tr><th>Plan</th><th>Monthly price</th><th>Included screening credits</th><th>Per credit</th><th>Top-up per credit</th></tr>
           </thead>
           <tbody>
             {SCREENING_PLANS.map((p) => (
@@ -88,7 +91,7 @@ const SECTIONS: Section[] = [
                 <td>{p.name}</td><td>{p.price}/month</td><td>{p.included}</td><td>{p.each}</td><td>{p.topUp}</td>
               </tr>
             ))}
-            <tr><td>Enterprise</td><td>Custom</td><td>Over 300</td><td>Custom</td><td>Custom</td></tr>
+            <tr><td>Enterprise</td><td>Custom</td><td>{ENTERPRISE_THRESHOLD}+</td><td>Custom</td><td>Custom</td></tr>
           </tbody>
         </table>
         <p>All prices are in USD and exclude applicable taxes unless otherwise stated.</p>
@@ -102,7 +105,7 @@ const SECTIONS: Section[] = [
       <>
         <p>CallPilot charges only for completed AI Applicant Screening Calls. No call, no charge.</p>
         <p>A screening is completed when the applicant completes the configured screening process. If an applicant does not answer, hangs up, disconnects or otherwise does not complete the screening, no charge is made.</p>
-        <p>One screening credit covers one completed screening call of up to two minutes. Where a completed call runs longer than two minutes, a further screening credit is used for each additional two minutes or part thereof.</p>
+        <p>One screening credit covers one answered screening call of up to two minutes, including SMS or WhatsApp document collection. Where an answered call runs longer than two minutes, a further screening credit is used for each additional two minutes or part thereof.</p>
       </>
     ),
   },

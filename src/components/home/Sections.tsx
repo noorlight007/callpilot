@@ -9,7 +9,6 @@ import { LINKS } from "./config";
 import { COPY } from "@/lib/pricing";
 import { FAQS, GETTING_STARTED, PLANS, PLAN_NOTES, STORY_KEY, STORY_STEPS, USE_CASES, type Tone } from "./content";
 import DemoForm from "./DemoForm";
-import TopUpLine from "./TopUpLine";
 import AtsCarousel from "./AtsCarousel";
 
 const CHIP: Record<Tone, string> = {
@@ -126,7 +125,7 @@ export function PricingSection() {
               <h3 className={s.planName}>{p.name}</h3>
               <p className={s.planPrice}>{p.price}</p>
               <p className={s.planIncludes}>{p.period ? `${p.period} · ${p.includes}` : p.includes}</p>
-              {p.name !== "Enterprise" && <TopUpLine plan={p.name} fallback={p.topUp} className={s.planTop} />}
+              {p.topUp && <p className={s.planTop}>{p.topUp}</p>}
               <ul className={s.planFeat}>
                 {p.features.map((f) => <li key={f}><Check /> {f}</li>)}
               </ul>
@@ -134,6 +133,7 @@ export function PricingSection() {
             </div>
           ))}
         </div>
+        <p className={s.creditNote}>{COPY.credit}</p>
         <ul className={s.planNotes}>
           {PLAN_NOTES.map((n) => <li key={n}><Check /> {n}</li>)}
         </ul>

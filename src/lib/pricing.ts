@@ -5,7 +5,7 @@ export const CURRENCY = "USD";
 export const FREE_TRIAL_CALLS = 100;
 export const AI_NUMBER_MONTHLY = 10;
 export const CREDIT_MAX_MINUTES = 2;
-export const ENTERPRISE_THRESHOLD = 300;
+export const ENTERPRISE_THRESHOLD = 800;
 export const SALES_EMAIL = "sales@callpilot.pro";
 export const SALES_MAILTO = `mailto:${SALES_EMAIL}?subject=${encodeURIComponent("CallPilot Enterprise pricing")}`;
 
@@ -25,9 +25,9 @@ export const SCREENING_PLANS: ScreeningPlan[] = [
     id: "starter",
     name: "Starter",
     monthly: 49,
-    calls: 10,
-    perCall: 4.9,
-    topUp: 4.9,
+    calls: 25,
+    perCall: 1.96,
+    topUp: 2.49,
     features: [
       "AI applicant screening calls",
       "WhatsApp or SMS document collection",
@@ -39,9 +39,9 @@ export const SCREENING_PLANS: ScreeningPlan[] = [
     id: "growth",
     name: "Growth",
     monthly: 299,
-    calls: 75,
-    perCall: 3.99,
-    topUp: 3.99,
+    calls: 200,
+    perCall: 1.5,
+    topUp: 1.99,
     recommended: true,
     features: [
       "Everything in Starter",
@@ -54,9 +54,9 @@ export const SCREENING_PLANS: ScreeningPlan[] = [
     id: "pro",
     name: "Pro",
     monthly: 999,
-    calls: 300,
-    perCall: 3.33,
-    topUp: 3.33,
+    calls: 800,
+    perCall: 1.25,
+    topUp: 1.49,
     features: [
       "Everything in Growth",
       "Workflow automation",
@@ -80,17 +80,17 @@ export const COPY = {
   trialCta: `Claim ${FREE_TRIAL_CALLS} Free Credits`,
   trialFooterLink: "Get Free Credits",
   noCall: "No Call. No Charge.",
-  enterpriseLead: `Over ${ENTERPRISE_THRESHOLD} calls a month?`,
+  enterpriseLead: `Over ${ENTERPRISE_THRESHOLD} credits a month?`,
   enterpriseLink: "Talk to us.",
   aiNumber: `Plus ${money(AI_NUMBER_MONTHLY)}/month for an AI phone number (or connect your own compatible number).`,
-  carryOver: "Unused screenings carry over for one month, then expire.",
+  carryOver: "Unused credits carry over for one month, then expire.",
   billing: "Billed monthly in advance. Prices in USD.",
-  credit: `1 credit covers a call of up to ${CREDIT_MAX_MINUTES} minutes.`,
+  credit: `1 Screening Credit = 1 answered call of up to ${CREDIT_MAX_MINUTES} minutes, plus SMS / WhatsApp document collection. Longer calls use 1 extra credit per further ${CREDIT_MAX_MINUTES} minutes. No Call. No Charge.`,
   faqCost:
-    `Plans start at ${money(STARTING_PRICE)}/month for ${SCREENING_PLANS[0].calls} screenings ` +
+    `Plans start at ${money(STARTING_PRICE)}/month for ${SCREENING_PLANS[0].calls} credits ` +
     `(${money(SCREENING_PLANS[0].perCall)} each). Growth is ${money(SCREENING_PLANS[1].monthly)}/month for ` +
-    `${SCREENING_PLANS[1].calls} screenings, Pro is ${money(SCREENING_PLANS[2].monthly)}/month for ` +
-    `${SCREENING_PLANS[2].calls} screenings, and Enterprise pricing is custom for over ${ENTERPRISE_THRESHOLD} a month. ` +
+    `${SCREENING_PLANS[1].calls} credits, Pro is ${money(SCREENING_PLANS[2].monthly)}/month for ` +
+    `${SCREENING_PLANS[2].calls} credits, and Enterprise pricing is custom for ${ENTERPRISE_THRESHOLD}+ credits a month. ` +
     `New clients get their first ${FREE_TRIAL_CALLS} AI screening calls free.`,
 };
 
