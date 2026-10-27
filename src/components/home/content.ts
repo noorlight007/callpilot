@@ -36,7 +36,6 @@ export const PLAN_NOTES = [
 
 /* ---------- Hero ---------- */
 export const HERO = {
-  eyebrow: "AI Applicant Screening",
   titleHighlight: "AI Applicant Screening Calls",
   titleRest: "+ Automation",
   lead: "Pre-qualify applicants by phone and gather their paperwork, with every outcome recorded in the hiring system you already use.",
@@ -68,7 +67,7 @@ export const STORY_STEPS: {
   {
     time: "Step 1",
     tone: "navy",
-    title: "The job goes live",
+    title: "The Job Goes Live",
     text: "CallPilot reads the advert and turns its requirements into yes/no questions, asked in a set order: work authorization, the role criteria, then travel and commute.",
     why: "Every applicant for a role is measured against the same standard.",
     image: { base: "/images/home/story-1-questions", alt: "Job advert turned into yes/no pre-qualifying questions" },
@@ -76,7 +75,7 @@ export const STORY_STEPS: {
   {
     time: "Step 2 · Monday, 9:00 PM",
     tone: "blue",
-    title: "Olia applies and is called",
+    title: "Olia Applies and Is Called",
     text: "The AI Applicant Screening Call opens by saying it is an AI, then works through each question. A no ends the call and marks the applicant unsuccessful. Olia answers yes throughout and is marked Pre-qualified.",
     why: "Your team no longer makes first-round phone screens.",
     image: { base: "/images/home/story-2-call", alt: "AI Applicant Screening Call with every answer yes" },
@@ -84,7 +83,7 @@ export const STORY_STEPS: {
   {
     time: "Step 3 · Monday, 9:02 PM",
     tone: "amber",
-    title: "Documents are requested",
+    title: "Documents Are Requested",
     text: "A secure SMS upload link reaches her phone, or a WhatsApp message she can reply to with photos. Anyone who stays silent receives the same form by email.",
     why: "Paperwork arrives without anyone chasing it.",
     image: { base: "/images/home/story-3-candidate", alt: "Applicant uploading ID and documents from her phone" },
@@ -92,7 +91,7 @@ export const STORY_STEPS: {
   {
     time: "Step 4 · Monday, 9:17 PM",
     tone: "green",
-    title: "Your ATS is updated",
+    title: "Your ATS Is Updated",
     text: "Her files attach to her record, the status changes from Documents Requested to Documents Received, and an email alert goes out.",
     why: "Progress is visible without asking for updates.",
     image: { base: "/images/home/story-4-ats-sync", alt: "Files attached and ATS status changed to Documents Received" },
@@ -100,7 +99,7 @@ export const STORY_STEPS: {
   {
     time: "Step 5 · Tuesday, 9:00 AM",
     tone: "blue",
-    title: "Your team works through the list",
+    title: "Your Team Works Through the List",
     text: "By the morning, every applicant is sorted by status, so your team knows where to start.",
     list: [
       { tone: "green", label: "Documents Received", text: "Check the files and CV. Once suitable, the candidate is Qualified and moves to interview." },
@@ -121,10 +120,10 @@ export const GETTING_STARTED = {
 
 /* ---------- Who it's for ---------- */
 export const USE_CASES = [
-  { title: "ATS, HCM and CRM platforms", text: "Offer AI applicant screening calls and document automation to your customers as an add-on to your platform." },
-  { title: "Staffing and recruitment agencies", text: "Screen applicants for every client role without adding call time." },
+  { title: "ATS, HCM and CRM Platforms", text: "Offer AI applicant screening calls and document automation to your customers as an add-on to your platform." },
+  { title: "Staffing and Recruitment Agencies", text: "Screen applicants for every client role without adding call time." },
   { title: "Talent Acquisition Teams", text: "Give every applicant a prompt first response, whatever the volume." },
-  { title: "High-volume hiring", text: "Healthcare, warehousing, hospitality and other roles with many applicants per vacancy." },
+  { title: "High-Volume Hiring", text: "Healthcare, warehousing, hospitality and other roles with many applicants per vacancy." },
 ];
 
 /* ---------- FAQ ---------- */
@@ -206,7 +205,7 @@ export const FOOTER = {
       ],
     },
     {
-      title: "Legal & trust",
+      title: "Legal & Trust",
       links: [
         { label: "Privacy Policy", href: "/privacy-policy" },
         { label: "Terms of Service", href: "/terms-conditions" },

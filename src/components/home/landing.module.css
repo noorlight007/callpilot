@@ -57,16 +57,17 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--blue);
+  color: #000;
 }
 .kicker::before {
   content: "";
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--blue);
-  box-shadow: 0 0 0 4px var(--blue-soft);
+  background: #000;
 }
+.sectionBlack .kicker { color: #fff; }
+.sectionBlack .kicker::before { background: #fff; }
 .h2 {
   margin: 0;
   font-size: clamp(32px, 3.6vw, 50px);
@@ -98,7 +99,7 @@
 }
 .muted { color: var(--soft-text); }
 .inlineLink {
-  color: var(--blue) !important;
+  color: #000 !important;
   font-weight: 700;
   text-decoration: underline !important;
   text-underline-offset: 3px;
@@ -128,13 +129,15 @@
   outline-offset: 2px;
 }
 .btnSm { min-height: 44px; padding: 0 18px; font-size: 15px; }
-.btnDark { background: linear-gradient(90deg, var(--blue), var(--blue2)); color: #fff !important; box-shadow: 0 8px 22px rgba(37, 88, 245, 0.28); }
-.btnDark:hover { filter: brightness(1.05); transform: translateY(-1px); }
-.btnLight { background: #fff; color: var(--ink) !important; border: 2px solid var(--line); }
+/* Site rule: black button / white text on light sections, white button / black text on black sections. No colour. */
+.btnDark { background: #000; color: #fff !important; }
+.btnDark:hover { background: #111; transform: translateY(-1px); }
+.btnLight { background: #fff; color: #000 !important; }
 .btnLight:hover { transform: translateY(-1px); }
-.btnGhost { background: #fff; border: 2px solid var(--line); color: var(--ink) !important; }
-.btnGhost:hover { border-color: var(--ink); }
-.sectionBlack .btnGhost, .sectionBlack .btnLight { border: 2px solid #fff; }
+.btnGhost { background: #000; color: #fff !important; }
+.btnGhost:hover { background: #111; }
+.sectionBlack .btnDark, .sectionBlack .btnGhost, .sectionBlack .btnLight { background: #fff; color: #000 !important; border: 0; }
+.sectionBlack .btnDark:hover, .sectionBlack .btnGhost:hover, .sectionBlack .btnLight:hover { background: #f2f2f2; }
 .btnOutlineLight { border: 1.5px solid rgba(255, 255, 255, 0.3); color: #fff !important; background: transparent; }
 .btnBlock { width: 100%; }
 .btnIcon { width: 18px; height: 18px; }
@@ -416,7 +419,8 @@
 .faq summary::-webkit-details-marker { display: none; }
 .faqIcon { width: 20px; height: 20px; flex-shrink: 0; transition: transform 0.2s; }
 .faq[open] .faqIcon { transform: rotate(45deg); }
-.faq p { margin: 0; padding: 0 22px 20px; font-size: 16px; line-height: 1.6; color: var(--ink-2); }
+.faq p { margin: 0; padding: 0 22px 20px; font-size: 16px; line-height: 1.6; color: #000; }
+.faq summary { color: #000; }
 
 /* ---------- final CTA ---------- */
 .final {
@@ -527,12 +531,9 @@
   letter-spacing: -0.02em;
   color: var(--ink);
 }
-.hl {
-  background: linear-gradient(90deg, var(--blue), var(--blue2));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
+.hl { color: #000; }
+.h1, .h2, .h3 { color: #000; }
+.p, .subLeft, .sub { color: #000; }
 .btns { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
 .media { min-width: 0; }
 .shot { display: block; }
@@ -554,7 +555,7 @@
 .heroGrid .subLeft { margin-top: 0; font-size: 17px; }
 
 /* story: five steps, text left / image right, stacked on mobile */
-.storyLead { max-width: 720px; margin: 14px 0 0; font-size: 17px; line-height: 1.65; color: var(--ink-2); }
+.storyLead { max-width: 720px; margin: 14px 0 0; font-size: 17px; line-height: 1.65; color: #000; }
 .key { display: flex; flex-wrap: wrap; gap: 10px; margin: 22px 0 6px; }
 .chip { display: inline-block; font-size: 13.5px; font-weight: 600; border-radius: 999px; padding: 7px 14px; line-height: 1.2; }
 .chipB { background: #E8EFFE; color: var(--blue); }
@@ -564,8 +565,8 @@
 .chipN { background: #eef0f2; color: #55615d; }
 .story { display: grid; grid-template-columns: 1fr 1.15fr; gap: 56px; align-items: center; padding: 30px 0; }
 .storyFirst { margin-top: 40px; }
-.story h3 { margin: 0 0 8px; font-size: 19px; font-weight: 800; letter-spacing: -0.01em; color: var(--ink); }
-.story p { margin: 0 0 14px; font-size: 17px; line-height: 1.65; color: var(--ink-2); }
+.story h3 { margin: 0 0 8px; font-size: 19px; font-weight: 800; letter-spacing: -0.01em; color: #000; }
+.story p { margin: 0 0 14px; font-size: 17px; line-height: 1.65; color: #000; }
 .time {
   display: inline-block;
   background: var(--ink);
@@ -586,7 +587,7 @@
 .whyGreen { border-color: var(--green); }
 .whyRed { border-color: var(--red); }
 .prio { padding-left: 20px; margin: 6px 0 14px; }
-.prio li { padding: 6px 0; font-size: 15.5px; line-height: 1.5; color: var(--ink-2); }
+.prio li { padding: 6px 0; font-size: 15.5px; line-height: 1.5; color: #000; }
 .prio .chip { font-size: 12.5px; padding: 3px 10px; margin-right: 8px; }
 
 /* getting started panel */
@@ -599,7 +600,7 @@
   box-shadow: 0 14px 40px rgba(15, 23, 42, 0.08);
   margin-top: 28px;
 }
-.panelRow { display: flex; align-items: center; padding: 13px 0; border-bottom: 1px solid #eef0f2; font-size: 15px; font-weight: 500; color: var(--ink); }
+.panelRow { display: flex; align-items: center; padding: 13px 0; border-bottom: 1px solid #eef0f2; font-size: 15px; font-weight: 500; color: #000; }
 .panelRow:last-child { border-bottom: 0; }
 .num {
   display: inline-flex;
@@ -615,7 +616,7 @@
   margin-right: 10px;
   flex: none;
 }
-.support { margin: 22px 0 0; font-weight: 600; font-size: 17px; color: var(--ink); }
+.support { margin: 22px 0 0; font-weight: 600; font-size: 17px; color: #000; }
 
 /* ATS carousel (pure CSS marquee) */
 .center { text-align: center; }
@@ -645,7 +646,7 @@
 .ats:hover { transform: translateY(-3px); }
 .atsLogo { max-width: 140px; max-height: 40px; width: auto; height: auto; display: block; object-fit: contain; }
 .atsName { font-weight: 800; font-size: 21px; color: var(--ink); letter-spacing: -0.01em; }
-.atsSoon { font-style: normal; font-size: 11.5px; font-weight: 600; color: var(--muted); }
+.atsSoon { font-style: normal; font-size: 11.5px; font-weight: 600; color: #000; }
 @keyframes cpScroll { to { transform: translateX(calc(-50% - 11px)); } }
 @media (prefers-reduced-motion: reduce) {
   .track { animation: none; flex-wrap: wrap; justify-content: center; width: auto; }
@@ -654,14 +655,16 @@
 
 /* black sections: pricing and closing CTA (white on black only) */
 .sectionBlack { background: #000; color: #fff; }
-.sectionBlack .h2, .sectionBlack .h3, .sectionBlack .p, .sectionBlack .sub, .sectionBlack .subLeft { color: #fff; }
+.sectionBlack, .sectionBlack .h2, .sectionBlack .h3, .sectionBlack .p, .sectionBlack .sub, .sectionBlack .subLeft, .sectionBlack p, .sectionBlack h2, .sectionBlack h3, .sectionBlack li { color: #fff; }
+.sectionBlack .planPrice { color: #fff; }
+.pricingCta { margin-top: 34px; text-align: center; }
 .sectionBlack .plan { background: transparent; border: 1px solid #333; color: #fff; }
 .sectionBlack .planRec { border: 2px solid #fff; box-shadow: none; }
 .sectionBlack .planName { color: #fff; font-size: 19px; letter-spacing: 0; text-transform: none; }
 .sectionBlack .planPrice { font-size: 38px; margin: 10px 0 2px; }
 .sectionBlack .planPrice span { color: #fff; opacity: 0.75; }
-.sectionBlack .planIncludes { color: #fff; opacity: 0.75; font-weight: 500; font-size: 14px; margin-top: 2px; }
-.sectionBlack .planTop { color: #fff; opacity: 0.75; }
+.sectionBlack .planIncludes { color: #fff; opacity: 0.8; font-weight: 500; font-size: 14px; margin-top: 2px; }
+.sectionBlack .planTop { color: #fff; opacity: 0.8; }
 .sectionBlack .planFeat { color: #fff; border-top: 0; padding-top: 0; margin-top: 16px; gap: 6px; }
 .sectionBlack .planFeat svg { color: #fff; }
 .sectionBlack .planNotes { color: #fff; opacity: 0.8; }
@@ -693,12 +696,17 @@
 .phoneRow { display: grid; grid-template-columns: 150px 1fr; gap: 14px; }
 .form label small { font-weight: 500; color: var(--muted); }
 .formError { margin: 0; white-space: pre-wrap; font-size: 14px; color: var(--red); font-weight: 600; }
-.formSmall { margin: 14px 0 0; font-size: 13.5px; color: var(--muted); }
+.formSmall { margin: 14px 0 0; font-size: 13.5px; color: #000; }
 .formSmall + .formSmall { margin-top: 6px; }
 .walk { padding-top: 46px; }
 .walkList { list-style: none; margin: 24px 0 0; padding: 0; display: grid; gap: 22px; }
 .walkList li { display: flex; gap: 14px; align-items: flex-start; }
-.walkList h3 { margin: 2px 0 6px; font-size: 19px; font-weight: 800; letter-spacing: -0.01em; color: var(--ink); }
-.walkList p { margin: 0; font-size: 16.5px; line-height: 1.6; color: var(--ink-2); }
+.walkList h3 { margin: 2px 0 6px; font-size: 19px; font-weight: 800; letter-spacing: -0.01em; color: #000; }
+.walkList p { margin: 0; font-size: 16.5px; line-height: 1.6; color: #000; }
 @media (max-width: 1100px) { .walk { padding-top: 0; } }
 @media (max-width: 480px) { .phoneRow { grid-template-columns: 120px 1fr; gap: 8px; } }
+
+/* ---------- voip coming soon ---------- */
+.voipList { list-style: none; margin: 28px auto 0; padding: 0; display: grid; gap: 10px; max-width: 420px; text-align: left; }
+.voipList li { padding: 14px 18px; border: 1px solid var(--line); border-radius: 12px; font-size: 16.5px; color: #000; background: #fff; }
+.voipList strong { color: #000; }

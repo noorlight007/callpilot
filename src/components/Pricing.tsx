@@ -103,7 +103,7 @@ const Pricing = ({ asH1 = true }: PricingProps) => {
           transform: scale(0.97);
         }
         .plan-cta-btn:focus-visible {
-          outline: 2px solid #2563eb;
+          outline: 2px solid #0a0a0a;
           outline-offset: 2px;
         }
         `
@@ -130,7 +130,7 @@ const Pricing = ({ asH1 = true }: PricingProps) => {
         {/* Section 2: id="screening" */}
         <section id="screening" className="scroll-mt-28">
           <div className="text-center mb-10">
-            <p className="text-xs font-bold uppercase tracking-widest text-[#005bff] mb-2">Recruitment Automation</p>
+            <p className="text-xs font-bold uppercase tracking-widest text-[#0a0a0a] mb-2">Recruitment Automation</p>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0a0a0a] mb-3">AI Applicant Screening Call + Automation</h2>
             <p className="text-[#6b6b68] text-base sm:text-lg max-w-2xl mx-auto">
               {COPY.noCall} {COPY.trialLine}

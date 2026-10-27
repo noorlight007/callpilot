@@ -5,7 +5,7 @@ import s from "@/components/home/landing.module.css";
 import HomeHero from "@/components/home/HomeHero";
 import {
   StorySection, GettingStartedSection, IntegrationsSection, UseCasesSection,
-  PricingSection, DemoSection, FaqSection, FinalCta,
+  PricingSection, DemoSection, FaqSection,
 } from "@/components/home/Sections";
 import SiteFooter from "@/components/home/SiteFooter";
 import CallPilotSchema from "@/components/seo/CallPilotSchema";
@@ -55,7 +55,6 @@ export default function Page() {
         <PricingSection />
         <DemoSection />
         <FaqSection />
-        <FinalCta />
       </main>
       <SiteFooter />
     </div>

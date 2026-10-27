@@ -28,7 +28,7 @@ export function StorySection() {
     <section id="how" className={`${s.section} ${s.sectionSoft}`} aria-labelledby="story-title">
       <div className={s.container}>
         <p className={s.kicker}>How it works</p>
-        <h2 id="story-title" className={s.h2}>Recruiters sleep. CallPilot qualifies 24/7.</h2>
+        <h2 id="story-title" className={s.h2}>Recruiters Sleep. CallPilot Qualifies 24/7.</h2>
         <p className={s.storyLead}>One applicant, Olia, from job advert to interview.</p>
         <div className={s.key}>
           {STORY_KEY.map((k) => <span key={k.label} className={`${s.chip} ${CHIP[k.tone]}`}>{k.label}</span>)}
@@ -65,7 +65,7 @@ export function GettingStartedSection() {
     <section id="benefits" className={`${s.section} ${s.sectionWhite}`} aria-labelledby="start-title">
       <div className={`${s.container} ${s.narrow}`}>
         <p className={s.kicker}>Getting started</p>
-        <h2 id="start-title" className={s.h2}>Live in four steps</h2>
+        <h2 id="start-title" className={s.h2}>Live in Four Steps</h2>
         <ol className={s.panel} style={{ listStyle: "none", margin: "28px 0 0", padding: 22 }}>
           {GETTING_STARTED.steps.map((t, i) => (
             <li key={t} className={s.panelRow}><span className={s.num}>{i + 1}</span>{t}</li>
@@ -82,7 +82,7 @@ export function IntegrationsSection() {
   return (
     <section id="integrations" className={`${s.section} ${s.sectionWhite} ${s.center}`} aria-labelledby="int-title" style={{ paddingTop: 0 }}>
       <div className={s.container}>
-        <h2 id="int-title" className={s.h2}>Integrates with your ATS</h2>
+        <h2 id="int-title" className={s.h2}>Integrates With Your ATS</h2>
         <AtsCarousel />
       </div>
     </section>
@@ -96,7 +96,7 @@ export function UseCasesSection() {
       <div className={s.container}>
         <div className={s.head}>
           <p className={s.kicker}>Who it&apos;s for</p>
-          <h2 id="use-title" className={s.h2}>From one vacancy to thousands.</h2>
+          <h2 id="use-title" className={s.h2}>From One Vacancy to Thousands.</h2>
         </div>
         <div className={s.grid4}>
           {USE_CASES.map((u) => (
@@ -137,6 +137,9 @@ export function PricingSection() {
         <ul className={s.planNotes}>
           {PLAN_NOTES.map((n) => <li key={n}><Check /> {n}</li>)}
         </ul>
+        <div className={s.pricingCta}>
+          <Link href={LINKS.bookDemo} className={`${s.btn} ${s.btnLight}`}>Book a Demo</Link>
+        </div>
       </div>
     </section>
   );
@@ -150,7 +153,7 @@ export function DemoSection() {
         <div className={s.demo}>
           <div className={s.demoCopy}>
             <p className={s.kicker}>Try it now</p>
-            <h2 id="demo-title" className={`${s.h2}`}>Hear CallPilot for yourself.</h2>
+            <h2 id="demo-title" className={`${s.h2}`}>Hear CallPilot for Yourself.</h2>
             <p className={s.subLeft}>Try an AI call now, or schedule one for later.</p>
             <ul className={s.demoTicks}>
               <li><Check /> Real AI screening call to your phone</li>
@@ -172,7 +175,7 @@ export function FaqSection() {
       <div className={`${s.container} ${s.faqWrap}`}>
         <div>
           <p className={s.kicker}>FAQ</p>
-          <h2 id="faq-title" className={s.h2}>Questions, answered.</h2>
+          <h2 id="faq-title" className={s.h2}>Questions, Answered.</h2>
           <p className={s.p} style={{ marginTop: 16 }}>Can&apos;t find what you need?</p>
           <Link href="/get-started?intent=sales" className={`${s.btn} ${s.btnDark} ${s.faqBtn}`}>Talk to our team</Link>
         </div>
@@ -194,7 +197,7 @@ export function FinalCta() {
   return (
     <section className={`${s.section} ${s.sectionBlack} ${s.finalCenter}`} aria-labelledby="final-title">
       <div className={s.container}>
-        <h2 id="final-title" className={s.h2}>Put your calls on autopilot.</h2>
+        <h2 id="final-title" className={s.h2}>Put Your Calls on Autopilot.</h2>
         <div className={s.btns}>
           <Link href={LINKS.bookDemo} className={`${s.btn} ${s.btnDark}`}>Book a Demo <ArrowRight className={s.btnIcon} /></Link>
           <Link href="/get-started?intent=sales" className={`${s.btn} ${s.btnLight}`}>Contact Sales</Link>

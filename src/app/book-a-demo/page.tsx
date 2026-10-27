@@ -11,8 +11,8 @@ import { FREE_TRIAL_CALLS, STARTING_PRICE, money } from "@/lib/pricing";
 
 const WALKTHROUGH = [
   { title: "The AI Applicant Screening Call", text: "How CallPilot calls an applicant, asks yes/no questions taken from your job advert and marks them Pre-qualified or Unsuccessful." },
-  { title: "Document collection", text: "How pre-qualified applicants are asked for ID and documents by secure SMS link or WhatsApp, with automated reminders." },
-  { title: "ATS sync", text: "How outcomes, transcripts and documents are written back to JobAdder, Recruit CRM, Ashby or Greenhouse, with traffic-light statuses for your Talent Team." },
+  { title: "Document Collection", text: "How pre-qualified applicants are asked for ID and documents by secure SMS link or WhatsApp, with automated reminders." },
+  { title: "ATS Sync", text: "How outcomes, transcripts and documents are written back to JobAdder, Recruit CRM, Ashby or Greenhouse, with traffic-light statuses for your Talent Team." },
 ];
 
 const FAQS = [
@@ -34,8 +34,7 @@ export default function BookADemoPage() {
         <section className={s.hero} aria-labelledby="demo-title">
           <div className={`${s.container} ${s.heroGrid} ${s.demoGrid}`}>
             <div>
-              <p className={s.kicker}>AI Applicant Screening</p>
-              <h1 id="demo-title" className={s.h1}><span className={s.hl}>Book a Demo</span> + Walkthrough</h1>
+                            <h1 id="demo-title" className={s.h1}>Book a Demo + Walkthrough</h1>
               <p className={s.subLeft}>Fill out the form and our team will contact you within one business day.</p>
               <div style={{ marginTop: 22 }}>
                 <Suspense fallback={<div className={s.form} style={{ minHeight: 520 }} aria-busy />}>
@@ -44,7 +43,7 @@ export default function BookADemoPage() {
               </div>
             </div>
             <div className={s.walk}>
-              <h2 className={s.h2} style={{ fontSize: "clamp(26px, 3.2vw, 38px)" }}>What you will see in the walkthrough</h2>
+              <h2 className={s.h2} style={{ fontSize: "clamp(26px, 3.2vw, 38px)" }}>What You Will See in the Walkthrough</h2>
               <ol className={s.walkList}>
                 {WALKTHROUGH.map((w, i) => (
                   <li key={w.title}>
@@ -62,7 +61,7 @@ export default function BookADemoPage() {
 
         <section className={`${s.section} ${s.sectionSoft}`} aria-labelledby="faq-title">
           <div className={`${s.container} ${s.narrow}`}>
-            <h2 id="faq-title" className={s.h2} style={{ marginBottom: 24 }}>Common questions</h2>
+            <h2 id="faq-title" className={s.h2} style={{ marginBottom: 24 }}>Common Questions</h2>
             <div className={s.faqList}>
               {FAQS.map((f) => (
                 <details key={f.q} className={s.faq}>

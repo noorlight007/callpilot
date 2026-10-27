@@ -145,6 +145,7 @@ const Header = () => {
     { label: "Integrations", href: "/integrations" },
     { label: "Blog", href: "/blog" },
     { label: "Pricing", href: "/pricing" },
+    { label: "VoIP Lines (Coming Soon)", href: "/voip" },
   ];
 
   // Replace these with your real profile URLs
@@ -213,7 +214,7 @@ const Header = () => {
             </Link>
 
             <Link href="/book-a-demo">
-              <Button variant="cta" size="default">
+              <Button variant="cta" size="default" style={{ color: "#fff", background: "#000" }}>
                 Book a Demo
               </Button>
             </Link>
@@ -224,7 +225,8 @@ const Header = () => {
             {/* Book a Demo CTA stays visible in the mobile top bar (LinkedIn traffic is mostly phones) */}
             <Link
               href="/book-a-demo"
-              className="bg-black text-white text-xs font-bold px-3.5 py-2.5 rounded-full whitespace-nowrap"
+              className="bg-black text-xs font-bold px-3.5 py-2.5 rounded-lg whitespace-nowrap"
+              style={{ color: "#fff" }}
             >
               Book a Demo
             </Link>
@@ -260,11 +262,6 @@ const Header = () => {
                   </Button>
                 </Link>
                 <SocialIcons className="justify-center" />
-                <Link href="/book-a-demo" className="w-full">
-                  <Button variant="cta" size="lg" className="w-full">
-                    Book a Demo
-                  </Button>
-                </Link>
               </div>
             </nav>
           </div>
