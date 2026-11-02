@@ -26,6 +26,7 @@ const pages: { path: string; updated: string; priority: number; freq: "daily" | 
   { path: "/terms-conditions", updated: "2026-10-18", priority: 0.3, freq: "monthly" },
   { path: "/cookie-policy", updated: "2026-09-27", priority: 0.3, freq: "monthly" },
   { path: "/policy-compliance", updated: "2026-09-27", priority: 0.3, freq: "monthly" },
+  { path: "/data-deletion", updated: "2026-11-02", priority: 0.3, freq: "monthly" },
 ];
 
 // Posts: publish date. Anything dated in the future is left out until that day.
