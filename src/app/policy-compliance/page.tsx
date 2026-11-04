@@ -466,7 +466,7 @@ export default function PoliciesAndCompliancePage() {
 
                     <p className="text-sm text-body">
                       <span className="text-muted-text">Effective Date:</span>{" "}
-                      <span className="font-medium">11 February 2026</span>
+                      <span className="font-medium">4 November 2026</span>
                     </p>
 
                     <p className="text-sm text-body">
@@ -597,6 +597,10 @@ export default function PoliciesAndCompliancePage() {
                     <p className="text-sm text-body leading-relaxed">
                       All subprocessors are contractually bound by data protection obligations.
                     </p>
+                    <p className="text-sm text-body leading-relaxed">
+                      Swiftwave will provide a current subprocessor list on request and will
+                      notify the Client of any new subprocessor before use.
+                    </p>
                   </div>
 
                   {/* 8 */}
@@ -612,6 +616,11 @@ export default function PoliciesAndCompliancePage() {
                         "Secure cloud providers are utilised",
                       ]}
                     />
+                    <p className="text-sm text-body leading-relaxed">
+                      Where Client Personal Data originates in the UK or EU, Swiftwave will put
+                      in place the UK International Data Transfer Agreement or UK Addendum and
+                      the EU Standard Contractual Clauses.
+                    </p>
                   </div>
 
                   {/* 9 */}
@@ -652,16 +661,35 @@ export default function PoliciesAndCompliancePage() {
 
                   {/* 12 */}
                   <div className="space-y-2">
-                    <SubTitle>12. Liability</SubTitle>
+                    <SubTitle>12. AI Training</SubTitle>
+                    <p className="text-sm text-body leading-relaxed">
+                      Swiftwave will not use Client Personal Data, including call responses,
+                      transcripts and uploaded documents, to train or fine-tune AI models, and
+                      will require the same of its subprocessors.
+                    </p>
+                  </div>
+
+                  {/* 13 */}
+                  <div className="space-y-2">
+                    <SubTitle>13. Documents</SubTitle>
+                    <p className="text-sm text-body leading-relaxed">
+                      Documents collected by WhatsApp, SMS upload link or email form are passed
+                      directly to the Client&apos;s ATS record.
+                    </p>
+                  </div>
+
+                  {/* 14 */}
+                  <div className="space-y-2">
+                    <SubTitle>14. Liability</SubTitle>
                     <p className="text-sm text-body leading-relaxed">
                       Liability under this DPA is subject to the limitations set out in the Terms
                       of Service.
                     </p>
                   </div>
 
-                  {/* 13 */}
+                  {/* 15 */}
                   <div className="space-y-2">
-                    <SubTitle>13. Contact</SubTitle>
+                    <SubTitle>15. Contact</SubTitle>
                     <p className="text-sm text-body leading-relaxed">
                       For data processing matters:{" "}
                       <a
@@ -700,7 +728,7 @@ export default function PoliciesAndCompliancePage() {
 
                     <p className="text-sm text-body">
                     <span className="text-muted-text">Effective Date:</span>{" "}
-                    <span className="font-medium">11 February 2026</span>
+                    <span className="font-medium">4 November 2026</span>
                     </p>
 
                     <p className="text-sm text-body">
@@ -737,13 +765,16 @@ export default function PoliciesAndCompliancePage() {
                     </p>
                     <SmallList
                     items={[
-                        "Encrypted data transmission (HTTPS / TLS)",
+                        "Data encrypted in transit (HTTPS / TLS) and at rest",
                         "Secure hosting environments",
                         "Firewall and network security controls",
                         "Segregated environments where applicable",
                         "System hardening practices",
                     ]}
                     />
+                    <p className="text-sm text-body leading-relaxed">
+                    Data is encrypted in transit (HTTPS/TLS) and at rest.
+                    </p>
                     <p className="text-sm text-body leading-relaxed">
                     Infrastructure is configured to reduce exposure to unauthorised access.
                     </p>
@@ -906,7 +937,7 @@ export default function PoliciesAndCompliancePage() {
 
                     <p className="text-sm text-body">
                     <span className="text-muted-text">Effective Date:</span>{" "}
-                    <span className="font-medium">11 February 2026</span>
+                    <span className="font-medium">4 November 2026</span>
                     </p>
 
                     <p className="text-sm text-body">
@@ -946,6 +977,20 @@ export default function PoliciesAndCompliancePage() {
                     />
                     <p className="text-sm text-body leading-relaxed">
                     AI operates in real time to enable platform functionality.
+                    </p>
+                    <p className="pt-1 text-sm font-semibold text-headline">
+                    How the AI call works
+                    </p>
+                    <p className="text-sm text-body leading-relaxed">
+                    The AI applicant call asks fixed yes/no questions taken from the job
+                    description, starting with right to work, and ends at the first answer that
+                    does not meet a requirement of the role. The outcome is marked Unsuccessful
+                    and written to the client&apos;s ATS for the client&apos;s Talent Team to
+                    review.
+                    </p>
+                    <p className="text-sm text-body leading-relaxed">
+                    Applicants who do not answer after three attempts within 24 hours are marked
+                    &quot;AI Call - No Reply&quot;, not Unsuccessful.
                     </p>
                 </div>
 
@@ -1019,6 +1064,10 @@ export default function PoliciesAndCompliancePage() {
                     CallPilot does not independently initiate communications without client
                     instruction.
                     </p>
+                    <p className="text-sm text-body leading-relaxed">
+                    CallPilot pre-qualifies applicants. It does not make hiring decisions. All
+                    hiring decisions remain with the client.
+                    </p>
                 </div>
 
                 {/* 7 */}
@@ -1063,7 +1112,24 @@ export default function PoliciesAndCompliancePage() {
 
                 {/* 10 */}
                 <div className="space-y-2">
-                    <SubTitle>10. Contact</SubTitle>
+                    <SubTitle>10. AI Disclosure</SubTitle>
+                    <p className="text-sm text-body leading-relaxed">
+                    The call opens by telling the applicant they are speaking to an automated AI
+                    assistant.
+                    </p>
+                </div>
+
+                {/* 11 */}
+                <div className="space-y-2">
+                    <SubTitle>11. AI Training</SubTitle>
+                    <p className="text-sm text-body leading-relaxed">
+                    Client data is not used to train or fine-tune AI models.
+                    </p>
+                </div>
+
+                {/* 12 */}
+                <div className="space-y-2">
+                    <SubTitle>12. Contact</SubTitle>
                     <p className="text-sm text-body leading-relaxed">
                     For questions regarding AI usage:{" "}
                     <a
